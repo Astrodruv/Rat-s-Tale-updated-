@@ -123,10 +123,10 @@ public class Cockroach extends Entity{
         image = leftFacingImage;
         xVelocity = -xSpeed - xAccel;
         if(xTimer > (float)(timer/2)) {
-            xAccel -= 0.025f;
+            xAccel -= 0.05f;
         }
         else {
-            xAccel += 0.025f;
+            xAccel += 0.05f;
         }
     }
 
@@ -134,10 +134,10 @@ public class Cockroach extends Entity{
         image = rightFacingImage;
         xVelocity = xSpeed + xAccel;
         if(xTimer < (float)(-timer/2)) {
-            xAccel += 0.025f;
+            xAccel += 0.05f;
         }
         else {
-            xAccel -= 0.025f;
+            xAccel -= 0.05f;
         }
     }
 
