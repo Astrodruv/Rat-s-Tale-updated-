@@ -56,7 +56,7 @@ public class Player extends Entity {
         xAccel = 0;
         gravity = 1;
         jumpingOffOfEnemy = false;
-        keyAttained = true; // DEBUG
+        keyAttained = false; // DEBUG
         percentHealth = (float) curHealth / maxHealth;
 
         cooldown = 120;
