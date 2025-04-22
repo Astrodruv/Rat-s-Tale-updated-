@@ -63,6 +63,15 @@ public class Cell {
         return list;
     }
 
+    public void removeObject()
+    {
+        if(object != null)
+        {
+            object.setCell(null);
+            object = null;
+        }
+    }
+
     public int getX(){
         return x;
     }

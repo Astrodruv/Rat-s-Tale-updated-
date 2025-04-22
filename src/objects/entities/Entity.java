@@ -7,8 +7,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 
 public abstract class Entity extends GameObject {
-    protected static int curHealth;
-    protected static int maxHealth;
+    protected int curHealth;
+    protected int maxHealth;
     protected int attackDmg;
     protected float xSpeed;
     protected float ySpeed;

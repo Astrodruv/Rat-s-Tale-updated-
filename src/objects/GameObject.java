@@ -63,4 +63,15 @@ public abstract class GameObject {
         return new Rectangle(x,y,w,h);
     }
 
+    public Rectangle getWeaponBounds(boolean facingRight)
+    {
+        if(facingRight)
+        {
+            return new Rectangle(x + w, y + 10, 100, h - 10);
+        }
+        else {
+            return new Rectangle(x - 100, y + 10, w, h - 10);
+        }
+    }
+
 }

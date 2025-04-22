@@ -27,9 +27,8 @@ public class Cockroach extends Entity{
     public static float percentHealth;
 
     private int timer;
-    private int time;
     private int xTimer;
-    private int xTime;
+    private int jumpTimer;
     public static int attackDamage;
 
     private Image leftFacingImage;
@@ -47,13 +46,15 @@ public class Cockroach extends Entity{
         yVelocity = 0;
         newX = 0;
         newY = 0;
-        xAccel = 0;
         gravity = 1;
         attackDamage = attackDmg;
+
+        xAccel = 0;
+
         timer = 5 * 60;
-        time = timer;
-        xTimer = 2 * 60;
-        xTime = xTimer;
+        xTimer = 5 * 60;
+        jumpTimer = 9 * 60;
+
         isDamaged = isHit;
 
         leftFacingImage = rightFacingImage.getFlippedCopy(true, false);
@@ -69,6 +70,8 @@ public class Cockroach extends Entity{
         image.draw(x,y);
         g.setColor(Color.orange);
         g.draw(getBounds());
+        g.drawString(""+xTimer, 900, 500);
+        g.drawString(""+xAccel, 900, 700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -78,9 +81,15 @@ public class Cockroach extends Entity{
 
         if (isDamaged){
             takeDamage(Player.getAttackDamage());
+            isDamaged = false;
+        }
+        if(isDead)
+        {
+            cell.removeObject();
+            percentHealth = 0;
         }
 
-        timer--;
+        jumpTimer--;
         xTimer--;
 
         if (xTimer > 0){
@@ -89,17 +98,14 @@ public class Cockroach extends Entity{
         if (xTimer < 0){
             moveRight();
         }
-        if (xTimer == 0){
+
+        if (jumpTimer < 0){
             jump();
+            jumpTimer = 7 * 60;
         }
 
-        if (xTimer < -xTime){
-            xTimer = xTime;
-        }
-
-        if (timer <= 0){
-            jump();
-            timer = time;
+        if (xTimer < -timer){
+            xTimer = timer;
         }
 
         yVelocity += gravity;
@@ -115,20 +121,29 @@ public class Cockroach extends Entity{
 
     public void moveLeft(){
         image = leftFacingImage;
-        xVelocity = -xSpeed + xAccel;
-        xAccel -= 0.025f;
+        xVelocity = -xSpeed - xAccel;
+        if(xTimer > (float)(timer/2)) {
+            xAccel -= 0.025f;
+        }
+        else {
+            xAccel += 0.025f;
+        }
     }
 
     public void moveRight(){
         image = rightFacingImage;
         xVelocity = xSpeed + xAccel;
-        xAccel += 0.025f;
+        if(xTimer < (float)(-timer/2)) {
+            xAccel += 0.025f;
+        }
+        else {
+            xAccel -= 0.025f;
+        }
     }
 
     public void jump(){
-        yVelocity = -ySpeed;
+        yVelocity = ySpeed;
         onGround = false;
-        timer = time;
     }
 
     public void collisions(StateBasedGame sbg) {
