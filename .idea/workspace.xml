@@ -9,7 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="attack mechanic" />
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/objects/GameObject.java&#10;#&#9;src/objects/entities/enemy/boss/attacking/Cockroach.java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/sewer2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Cockroach.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Cockroach.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/player/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Cockroach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Cockroach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/player/Player.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745328227555</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/objects/GameObject.java&#10;#&#9;src/objects/entities/enemy/boss/attacking/Cockroach.java">
+      <option name="closed" value="true" />
+      <created>1745328309766</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745328309766</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

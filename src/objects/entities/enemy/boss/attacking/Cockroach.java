@@ -33,6 +33,8 @@ public class Cockroach extends Entity{
 
     private Image leftFacingImage;
 
+    public static boolean isDead;
+
     private boolean leftDirection;
     private static double directionater = Math.random();
 
@@ -56,6 +58,7 @@ public class Cockroach extends Entity{
         jumpTimer = 9 * 60;
 
         isDamaged = isHit;
+        isDead = false;
 
         leftFacingImage = rightFacingImage.getFlippedCopy(true, false);
         leftDirection = true;
@@ -72,6 +75,7 @@ public class Cockroach extends Entity{
         g.draw(getBounds());
         g.drawString(""+xTimer, 900, 500);
         g.drawString(""+xAccel, 900, 700);
+        g.drawString(""+curHealth, 900, 900);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -82,6 +86,10 @@ public class Cockroach extends Entity{
         if (isDamaged){
             takeDamage(Player.getAttackDamage());
             isDamaged = false;
+            if(curHealth <= 0)
+            {
+                isDead = true;
+            }
         }
         if(isDead)
         {
@@ -121,12 +129,12 @@ public class Cockroach extends Entity{
 
     public void moveLeft(){
         image = leftFacingImage;
-        xVelocity = -xSpeed - xAccel;
+        xVelocity = -xSpeed + xAccel;
         if(xTimer > (float)(timer/2)) {
-            xAccel -= 0.025f;
+            xAccel += 0.025f;
         }
         else {
-            xAccel += 0.025f;
+            xAccel -= 0.025f;
         }
     }
 

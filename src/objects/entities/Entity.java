@@ -54,7 +54,6 @@ public abstract class Entity extends GameObject {
             curHealth -= damage;
             if (curHealth <= 0) {
                 curHealth = 0;
-                isDead = true;
             }
         }
     }

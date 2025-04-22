@@ -56,10 +56,10 @@ public class Player extends Entity {
         xAccel = 0;
         gravity = 1;
         jumpingOffOfEnemy = false;
-        keyAttained = false; // DEBUG
+        keyAttained = true; // DEBUG
         percentHealth = (float) curHealth / maxHealth;
 
-        cooldown = 120;
+        cooldown = 90;
         canAttack = false;
         attack = false;
     }
@@ -128,7 +128,7 @@ public class Player extends Entity {
         {
             attack = true;
             collisions(sbg);
-            cooldown = 180;
+            cooldown = 90;
         }
 
         yVelocity += gravity;
@@ -246,7 +246,7 @@ public class Player extends Entity {
                 }
             }
 
-            if (o instanceof Cockroach){
+            if (o instanceof Cockroach && Cockroach.isDead == false){
                 Rectangle ratBounds = getBounds();
                 Rectangle oBounds = o.getBounds();
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
