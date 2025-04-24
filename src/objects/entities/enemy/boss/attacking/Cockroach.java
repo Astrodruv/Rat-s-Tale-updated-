@@ -53,8 +53,8 @@ public class Cockroach extends Entity{
 
         xAccel = 0;
 
-        timer = 5 * 60;
-        xTimer = 5 * 60;
+        timer = 7 * 60;
+        xTimer = 7 * 60;
         jumpTimer = 9 * 60;
 
         isDamaged = isHit;
@@ -74,7 +74,7 @@ public class Cockroach extends Entity{
         g.setColor(Color.orange);
         g.draw(getBounds());
         g.drawString(""+xTimer, 900, 500);
-        g.drawString(""+xAccel, 900, 700);
+        g.drawString(""+(int)xAccel, 900, 700);
         g.drawString(""+curHealth, 900, 900);
     }
 
@@ -129,23 +129,31 @@ public class Cockroach extends Entity{
 
     public void moveLeft(){
         image = leftFacingImage;
-        xVelocity = -xSpeed + xAccel;
-        if(xTimer > (float)(timer/2)) {
+        xVelocity = xSpeed + xAccel;
+        if(xTimer > (timer/2)) {
             xAccel += 0.025f;
         }
         else {
             xAccel -= 0.025f;
+        }
+        if(xTimer == -timer)
+        {
+            xTimer = 0;
         }
     }
 
     public void moveRight(){
         image = rightFacingImage;
-        xVelocity = xSpeed + xAccel;
-        if(xTimer < (float)(-timer/2)) {
-            xAccel += 0.025f;
+        xVelocity = -xSpeed - xAccel;
+        if(xTimer < (-timer/2)) {
+            xAccel -= 0.025f;
         }
         else {
-            xAccel -= 0.025f;
+            xAccel += 0.025f;
+        }
+        if(xTimer == 0)
+        {
+            xTimer = 0;
         }
     }
 

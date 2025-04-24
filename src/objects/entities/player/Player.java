@@ -56,7 +56,7 @@ public class Player extends Entity {
         xAccel = 0;
         gravity = 1;
         jumpingOffOfEnemy = false;
-        keyAttained = false; // DEBUG
+        keyAttained = true; // DEBUG
         percentHealth = (float) curHealth / maxHealth;
 
         cooldown = 90;
@@ -122,13 +122,6 @@ public class Player extends Entity {
 
         if (input.isKeyDown(Input.KEY_W) && onGround && !jumpingOffOfEnemy){
             jump();
-        }
-
-        if(input.isKeyDown(Input.KEY_SPACE) && canAttack)
-        {
-            attack = true;
-            collisions(sbg);
-            cooldown = 90;
         }
 
         yVelocity += gravity;
@@ -291,6 +284,11 @@ public class Player extends Entity {
         if (key == Input.KEY_A && facingRight){
             xAccel = 0;
             image = image.getFlippedCopy(true, false);
+        }
+        if(key == Input.KEY_SPACE && canAttack)
+        {
+            attack = true;
+            cooldown = 90;
         }
     }
 
