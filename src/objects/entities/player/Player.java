@@ -56,7 +56,7 @@ public class Player extends Entity {
         xAccel = 0;
         gravity = 1;
         jumpingOffOfEnemy = false;
-        keyAttained = true; // DEBUG
+        keyAttained = false; // DEBUG
         percentHealth = (float) curHealth / maxHealth;
 
         cooldown = 90;
@@ -235,6 +235,12 @@ public class Player extends Entity {
                     if (getBounds().intersects(o.getBounds()) && Player.keyAttained) {
                         if (World.level.equals("levels/sewer1.txt")){
                             Game.setLevel("levels/sewer2.txt");
+                            keyAttained = false;
+                        }
+                    }
+                    if (getBounds().intersects(o.getBounds()) && Player.keyAttained) {
+                        if (World.level.equals("levels/sewer2.txt")){
+                            Game.setLevel("levels/sewer3.txt");
                         }
                     }
                 }

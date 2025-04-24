@@ -44,7 +44,7 @@ public class ImageRenderer
             movingPlatform = movingPlatformUnscaled.getScaledCopy(screenRatio);
             cockroachIdle = cockroachIdleUnscaled.getScaledCopy(((int) Cell.getWidth()) * 5 / 2, ((int) Cell.getHeight()));
             sewerFloor = sewerFloorUnscaled.getScaledCopy(screenRatio);
-            key = keyUnscaled.getScaledCopy(1);
+            key = keyUnscaled.getScaledCopy(2);
             lock = lockUnscaled.getScaledCopy(((int) Cell.getWidth()) * 2, ((int) Cell.getHeight()));
 
 
