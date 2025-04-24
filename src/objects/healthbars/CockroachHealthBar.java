@@ -22,6 +22,9 @@ public class CockroachHealthBar extends HealthBar {
 
         g.setColor(Color.red);
         g.drawString("Boss name here : Boss of the Sewers", x, y + 50);
+        if(Cockroach.isDead){
+            g.drawString("You have defeated the Cockroach!", x, y + 80);
+        }
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){

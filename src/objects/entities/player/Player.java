@@ -31,7 +31,8 @@ public class Player extends Entity {
     public static int attackDamage;
     public boolean jumpingOffOfEnemy;
     public static float percentHealth;
-
+    private static final int BASE_WIDTH = 1920;
+    private static final int BASE_HEIGHT = 1080;
     public float cooldown;
     public boolean canAttack;
     public boolean attack;
@@ -42,10 +43,21 @@ public class Player extends Entity {
         super(x,y,Cell.getWidth() * ImageRenderer.screenRatio * 0.55f, Cell.getHeight() * ImageRenderer.screenRatio * 0.6f,100,10, ImageRenderer.ratIdle);
         this.x = x;
         this.y = y;
-        if (Main.getScreenWidth() == 2256){
-            xSpeed = 5 * ImageRenderer.screenRatio * 5;
-            ySpeed = Cell.getHeight() * ImageRenderer.screenRatio * 0.75f;
-        }
+
+        float scaleX = (float) Main.getScreenWidth() / BASE_WIDTH;
+        float scaleY = (float) Main.getScreenHeight() / BASE_HEIGHT;
+        float scale = (scaleX + scaleY) / 2f;
+
+
+if(Main.getScreenWidth() < 2256){
+    xSpeed = 9.0f * scale;
+    ySpeed = 20.0f * scale;
+} else{
+    xSpeed = 10.0f * scale;
+    ySpeed = 17.0f * scale;
+}
+
+
         facingRight = true;
         onGround = true;
         xVelocity = 0;
@@ -77,6 +89,7 @@ public class Player extends Entity {
         g.drawString(""+cooldown, 700, 500);
         g.drawString(""+canAttack, 700, 700);
         g.drawString(""+attack, 700, 900);
+        g.drawString(""+xSpeed, 300, 900);
 
         g.drawString(""+invincibilityFrameValue, 500, 900);
         g.drawString(""+invincibilityFrames, 500, 1000);
@@ -243,7 +256,17 @@ public class Player extends Entity {
                             Game.setLevel("levels/sewer3.txt");
                         }
                     }
+
+
                 }
+            }
+            if(Cockroach.isDead){
+                keyAttained = true;
+                if (World.level.equals("levels/sewer3.txt")){
+                    Game.setLevel("levels/sewer4.txt");
+                }
+
+
             }
 
             if (o instanceof Key){
