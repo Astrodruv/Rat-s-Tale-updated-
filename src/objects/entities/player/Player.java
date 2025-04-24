@@ -245,7 +245,7 @@ public class Player extends Entity {
                 }
             }
 
-            if (o instanceof Cockroach && Cockroach.isDead == false){
+            if (o instanceof Cockroach && !Cockroach.isDead){
                 Rectangle ratBounds = getBounds();
                 Rectangle oBounds = o.getBounds();
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
@@ -257,6 +257,10 @@ public class Player extends Entity {
                         jumpingOffOfEnemy = true;
                         jump();
                         jumpingOffOfEnemy = false;
+                        if(!Cockroach.onGround)
+                        {
+                            takeDamage(Cockroach.attackDamage);
+                        }
                     }
                     else{
                         takeDamage(Cockroach.attackDamage);
@@ -289,6 +293,7 @@ public class Player extends Entity {
         {
             attack = true;
             cooldown = 90;
+            canAttack = false;
         }
     }
 
