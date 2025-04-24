@@ -37,15 +37,15 @@ public class ImageRenderer
             cockroachIdleUnscaled = new Image("res/Cockroach_Idle.png");
             sewerFloor = new Image("res/Sewer_Floor.png");
             keyUnscaled = new Image("res/Key.png");
-            lockUnscaled = new Image("res/Lock.png");
+            lockUnscaled = new Image("res/Door.png");
 
             sewerBackground = sewerBackgroundUnscaled.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             ratIdle = ratIdleUnscaled.getScaledCopy(((int) Cell.getWidth()) * 5 / 2, ((int) Cell.getHeight()) - 5);
             movingPlatform = movingPlatformUnscaled.getScaledCopy(screenRatio);
             cockroachIdle = cockroachIdleUnscaled.getScaledCopy(((int) Cell.getWidth()) * 5 / 2, ((int) Cell.getHeight()));
             sewerFloor = sewerFloorUnscaled.getScaledCopy(screenRatio);
-            key = keyUnscaled.getScaledCopy(2);
-            lock = lockUnscaled.getScaledCopy(((int) Cell.getWidth()) * 2, ((int) Cell.getHeight()));
+            key = keyUnscaled.getScaledCopy(1.5f);
+            lock = lockUnscaled.getScaledCopy(((int) Cell.getWidth()) * 2 +2, ((int) Cell.getHeight() * 2 ));
 
 
             System.out.println("Screen ratio scaling: " + screenRatio);
