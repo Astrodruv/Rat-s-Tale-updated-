@@ -2,6 +2,7 @@ package objects.world;
 
 import engine.Game;
 import objects.GameObject;
+import objects.entities.enemy.boss.attacking.Bird;
 import objects.entities.enemy.boss.attacking.Cockroach;
 import objects.entities.player.Player;
 import objects.interactables.Key;
@@ -29,9 +30,13 @@ public class World {
     public static Cell[][] cells;
     public static ArrayList<GameObject> objects;
 
+    private boolean enemy;
+
     public World() {
         cells = new Cell[WIDTH][HEIGHT];
         objects = new ArrayList<>();
+
+        enemy = false;
 
         for (int i = 0; i < WIDTH; i++){
             for (int j = 0; j < HEIGHT; j++){
@@ -105,9 +110,20 @@ public class World {
         }
         if (code == 'k'){
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+            enemy = true;
         }
-        if (code == 'l'){
+        if (code == 'l' && enemy)
+        {
+            if(!enemyCheck())
+            {
+                enemy = false;
+            }
+        }
+        if(code == 'l') {
             obj = new Lock(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'E'){
+            obj = new Bird(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (obj != null){
@@ -133,6 +149,15 @@ public class World {
 //            Game.levelObjects.add(p);
 //        }
 
+    }
+
+    public boolean enemyCheck()
+    {
+        if(Cockroach.isDead)
+        {
+            return false;
+        }
+        return true;
     }
 
     public void readFile(String s){

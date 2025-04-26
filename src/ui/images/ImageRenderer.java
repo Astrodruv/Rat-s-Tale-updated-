@@ -14,6 +14,7 @@ public class ImageRenderer
     public static Image sewerFloorUnscaled;
     public static Image ratIdleUnscaled;
     public static Image cockroachIdleUnscaled;
+    public static Image birdIdleUnscaled;
     public static Image keyUnscaled;
     public static Image lockUnscaled;
 
@@ -27,6 +28,9 @@ public class ImageRenderer
     public static Image cockroachIdle;
     public static Image cockroachWalking;
 
+    public static Image birdIdle;
+    public static Image birdFlying;
+
     public static void loadImages()
     {
         try {
@@ -35,6 +39,7 @@ public class ImageRenderer
             movingPlatformUnscaled = new Image("res/Moving_Platform.png");
             ratIdleUnscaled = new Image("res/Rat_Idle1.png");
             cockroachIdleUnscaled = new Image("res/Cockroach_Idle.png");
+            birdIdleUnscaled = new Image("res/Eagle.png");
             sewerFloor = new Image("res/Sewer_Floor.png");
             keyUnscaled = new Image("res/Key.png");
             lockUnscaled = new Image("res/Door.png");
@@ -42,7 +47,8 @@ public class ImageRenderer
             sewerBackground = sewerBackgroundUnscaled.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             ratIdle = ratIdleUnscaled.getScaledCopy(((int) Cell.getWidth()) * 5 / 2, ((int) Cell.getHeight()) - 5);
             movingPlatform = movingPlatformUnscaled.getScaledCopy(screenRatio);
-            cockroachIdle = cockroachIdleUnscaled.getScaledCopy(((int) Cell.getWidth()) * 5 / 2, ((int) Cell.getHeight()));
+            cockroachIdle = cockroachIdleUnscaled.getScaledCopy(((int) Cell.getWidth()) * 5 / 2, (int) Cell.getHeight());
+            birdIdle = birdIdleUnscaled.getScaledCopy((int) Cell.getWidth() * 3, (int) Cell.getHeight());
             sewerFloor = sewerFloorUnscaled.getScaledCopy(screenRatio);
             key = keyUnscaled.getScaledCopy(1.5f);
             lock = lockUnscaled.getScaledCopy(((int) Cell.getWidth()) * 2 +2, ((int) Cell.getHeight() * 2 ));

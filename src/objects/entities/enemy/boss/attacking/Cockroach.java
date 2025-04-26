@@ -109,9 +109,9 @@ public class Cockroach extends Entity{
             moveRight();
         }
 
-        if (jumpTimer < 0){
+        if (jumpTimer < 0 && ySpeed >= 0){
             jump();
-            jumpTimer = 8 * 60;
+            jumpTimer = (float) (Math.random() * (float)(3.5 * 60));
         }
 
         if (xTimer < -timer){
@@ -162,7 +162,7 @@ public class Cockroach extends Entity{
 
     public void jump() {
         if(jumpTimer > -300) {
-            yVelocity = -ySpeed;
+            yVelocity = -ySpeed * 5/6;
             xVelstore = xVelocity;
         }
         else
