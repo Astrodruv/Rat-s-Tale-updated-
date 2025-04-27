@@ -68,7 +68,7 @@ if(Main.getScreenWidth() < 2256){
         xAccel = 0;
         gravity = 1;
         jumpingOffOfEnemy = false;
-        keyAttained = false; // DEBUG
+        keyAttained = true; // DEBUG
         percentHealth = (float) curHealth / maxHealth;
 
         cooldown = 90;
@@ -135,13 +135,6 @@ if(Main.getScreenWidth() < 2256){
 
         if (input.isKeyDown(Input.KEY_W) && onGround && !jumpingOffOfEnemy){
             jump();
-        }
-
-        if(input.isKeyDown(Input.KEY_SPACE) && canAttack)
-        {
-            attack = true;
-            collisions(sbg);
-            cooldown = 90;
         }
 
         yVelocity += gravity;
@@ -275,7 +268,7 @@ if(Main.getScreenWidth() < 2256){
                 }
             }
 
-            if (o instanceof Cockroach && Cockroach.isDead == false){
+            if (o instanceof Cockroach && !Cockroach.isDead){
                 Rectangle ratBounds = getBounds();
                 Rectangle oBounds = o.getBounds();
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
@@ -287,6 +280,10 @@ if(Main.getScreenWidth() < 2256){
                         jumpingOffOfEnemy = true;
                         jump();
                         jumpingOffOfEnemy = false;
+                        if(!Cockroach.onGround)
+                        {
+                            takeDamage(Cockroach.attackDamage);
+                        }
                     }
                     else{
                         takeDamage(Cockroach.attackDamage);
@@ -314,6 +311,12 @@ if(Main.getScreenWidth() < 2256){
         if (key == Input.KEY_A && facingRight){
             xAccel = 0;
             image = image.getFlippedCopy(true, false);
+        }
+        if(key == Input.KEY_SPACE && canAttack)
+        {
+            attack = true;
+            cooldown = 90;
+            canAttack = false;
         }
     }
 

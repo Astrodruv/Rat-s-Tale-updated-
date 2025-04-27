@@ -16,9 +16,10 @@ import ui.images.ImageRenderer;
 
 public class Cockroach extends Entity{
     private boolean facingRight;
-    private boolean onGround;
+    public static boolean onGround;
     private float xAccel;
     private float xVelocity;
+    private float xVelstore;
     private float yVelocity;
     private float newX;
     private float newY;
@@ -28,7 +29,7 @@ public class Cockroach extends Entity{
 
     private int timer;
     private int xTimer;
-    private int jumpTimer;
+    private float jumpTimer;
     public static int attackDamage;
 
     private Image leftFacingImage;
@@ -53,9 +54,9 @@ public class Cockroach extends Entity{
 
         xAccel = 0;
 
-        timer = 5 * 60;
-        xTimer = 5 * 60;
-        jumpTimer = 9 * 60;
+        timer = 7 * 60;
+        xTimer = 7 * 60;
+        jumpTimer = (float) (3.5 * 60);
 
         isDamaged = isHit;
         isDead = false;
@@ -63,8 +64,9 @@ public class Cockroach extends Entity{
         leftFacingImage = rightFacingImage.getFlippedCopy(true, false);
         leftDirection = true;
 
-        xSpeed = 0; //DEBUG
-        ySpeed = 0; //DEBUG
+        xVelstore = xVelocity;
+        xSpeed = 0;
+        ySpeed = Cell.getHeight() * ImageRenderer.screenRatio * 0.75f;
 
         percentHealth = (float) curHealth / maxHealth;
     }
@@ -75,7 +77,7 @@ public class Cockroach extends Entity{
         g.draw(getBounds());
         g.drawString(""+xTimer, 900, 500);
         g.drawString(""+xAccel, 900, 700);
-        g.drawString(""+curHealth, 900, 900);
+        g.drawString(""+jumpTimer, 900, 900);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -109,7 +111,7 @@ public class Cockroach extends Entity{
 
         if (jumpTimer < 0){
             jump();
-            jumpTimer = 7 * 60;
+            jumpTimer = 8 * 60;
         }
 
         if (xTimer < -timer){
@@ -121,6 +123,7 @@ public class Cockroach extends Entity{
         newX = x + xVelocity;
         newY = y + yVelocity;
 
+
         collisions(sbg);
 
         x = newX;
@@ -129,28 +132,44 @@ public class Cockroach extends Entity{
 
     public void moveLeft(){
         image = leftFacingImage;
-        xVelocity = -xSpeed + xAccel;
-        if(xTimer > (float)(timer/2)) {
-            xAccel += 0.025f;
+        xVelocity =  (xSpeed + xAccel);
+        if(xTimer == 0)
+        {
+            xAccel = 0;
+        }
+        if(xTimer >= (timer/2)) {
+            xAccel -= 0.025f;
         }
         else {
-            xAccel -= 0.025f;
+            xAccel += 0.025f;
         }
     }
 
     public void moveRight(){
         image = rightFacingImage;
-        xVelocity = xSpeed + xAccel;
-        if(xTimer < (float)(-timer/2)) {
-            xAccel += 0.025f;
+        xVelocity = (xSpeed - xAccel);
+        if(xTimer == -timer)
+        {
+            xAccel = 0;
+        }
+        if(xTimer >= (-timer/2)) {
+            xAccel -= 0.025f;
         }
         else {
-            xAccel -= 0.025f;
+            xAccel += 0.025f;
         }
     }
 
-    public void jump(){
-        yVelocity = ySpeed;
+    public void jump() {
+        if(jumpTimer > -300) {
+            yVelocity = -ySpeed;
+            xVelstore = xVelocity;
+        }
+        else
+        {
+            yVelocity = 0;
+            xVelocity = xVelstore;
+        }
         onGround = false;
     }
 
@@ -159,7 +178,9 @@ public class Cockroach extends Entity{
         Rectangle futureX = new Rectangle(newX, y - 1, w, h);
         Rectangle futureY = new Rectangle(newX, newY, w, h);
 
-        for (GameObject o : Game.levelObjects){
+
+        for (GameObject o : Game.levelObjects)
+        {
             if (o instanceof Platform) {
                 if (futureX.intersects(o.getBounds())) {
                     if (onGround) {
@@ -201,6 +222,10 @@ public class Cockroach extends Entity{
 
     public static float getPercentHealth(){
         return percentHealth;
+    }
+
+    public boolean groundCheck(){
+        return onGround;
     }
 
 }
