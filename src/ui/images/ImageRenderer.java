@@ -10,7 +10,9 @@ public class ImageRenderer
     public static final float screenRatio = 1 / ((float) (Main.getScreenWidth() * Main.getScreenHeight()) / 1000000);
 
     public static Image sewerBackgroundUnscaled;
+    public static Image streeBackgroundUnscaled;
     public static Image movingPlatformUnscaled;
+    public static Image streetFloor;
     public static Image sewerFloorUnscaled;
     public static Image ratIdleUnscaled;
     public static Image cockroachIdleUnscaled;
@@ -18,6 +20,7 @@ public class ImageRenderer
     public static Image lockUnscaled;
 
     public static Image sewerBackground;
+    public static Image streetBackground;
     public static Image movingPlatform;
     public static Image ratIdle;
     public static Image sewerFloor;
@@ -31,6 +34,7 @@ public class ImageRenderer
     {
         try {
             sewerBackgroundUnscaled = new Image("res/Sewer_Background.png");
+            streeBackgroundUnscaled = new Image("res/Street_Background.png");
             sewerFloorUnscaled = new Image("res/Sewer_Floor.png");
             movingPlatformUnscaled = new Image("res/Moving_Platform.png");
             ratIdleUnscaled = new Image("res/Rat_Idle1.png");
@@ -40,6 +44,7 @@ public class ImageRenderer
             lockUnscaled = new Image("res/Door.png");
 
             sewerBackground = sewerBackgroundUnscaled.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            streetBackground = streeBackgroundUnscaled.getScaledCopy(Main.getScreenWidth(),Main.getScreenHeight());
             ratIdle = ratIdleUnscaled.getScaledCopy(((int) Cell.getWidth()) * 5 / 2, ((int) Cell.getHeight()) - 5);
             movingPlatform = movingPlatformUnscaled.getScaledCopy(screenRatio);
             cockroachIdle = cockroachIdleUnscaled.getScaledCopy(((int) Cell.getWidth()) * 5 / 2, ((int) Cell.getHeight()));

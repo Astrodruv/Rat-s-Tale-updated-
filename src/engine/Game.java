@@ -58,7 +58,12 @@ public class Game extends BasicGameState
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
     {
-        g.drawImage(ImageRenderer.sewerBackground, 0, 0);
+        if(Player.level == 1){
+            g.drawImage(ImageRenderer.streetBackground,0,0);
+        } else{
+            g.drawImage(ImageRenderer.sewerBackground, 0, 0);
+        }
+        //each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
         world.render(g);
         playerHealthBar.render(g);
         cockroachHealthBar.render(g);
