@@ -3,7 +3,6 @@ package engine;
 import objects.GameObject;
 import objects.entities.player.Player;
 import objects.healthbars.CockroachHealthBar;
-import objects.healthbars.EagleHealthBar;
 import objects.healthbars.PlayerHealthBar;
 import objects.platforms.gamePlatforms.SewerPlatform;
 import objects.world.World;
@@ -24,7 +23,6 @@ public class Game extends BasicGameState
     private static Player player;
     private static PlayerHealthBar playerHealthBar;
     private static CockroachHealthBar cockroachHealthBar;
-    private static EagleHealthBar eagleHealthBar;
     public static GameContainer gc;
     StateBasedGame sbg;
 
@@ -49,15 +47,15 @@ public class Game extends BasicGameState
         world = new World();
         playerHealthBar = new PlayerHealthBar();
         cockroachHealthBar = new CockroachHealthBar();
-//        eagleHealthBar = new EagleHealthBar();
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
     {
         world.update(gc, sbg, delta);
         playerHealthBar.update(gc, sbg, delta);
-        cockroachHealthBar.update(gc, sbg, delta);
-//        eagleHealthBar.update(gc,sbg,delta);
+        if (World.level.equals("levels/sewer3.txt")) {
+            cockroachHealthBar.update(gc, sbg, delta);
+        }
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
@@ -65,8 +63,9 @@ public class Game extends BasicGameState
         g.drawImage(ImageRenderer.sewerBackground, 0, 0);
         world.render(g);
         playerHealthBar.render(g);
-        cockroachHealthBar.render(g);
-//        eagleHealthBar.render(g);
+        if (World.level.equals("levels/sewer3.txt")) {
+            cockroachHealthBar.render(g);
+        }
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException

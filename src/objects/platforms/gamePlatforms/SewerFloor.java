@@ -21,7 +21,12 @@ public class SewerFloor extends Platform {
         image.draw(cell.getX() * cellW, cell.getY() * cellH, cellW, h);
         if (isBottomPlatform()) {
             g.setColor(Color.gray);
-//            g.drawString("Bottom",x,y);
+//            g.drawString("Bottom",x + 5,y + 5);
+//            g.draw(getBounds());
+        }
+        if (isSidePlatform()) {
+            g.setColor(Color.gray);
+//            g.drawString("Side",x,y - 5);
 //            g.draw(getBounds());
         }
     }

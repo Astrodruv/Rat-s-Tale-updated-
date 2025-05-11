@@ -72,12 +72,22 @@ public class Cockroach extends Entity{
     }
 
     public void render(Graphics g){
-        image.draw(x,y);
-        g.setColor(Color.orange);
-        g.draw(getBounds());
-        g.drawString(""+xTimer, 900, 500);
-        g.drawString(""+xAccel, 900, 700);
-        g.drawString(""+jumpTimer, 900, 900);
+        if (isHit){
+            if (invincibilityFrames % 7 == 0){
+
+            }
+            else{
+                image.draw(x,y);
+            }
+        }
+        else{
+            image.draw(x,y);
+            g.setColor(Color.orange);
+            g.draw(getBounds());
+            g.drawString(""+xTimer, 900, 500);
+            g.drawString(""+xAccel, 900, 700);
+            g.drawString(""+jumpTimer, 900, 900);
+        }
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -109,9 +119,9 @@ public class Cockroach extends Entity{
             moveRight();
         }
 
-        if (jumpTimer < 0 && ySpeed >= 0){
+        if (jumpTimer < 0){
             jump();
-            jumpTimer = (float) (Math.random() * (float)(3.5 * 60));
+            jumpTimer = 8 * 60;
         }
 
         if (xTimer < -timer){
@@ -162,7 +172,7 @@ public class Cockroach extends Entity{
 
     public void jump() {
         if(jumpTimer > -300) {
-            yVelocity = -ySpeed * 5/6;
+            yVelocity = -ySpeed;
             xVelstore = xVelocity;
         }
         else
@@ -224,7 +234,7 @@ public class Cockroach extends Entity{
         return percentHealth;
     }
 
-    public boolean groundCheck(){
+    public static boolean groundCheck(){
         return onGround;
     }
 

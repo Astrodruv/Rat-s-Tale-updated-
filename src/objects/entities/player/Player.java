@@ -31,11 +31,12 @@ public class Player extends Entity {
     public static int attackDamage;
     public boolean jumpingOffOfEnemy;
     public static float percentHealth;
-    private static final int BASE_WIDTH = 1920;
-    private static final int BASE_HEIGHT = 1080;
     public float cooldown;
     public boolean canAttack;
     public boolean attack;
+    public boolean sidePlatformCollision;
+
+    public boolean contactingPlatformSide;
 
     public static boolean keyAttained;
 
@@ -43,21 +44,10 @@ public class Player extends Entity {
         super(x,y,Cell.getWidth() * ImageRenderer.screenRatio * 0.55f, Cell.getHeight() * ImageRenderer.screenRatio * 0.6f,100,10, ImageRenderer.ratIdle);
         this.x = x;
         this.y = y;
-
-        float scaleX = (float) Main.getScreenWidth() / BASE_WIDTH;
-        float scaleY = (float) Main.getScreenHeight() / BASE_HEIGHT;
-        float scale = (scaleX + scaleY) / 2f;
-
-
-if(Main.getScreenWidth() < 2256){
-    xSpeed = 9.0f * scale;
-    ySpeed = 20.0f * scale;
-} else{
-    xSpeed = 10.0f * scale;
-    ySpeed = 17.0f * scale;
-}
-
-
+        if (Main.getScreenWidth() == 2256){
+            xSpeed = 5 * ImageRenderer.screenRatio * 5;
+            ySpeed = Cell.getHeight() * ImageRenderer.screenRatio * 0.75f;
+        }
         facingRight = true;
         onGround = true;
         xVelocity = 0;
@@ -68,31 +58,40 @@ if(Main.getScreenWidth() < 2256){
         xAccel = 0;
         gravity = 1;
         jumpingOffOfEnemy = false;
+
         keyAttained = true; // DEBUG
         percentHealth = (float) curHealth / maxHealth;
+        contactingPlatformSide = false;
 
         cooldown = 90;
         canAttack = false;
         attack = false;
+
+        sidePlatformCollision = false;
     }
 
     public void render(Graphics g){
-        g.setColor(Color.darkGray);
-        image.draw(x,y);
         g.setColor(Color.orange);
-        g.draw(getBounds());
-        g.draw(getWeaponBounds(facingRight));
-        g.drawString(""+maxHealth, 500, 500);
-        g.drawString(""+curHealth, 500, 600);
-        g.drawString(""+getPercentHealth(), 500, 700);
-        g.drawString(""+Cockroach.getAttackDamage(), 500, 800);
-        g.drawString(""+cooldown, 700, 500);
-        g.drawString(""+canAttack, 700, 700);
-        g.drawString(""+attack, 700, 900);
-        g.drawString(""+xSpeed, 300, 900);
+        if (isHit){
+            if (invincibilityFrames % 7 == 0){
 
-        g.drawString(""+invincibilityFrameValue, 500, 900);
-        g.drawString(""+invincibilityFrames, 500, 1000);
+            }
+            else{
+                image.draw(x,y);
+                g.setColor(Color.orange);
+                g.draw(getBounds());
+                g.draw(getWeaponBounds(facingRight));
+            }
+        }
+        else{
+            image.draw(x,y);
+
+            g.draw(getBounds());
+            g.draw(getWeaponBounds(facingRight));
+        }
+
+        g.drawString("YVel "+ yVelocity, 600, 500);
+        g.drawString("On Ground "+ onGround, 600, 550);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -103,16 +102,15 @@ if(Main.getScreenWidth() < 2256){
         Input input = gc.getInput();
 
         cooldown--;
-        if(cooldown < 0)
-        {
+        if(cooldown < 0){
             canAttack = true;
         }
 
-        if (input.isKeyDown(Input.KEY_D)){
+        if (input.isKeyDown(Input.KEY_D) && !contactingPlatformSide){
             moveRight();
             facingRight = true;
         }
-        else if (input.isKeyDown(Input.KEY_A)){
+        else if (input.isKeyDown(Input.KEY_A) && !contactingPlatformSide){
             moveLeft();
             facingRight = false;
         }
@@ -133,6 +131,12 @@ if(Main.getScreenWidth() < 2256){
             }
         }
 
+        if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_A)){
+            contactingPlatformSide = false; // Fix the phasing of platforms (Maybe make a cap for acceleration)
+        }
+
+        sidePlatformCollision = false;
+
         if (input.isKeyDown(Input.KEY_W) && onGround && !jumpingOffOfEnemy){
             jump();
         }
@@ -144,8 +148,7 @@ if(Main.getScreenWidth() < 2256){
 
         collisions(sbg);
 
-        if(isDead)
-        {
+        if(isDead){
             cell.removeObject();
             percentHealth = 0;
         }
@@ -171,39 +174,56 @@ if(Main.getScreenWidth() < 2256){
 
     public void collisions(StateBasedGame sbg) {
         onGround = false;
-        Rectangle futureX = new Rectangle(newX, y - 1, w, h);
+        Rectangle futureX = new Rectangle(newX, y, w, h);
         Rectangle futureY = new Rectangle(newX, newY, w, h);
 
         for (GameObject o : new ArrayList<>(Game.levelObjects)){
             if (o instanceof Platform) {
-                if (futureX.intersects(o.getBounds())) {
-                    if (onGround) {
-                        if (xVelocity > 0) {
-                            newX = o.getX() - w;
-                        } else if (xVelocity < 0) {
-                            newX = o.getX() + o.getW();
-                        }
-                        xVelocity = 0;
+                float playerRight = futureX.getX() + futureX.getWidth();
+                float playerLeft = futureX.getX();
+
+                float prevPlayerRight = x + w;
+                float prevPlayerLeft = x;
+
+                float platformRight = o.getX() + o.getW();
+                float platformLeft = o.getX();
+
+                boolean verticalOverlap = futureX.getY() + futureX.getHeight() > o.getY() && futureX.getY() < o.getY() + o.getH();
+
+                if (futureX.intersects(o.getBounds()) && ((Platform) o).isSidePlatform() && (!((Platform) o).isBottomPlatform() || (((Platform) o).isBottomPlatform() && ((Platform) o).isSidePlatform()))) {
+                    if (xVelocity > 0 && playerRight > platformLeft && prevPlayerRight <= platformLeft && verticalOverlap){
+                        newX = o.getX() - getW();
                     }
-                    else{
-                        if (xVelocity > 0) {
-                            newX = x;
-                        } else if (xVelocity < 0) {
-                            newX = x;
-                        }
-                        xVelocity = 0;
+                    if (xVelocity < 0 && playerLeft < platformRight && prevPlayerLeft >= platformRight && verticalOverlap){
+                        newX = o.getX() + o.getW();
                     }
+                    xVelocity = 0;
                 }
 
-                if (futureY.intersects(o.getBounds())){
-                    if (yVelocity > 0 && !futureX.intersects(o.getBounds())) {
-                        newY = o.getY() - h;
+                if (futureY.intersects(o.getBounds()) && ((Platform) o).isBottomPlatform()){
+                    float platformTop = o.getY();
+                    float platformBottom = o.getY() + o.getH();
+                    float playerTop = futureY.getY();
+                    float playerBottom = futureY.getY() + futureY.getHeight();
+
+                    if (yVelocity > 0 && y + h <= platformTop) {
+                        newY = platformTop - h;
                         yVelocity = 0;
                         onGround = true;
-                    } else if (yVelocity < 0 && ((Platform) o).isBottomPlatform() && futureX.intersects(o.getBounds())) {
-                        newY = o.getY() + o.getH();
-                        yVelocity = gravity;
                     }
+
+                    else if (yVelocity < 0 && y >= platformBottom) {
+                        newY = platformBottom;
+                        yVelocity = 0;
+                    }
+//                    if (yVelocity > 0) {
+//                        newY = o.getY() - getH();
+//                        yVelocity = 0;
+//                        onGround = true;
+//                    }
+//                    if (yVelocity < 0) {
+//                        newY = o.getY() + o.getH();
+//                    }
                 }
             }
 
@@ -249,8 +269,6 @@ if(Main.getScreenWidth() < 2256){
                             Game.setLevel("levels/sewer3.txt");
                         }
                     }
-
-
                 }
             }
             if(Cockroach.isDead){
@@ -258,8 +276,6 @@ if(Main.getScreenWidth() < 2256){
                 if (World.level.equals("levels/sewer3.txt")){
                     Game.setLevel("levels/sewer4.txt");
                 }
-
-
             }
 
             if (o instanceof Key){
@@ -268,20 +284,17 @@ if(Main.getScreenWidth() < 2256){
                 }
             }
 
-            if (o instanceof Cockroach && !Cockroach.isDead){
-                Rectangle ratBounds = getBounds();
-                Rectangle oBounds = o.getBounds();
+            if (o instanceof Cockroach){
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
-
-                if (ratBounds.intersects(oBounds)) {
-                    if (ratBounds.getMaxY() <= oBounds.getMinY() + 5 && ratBounds.getMinY() < oBounds.getMinY()) {
+                if (futureY.intersects(o.getBounds())) {
+                    if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
+                        isHit = false;
                         Cockroach.isDamaged = true;
                         onGround = true;
                         jumpingOffOfEnemy = true;
                         jump();
                         jumpingOffOfEnemy = false;
-                        if(!Cockroach.onGround)
-                        {
+                        if(!Cockroach.groundCheck()) {
                             takeDamage(Cockroach.attackDamage);
                         }
                     }
@@ -290,10 +303,8 @@ if(Main.getScreenWidth() < 2256){
                         System.out.println("Damage");
                     }
                 }
-                if(weaponBounds.intersects(oBounds))
-                {
-                    if(attack)
-                    {
+                if(weaponBounds.intersects(o.getBounds())) {
+                    if(attack) {
                         Cockroach.isDamaged = true;
                         attack = false;
                     }
