@@ -36,6 +36,9 @@ public class Player extends Entity {
     public boolean attack;
     public boolean sidePlatformCollision;
 
+    protected int invincibilityFrames;
+    protected final int invincibilityFrameValue = 120;
+
     public boolean contactingPlatformSide;
 
     public static boolean keyAttained;
@@ -60,6 +63,7 @@ public class Player extends Entity {
         jumpingOffOfEnemy = false;
 
         keyAttained = true; // DEBUG
+
         percentHealth = (float) curHealth / maxHealth;
         contactingPlatformSide = false;
 
@@ -68,6 +72,8 @@ public class Player extends Entity {
         attack = false;
 
         sidePlatformCollision = false;
+
+        invincibilityFrames = invincibilityFrameValue;
     }
 
     public void render(Graphics g){
@@ -90,8 +96,8 @@ public class Player extends Entity {
             g.draw(getWeaponBounds(facingRight));
         }
 
-        g.drawString("YVel "+ yVelocity, 600, 500);
-        g.drawString("On Ground "+ onGround, 600, 550);
+        g.drawString(""+invincibilityFrames, 500, 600);
+        g.drawString(""+invincibilityFrameValue, 500, 650);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -104,6 +110,15 @@ public class Player extends Entity {
         cooldown--;
         if(cooldown < 0){
             canAttack = true;
+        }
+
+        if (isHit){
+            invincibilityFrames--;
+        }
+
+        if (invincibilityFrames < 0){
+            invincibilityFrames = invincibilityFrameValue;
+            isHit = false;
         }
 
         if (input.isKeyDown(Input.KEY_D) && !contactingPlatformSide){
@@ -288,15 +303,17 @@ public class Player extends Entity {
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
                 if (futureY.intersects(o.getBounds())) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
-                        isHit = false;
                         Cockroach.isDamaged = true;
                         onGround = true;
                         jumpingOffOfEnemy = true;
                         jump();
                         jumpingOffOfEnemy = false;
-                        if(!Cockroach.groundCheck()) {
-                            takeDamage(Cockroach.attackDamage);
-                        }
+                        // The below code was supposed to be like a phase where the cockroach is invisible
+                        // But until we can actually physically show it and make it more apparent
+                        // It's useless and a bad game design (Good idea for later though)
+//                        if(!Cockroach.groundCheck()) {
+//                            takeDamage(Cockroach.attackDamage);
+//                        }
                     }
                     else{
                         takeDamage(Cockroach.attackDamage);
@@ -341,6 +358,17 @@ public class Player extends Entity {
 
     public static int getAttackDamage(){
         return attackDamage;
+    }
+
+    public void takeDamage(int damage){
+        if (invincibilityFrames == invincibilityFrameValue) {
+            System.out.println("Taking Damage");
+            isHit = true;
+            curHealth -= damage;
+            if (curHealth <= 0) {
+                curHealth = 0;
+            }
+        }
     }
 
     public static float getPercentHealth(){

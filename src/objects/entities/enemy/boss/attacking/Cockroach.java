@@ -27,6 +27,9 @@ public class Cockroach extends Entity{
     public static boolean isDamaged;
     public static float percentHealth;
 
+    protected int invincibilityFrames;
+    protected final int invincibilityFrameValue = 60;
+
     private int timer;
     private int xTimer;
     private float jumpTimer;
@@ -51,6 +54,8 @@ public class Cockroach extends Entity{
         newY = 0;
         gravity = 1;
         attackDamage = attackDmg;
+
+        invincibilityFrames = invincibilityFrameValue;
 
         xAccel = 0;
 
@@ -82,11 +87,8 @@ public class Cockroach extends Entity{
         }
         else{
             image.draw(x,y);
-            g.setColor(Color.orange);
-            g.draw(getBounds());
-            g.drawString(""+xTimer, 900, 500);
-            g.drawString(""+xAccel, 900, 700);
-            g.drawString(""+jumpTimer, 900, 900);
+//            g.setColor(Color.orange);
+//            g.draw(getBounds());
         }
     }
 
@@ -111,6 +113,15 @@ public class Cockroach extends Entity{
 
         jumpTimer--;
         xTimer--;
+
+        if (isHit){
+            invincibilityFrames--;
+        }
+
+        if (invincibilityFrames <= 0){
+            invincibilityFrames = invincibilityFrameValue;
+            isHit = false;
+        }
 
         if (xTimer > 0){
             moveLeft();
@@ -236,6 +247,17 @@ public class Cockroach extends Entity{
 
     public static boolean groundCheck(){
         return onGround;
+    }
+
+    public void takeDamage(int damage){
+        if (invincibilityFrames == invincibilityFrameValue) {
+            System.out.println("Taking Damage");
+            isHit = true;
+            curHealth -= damage;
+            if (curHealth <= 0) {
+                curHealth = 0;
+            }
+        }
     }
 
 }

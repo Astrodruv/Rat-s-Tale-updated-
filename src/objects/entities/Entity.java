@@ -16,8 +16,8 @@ public abstract class Entity extends GameObject {
     protected Image rightFacingImage;
     protected boolean isDead;
     protected boolean isHit;
-    protected int invincibilityFrames;
-    protected final int invincibilityFrameValue = 120;
+//    protected int invincibilityFrames;
+//    protected final int invincibilityFrameValue = 120;
 
     public Entity(float x, float y, float xSpeed, float ySpeed, int health, int attackDamage, Image image) {
         super(x,y);
@@ -30,7 +30,7 @@ public abstract class Entity extends GameObject {
         rightFacingImage = image;
         isDead = false;
         isHit = false;
-        invincibilityFrames = invincibilityFrameValue;
+//        invincibilityFrames = invincibilityFrameValue;
 
         w = image.getWidth();
         h = image.getHeight();
@@ -38,24 +38,25 @@ public abstract class Entity extends GameObject {
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
-        if (isHit){
-            invincibilityFrames--;
-        }
-
-        if (invincibilityFrames <= 0){
-            invincibilityFrames = invincibilityFrameValue;
-            isHit = false;
-        }
+//        if (isHit){
+//            invincibilityFrames--;
+//        }
+//
+//        if (invincibilityFrames <= 0){
+//            invincibilityFrames = invincibilityFrameValue;
+//            isHit = false;
+//        }
     }
 
-    public void takeDamage(int damage){
-        if (invincibilityFrames == invincibilityFrameValue) {
-            isHit = true;
-            curHealth -= damage;
-            if (curHealth <= 0) {
-                curHealth = 0;
-            }
-        }
-    }
+//    public void takeDamage(int damage){
+//        if (invincibilityFrames == invincibilityFrameValue) {
+//            System.out.println("Taking Damage");
+//            isHit = true;
+//            curHealth -= damage;
+//            if (curHealth <= 0) {
+//                curHealth = 0;
+//            }
+//        }
+//    }
 
 }
