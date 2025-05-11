@@ -92,8 +92,7 @@ if(Main.getScreenWidth() < 2256){
         g.drawString(""+attack, 700, 900);
         g.drawString(""+xSpeed, 300, 900);
 
-        g.drawString(""+invincibilityFrameValue, 500, 900);
-        g.drawString(""+invincibilityFrames, 500, 1000);
+
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){

@@ -53,7 +53,9 @@ public class Game extends BasicGameState
     {
         world.update(gc, sbg, delta);
         playerHealthBar.update(gc, sbg, delta);
-        cockroachHealthBar.update(gc, sbg, delta);
+        if (World.level.equals("levels/sewer3.txt")) {
+            cockroachHealthBar.update(gc, sbg, delta);
+        }
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
@@ -66,7 +68,9 @@ public class Game extends BasicGameState
         //each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
         world.render(g);
         playerHealthBar.render(g);
-        cockroachHealthBar.render(g);
+        if (World.level.equals("levels/sewer3.txt")) {
+            cockroachHealthBar.render(g);
+        }
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException

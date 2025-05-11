@@ -27,6 +27,9 @@ public class Cockroach extends Entity{
     public static boolean isDamaged;
     public static float percentHealth;
 
+    protected int invincibilityFrames;
+    protected final int invincibilityFrameValue = 60;
+
     private int timer;
     private int xTimer;
     private float jumpTimer;
@@ -52,6 +55,8 @@ public class Cockroach extends Entity{
         gravity = 1;
         attackDamage = attackDmg;
 
+        invincibilityFrames = invincibilityFrameValue;
+
         xAccel = 0;
 
         timer = 7 * 60;
@@ -72,12 +77,19 @@ public class Cockroach extends Entity{
     }
 
     public void render(Graphics g){
-        image.draw(x,y);
-        g.setColor(Color.orange);
-        g.draw(getBounds());
-        g.drawString(""+xTimer, 900, 500);
-        g.drawString(""+xAccel, 900, 700);
-        g.drawString(""+jumpTimer, 900, 900);
+        if (isHit){
+            if (invincibilityFrames % 7 == 0){
+
+            }
+            else{
+                image.draw(x,y);
+            }
+        }
+        else{
+            image.draw(x,y);
+//            g.setColor(Color.orange);
+//            g.draw(getBounds());
+        }
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -101,6 +113,15 @@ public class Cockroach extends Entity{
 
         jumpTimer--;
         xTimer--;
+
+        if (isHit){
+            invincibilityFrames--;
+        }
+
+        if (invincibilityFrames <= 0){
+            invincibilityFrames = invincibilityFrameValue;
+            isHit = false;
+        }
 
         if (xTimer > 0){
             moveLeft();
@@ -224,8 +245,19 @@ public class Cockroach extends Entity{
         return percentHealth;
     }
 
-    public boolean groundCheck(){
+    public static boolean groundCheck(){
         return onGround;
+    }
+
+    public void takeDamage(int damage){
+        if (invincibilityFrames == invincibilityFrameValue) {
+            System.out.println("Taking Damage");
+            isHit = true;
+            curHealth -= damage;
+            if (curHealth <= 0) {
+                curHealth = 0;
+            }
+        }
     }
 
 }
