@@ -21,7 +21,7 @@ public class CockroachHealthBar extends HealthBar {
         g.fillRect(x,y,w * Cockroach.getPercentHealth(),h);
 
         g.setColor(Color.red);
-        g.drawString("Boss name here : Boss of the Sewers", x, y + 50);
+        g.drawString("Carrie: Boss of the Sewers", x, y + 50);
         if(Cockroach.isDead){
             g.drawString("You have defeated the Cockroach!", x, y + 80);
         }

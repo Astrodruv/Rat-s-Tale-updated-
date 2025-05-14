@@ -16,8 +16,8 @@ public abstract class Entity extends GameObject {
     protected Image rightFacingImage;
     protected boolean isDead;
     protected boolean isHit;
-//    protected int invincibilityFrames;
-//    protected final int invincibilityFrameValue = 120;
+    protected int invincibilityFrames;
+    protected final int invincibilityFrameValue = 120;
 
     public Entity(float x, float y, float xSpeed, float ySpeed, int health, int attackDamage, Image image) {
         super(x,y);
@@ -30,7 +30,7 @@ public abstract class Entity extends GameObject {
         rightFacingImage = image;
         isDead = false;
         isHit = false;
-//        invincibilityFrames = invincibilityFrameValue;
+        invincibilityFrames = invincibilityFrameValue;
 
         w = image.getWidth();
         h = image.getHeight();
@@ -58,5 +58,17 @@ public abstract class Entity extends GameObject {
 //            }
 //        }
 //    }
+
+    public void takeDamage(int damage) //temporary method for level progression
+    {
+       isHit = true;
+       curHealth -= damage;
+        if(curHealth <= 0)
+        {
+            curHealth = 0;
+        }
+        isHit = false;
+
+    }
 
 }

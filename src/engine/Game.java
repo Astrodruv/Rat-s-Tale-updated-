@@ -3,6 +3,7 @@ package engine;
 import objects.GameObject;
 import objects.entities.player.Player;
 import objects.healthbars.CockroachHealthBar;
+import objects.healthbars.EagleHealthBar;
 import objects.healthbars.PlayerHealthBar;
 import objects.platforms.gamePlatforms.SewerPlatform;
 import objects.world.World;
@@ -23,6 +24,7 @@ public class Game extends BasicGameState
     private static Player player;
     private static PlayerHealthBar playerHealthBar;
     private static CockroachHealthBar cockroachHealthBar;
+    private static EagleHealthBar eagleHealthBar;
     public static GameContainer gc;
     StateBasedGame sbg;
 
@@ -43,10 +45,11 @@ public class Game extends BasicGameState
         this.sbg = sbg;
         gc.setShowFPS(true);
         setLevel("levels/sewer1.txt");
-
+//        setLevel("levels/street1.txt");
         world = new World();
         playerHealthBar = new PlayerHealthBar();
         cockroachHealthBar = new CockroachHealthBar();
+        eagleHealthBar = new EagleHealthBar();
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -55,6 +58,9 @@ public class Game extends BasicGameState
         playerHealthBar.update(gc, sbg, delta);
         if (World.level.equals("levels/sewer3.txt")) {
             cockroachHealthBar.update(gc, sbg, delta);
+        }
+        if(World.level.equals("levels/street1.txt")) {
+            eagleHealthBar.update(gc, sbg, delta);
         }
     }
 
@@ -70,6 +76,9 @@ public class Game extends BasicGameState
         playerHealthBar.render(g);
         if (World.level.equals("levels/sewer3.txt")) {
             cockroachHealthBar.render(g);
+        }
+        if(World.level.equals("levels/street1.txt")) {
+            eagleHealthBar.render(g);
         }
     }
 

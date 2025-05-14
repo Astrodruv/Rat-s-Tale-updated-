@@ -53,7 +53,7 @@ public class ImageRenderer
             ratIdle = ratIdleUnscaled.getScaledCopy(((int) Cell.getWidth()) * 5 / 2, ((int) Cell.getHeight()) - 5);
             movingPlatform = movingPlatformUnscaled.getScaledCopy(screenRatio);
             cockroachIdle = cockroachIdleUnscaled.getScaledCopy(((int) Cell.getWidth()) * 5 / 2, (int) Cell.getHeight());
-            birdIdle = birdIdleUnscaled.getScaledCopy((int) Cell.getWidth() * 3, (int) Cell.getHeight());
+            birdIdle = birdIdleUnscaled.getScaledCopy((int) Cell.getWidth() * 8, (int) Cell.getHeight() * 4);
             sewerFloor = sewerFloorUnscaled.getScaledCopy(screenRatio);
             key = keyUnscaled.getScaledCopy(1.5f);
             lock = lockUnscaled.getScaledCopy(((int) Cell.getWidth()) * 2 +2, ((int) Cell.getHeight() * 2 ));

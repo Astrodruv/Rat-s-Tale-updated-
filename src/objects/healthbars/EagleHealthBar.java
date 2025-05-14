@@ -24,7 +24,7 @@ public class EagleHealthBar extends HealthBar
         g.fillRect(x,y,w * Bird.getPercentHealth(),h);
 
         g.setColor(Color.red);
-        g.drawString("Barry: Boss of the Parking Lot", x, y + 35);
+        g.drawString("Barry: Boss of the Streets", x, y + 35);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){

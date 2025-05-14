@@ -4,7 +4,9 @@ import engine.Game;
 import engine.Main;
 import objects.GameObject;
 import objects.entities.Entity;
+import objects.entities.enemy.boss.attacking.Bird;
 import objects.entities.enemy.boss.attacking.Cockroach;
+import objects.entities.enemy.boss.passive.Car;
 import objects.interactables.Key;
 import objects.interactables.Lock;
 import objects.platforms.Platform;
@@ -35,6 +37,7 @@ public class Player extends Entity {
     private static final int BASE_HEIGHT = 1080;
     public float cooldown;
     public boolean canAttack;
+    public boolean attackBox;
     public boolean attack;
     public static int level = 0;
 
@@ -69,11 +72,12 @@ if(Main.getScreenWidth() < 2256){
         xAccel = 0;
         gravity = 1;
         jumpingOffOfEnemy = false;
-        keyAttained = false; // DEBUG
+        keyAttained = true; // DEBUG
         percentHealth = (float) curHealth / maxHealth;
 
-        cooldown = 90;
+        cooldown = 10; //90
         canAttack = false;
+        attackBox = false;
         attack = false;
     }
 
@@ -83,14 +87,14 @@ if(Main.getScreenWidth() < 2256){
         g.setColor(Color.orange);
         g.draw(getBounds());
         g.draw(getWeaponBounds(facingRight));
-        g.drawString(""+maxHealth, 500, 500);
-        g.drawString(""+curHealth, 500, 600);
-        g.drawString(""+getPercentHealth(), 500, 700);
-        g.drawString(""+Cockroach.getAttackDamage(), 500, 800);
-        g.drawString(""+cooldown, 700, 500);
-        g.drawString(""+canAttack, 700, 700);
-        g.drawString(""+attack, 700, 900);
-        g.drawString(""+xSpeed, 300, 900);
+//        g.drawString(""+maxHealth, 500, 500);
+//        g.drawString(""+curHealth, 500, 600);
+//        g.drawString(""+getPercentHealth(), 500, 700);
+//        g.drawString(""+Cockroach.getAttackDamage(), 500, 800);
+//        g.drawString(""+cooldown, 700, 500);
+//        g.drawString(""+canAttack, 700, 700);
+//        g.drawString(""+ attackBox, 700, 900);
+//        g.drawString(""+xSpeed, 300, 900);
 
 
     }
@@ -256,8 +260,6 @@ if(Main.getScreenWidth() < 2256){
                             Game.setLevel("levels/street1.txt");
                         }
                     }
-
-
                 }
             }
             if(Cockroach.isDead){
@@ -265,8 +267,6 @@ if(Main.getScreenWidth() < 2256){
                 if (World.level.equals("levels/sewer3.txt")){
                     Game.setLevel("levels/sewer4.txt");
                 }
-
-
             }
 
             if (o instanceof Key){
@@ -274,15 +274,31 @@ if(Main.getScreenWidth() < 2256){
                     keyAttained = true;
                 }
             }
-
-            if (o instanceof Cockroach && !Cockroach.isDead){
+            if(o instanceof Car)
+            {
                 Rectangle ratBounds = getBounds();
                 Rectangle oBounds = o.getBounds();
+
+                if(getBounds().intersects(o.getBounds()))
+                {
+                    if(ratBounds.getMaxY() < oBounds.getMinY() && ratBounds.getMinY() < oBounds.getMinY())
+                    {
+                        yVelocity = 0;
+                    }
+                }
+            }
+            if (o instanceof Entity && !(o instanceof Player))
+            {
+                Rectangle ratBounds = getBounds();
+                Rectangle oBounds = new Rectangle(o.getX(),o.getY(),o.getH(),o.getW());
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
 
-                if (ratBounds.intersects(oBounds)) {
+                if (ratBounds.intersects(oBounds)) { 
                     if (ratBounds.getMaxY() <= oBounds.getMinY() + 5 && ratBounds.getMinY() < oBounds.getMinY()) {
-                        Cockroach.isDamaged = true;
+
+                        if(!Cockroach.isDead) {
+                            Cockroach.isDamaged = true;
+                        }
                         onGround = true;
                         jumpingOffOfEnemy = true;
                         jump();
@@ -293,20 +309,29 @@ if(Main.getScreenWidth() < 2256){
                         }
                     }
                     else{
+                        Bird.ouch = true;
                         takeDamage(Cockroach.attackDamage);
                         System.out.println("Damage");
                     }
                 }
                 if(weaponBounds.intersects(oBounds))
                 {
-                    if(attack)
-                    {
-                        Cockroach.isDamaged = true;
+                    attackBox = true;
+                    if(attack) {
+                        if (o instanceof Bird) {
+                            Bird.isDamaged = true;
+                        }
+                        if (o instanceof Cockroach) {
+                            Cockroach.isDamaged = true;
+                        }
                         attack = false;
                     }
                 }
+                else
+                {
+                    attackBox = false;
+                }
             }
-
         }
     }
 
@@ -319,11 +344,15 @@ if(Main.getScreenWidth() < 2256){
             xAccel = 0;
             image = image.getFlippedCopy(true, false);
         }
-        if(key == Input.KEY_SPACE && canAttack)
+        if(key == Input.KEY_SPACE && canAttack && attackBox)
         {
             attack = true;
-            cooldown = 90;
+            cooldown = 10;
             canAttack = false;
+        }
+        else if(key == Input.KEY_SPACE && canAttack)
+        {
+            cooldown = 10;
         }
     }
 

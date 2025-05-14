@@ -64,7 +64,7 @@ public class Cockroach extends Entity{
         jumpTimer = (float) (3.5 * 60);
 
         isDamaged = isHit;
-        isDead = false;
+        isDead = false; // debug
 
         leftFacingImage = rightFacingImage.getFlippedCopy(true, false);
         leftDirection = true;
@@ -99,11 +99,11 @@ public class Cockroach extends Entity{
 
         if (isDamaged){
             takeDamage(Player.getAttackDamage());
-            isDamaged = false;
             if(curHealth <= 0)
             {
                 isDead = true;
             }
+            isDamaged = false;
         }
         if(isDead)
         {
@@ -132,7 +132,7 @@ public class Cockroach extends Entity{
 
         if (jumpTimer < 0){
             jump();
-            jumpTimer = 8 * 60;
+            jumpTimer = (float) (Math.random() * (float) (3.5 * 60)) + 3;
         }
 
         if (xTimer < -timer){
@@ -249,15 +249,15 @@ public class Cockroach extends Entity{
         return onGround;
     }
 
-    public void takeDamage(int damage){
-        if (invincibilityFrames == invincibilityFrameValue) {
-            System.out.println("Taking Damage");
-            isHit = true;
-            curHealth -= damage;
-            if (curHealth <= 0) {
-                curHealth = 0;
-            }
-        }
-    }
+//    public void takeDamage(int damage){
+//        if (invincibilityFrames == invincibilityFrameValue) {
+//            System.out.println("Taking Damage");
+//            isHit = true;
+//            curHealth -= damage;
+//            if (curHealth <= 0) {
+//                curHealth = 0;
+//            }
+//        }
+//    }
 
 }
