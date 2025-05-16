@@ -112,13 +112,6 @@ public class World {
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
             enemy = true;
         }
-//        if (code == 'l' && enemy)
-//        {
-//            if(!enemyCheck())
-//            {
-//                enemy = false;
-//            }
-//        }
         if(code == 'l') {
             obj = new Lock(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
@@ -149,15 +142,6 @@ public class World {
 //            Game.levelObjects.add(p);
 //        }
 
-    }
-
-    public boolean enemyCheck()
-    {
-        if(Cockroach.isDead)
-        {
-            return false;
-        }
-        return true;
     }
 
     public void readFile(String s){

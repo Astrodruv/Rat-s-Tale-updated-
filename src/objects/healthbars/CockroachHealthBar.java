@@ -18,13 +18,13 @@ public class CockroachHealthBar extends HealthBar {
         g.setColor(color2);
         g.fillRect(x,y,w,h);
         g.setColor(color1);
-        g.fillRect(x,y,w * Cockroach.getPercentHealth(),h);
+//        g.fillRect(x,y,w * Cockroach.getPercentHealth(),h);
 
         g.setColor(Color.red);
         g.drawString("Carrie: Boss of the Sewers", x, y + 50);
-        if(Cockroach.isDead){
-            g.drawString("You have defeated the Cockroach!", x, y + 80);
-        }
+//        if(Cockroach.isDead){
+//            g.drawString("You have defeated the Cockroach!", x, y + 80);
+//        }
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){

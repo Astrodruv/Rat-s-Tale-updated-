@@ -34,6 +34,7 @@ public class Player extends Entity {
     public float cooldown;
     public boolean canAttack;
     public boolean attack;
+    public boolean inBox;
     public boolean sidePlatformCollision;
 
     protected int invincibilityFrames;
@@ -62,14 +63,15 @@ public class Player extends Entity {
         gravity = 1;
         jumpingOffOfEnemy = false;
 
-        keyAttained = false; // DEBUG
+        keyAttained = true; // DEBUG
 
         percentHealth = (float) curHealth / maxHealth;
         contactingPlatformSide = false;
 
-        cooldown = 90;
+        cooldown = 60;
         canAttack = false;
         attack = false;
+        inBox = false;
 
         sidePlatformCollision = false;
 
@@ -95,6 +97,10 @@ public class Player extends Entity {
             g.draw(getBounds());
             g.draw(getWeaponBounds(facingRight));
         }
+
+        g.drawString("" + attack, 700,700);
+        g.drawString("" + inBox, 900, 700);
+        g.drawString("" + cooldown, 1100, 700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -188,6 +194,7 @@ public class Player extends Entity {
         onGround = false;
         Rectangle futureX = new Rectangle(newX, y, w, h);
         Rectangle futureY = new Rectangle(newX, newY, w, h);
+        Rectangle weaponBounds = getWeaponBounds(facingRight);
 
         for (GameObject o : new ArrayList<>(Game.levelObjects)){
             if (o instanceof Platform) {
@@ -283,12 +290,6 @@ public class Player extends Entity {
                     }
                 }
             }
-            if(Cockroach.isDead){
-                keyAttained = true;
-                if (World.level.equals("levels/sewer3.txt")){
-                    Game.setLevel("levels/sewer4.txt");
-                }
-            }
 
             if (o instanceof Key){
                 if (getBounds().intersects(o.getBounds())) {
@@ -297,10 +298,16 @@ public class Player extends Entity {
             }
 
             if (o instanceof Cockroach){
-                Rectangle weaponBounds = getWeaponBounds(facingRight);
-                if (futureY.intersects(o.getBounds())) {
+                int death = 0;
+                Cockroach cr = (Cockroach) o;
+                Rectangle cBounds = cr.getBounds();
+                if(cr.percentHealth <= 0){
+                    cr.isDead = true;
+                    death++;
+                }
+                if (futureY.intersects(o.getBounds()) && !cr.isDead) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
-                        Cockroach.isDamaged = true;
+                        cr.isDamaged = true;
                         onGround = true;
                         jumpingOffOfEnemy = true;
                         jump();
@@ -313,18 +320,32 @@ public class Player extends Entity {
 //                        }
                     }
                     else{
-                        takeDamage(Cockroach.attackDamage);
+                        if(!cr.isDead) {
+                            takeDamage(Cockroach.attackDamage);
+                        }
                         System.out.println("Damage");
                     }
                 }
-                if(weaponBounds.intersects(o.getBounds())) {
+                if(weaponBounds.intersects(cBounds) && !cr.isDead)
+                {
+                    inBox = true;
                     if(attack) {
-                        Cockroach.isDamaged = true;
-                        attack = false;
+                        cr.isDamaged = true;
                     }
+                    cooldown = 6; //60
+                    attack = false;
+
+                }
+                else if(!cr.isDead){
+                    inBox = false;
+                }
+                if(death == 3){
+                    if(keyAttained)
+                        if (World.level.equals("levels/sewer3.txt")){
+                            Game.setLevel("levels/sewer4.txt");
+                        }
                 }
             }
-
         }
     }
 
@@ -337,10 +358,9 @@ public class Player extends Entity {
             xAccel = 0;
             image = image.getFlippedCopy(true, false);
         }
-        if(key == Input.KEY_SPACE && canAttack)
+        if(key == Input.KEY_SPACE && canAttack && inBox)
         {
             attack = true;
-            cooldown = 90;
             canAttack = false;
         }
     }

@@ -67,10 +67,10 @@ public abstract class GameObject {
     {
         if(facingRight)
         {
-            return new Rectangle(x + w, y + 10, 100, h - 10);
+            return new Rectangle(x, y + 10, 100 + w, h - 10);
         }
         else {
-            return new Rectangle(x - 100, y + 10, w, h - 10);
+            return new Rectangle(x - w, y + 10,  w + w, h - 10);
         }
     }
 

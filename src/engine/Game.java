@@ -48,7 +48,7 @@ public class Game extends BasicGameState
 //        setLevel("levels/street1.txt");
         world = new World();
         playerHealthBar = new PlayerHealthBar();
-        cockroachHealthBar = new CockroachHealthBar();
+//        cockroachHealthBar = new CockroachHealthBar();
         eagleHealthBar = new EagleHealthBar();
     }
 
@@ -57,7 +57,7 @@ public class Game extends BasicGameState
         world.update(gc, sbg, delta);
         playerHealthBar.update(gc, sbg, delta);
         if (World.level.equals("levels/sewer3.txt")) {
-            cockroachHealthBar.update(gc, sbg, delta);
+//            cockroachHealthBar.update(gc, sbg, delta);
         }
         if(World.level.equals("levels/street1.txt")) {
             eagleHealthBar.update(gc, sbg, delta);
@@ -66,20 +66,21 @@ public class Game extends BasicGameState
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
     {
-        if(Player.level == 1){
-            g.drawImage(ImageRenderer.streetBackground,0,0);
-        } else{
+//        if(Player.level == 1){
+//            g.drawImage(ImageRenderer.streetBackground,0,0);
+//        } else{
             g.drawImage(ImageRenderer.sewerBackground, 0, 0);
-        }
+//        }
         //each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
         world.render(g);
         playerHealthBar.render(g);
         if (World.level.equals("levels/sewer3.txt")) {
-            cockroachHealthBar.render(g);
+//            cockroachHealthBar.render(g);
         }
         if(World.level.equals("levels/street1.txt")) {
             eagleHealthBar.render(g);
         }
+
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
