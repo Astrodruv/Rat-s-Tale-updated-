@@ -9,35 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="Bird additions and cockroach boss buffs">
-      <change afterPath="$PROJECT_DIR$/levels/street2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/entities/enemy/boss/passive/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="Add files via upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/parking1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/street1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Entity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Bird.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Bird.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Cockroach.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Cockroach.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/player/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/EagleHealthBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/EagleHealthBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/Platform.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/Platform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/gamePlatforms/SewerFloor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/gamePlatforms/SewerFloor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/gamePlatforms/SewerPlatform.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/gamePlatforms/SewerPlatform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/world/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/world/World.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/images/ImageRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/images/ImageRenderer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Cockroach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Cockroach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemy/boss/watching/Janitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemy/boss/passive/Janitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/healthbars/CockroachHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/healthbars/CockroachHealthBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/healthbars/EagleHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/healthbars/EagleHealthBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/world/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/images/ImageRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/images/ImageRenderer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +28,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="iscaiden &lt;caiden.luebehusen@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -84,7 +65,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
@@ -164,7 +145,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746933101760</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add files via upload">
+      <option name="closed" value="true" />
+      <created>1747396329234</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1747396329234</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add files via upload">
+      <option name="closed" value="true" />
+      <created>1747396340277</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1747396340277</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,6 +182,7 @@
     <MESSAGE value="cockroach movement" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class&#10;#&#9;src/objects/healthbars/CockroachHealthBar.java" />
     <MESSAGE value="Bird additions and cockroach boss buffs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bird additions and cockroach boss buffs" />
+    <MESSAGE value="Add files via upload" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add files via upload" />
   </component>
 </project>
