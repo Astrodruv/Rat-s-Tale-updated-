@@ -22,6 +22,7 @@ public class ImageRenderer
     public static Image keyUnscaled;
     public static Image lockUnscaled;
     public static Image knifeUnscaled;
+    public static Image knifeInvUnscaled;
 
     public static Image sewerBackground;
     public static Image streetBackground;
@@ -33,6 +34,7 @@ public class ImageRenderer
     public static Image key;
     public static Image lock;
     public static Image knife;
+    public static Image knifeInv;
 
     public static Image cockroachIdle;
     public static Image cockroachWalking;
@@ -65,9 +67,10 @@ public class ImageRenderer
             keyUnscaled = new Image("res/Key.png");
             lockUnscaled = new Image("res/Door.png");
             knifeUnscaled = new Image("res/Knife.png");
-            ratWalking = new Image("res/Rat Walking2.png");
+            ratWalking = new Image("res/Rat_Walking.png");
             ratKnifeUnscaled = new Image("res/RatKnife.png");
             knifeAttackingUnscaled = new Image("res/Knife_Attack.png");
+            knifeInvUnscaled = new Image("res/Knife_Inventory.png");
 
             ratKnife = ratKnifeUnscaled.getScaledCopy(((int) Cell.getWidth()) * 6 / 2, (int) Cell.getHeight() * 3/2);
             sewerBackground = sewerBackgroundUnscaled.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
@@ -83,6 +86,7 @@ public class ImageRenderer
             lock = lockUnscaled.getScaledCopy(((int) Cell.getWidth()) * 2 +2, ((int) Cell.getHeight() * 2 ));
             knife = knifeUnscaled.getScaledCopy(0.5f);
             knifeAttacking = knifeAttackingUnscaled.getScaledCopy(screenRatio);
+            knifeInv = knifeInvUnscaled.getScaledCopy(1.2f);
           //  ratWalkingScaled = ratWalking.getScaledCopy(screenRatio);
             rat = new SpriteSheet(ratWalking,174,48);
             knifeAttack = new SpriteSheet(knifeAttacking,156,208);

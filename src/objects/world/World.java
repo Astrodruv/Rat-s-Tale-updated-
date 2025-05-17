@@ -1,6 +1,7 @@
 package objects.world;
 
 import engine.Game;
+import engine.Main;
 import objects.GameObject;
 import objects.entities.enemy.boss.attacking.Bird;
 import objects.entities.enemy.boss.attacking.Cockroach;
@@ -12,11 +13,9 @@ import objects.platforms.Platform;
 import objects.platforms.gamePlatforms.SewerFloor;
 import objects.platforms.gamePlatforms.SewerPlatform;
 import objects.platforms.gamePlatforms.StreetFloor;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
+import ui.images.ImageRenderer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,12 +32,13 @@ public class World {
     public static ArrayList<GameObject> objects;
 
     private boolean enemy;
-
+    public static Image knifeDisplay;
     public World() {
         cells = new Cell[WIDTH][HEIGHT];
         objects = new ArrayList<>();
 
         enemy = false;
+        knifeDisplay = ImageRenderer.knifeInv;
 
         for (int i = 0; i < WIDTH; i++){
             for (int j = 0; j < HEIGHT; j++){
@@ -52,6 +52,7 @@ public class World {
     }
 
     public void render(Graphics g){
+
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
                 cells[i][j].render(g);

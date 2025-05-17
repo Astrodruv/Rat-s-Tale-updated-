@@ -3,13 +3,15 @@ package objects.healthbars;
 import engine.Main;
 import objects.entities.Entity;
 import objects.entities.enemy.boss.attacking.Cockroach;
+import objects.world.World;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
+import ui.text.Fonts;
 
 public class CockroachHealthBar extends HealthBar {
-
+private int timer = 180;
     public CockroachHealthBar() {
         super(((float) Main.getScreenWidth() / 2) - 300, 150, 600, 50, Color.gray, Color.darkGray);
     }
@@ -21,14 +23,15 @@ public class CockroachHealthBar extends HealthBar {
         g.fillRect(x,y,w * Cockroach.getPercentHealth(),h);
 
         g.setColor(Color.red);
+        g.setFont(Fonts.big);
         g.drawString("Carrie: Boss of the Sewers", x, y + 50);
-        if(Cockroach.isDead){
-            g.drawString("You have defeated the Cockroach!", x, y + 80);
-        }
+
+
+
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
-
+timer--;
     }
 
     public void collisions(StateBasedGame sbg){

@@ -108,15 +108,7 @@ if(level > 0){
 
     public void render(Graphics g){
         g.setColor(Color.darkGray);
-        if (isAttacking && holdingKnife) {
-            float offsetY = h - currentAttackFrame.getHeight();
 
-            if (facingRight) {
-                currentAttackFrame.draw(x, y + offsetY);
-            } else {
-                currentAttackFrame.getFlippedCopy(true, false).draw(x, y + offsetY);
-            }
-        } else {
             float renderOffsetY = h - currentFrame.getHeight();
 
             if (xVelocity == 0 && xAccel == 0) {
@@ -130,22 +122,22 @@ if(level > 0){
             } else {
                 currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
             }
-        }
+
 
         g.setColor(Color.orange);
         g.draw(getBounds());
         g.draw(getWeaponBounds(facingRight));
-        g.drawString(""+maxHealth, 500, 500);
-        g.drawString(""+curHealth, 500, 600);
-        g.drawString(""+getPercentHealth(), 500, 700);
-        g.drawString(""+Cockroach.getAttackDamage(), 500, 800);
-        g.drawString(""+cooldown, 700, 500);
-        g.drawString(""+canAttack, 700, 700);
-        g.drawString(""+attack, 700, 900);
-        g.drawString(""+xSpeed, 300, 900);
-        g.drawString(""+invincibilityFrames, 1000, 900);
-        g.drawString(""+isHit,1000,1100);
-        g.drawString(""+holdingKnife, 1100, 1200);
+//        g.drawString(""+maxHealth, 500, 500);
+//        g.drawString(""+curHealth, 500, 600);
+//        g.drawString(""+getPercentHealth(), 500, 700);
+//        g.drawString(""+Cockroach.getAttackDamage(), 500, 800);
+//        g.drawString(""+cooldown, 700, 500);
+//        g.drawString(""+canAttack, 700, 700);
+//        g.drawString(""+attack, 700, 900);
+//        g.drawString(""+xSpeed, 300, 900);
+//        g.drawString(""+invincibilityFrames, 1000, 900);
+//        g.drawString(""+isHit,1000,1100);
+//        g.drawString(""+holdingKnife, 1100, 1200);
         if(World.level.equals("levels/street1.txt") || World.level.equals("levels/street2.txt")){
             g.setFont(Fonts.big);
             g.setColor(Color.white);

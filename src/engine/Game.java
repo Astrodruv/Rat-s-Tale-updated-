@@ -25,7 +25,8 @@ public class Game extends BasicGameState
     private static PlayerHealthBar playerHealthBar;
     private static CockroachHealthBar cockroachHealthBar;
     public static GameContainer gc;
-    private int timer = 500;
+    private int timer = 300;
+    public static Image knifeDisplay;
 
     StateBasedGame sbg;
 
@@ -51,7 +52,7 @@ public class Game extends BasicGameState
         playerHealthBar = new PlayerHealthBar();
         cockroachHealthBar = new CockroachHealthBar();
         Fonts.loadFonts();
-
+        knifeDisplay = ImageRenderer.knifeInv;
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -74,9 +75,25 @@ timer--;
 
         }  if(Player.level == 0){
         g.drawImage(ImageRenderer.sewerBackground,0,0);
+if(World.level.equals("levels/sewer4.txt") && Player.knifeAttained){
+    g.setFont(Fonts.medium);
+    g.setColor(Color.white);
+    g.drawString(" '1' to equip knife", Main.getScreenWidth()/2.3f, 700);
+}
 
     }
+        if(Player.knifeAttained){
+            float knifeX;
+            if(Player.level > 0){
+                knifeX = Main.getScreenWidth() / 26f;
+            } else {
+                knifeX = Main.getScreenWidth() / 23f;
+            }
 
+            float knifeY = 50 + knifeDisplay.getHeight() + 10; // 20px padding from bottom
+            knifeDisplay.draw(knifeX, knifeY);
+
+        }
         //each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
         world.render(g);
         playerHealthBar.render(g);
@@ -84,12 +101,19 @@ timer--;
             cockroachHealthBar.render(g);
         }
         if(timer > 0){
-            g.setFont(Fonts.big);
+            g.setFont(Fonts.medium);
             g.setColor(Color.white);
-            g.drawString("W to jump, A/D to move left and right", (float) Main.getScreenWidth()/2,500);
-            g.drawString("Spacebar to attack", (float) Main.getScreenWidth()/2, 600);
+            g.drawString("W to jump, A/D to move left and right", (float) Main.getScreenWidth()/3,100);
+            g.drawString("Spacebar to attack", (float) Main.getScreenWidth()/3, 200);
         }
-
+        if(World.level.equals("levels/sewer4.txt")){
+            timer = -10;
+        }
+if(World.level.equals("levels/sewer4.txt")){
+    g.setColor(Color.red);
+    g.setFont(Fonts.big);
+    g.drawString("You have defeated the Cockroach!", (float) Main.getScreenWidth() / 2 - 300, 150);
+}
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
