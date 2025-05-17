@@ -6,10 +6,12 @@ import objects.entities.enemy.boss.attacking.Bird;
 import objects.entities.enemy.boss.attacking.Cockroach;
 import objects.entities.player.Player;
 import objects.interactables.Key;
+import objects.interactables.Knife;
 import objects.interactables.Lock;
 import objects.platforms.Platform;
 import objects.platforms.gamePlatforms.SewerFloor;
 import objects.platforms.gamePlatforms.SewerPlatform;
+import objects.platforms.gamePlatforms.StreetFloor;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -102,6 +104,12 @@ public class World {
         if (code == 'f'){
             obj = new SewerFloor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
+        if(code == 's'){
+            obj = new StreetFloor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if(code == 'n'){
+            obj = new Knife(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
         if (code == 'P'){
             obj = new Player(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
@@ -112,13 +120,13 @@ public class World {
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
             enemy = true;
         }
-//        if (code == 'l' && enemy)
-//        {
-//            if(!enemyCheck())
-//            {
-//                enemy = false;
-//            }
-//        }
+        if (code == 'l' && enemy)
+        {
+            if(!enemyCheck())
+            {
+                enemy = false;
+            }
+        }
         if(code == 'l') {
             obj = new Lock(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
