@@ -16,7 +16,7 @@ import ui.images.ImageRenderer;
 
 public class Cockroach extends Entity{
     private boolean facingRight;
-    public boolean onGround;
+    public static boolean onGround;
     private float xAccel;
     private float xVelocity;
     private float xVelstore;
@@ -24,8 +24,8 @@ public class Cockroach extends Entity{
     private float newX;
     private float newY;
     private final float gravity;
-    public boolean isDamaged;
-    public float percentHealth;
+    public static boolean isDamaged;
+    public static float percentHealth;
 
     protected int invincibilityFrames;
     protected final int invincibilityFrameValue = 60;
@@ -37,7 +37,7 @@ public class Cockroach extends Entity{
 
     private Image leftFacingImage;
 
-    public boolean isDead;
+    public static boolean isDead;
 
     private boolean leftDirection;
     private static double directionater = Math.random();
@@ -61,7 +61,7 @@ public class Cockroach extends Entity{
 
         timer = 7 * 60;
         xTimer = 7 * 60;
-        jumpTimer = (float) (Math.random() * (float) (3.5 * 60)) + 4;
+        jumpTimer = (float) (3.5 * 60);
 
         isDamaged = isHit;
         isDead = false; // debug
@@ -90,9 +90,6 @@ public class Cockroach extends Entity{
 //            g.setColor(Color.orange);
 //            g.draw(getBounds());
         }
-//        g.drawString("" + curHealth, 700,700);
-//        g.drawString(""+isDead, 900, 700);
-        g.drawRect(x,y,w,h);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -135,7 +132,7 @@ public class Cockroach extends Entity{
 
         if (jumpTimer < 0){
             jump();
-            jumpTimer = (float) (Math.random() * (float) (3.5 * 60)) + 4;
+            jumpTimer = (float) (Math.random() * (float) (3.5 * 60)) + 3;
         }
 
         if (xTimer < -timer){
@@ -186,7 +183,7 @@ public class Cockroach extends Entity{
 
     public void jump() {
         if(jumpTimer > -300) {
-            yVelocity = -ySpeed * ((float) 2 / 3);
+            yVelocity = -ySpeed;
             xVelstore = xVelocity;
         }
         else
@@ -244,11 +241,11 @@ public class Cockroach extends Entity{
         return attackDamage;
     }
 
-    public float getPercentHealth(){
+    public static float getPercentHealth(){
         return percentHealth;
     }
 
-    public boolean groundCheck(){
+    public static boolean groundCheck(){
         return onGround;
     }
 
