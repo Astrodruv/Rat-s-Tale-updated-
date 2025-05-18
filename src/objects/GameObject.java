@@ -1,5 +1,7 @@
 package objects;
 
+import engine.Main;
+import objects.entities.player.Player;
 import objects.world.Cell;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
@@ -19,6 +21,7 @@ public abstract class GameObject {
     public GameObject(float x, float y){
         w = Cell.getWidth();
         h = Cell.getHeight();
+
     }
 
     public void setCell(Cell c){

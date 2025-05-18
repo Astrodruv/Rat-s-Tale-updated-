@@ -1,20 +1,21 @@
 package objects.world;
 
 import engine.Game;
+import engine.Main;
 import objects.GameObject;
 import objects.entities.enemy.boss.attacking.Bird;
 import objects.entities.enemy.boss.attacking.Cockroach;
 import objects.entities.player.Player;
 import objects.interactables.Key;
+import objects.interactables.Knife;
 import objects.interactables.Lock;
 import objects.platforms.Platform;
 import objects.platforms.gamePlatforms.SewerFloor;
 import objects.platforms.gamePlatforms.SewerPlatform;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
+import objects.platforms.gamePlatforms.StreetFloor;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
+import ui.images.ImageRenderer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,12 +32,13 @@ public class World {
     public static ArrayList<GameObject> objects;
 
     private boolean enemy;
-
+    public static Image knifeDisplay;
     public World() {
         cells = new Cell[WIDTH][HEIGHT];
         objects = new ArrayList<>();
 
         enemy = false;
+        knifeDisplay = ImageRenderer.knifeInv;
 
         for (int i = 0; i < WIDTH; i++){
             for (int j = 0; j < HEIGHT; j++){
@@ -50,6 +52,7 @@ public class World {
     }
 
     public void render(Graphics g){
+
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
                 cells[i][j].render(g);
@@ -102,6 +105,12 @@ public class World {
         if (code == 'f'){
             obj = new SewerFloor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
+        if(code == 's'){
+            obj = new StreetFloor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if(code == 'n'){
+            obj = new Knife(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
         if (code == 'P'){
             obj = new Player(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
@@ -111,6 +120,13 @@ public class World {
         if (code == 'k'){
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
             enemy = true;
+        }
+        if (code == 'l' && enemy)
+        {
+            if(!enemyCheck())
+            {
+                enemy = false;
+            }
         }
         if(code == 'l') {
             obj = new Lock(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -142,6 +158,15 @@ public class World {
 //            Game.levelObjects.add(p);
 //        }
 
+    }
+
+    public boolean enemyCheck()
+    {
+        if(Cockroach.isDead)
+        {
+            return false;
+        }
+        return true;
     }
 
     public void readFile(String s){
