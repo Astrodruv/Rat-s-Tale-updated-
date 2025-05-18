@@ -9,21 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="Add files via upload">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/sewer3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/GameObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Cockroach.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Cockroach.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/player/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/world/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/world/World.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Cockroach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Cockroach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/healthbars/CockroachHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/healthbars/CockroachHealthBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/world/World.java" afterDir="false" />
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="3">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +174,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747398073352</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add files via upload">
+      <option name="closed" value="true" />
+      <created>1747537633688</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1747537633688</updated>
+    </task>
+    <task id="LOCAL-00011" summary="3">
+      <option name="closed" value="true" />
+      <created>1747537654890</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1747537654890</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,6 +212,7 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class&#10;#&#9;src/objects/healthbars/CockroachHealthBar.java" />
     <MESSAGE value="Bird additions and cockroach boss buffs" />
     <MESSAGE value="Add files via upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add files via upload" />
+    <MESSAGE value="3" />
+    <option name="LAST_COMMIT_MESSAGE" value="3" />
   </component>
 </project>
