@@ -9,9 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="3">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="3 cockroaches" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747537654890</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="3 cockroaches">
+      <option name="closed" value="true" />
+      <created>1747538504345</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1747538504345</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -213,6 +219,8 @@
     <MESSAGE value="Bird additions and cockroach boss buffs" />
     <MESSAGE value="Add files via upload" />
     <MESSAGE value="3" />
-    <option name="LAST_COMMIT_MESSAGE" value="3" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/A Rat's Tale/engine/Game.class&#10;#&#9;out/production/A Rat's Tale/objects/GameObject.class&#10;#&#9;out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Cockroach.class&#10;#&#9;out/production/A Rat's Tale/objects/entities/player/Player.class&#10;#&#9;out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class&#10;#&#9;out/production/A Rat's Tale/objects/world/World.class&#10;#&#9;src/engine/Game.java&#10;#&#9;src/objects/entities/player/Player.java&#10;#&#9;src/objects/healthbars/CockroachHealthBar.java&#10;#&#9;src/objects/world/World.java" />
+    <MESSAGE value="3 cockroaches" />
+    <option name="LAST_COMMIT_MESSAGE" value="3 cockroaches" />
   </component>
 </project>
