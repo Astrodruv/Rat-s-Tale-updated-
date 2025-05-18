@@ -80,6 +80,11 @@ if(World.level.equals("levels/sewer4.txt") && Player.knifeAttained){
     g.setColor(Color.white);
     g.drawString(" '1' to equip knife", Main.getScreenWidth()/2.3f, 700);
 }
+if(World.level.equals("levels/sewer1.txt") || World.level.equals("levels/sewer2.txt")){
+    g.setFont(Fonts.big);
+    g.setColor(Color.red);
+    g.drawString("Get the key to escape!", (float) Main.getScreenWidth()/3, 300);
+}
 
     }
         if(Player.knifeAttained){
