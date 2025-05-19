@@ -114,15 +114,6 @@ public class Cockroach extends Entity{
         jumpTimer--;
         xTimer--;
 
-        if (isHit){
-            invincibilityFrames--;
-        }
-
-        if (invincibilityFrames <= 0){
-            invincibilityFrames = invincibilityFrameValue;
-            isHit = false;
-        }
-
         if (xTimer > 0){
             moveLeft();
         }
@@ -244,6 +235,8 @@ public class Cockroach extends Entity{
     public static float getPercentHealth(){
         return percentHealth;
     }
+
+    public boolean getisDamaged() { return isDamaged; }
 
     public static boolean groundCheck(){
         return onGround;
