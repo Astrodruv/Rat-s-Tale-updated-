@@ -315,17 +315,16 @@ public class Player extends Entity {
         }
     }
 
-    public void keyPressed(int key, char c){
-        if (key == Input.KEY_D && !facingRight){
+    public void keyPressed(int key, char c) {
+        if (key == Input.KEY_D && !facingRight) {
 //            image = rightFacingImage;
             xAccel = 0;
         }
-        if (key == Input.KEY_A && facingRight){
+        if (key == Input.KEY_A && facingRight) {
             xAccel = 0;
 //            image = image.getFlippedCopy(true, false);
         }
-        if(key == Input.KEY_SPACE && canAttack)
-        {
+        if (key == Input.KEY_SPACE && canAttack) {
             attack = true;
             weaponCooldown = 90;
             canAttack = false;
