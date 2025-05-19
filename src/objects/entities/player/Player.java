@@ -5,7 +5,7 @@ import engine.Main;
 import objects.GameObject;
 import objects.entities.Entity;
 import objects.entities.enemy.boss.attacking.Cockroach;
-import objects.entities.enemy.boss.passive.Car;
+import object.entities.enemy.boss.passive.Car;
 import objects.interactables.Key;
 import objects.interactables.Knife;
 import objects.interactables.Lock;
@@ -40,7 +40,7 @@ public class Player extends Entity {
     public boolean canAttack;
     public boolean attack;
     public static int level = 0;
-public static Image image;
+    public static Image image;
 
     public static boolean keyAttained;
     public static boolean holdingKnife;
@@ -59,26 +59,27 @@ public static Image image;
     private boolean isAttacking = false;
     private boolean hitFront = false;
     private Image currentAttackFrame;
+
     public Player(float x, float y) {
         image = ImageRenderer.ratIdle;
 
-        super(x,y,Cell.getWidth() * ImageRenderer.screenRatio * 0.55f, Cell.getHeight() * ImageRenderer.screenRatio * 0.6f,100,100, image);
+        super(x,y,Cell.getWidth() * ImageRenderer.screenRatio * 0.55f, Cell.getHeight() * ImageRenderer.screenRatio * 0.6f,100,10, image);
         this.x = x;
         this.y = y;
         float scaleX = (float) Main.getScreenWidth() / BASE_WIDTH;
         float scaleY = (float) Main.getScreenHeight() / BASE_HEIGHT;
         float scale = (scaleX + scaleY) / 2f;
-mySheet = ImageRenderer.rat;
-mySheet2 = ImageRenderer.knifeAttack;
-currentFrame = mySheet.getSprite(0,0);
+        mySheet = ImageRenderer.rat;
+        mySheet2 = ImageRenderer.knifeAttack;
+        currentFrame = mySheet.getSprite(0,0);
         currentAttackFrame = mySheet2.getSprite(attackStep, 0).getScaledCopy(scale);
-if(Main.getScreenWidth() < 2256){
-    xSpeed = 9.0f * scale;
-    ySpeed = 20.0f * scale;
-} else{
-    xSpeed = 10.0f * scale;
-    ySpeed = 18.0f * scale;
-}
+        if(Main.getScreenWidth() < 2256){
+         xSpeed = 9.0f * scale;
+             ySpeed = 20.0f * scale;
+        } else {
+             xSpeed = 10.0f * scale;
+             ySpeed = 18.0f * scale;
+        }
 
 
         facingRight = true;
@@ -91,7 +92,7 @@ if(Main.getScreenWidth() < 2256){
         xAccel = 0;
         gravity = 1;
         jumpingOffOfEnemy = false;
-        keyAttained = true;// DEBUG
+        keyAttained = false;// DEBUG
 
         percentHealth = (float) curHealth / maxHealth;
 
@@ -126,8 +127,19 @@ if(level > 0){
 
 
         g.setColor(Color.orange);
-        g.draw(getBounds());
-        g.draw(getWeaponBounds(facingRight));
+        g.fillRect(x+30, y-50, (w+50), 10);
+        g.setColor(Color.yellow);
+        if(cooldown > 0)
+        {
+            g.fillRect(x+30, y-50, (w+50) * ((90-cooldown)/90), 10);
+        }
+        else
+        {
+            g.fillRect(x+30, y-50,w+50, 10);
+
+        }
+//        g.draw(getBounds());
+//        g.draw(getWeaponBounds(facingRight));
 //        g.drawString(""+maxHealth, 500, 500);
 //        g.drawString(""+curHealth, 500, 600);
 //        g.drawString(""+getPercentHealth(), 500, 700);
@@ -143,14 +155,12 @@ if(level > 0){
             g.setFont(Fonts.big);
             g.setColor(Color.white);
             g.drawString("Survive for "+streetTimer/60 + "s", Main.getScreenWidth()/2, Main.getScreenHeight()/2 -500);
-            if(streetTimer > 1200){
+             if(streetTimer > 1200) {
                 g.setFont(Fonts.big);
                 g.setColor(Color.red);
                 g.drawString("Dont get hit!", Main.getScreenWidth()/2, Main.getScreenHeight()/2 - 400);
-
             }
         }
- //       g.drawString(""+hitFront, 1000,100);
 
     }
 
@@ -195,10 +205,10 @@ streetTimer=1800;
             canAttack = true;
         }
 
-    if (input.isKeyDown(Input.KEY_D)) {
-        moveRight();
-        facingRight = true;
-    } else if (input.isKeyDown(Input.KEY_A)) {
+          if (input.isKeyDown(Input.KEY_D)) {
+           moveRight();
+              facingRight = true;
+         } else if (input.isKeyDown(Input.KEY_A)) {
         moveLeft();
         facingRight = false;
     } else {
@@ -224,8 +234,6 @@ streetTimer=1800;
             jump();
         }
 
-
-
         collisions(sbg);
 
         if(isDead)
@@ -234,11 +242,8 @@ streetTimer=1800;
             percentHealth = 0;
         }
 
-    x = newX;
-    y = newY;
-
-
-
+        x = newX;
+        y = newY;
         if (attack && holdingKnife) {
             isAttacking = true;
             attackFrames++;
@@ -254,10 +259,10 @@ streetTimer=1800;
                 }
             }
 
+            // Get current frame
             currentAttackFrame = mySheet2.getSprite(attackStep, 0).getScaledCopy(ImageRenderer.screenRatio);
 
         }
-
     }
 
     public void moveLeft(){
@@ -308,14 +313,13 @@ if(level > 0){
                         newY = o.getY() - h;
                         yVelocity = 0;
                         onGround = true;
-
                     } else if (yVelocity < 0 && ((Platform) o).isBottomPlatform() && futureX.intersects(o.getBounds())) {
                         newY = o.getY() + o.getH();
                         yVelocity = gravity;
                     }
                 }
             }
-            if (o instanceof Car) {
+             if (o instanceof Car) {
                 Car car = (Car) o;
                 Rectangle carBounds = car.getBounds();
                 if (futureX.intersects(o.getBounds())) {
@@ -323,7 +327,6 @@ if(level > 0){
                         if (newX <= car.getX() + 5) {
                             hitFront = true;
                         }
-
 
                     if (hitFront) {
 
@@ -340,7 +343,6 @@ if(level > 0){
                     } else if (xVelocity < 0) {
                         newX = car.getX() + car.getW();
                     }
-
                 }
                 if (futureY.intersects(o.getBounds())) {
                     if ((y <= car.getY() + 10)) {
@@ -350,8 +352,6 @@ if(level > 0){
                     }
                 }
             }
-
-
 
             if (o instanceof Lock){
                 if (!keyAttained){
@@ -406,14 +406,7 @@ if(level > 0){
 
                 }
             }
-            if(Cockroach.isDead){
-                keyAttained = true;
-                if (World.level.equals("levels/sewer3.txt")){
-                    Game.setLevel("levels/sewer4.txt");
-                }
 
-
-            }
 
             if (o instanceof Key){
                 if (getBounds().intersects(o.getBounds())) {
@@ -430,8 +423,8 @@ if(level > 0){
             if (o instanceof Cockroach && !Cockroach.isDead){
                 Rectangle ratBounds = getBounds();
                 Rectangle oBounds = o.getBounds();
-                Rectangle weaponBounds = getWeaponBounds(facingRight);
-
+                Rectangle weaponBounds = getWeaponBounds(facingRight);                
+                
                 if (ratBounds.intersects(oBounds)) {
                     if (ratBounds.getMaxY() <= oBounds.getMinY() + 5 && ratBounds.getMinY() < oBounds.getMinY()) {
                         Cockroach.isDamaged = true;
@@ -486,8 +479,6 @@ if(level > 0){
         if(key == Input.KEY_1 && knifeAttained){
             holdingKnife = !holdingKnife;
                 cooldown = 30;
-
-
         }
 
     }

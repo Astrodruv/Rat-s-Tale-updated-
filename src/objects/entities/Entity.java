@@ -48,18 +48,7 @@ public abstract class Entity extends GameObject {
         }
     }
 
-//    public void takeDamage(int damage){
-//        if (invincibilityFrames == invincibilityFrameValue) {
-//            System.out.println("Taking Damage");
-//            isHit = true;
-//            curHealth -= damage;
-//            if (curHealth <= 0) {
-//                curHealth = 0;
-//            }
-//        }
-//    }
-
-        public void takeDamage(int damage){
+    public void takeDamage(int damage){
         if (invincibilityFrames == invincibilityFrameValue) {
             System.out.println("Taking Damage");
             isHit = true;
@@ -69,6 +58,5 @@ public abstract class Entity extends GameObject {
             }
         }
     }
-
 
 }

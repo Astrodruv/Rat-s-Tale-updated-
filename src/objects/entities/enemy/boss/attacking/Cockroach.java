@@ -114,15 +114,6 @@ public class Cockroach extends Entity{
         jumpTimer--;
         xTimer--;
 
-        if (isHit){
-            invincibilityFrames--;
-        }
-
-        if (invincibilityFrames <= 0){
-            invincibilityFrames = invincibilityFrameValue;
-            isHit = false;
-        }
-
         if (xTimer > 0){
             moveLeft();
         }
@@ -132,7 +123,7 @@ public class Cockroach extends Entity{
 
         if (jumpTimer < 0){
             jump();
-            jumpTimer = (float) (Math.random() * (float) (3.5 * 60)) + 3;
+            jumpTimer = (float) (Math.random() * (float) (4 * 60)) + 4;
         }
 
         if (xTimer < -timer){
@@ -183,7 +174,7 @@ public class Cockroach extends Entity{
 
     public void jump() {
         if(jumpTimer > -300) {
-            yVelocity = -ySpeed;
+            yVelocity = -ySpeed * 2/3;
             xVelstore = xVelocity;
         }
         else
@@ -244,6 +235,8 @@ public class Cockroach extends Entity{
     public static float getPercentHealth(){
         return percentHealth;
     }
+
+    public boolean getisDamaged() { return isDamaged; }
 
     public static boolean groundCheck(){
         return onGround;
