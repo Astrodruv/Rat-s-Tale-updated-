@@ -5,6 +5,7 @@ import engine.Main;
 import objects.GameObject;
 import objects.entities.Entity;
 import objects.entities.enemy.boss.attacking.Cockroach;
+import object.entities.enemy.boss.passive.Car;
 import objects.interactables.Key;
 import objects.interactables.Knife;
 import objects.interactables.Lock;
@@ -39,7 +40,7 @@ public class Player extends Entity {
     public boolean canAttack;
     public boolean attack;
     public static int level = 0;
-public static Image image;
+    public static Image image;
 
     public static boolean keyAttained;
     public static boolean holdingKnife;
@@ -56,6 +57,7 @@ public static Image image;
     private int streetTimer = 1800;
     private final int attackFramesPerStep = 5;
     private boolean isAttacking = false;
+    private boolean hitFront;
     private Image currentAttackFrame;
 
     public Player(float x, float y) {
@@ -67,17 +69,17 @@ public static Image image;
         float scaleX = (float) Main.getScreenWidth() / BASE_WIDTH;
         float scaleY = (float) Main.getScreenHeight() / BASE_HEIGHT;
         float scale = (scaleX + scaleY) / 2f;
-mySheet = ImageRenderer.rat;
-mySheet2 = ImageRenderer.knifeAttack;
-currentFrame = mySheet.getSprite(0,0);
+        mySheet = ImageRenderer.rat;
+        mySheet2 = ImageRenderer.knifeAttack;
+        currentFrame = mySheet.getSprite(0,0);
         currentAttackFrame = mySheet2.getSprite(attackStep, 0).getScaledCopy(scale);
-if(Main.getScreenWidth() < 2256){
-    xSpeed = 9.0f * scale;
-    ySpeed = 20.0f * scale;
-} else{
-    xSpeed = 10.0f * scale;
-    ySpeed = 18.0f * scale;
-}
+        if(Main.getScreenWidth() < 2256){
+         xSpeed = 9.0f * scale;
+             ySpeed = 20.0f * scale;
+        } else {
+             xSpeed = 10.0f * scale;
+             ySpeed = 18.0f * scale;
+        }
 
 
         facingRight = true;
@@ -153,6 +155,11 @@ if(level > 0){
             g.setFont(Fonts.big);
             g.setColor(Color.white);
             g.drawString("Survive for "+streetTimer/60 + "s", Main.getScreenWidth()/2, Main.getScreenHeight()/2 -500);
+             if(streetTimer > 1200) {
+                g.setFont(Fonts.big);
+                g.setColor(Color.red);
+                g.drawString("Dont get hit!", Main.getScreenWidth()/2, Main.getScreenHeight()/2 - 400);
+            }
         }
 
     }
@@ -198,39 +205,34 @@ streetTimer=1800;
             canAttack = true;
         }
 
-        if (input.isKeyDown(Input.KEY_D)){
-            moveRight();
-            facingRight = true;
+          if (input.isKeyDown(Input.KEY_D)) {
+           moveRight();
+              facingRight = true;
+         } else if (input.isKeyDown(Input.KEY_A)) {
+        moveLeft();
+        facingRight = false;
+    } else {
+        if (xAccel > 0) {
+            xVelocity = xAccel;
+            xAccel--;
+            if (xAccel < 0) xAccel = 0;
+        } else if (xAccel < 0) {
+            xVelocity = xAccel;
+            xAccel++;
+            if (xAccel > 0) xAccel = 0;
+        } else {
+            xVelocity = 0;
+            xAccel = 0;
         }
-        else if (input.isKeyDown(Input.KEY_A)){
-            moveLeft();
-            facingRight = false;
-        }
-        else{
-            if (xAccel > 0){
-                xVelocity = xAccel;
-                xAccel--;
-                if (xAccel < 0) xAccel = 0;
-            }
-            else if (xAccel < 0){
-                xVelocity = xAccel;
-                xAccel++;
-                if (xAccel > 0) xAccel = 0;
-            }
-            else{
-                xVelocity = 0;
-                xAccel = 0;
-            }
-        }
+    }
+    yVelocity += gravity;
+
+    newX = x + xVelocity;
+    newY = y + yVelocity;
 
         if (input.isKeyDown(Input.KEY_W) && onGround && !jumpingOffOfEnemy){
             jump();
         }
-
-        yVelocity += gravity;
-
-        newX = x + xVelocity;
-        newY = y + yVelocity;
 
         collisions(sbg);
 
@@ -314,6 +316,39 @@ if(level > 0){
                     } else if (yVelocity < 0 && ((Platform) o).isBottomPlatform() && futureX.intersects(o.getBounds())) {
                         newY = o.getY() + o.getH();
                         yVelocity = gravity;
+                    }
+                }
+            }
+             if (o instanceof Car) {
+                Car car = (Car) o;
+                Rectangle carBounds = car.getBounds();
+                if (futureX.intersects(o.getBounds())) {
+                    boolean hitFront = false;
+                        if (newX <= car.getX() + 5) {
+                            hitFront = true;
+                        }
+
+                    if (hitFront) {
+
+                        takeDamage(Car.attackDamage);
+
+                        jump();
+                    }
+                    if(xAccel == 0 && hitFront){
+                        jump();
+                    }
+
+                    if (xVelocity > 0) {
+                        newX = car.getX() - w;
+                    } else if (xVelocity < 0) {
+                        newX = car.getX() + car.getW();
+                    }
+                }
+                if (futureY.intersects(o.getBounds())) {
+                    if ((y <= car.getY() + 10)) {
+                        newY = car.getY() - h;
+                        onGround = true;
+
                     }
                 }
             }
