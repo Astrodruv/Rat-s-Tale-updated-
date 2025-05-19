@@ -406,17 +406,9 @@ if(level > 0){
 
                 }
             }
-            if(Cockroach.isDead){
-                if(keyAttained) {
-                    if (World.level.equals("levels/sewer3.txt")) {
-                        Game.setLevel("levels/sewer4.txt");
-                    }
-                }
+            
 
-
-            }
-
-            if (o instanceof Key && Cockroach.isDead){
+            if (o instanceof Key){
                 if (getBounds().intersects(o.getBounds())) {
                     keyAttained = true;
                 }
