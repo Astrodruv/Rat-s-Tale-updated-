@@ -125,8 +125,19 @@ if(level > 0){
 
 
         g.setColor(Color.orange);
-        g.draw(getBounds());
-        g.draw(getWeaponBounds(facingRight));
+        g.fillRect(x+30, y-50, (w+50), 10);
+        g.setColor(Color.yellow);
+        if(cooldown > 0)
+        {
+            g.fillRect(x+30, y-50, (w+50) * ((90-cooldown)/90), 10);
+        }
+        else
+        {
+            g.fillRect(x+30, y-50,w+50, 10);
+
+        }
+//        g.draw(getBounds());
+//        g.draw(getWeaponBounds(facingRight));
 //        g.drawString(""+maxHealth, 500, 500);
 //        g.drawString(""+curHealth, 500, 600);
 //        g.drawString(""+getPercentHealth(), 500, 700);
@@ -361,9 +372,10 @@ if(level > 0){
                 }
             }
             if(Cockroach.isDead){
-                keyAttained = true;
-                if (World.level.equals("levels/sewer3.txt")){
-                    Game.setLevel("levels/sewer4.txt");
+                if(keyAttained) {
+                    if (World.level.equals("levels/sewer3.txt")) {
+                        Game.setLevel("levels/sewer4.txt");
+                    }
                 }
 
 
