@@ -406,7 +406,7 @@ if(level > 0){
 
                 }
             }
-            
+
 
             if (o instanceof Key){
                 if (getBounds().intersects(o.getBounds())) {
@@ -423,8 +423,8 @@ if(level > 0){
             if (o instanceof Cockroach && !Cockroach.isDead){
                 Rectangle ratBounds = getBounds();
                 Rectangle oBounds = o.getBounds();
-                Rectangle weaponBounds = getWeaponBounds(facingRight);
-
+                Rectangle weaponBounds = getWeaponBounds(facingRight);                
+                
                 if (ratBounds.intersects(oBounds)) {
                     if (ratBounds.getMaxY() <= oBounds.getMinY() + 5 && ratBounds.getMinY() < oBounds.getMinY()) {
                         Cockroach.isDamaged = true;
