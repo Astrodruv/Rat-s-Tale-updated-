@@ -1,180 +1,87 @@
-package objects.entities.enemy.boss.attacking;
+package objects.entities.enemies;
 
-import engine.Game;
 import engine.Main;
-import objects.GameObject;
 import objects.entities.Entity;
-import objects.entities.player.Player;
-import objects.platforms.Platform;
-import objects.world.Cell;
-import org.lwjgl.opengl.EXTTimerQuery;
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
-import ui.images.ImageRenderer;
-
+import ui.Images;
+import values.CockroachValues;
+import values.PlayerValues;
+import world.Cell;
+import world.World;
 
 public class Cockroach extends Entity{
-    private boolean facingRight;
-    public static boolean onGround;
-    private float xAccel;
-    private float xVelocity;
     private float xVelstore;
-    private float yVelocity;
-    private float newX;
-    private float newY;
-    private final float gravity;
-    public static boolean isDamaged;
-    public static float percentHealth;
-
-    protected int invincibilityFrames;
-    protected final int invincibilityFrameValue = 60;
-
     private int timer;
     private int xTimer;
     private float jumpTimer;
-    public static int attackDamage;
-
-    private Image leftFacingImage;
-
-    public static boolean isDead;
-
-    private boolean leftDirection;
-    private static double directionater = Math.random();
+    private boolean moveLeft;
 
     public Cockroach(float x, float y){
-        super(x, y, Cell.getWidth() * ImageRenderer.screenRatio * 0.5f, Cell.getHeight() * ImageRenderer.screenRatio, 100, 20, ImageRenderer.cockroachIdle);
-        this.x = x;
-        this.y = y;
+        super(x, y, CockroachValues.X_SPEED, CockroachValues.Y_SPEED, CockroachValues.HEALTH, CockroachValues.ATTACK, Images.cockroachIdle, CockroachValues.IFRAMES);
         facingRight = false;
-        onGround = true;
-        xVelocity = 0;
-        yVelocity = 0;
-        newX = 0;
-        newY = 0;
-        gravity = 1;
-        attackDamage = attackDmg;
-
-        invincibilityFrames = invincibilityFrameValue;
-
-        xAccel = 0;
-
         timer = 7 * 60;
         xTimer = 7 * 60;
-        jumpTimer = (float) (3.5 * 60);
-
-        isDamaged = isHit;
-        isDead = false; // debug
-
-        leftFacingImage = rightFacingImage.getFlippedCopy(true, false);
-        leftDirection = true;
-
+        jumpTimer = (float) (Math.random() * (float) (3.5 * 60)) + 4;
         xVelstore = xVelocity;
-        xSpeed = 0;
-        ySpeed = Cell.getHeight() * ImageRenderer.screenRatio * 0.75f;
-
-        percentHealth = (float) curHealth / maxHealth;
+        moveLeft = true;
     }
 
     public void render(Graphics g){
-        if (isHit){
-            if (invincibilityFrames % 7 == 0){
-
-            }
-            else{
-                image.draw(x,y);
-            }
-        }
-        else{
-            image.draw(x,y);
-//            g.setColor(Color.orange);
-//            g.draw(getBounds());
-        }
+        super.render(g);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
-        super.update(gc, sbg, delta);
-
-        percentHealth = (float) curHealth / maxHealth;
-
-        if (isDamaged){
-            takeDamage(Player.getAttackDamage());
-            if(curHealth <= 0)
-            {
-                isDead = true;
-            }
-            isDamaged = false;
+        if (World.level.equals(CockroachValues.LEVEL_SPAWN_LOCATION) && PlayerValues.isPlayerHurtingEnemy){
+            isHit = true;
+            PlayerValues.isPlayerHurtingEnemy = false;
         }
-        if(isDead)
-        {
-            cell.removeObject();
-            percentHealth = 0;
+
+        if (isHit && !hasTakenDamage){
+            takeDamage(PlayerValues.ATTACK);
+            hasTakenDamage = true;
+            jump();
+        }
+
+        if (x > Cell.getWidth() * 3 && moveLeft) {
+            moveLeft();
+        }
+        else{
+            moveLeft = false;
+            moveRight();
+        }
+        if (!moveLeft && x > Main.getScreenWidth() - (Cell.getWidth() * 4) - w){
+            moveLeft = true;
+        }
+
+        if (xAccel >= 3){
+            xAccel = 0;
         }
 
         jumpTimer--;
-        xTimer--;
-
-        if (xTimer > 0){
-            moveLeft();
-        }
-        if (xTimer < 0){
-            moveRight();
-        }
-
-        if (jumpTimer < 0){
+        if (jumpTimer < 0) {
             jump();
-            jumpTimer = (float) (Math.random() * (float) (4 * 60)) + 4;
+            jumpTimer = (float) (Math.random() * (3.5f * 60f)) + 4f;
         }
 
-        if (xTimer < -timer){
-            xTimer = timer;
-        }
-
-        yVelocity += gravity;
-
-        newX = x + xVelocity;
-        newY = y + yVelocity;
-
-
-        collisions(sbg);
-
-        x = newX;
-        y = newY;
+        super.update(gc, sbg, delta);
     }
 
     public void moveLeft(){
-        image = leftFacingImage;
-        xVelocity =  (xSpeed + xAccel);
-        if(xTimer == 0)
-        {
-            xAccel = 0;
-        }
-        if(xTimer >= (timer/2)) {
-            xAccel -= 0.025f;
-        }
-        else {
-            xAccel += 0.025f;
-        }
+        image = rightFacingImage.getFlippedCopy(true, false);
+        xVelocity = -(xSpeed + xAccel);
+        xAccel += 0.075f;
     }
 
     public void moveRight(){
         image = rightFacingImage;
         xVelocity = (xSpeed - xAccel);
-        if(xTimer == -timer)
-        {
-            xAccel = 0;
-        }
-        if(xTimer >= (-timer/2)) {
-            xAccel -= 0.025f;
-        }
-        else {
-            xAccel += 0.025f;
-        }
+        xAccel -= 0.075f;
     }
 
     public void jump() {
         if(jumpTimer > -300) {
-            yVelocity = -ySpeed * 2/3;
+            yVelocity = -ySpeed;
             xVelstore = xVelocity;
         }
         else
@@ -184,73 +91,5 @@ public class Cockroach extends Entity{
         }
         onGround = false;
     }
-
-    public void collisions(StateBasedGame sbg) {
-        onGround = false;
-        Rectangle futureX = new Rectangle(newX, y - 1, w, h);
-        Rectangle futureY = new Rectangle(newX, newY, w, h);
-
-
-        for (GameObject o : Game.levelObjects)
-        {
-            if (o instanceof Platform) {
-                if (futureX.intersects(o.getBounds())) {
-                    if (onGround) {
-                        if (xVelocity > 0) {
-                            newX = o.getX() - w;
-                        } else if (xVelocity < 0) {
-                            newX = o.getX() + o.getW();
-                        }
-                        xVelocity = 0;
-                    }
-                    else{
-                        if (xVelocity > 0) {
-                            newX = x;
-                        } else if (xVelocity < 0) {
-                            newX = x;
-                        }
-                        xVelocity = 0;
-                    }
-                }
-
-                if (futureY.intersects(o.getBounds())){
-                    if (yVelocity > 0 && !futureX.intersects(o.getBounds())){
-                        newY = o.getY() - h;
-                        yVelocity = 0;
-                        onGround = true;
-                    }
-                    else if (yVelocity < 0 && ((Platform) o).isBottomPlatform() && futureX.intersects(o.getBounds())){
-                        newY = o.getY() + o.getH();
-                        yVelocity = gravity;
-                    }
-                }
-            }
-        }
-    }
-
-    public static int getAttackDamage(){
-        return attackDamage;
-    }
-
-    public static float getPercentHealth(){
-        return percentHealth;
-    }
-
-    public boolean getisDamaged() { return isDamaged; }
-
-    public static boolean groundCheck(){
-        return onGround;
-    }
-
-//    public void takeDamage(int damage){
-//        if (invincibilityFrames == invincibilityFrameValue) {
-//            System.out.println("Taking Damage");
-//            isHit = true;
-//            curHealth -= damage;
-//            if (curHealth <= 0) {
-//                curHealth = 0;
-//            }
-//        }
-//    }
 
 }
