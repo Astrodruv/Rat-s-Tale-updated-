@@ -61,7 +61,7 @@ public static Image image;
     public Player(float x, float y) {
         image = ImageRenderer.ratIdle;
 
-        super(x,y,Cell.getWidth() * ImageRenderer.screenRatio * 0.55f, Cell.getHeight() * ImageRenderer.screenRatio * 0.6f,100,100, image);
+        super(x,y,Cell.getWidth() * ImageRenderer.screenRatio * 0.55f, Cell.getHeight() * ImageRenderer.screenRatio * 0.6f,100,10, image);
         this.x = x;
         this.y = y;
         float scaleX = (float) Main.getScreenWidth() / BASE_WIDTH;
@@ -90,7 +90,7 @@ if(Main.getScreenWidth() < 2256){
         xAccel = 0;
         gravity = 1;
         jumpingOffOfEnemy = false;
-        keyAttained = true;// DEBUG
+        keyAttained = false;// DEBUG
 
         percentHealth = (float) curHealth / maxHealth;
 
@@ -381,7 +381,7 @@ if(level > 0){
 
             }
 
-            if (o instanceof Key){
+            if (o instanceof Key && Cockroach.isDead){
                 if (getBounds().intersects(o.getBounds())) {
                     keyAttained = true;
                 }
@@ -452,8 +452,6 @@ if(level > 0){
         if(key == Input.KEY_1 && knifeAttained){
             holdingKnife = !holdingKnife;
                 cooldown = 30;
-
-
         }
 
     }
