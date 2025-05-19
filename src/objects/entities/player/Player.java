@@ -57,7 +57,7 @@ public class Player extends Entity {
     private int streetTimer = 1800;
     private final int attackFramesPerStep = 5;
     private boolean isAttacking = false;
-    private boolean hitFront;
+    private boolean hitFront = false;
     private Image currentAttackFrame;
 
     public Player(float x, float y) {
