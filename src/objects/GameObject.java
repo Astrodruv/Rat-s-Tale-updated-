@@ -1,16 +1,11 @@
 package objects;
 
-import engine.Main;
-import objects.entities.player.Player;
-import objects.world.Cell;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
-import ui.images.ImageRenderer;
+import world.Cell;
 
-import java.util.ArrayList;
-
-public abstract class GameObject {
+public class GameObject {
     protected Cell cell;
     protected Image image;
     protected float x;
@@ -18,10 +13,12 @@ public abstract class GameObject {
     protected float w;
     protected float h;
 
-    public GameObject(float x, float y){
-        w = Cell.getWidth();
-        h = Cell.getHeight();
-
+    public GameObject(float x, float y, Image image){
+        this.x = x;
+        this.y = y;
+        this.w = image.getWidth();
+        this.h = image.getHeight();
+        this.image = image;
     }
 
     public void setCell(Cell c){
@@ -29,11 +26,7 @@ public abstract class GameObject {
     }
 
     public void render(Graphics g){
-        float cellW = Cell.getWidth();
-        float cellH = Cell.getHeight();
-        if (image != null) {
-            image.draw(cell.getX() * cellW, cell.getY() * cellH, cellW, cellH * 1.5f); //- cellH / 2
-        }
+        image.draw(x,y);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -44,7 +37,9 @@ public abstract class GameObject {
 
     }
 
-    public abstract void collisions(StateBasedGame sbg);
+    public void collisions(StateBasedGame sbg){
+
+    }
 
     public float getX(){
         return x;
@@ -70,10 +65,10 @@ public abstract class GameObject {
     {
         if(facingRight)
         {
-            return new Rectangle(x, y + 10, 100 + w, h - 10);
+            return new Rectangle(x + w, y + 10, 100, h - 10);
         }
         else {
-            return new Rectangle(x - w, y + 10,  w + w, h - 10);
+            return new Rectangle(x - w, y + 10, w, h - 10);
         }
     }
 

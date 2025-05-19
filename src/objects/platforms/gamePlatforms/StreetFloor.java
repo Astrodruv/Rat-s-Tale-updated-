@@ -1,24 +1,16 @@
-package objects.platforms.gamePlatforms;
+package objects.platforms.streetPlatforms;
 
 import objects.platforms.Platform;
-import objects.world.Cell;
-import ui.images.ImageRenderer;
-
-import java.awt.*;
+import org.newdawn.slick.Graphics;
+import ui.Images;
 
 public class StreetFloor extends Platform {
 
     public StreetFloor(float x, float y) {
-        super(x,y);
-        this.x = x;
-        this.y = y;
-        image = ImageRenderer.streetFloor;
-        h = image.getHeight();
+        super(x,y, Images.streetFloor);
     }
-    public void render(Graphics g){
-        float cellW = Cell.getWidth();
-        float cellH = Cell.getHeight();
-        image.draw(cell.getX() * cellW, cell.getY() * cellH, cellW, h);
 
+    public void render(Graphics g) {
+        super.render(g);
     }
 }
