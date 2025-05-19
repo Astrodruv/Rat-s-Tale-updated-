@@ -1,5 +1,4 @@
-package objects.world;
-
+package world;
 
 import engine.Main;
 import objects.GameObject;
