@@ -10,62 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="3 cockroaches">
-      <change afterPath="$PROJECT_DIR$/levels/sewer3(temp).txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/school.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/school.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/sewer3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/street1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/street2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/cafeteria/Cafeteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/cafeteria/Cafeteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/cafeteria/CafeteriaFight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/cafeteria/CafeteriaFight.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/cafeteria/Maze.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/cafeteria/Maze.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/classroom/Classroom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/classroom/Classroom.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/classroom/TeacherFight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/classroom/TeacherFight.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/end/EndingScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/end/EndingScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/gym/DodgeballFight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/gym/DodgeballFight.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/gym/Gym.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/gym/Gym.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/janitor/JanitorsCloset.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/janitor/JanitorsCloset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/janitor/Sneak.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/janitor/Sneak.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/parking/BirdFight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/parking/BirdFight.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/parking/CrossyRoad.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/parking/CrossyRoad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/parking/ParkingLot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/parking/ParkingLot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/start/TitleScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/start/TitleScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/GameObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Entity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Bird.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Bird.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/CafeteriaLady.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/CafeteriaLady.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Cockroach.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Cockroach.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Teacher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Teacher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/passive/Car.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/passive/Car.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/passive/Janitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/passive/Janitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/inanimates/Car.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/inanimates/Car.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/inanimates/Dodgeball.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/inanimates/Dodgeball.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/player/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/EagleHealthBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/EagleHealthBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/HealthBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/HealthBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/PlayerHealthBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/PlayerHealthBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Key.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Lock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Lock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/Platform.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/Platform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/gamePlatforms/SewerFloor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/gamePlatforms/SewerFloor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/gamePlatforms/SewerPlatform.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/gamePlatforms/SewerPlatform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/world/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/world/Cell.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/world/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/world/World.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/buttons/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/buttons/Button.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/buttons/StartButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/buttons/StartButton.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/images/ImageRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/images/ImageRenderer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/sound/SoundManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/sound/SoundManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/text/Fonts.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/text/Fonts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/text/TextManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/text/TextManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Cockroach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Cockroach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemy/boss/passive/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemy/boss/passive/Car.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/healthbars/CockroachHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/healthbars/CockroachHealthBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/world/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/images/ImageRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/images/ImageRenderer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +41,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Astrodruv &lt;dhruvsava17@gmail.com&gt;" />
         <option value="iscaiden &lt;caiden.luebehusen@gmail.com&gt;" />
       </list>
     </option>
@@ -99,33 +59,31 @@
     &quot;accountId&quot;: &quot;5c406023-606a-45c8-bb93-69c7a93a59ae&quot;
   }
 }</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2e2hUUSkeaPwBccQscdbSAs0epI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\AP Java Projects\Rats Tale\levels" />
@@ -264,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747538522233</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="3 cockroaches">
+      <option name="closed" value="true" />
+      <created>1747599029592</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1747599029592</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -285,9 +251,9 @@
     <MESSAGE value="cockroach movement" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class&#10;#&#9;src/objects/healthbars/CockroachHealthBar.java" />
     <MESSAGE value="Bird additions and cockroach boss buffs" />
-    <MESSAGE value="Add files via upload" />
     <MESSAGE value="3" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/A Rat's Tale/engine/Game.class&#10;#&#9;out/production/A Rat's Tale/objects/GameObject.class&#10;#&#9;out/production/A Rat's Tale/objects/entities/enemy/boss/attacking/Cockroach.class&#10;#&#9;out/production/A Rat's Tale/objects/entities/player/Player.class&#10;#&#9;out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class&#10;#&#9;out/production/A Rat's Tale/objects/world/World.class&#10;#&#9;src/engine/Game.java&#10;#&#9;src/objects/entities/player/Player.java&#10;#&#9;src/objects/healthbars/CockroachHealthBar.java&#10;#&#9;src/objects/world/World.java" />
+    <MESSAGE value="Add files via upload" />
     <MESSAGE value="3 cockroaches" />
     <option name="LAST_COMMIT_MESSAGE" value="3 cockroaches" />
   </component>

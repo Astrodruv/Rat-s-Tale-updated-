@@ -38,26 +38,37 @@ public abstract class Entity extends GameObject {
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
-        if (isHit){
-            invincibilityFrames--;
-        }
-
-        if (invincibilityFrames <= 0){
-            invincibilityFrames = invincibilityFrameValue;
-            isHit = false;
-        }
+//        if (isHit){
+//            invincibilityFrames--;
+//        }
+//
+//        if (invincibilityFrames <= 0){
+//            invincibilityFrames = invincibilityFrameValue;
+//            isHit = false;
+//        }
     }
 
-    public void takeDamage(int damage)
+//    public void takeDamage(int damage){
+//        if (invincibilityFrames == invincibilityFrameValue) {
+//            System.out.println("Taking Damage");
+//            isHit = true;
+//            curHealth -= damage;
+//            if (curHealth <= 0) {
+//                curHealth = 0;
+//            }
+//        }
+//    }
+
+    public void takeDamage(int damage) //temporary method for level progression
     {
-        if (invincibilityFrames == invincibilityFrameValue) {
-            System.out.println("Taking Damage");
-            isHit = true;
-            curHealth -= damage;
-            if (curHealth <= 0) {
-                curHealth = 0;
-                isDead = true;
-            }
+       isHit = true;
+       curHealth -= damage;
+        if(curHealth <= 0)
+        {
+            curHealth = 0;
         }
+        isHit = false;
+
     }
+
 }
