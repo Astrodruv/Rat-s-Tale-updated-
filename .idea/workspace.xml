@@ -10,10 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="im done">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/player/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Cockroach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemy/boss/attacking/Cockroach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/CafeteriaLady.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/CafeteriaLady.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Janitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Janitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/world/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/Cell.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +34,11 @@
         <option value="Astrodruv &lt;dhruvsava17@gmail.com&gt;" />
         <option value="iscaiden &lt;caiden.luebehusen@gmail.com&gt;" />
       </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -56,22 +62,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Dhruv",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\AP Java Projects\Rats Tale\levels" />
