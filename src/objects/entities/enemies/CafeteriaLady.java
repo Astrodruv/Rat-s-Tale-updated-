@@ -1,4 +1,4 @@
-package objects.entities.enemy.boss.attacking;
+package objects.entities.enemies;
 
 public class CafeteriaLady {
 }
