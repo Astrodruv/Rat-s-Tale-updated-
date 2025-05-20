@@ -4,10 +4,13 @@ import engine.Main;
 import objects.entities.Entity;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.ImageBuffer;
 import org.newdawn.slick.state.StateBasedGame;
 import ui.Images;
 import values.BirdValues;
 import values.PlayerValues;
+import world.Cell;
 import world.World;
 
 public class Bird extends Entity{
@@ -23,21 +26,25 @@ public class Bird extends Entity{
     }
 
     public void render(Graphics g) {
-        super.render(g);
+        if(!isDead) {
+            super.render(g);
+        }
+        g.draw(getBounds());
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
-        if (World.level.equals(BirdValues.LEVEL_SPAWN_LOCATION) && PlayerValues.isPlayerHurtingEnemy){
+        if (PlayerValues.isPlayerHurtingEnemy){
             isHit = true;
+            takeDamage(PlayerValues.ATTACK);
             PlayerValues.isPlayerHurtingEnemy = false;
         }
 
-        if (isHit && !hasTakenDamage){
-            takeDamage(PlayerValues.ATTACK);
-            hasTakenDamage = true;
-        }
+//        if (isHit && !hasTakenDamage){
+//            takeDamage(PlayerValues.ATTACK);
+//            hasTakenDamage = true;
+//        }
 
-        y = (((float) -1 / (1000)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
+        y = (((float) -1 / (900)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
 
         if(y < -200)
         {
@@ -47,7 +54,24 @@ public class Bird extends Entity{
 
         x += xSpeed;
 
-        super.update(gc, sbg, delta);
+        if (isHit){
+            invincibilityFrames--;
+        }
+
+        if (invincibilityFrames <= 0){
+            invincibilityFrames = invincibilityFrameValue;
+            isHit = false;
+        }
+
+        percentHealth = (float) curHealth / maxHealth;
+
+        if(curHealth <= 0)
+        {
+            isDead = true;
+            cell.removeObject();
+        }
+
+//        super.update(gc, sbg, delta);
     }
 
 }
