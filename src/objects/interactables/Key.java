@@ -17,7 +17,7 @@ public class Key extends GameObject {
             super.render(g);
         }
         else{
-//            image.draw(Cell.getWidth() * 45, Cell.getHeight() * 3); // *46.5f and / 3
+            image.draw(Cell.getWidth() * 46.5f, Cell.getHeight() / 3);
         }
     }
 

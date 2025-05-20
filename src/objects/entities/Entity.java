@@ -58,7 +58,7 @@ public abstract class Entity extends GameObject {
         newX = 0;
         newY = 0;
         xAccel = 0;
-        gravity =  (float) Main.getScreenHeight() / 1504;
+        gravity = (float) Main.getScreenHeight() / 1504;
         contactingPlatformSide = false;
         onGround = true;
     }
@@ -92,6 +92,11 @@ public abstract class Entity extends GameObject {
 
         percentHealth = (float) curHealth / maxHealth;
 
+        if(percentHealth == 0) {
+            isDead = true;
+            cell.removeObject();
+        }
+
         if (!isHit) hasTakenDamage = false;
 
         yVelocity += gravity;
@@ -101,11 +106,6 @@ public abstract class Entity extends GameObject {
 
         collisions(sbg);
 
-        if(percentHealth == 0) {
-            isDead = true;
-            cell.removeObject();
-        }
-
         x = newX;
         y = newY;
     }
@@ -113,13 +113,13 @@ public abstract class Entity extends GameObject {
     public void moveLeft(){
         image = rightFacingImage.getFlippedCopy(true, false);
         xVelocity = -xSpeed + xAccel;
-        xAccel -= 0.1f;
+        xAccel -= (float) Main.getScreenWidth() / 22560;
     }
 
     public void moveRight(){
         image = rightFacingImage;
         xVelocity = xSpeed + xAccel;
-        xAccel += 0.1f;
+        xAccel += (float) Main.getScreenWidth() / 22560;
     }
 
     public void jump(){
@@ -235,5 +235,9 @@ public abstract class Entity extends GameObject {
 
     public float getPercentHealth(){
         return percentHealth;
+    }
+
+    public boolean isFacingRight(){
+        return facingRight;
     }
 }

@@ -4,10 +4,10 @@ import objects.platforms.Platform;
 import org.newdawn.slick.Graphics;
 import ui.Images;
 
-public class StreetFloor extends Platform {
+public class StreetPlatform extends Platform {
 
-    public StreetFloor(float x, float y) {
-        super(x,y, Images.streetFloor);
+    public StreetPlatform(float x, float y) {
+        super(x,y, Images.sewerPlatform); // Temporary for now
     }
 
     public void render(Graphics g) {
