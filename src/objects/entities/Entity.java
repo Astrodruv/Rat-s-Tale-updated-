@@ -1,5 +1,6 @@
 package objects.entities;
 
+import engine.Main;
 import engine.states.Game;
 import objects.GameObject;
 import objects.interactables.Door;
@@ -57,7 +58,7 @@ public abstract class Entity extends GameObject {
         newX = 0;
         newY = 0;
         xAccel = 0;
-        gravity = 1;
+        gravity =  (float) Main.getScreenHeight() / 1504;
         contactingPlatformSide = false;
         onGround = true;
     }
