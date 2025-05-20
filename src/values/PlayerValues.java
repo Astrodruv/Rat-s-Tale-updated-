@@ -10,7 +10,7 @@ public class PlayerValues {
     public static final int IFRAMES = 120;
 
     public static boolean isPlayerHurtingEnemy = false;
-    public static boolean keyOnPermanentlySetting = true;
+    public static boolean keyOnPermanentlySetting = false;
     public static boolean isPlayerTouchingKey = keyOnPermanentlySetting;
     public static boolean doesPlayerHaveWeapon = false;
 

@@ -1,14 +1,26 @@
 package objects.platforms;
 
 import objects.GameObject;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 import world.Cell;
 import world.World;
 
+import java.awt.desktop.PreferencesEvent;
+
 public class Platform extends GameObject {
     public Platform(float x, float y, Image image) {
         super(x, y, image);
+    }
+
+    public void render(Graphics g){
+        super.render(g);
+//        g.setColor(Color.white);
+//        if (isBottomPlatform()) g.drawString("Bottom", x + (w / 3), y - (h / 3));
+//        g.setColor(Color.yellow);
+//        if (isSidePlatform()) g.drawString("Side", x + (w / 2), y - (h / 2));
     }
 
     public void collisions(StateBasedGame sbg) {
@@ -44,8 +56,8 @@ public class Platform extends GameObject {
         Cell rightCell = World.getCell(x + 1, y);
         Cell leftCell = World.getCell(x - 1, y);
 
-        boolean spaceRight = rightCell == null || rightCell.getObject() == null;
-        boolean spaceLeft = leftCell == null || leftCell.getObject() == null;
+        boolean spaceRight = rightCell == null || rightCell.getObject() == null || getH() > rightCell.getObject().getH();
+        boolean spaceLeft = leftCell == null || leftCell.getObject() == null || getH() > leftCell.getObject().getH();
 
         return spaceLeft || spaceRight;
     }

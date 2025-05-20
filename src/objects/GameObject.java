@@ -65,10 +65,10 @@ public class GameObject {
     {
         if(facingRight)
         {
-            return new Rectangle(x + w, y + 10, 100, h - 10);
+            return new Rectangle(x + w, y - Cell.getHeight(), Cell.getWidth() * 6, Cell.getHeight() * 3);
         }
         else {
-            return new Rectangle(x - w, y + 10, w, h - 10);
+            return new Rectangle(x - w - (Cell.getWidth() * 3), y - Cell.getHeight(), Cell.getWidth() * 6, Cell.getHeight() * 3);
         }
     }
 
