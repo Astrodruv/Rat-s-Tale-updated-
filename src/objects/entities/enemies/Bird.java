@@ -29,6 +29,7 @@ public class Bird extends Entity{
         if(!isDead) {
             super.render(g);
         }
+
 //        g.draw(getBounds());
     }
 
@@ -44,7 +45,8 @@ public class Bird extends Entity{
 //            hasTakenDamage = true;
 //        }
 
-        y = (((float) -1 / (800)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
+        y = (((float) -1 / (900)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
+
 
         if(y < -200)
         {

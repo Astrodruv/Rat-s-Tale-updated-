@@ -33,9 +33,11 @@ public class Player extends Entity {
     public static int section = 0;
     private boolean hitFront = false;
     private int streetTimer = 1800;
+    private float cooldown = 60;
+    private boolean inBox;
 
     public Player(float x, float y) {
-        super(x,y, PlayerValues.X_SPEED, PlayerValues.Y_SPEED, PlayerValues.HEALTH, PlayerValues.ATTACK, Images.ratIdle, PlayerValues.IFRAMES);
+        super(x, y, PlayerValues.X_SPEED, PlayerValues.Y_SPEED, PlayerValues.HEALTH, PlayerValues.ATTACK, Images.ratIdle, PlayerValues.IFRAMES);
         facingRight = true;
         onGround = true;
         gameOver = false;
@@ -43,8 +45,10 @@ public class Player extends Entity {
         weaponCooldown = 90;
         canAttack = false;
         attack = false;
+        inBox = false;
     }
 
+  
     public void render(Graphics g){
         super.render(g);
 //        if (PlayerValues.doesPlayerHaveWeapon){
@@ -55,16 +59,26 @@ public class Player extends Entity {
 //            g.setFont(Fonts.big);
 //            g.setColor(Color.red);
 //            g.drawString("Dont get hit!", (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2 - 400);
-        }
+          }
+          g.fillRect(x, y - 50, (w + 50), 10);
+          g.setColor(Color.yellow);
+          if (weaponCooldown > 0) {
+              g.fillRect(x, y - 50, (w + 50) * ((90 - weaponCooldown) / 90), 10);
+          } else {
+              g.fillRect(x, y - 50, w + 50, 10);
+
+          }
+      }
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int delta){
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) {
         Input input = gc.getInput();
 
         weaponCooldown--;
-        if(weaponCooldown < 0){
+        if (weaponCooldown < 0) {
             canAttack = true;
         }
+
 
         if (isDead){
             gameOver = true;
@@ -77,29 +91,26 @@ public class Player extends Entity {
         else if (input.isKeyDown(Input.KEY_A)){ // && !contactingPlatformSide
             moveLeft();
             facingRight = false;
-        }
-        else{
-            if (xAccel > 0){
+        } else {
+            if (xAccel > 0) {
                 xVelocity = xAccel;
                 xAccel--;
                 if (xAccel < 0) xAccel = 0;
-            }
-            else if (xAccel < 0){
+            } else if (xAccel < 0) {
                 xVelocity = xAccel;
                 xAccel++;
                 if (xAccel > 0) xAccel = 0;
-            }
-            else{
+            } else {
                 xVelocity = 0;
                 xAccel = 0;
             }
         }
 
-        if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_A)){
+        if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_A)) {
             contactingPlatformSide = false;
         }
 
-        if (input.isKeyDown(Input.KEY_W) && onGround && !jumpingOffOfEnemy){
+        if (input.isKeyDown(Input.KEY_W) && onGround && !jumpingOffOfEnemy) {
             jump();
         }
 
@@ -111,7 +122,7 @@ public class Player extends Entity {
         Rectangle futureX = new Rectangle(newX, y, w, h);
         Rectangle futureY = new Rectangle(newX, newY, w, h);
 
-        for (GameObject o : new ArrayList<>(Game.levelObjects)){
+        for (GameObject o : new ArrayList<>(Game.levelObjects)) {
             if (o instanceof Platform) {
                 float playerRight = futureX.getX() + futureX.getWidth();
                 float playerLeft = futureX.getX();
@@ -125,16 +136,16 @@ public class Player extends Entity {
                 boolean verticalOverlap = futureX.getY() + futureX.getHeight() > o.getY() && futureX.getY() < o.getY() + o.getH();
 
                 if (futureX.intersects(o.getBounds()) && ((Platform) o).isSidePlatform() && (!((Platform) o).isBottomPlatform() || (((Platform) o).isBottomPlatform() && ((Platform) o).isSidePlatform()))) {
-                    if (xVelocity > 0 && playerRight > platformLeft && prevPlayerRight <= platformLeft && verticalOverlap){
+                    if (xVelocity > 0 && playerRight > platformLeft && prevPlayerRight <= platformLeft && verticalOverlap) {
                         newX = o.getX() - getW();
                     }
-                    if (xVelocity < 0 && playerLeft < platformRight && prevPlayerLeft >= platformRight && verticalOverlap){
+                    if (xVelocity < 0 && playerLeft < platformRight && prevPlayerLeft >= platformRight && verticalOverlap) {
                         newX = o.getX() + o.getW();
                     }
                     xVelocity = 0;
                 }
 
-                if (futureY.intersects(o.getBounds()) && ((Platform) o).isBottomPlatform()){
+                if (futureY.intersects(o.getBounds()) && ((Platform) o).isBottomPlatform()) {
                     float platformTop = o.getY();
                     float platformBottom = o.getY() + o.getH();
                     float playerTop = futureY.getY();
@@ -151,8 +162,8 @@ public class Player extends Entity {
                 }
             }
 
-            if (o instanceof Door){
-                if (!PlayerValues.isPlayerTouchingKey){
+            if (o instanceof Door) {
+                if (!PlayerValues.isPlayerTouchingKey || !PlayerValues.enemyDeadInArea) {
                     float playerRight = futureX.getX() + futureX.getWidth();
                     float playerLeft = futureX.getX();
 
@@ -165,16 +176,16 @@ public class Player extends Entity {
                     boolean verticalOverlap = futureX.getY() + futureX.getHeight() > o.getY() && futureX.getY() < o.getY() + o.getH();
 
                     if (futureX.intersects(o.getBounds())) {
-                        if (xVelocity > 0 && playerRight > platformLeft && prevPlayerRight <= platformLeft && verticalOverlap){
+                        if (xVelocity > 0 && playerRight > platformLeft && prevPlayerRight <= platformLeft && verticalOverlap) {
                             newX = o.getX() - getW();
                         }
-                        if (xVelocity < 0 && playerLeft < platformRight && prevPlayerLeft >= platformRight && verticalOverlap){
+                        if (xVelocity < 0 && playerLeft < platformRight && prevPlayerLeft >= platformRight && verticalOverlap) {
                             newX = o.getX() + o.getW();
                         }
                         xVelocity = 0;
                     }
 
-                    if (futureY.intersects(o.getBounds())){
+                    if (futureY.intersects(o.getBounds())) {
                         float platformTop = o.getY();
                         float platformBottom = o.getY() + o.getH();
                         float playerTop = futureY.getY();
@@ -184,24 +195,21 @@ public class Player extends Entity {
                             newY = platformTop - h;
                             yVelocity = 0;
                             onGround = true;
-                        }
-
-                        else if (yVelocity < 0 && y >= platformBottom) {
+                        } else if (yVelocity < 0 && y >= platformBottom) {
                             newY = platformBottom;
                             yVelocity = 0;
                         }
                     }
-                }
-                else{
+                } else {
                     if (getBounds().intersects(o.getBounds()) && PlayerValues.isPlayerTouchingKey) {
-                        if (World.level.equals("levels/sewer1.txt")){
+                        if (World.level.equals("levels/sewer1.txt")) {
                             Game.setLevel("levels/sewer2.txt");
                             if (!PlayerValues.keyOnPermanentlySetting) {
                                 PlayerValues.isPlayerTouchingKey = false;
                             }
                             continue;
                         }
-                        if (World.level.equals("levels/sewer2.txt")){
+                        if (World.level.equals("levels/sewer2.txt")) {
                             Game.setLevel("levels/sewer3.txt");
                             if (!PlayerValues.keyOnPermanentlySetting) {
                                 PlayerValues.isPlayerTouchingKey = false;
@@ -212,12 +220,13 @@ public class Player extends Entity {
                             Game.setLevel("levels/sewer4.txt");
                             if (!PlayerValues.keyOnPermanentlySetting) {
                                 PlayerValues.isPlayerTouchingKey = false;
+                                PlayerValues.enemyDeadInArea = true;
                             }
                             continue;
                         }
                         if (World.level.equals("levels/sewer4.txt")) {
                             section++;
-                            Game.setLevel("levels/street1.txt");
+                            Game.setLevel("levels/street1.txt"); //street1
                             if (!PlayerValues.keyOnPermanentlySetting) {
                                 PlayerValues.isPlayerTouchingKey = false;
                             }
@@ -262,22 +271,24 @@ public class Player extends Entity {
                 }
             }
 
-            if (o instanceof Key){
+            if (o instanceof Key) {
                 if (getBounds().intersects(o.getBounds())) {
                     PlayerValues.isPlayerTouchingKey = true;
                 }
             }
 
-            if (o instanceof Weapon){
-                if (World.level.equals("levels/sewer4.txt")) {
-                    if (getBounds().intersects(o.getBounds())) {
-                        PlayerValues.doesPlayerHaveWeapon = true;
-                        PlayerValues.isPlayerTouchingKey = true;
-                    }
+//            if (o instanceof Weapon){
+            if (World.level.equals("levels/sewer4.txt")) {
+                if (getBounds().intersects(o.getBounds())) {
+                    PlayerValues.doesPlayerHaveWeapon = true;
+                    PlayerValues.isPlayerTouchingKey = true;
                 }
             }
+//            }
 
-            if (o instanceof Cockroach){
+            if (o instanceof Cockroach) {
+                PlayerValues.enemyDeadInArea = false;
+                Rectangle weaponBounds = getWeaponBounds(facingRight);
                 if (futureY.intersects(o.getBounds()) && !(((Cockroach) o).isDead)) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
                         PlayerValues.isPlayerHurtingEnemy = true;
@@ -289,15 +300,26 @@ public class Player extends Entity {
                         takeDamage(CockroachValues.ATTACK);
                     }
                 }
-                if(((Cockroach) o).isDead()){
-                    if (World.level.equals(CockroachValues.LEVEL_SPAWN_LOCATION)){
-                        PlayerValues.isPlayerTouchingKey = true;
+                if (((Cockroach) o).isDead()) {
+                    if (World.level.equals(CockroachValues.LEVEL_SPAWN_LOCATION)) {
+                        PlayerValues.enemyDeadInArea = true;
                     }
+                }
+                if (weaponBounds.intersects(o.getBounds()) && !(((Cockroach) o).isDead)) {
+                   inBox = true;
+                    if (attack) {
+                        PlayerValues.isPlayerHurtingEnemy = true;
+                        attack = false;
+                    }
+                } else if(!(((Cockroach) o).isDead))
+                {
+                    inBox = false;
                 }
             }
 
-            if (o instanceof Bird){
+            if (o instanceof Bird) {
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
+
                 if (futureY.intersects(o.getBounds()) && !(((Bird) o).isDead)) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
                         PlayerValues.isPlayerHurtingEnemy = true;
@@ -305,19 +327,23 @@ public class Player extends Entity {
                         jumpingOffOfEnemy = true;
                         jump();
                         jumpingOffOfEnemy = false;
-                    }
-                    else{
+                    } else {
                         takeDamage(BirdValues.ATTACK);
                     }
                 }
-                if(weaponBounds.intersects(o.getBounds())) {
-                    if(attack) {
+                if (weaponBounds.intersects(o.getBounds()) && !(((Bird) o).isDead)) {
+                    inBox = true;
+                    if (attack) {
                         PlayerValues.isPlayerHurtingEnemy = true;
                         attack = false;
                     }
                 }
+                else if(!(((Bird) o).isDead))
+                {
+                    inBox = false;
+                }
                 if(((Bird) o).isDead()){
-                    if (World.level.equals(BirdValues.LEVEL_SPAWN_LOCATION)){
+                    if (World.level.equals(BirdValues.LEVEL_SPAWN_LOCATION)) {
                         PlayerValues.isPlayerTouchingKey = true;
                     }
                 }
@@ -333,6 +359,9 @@ public class Player extends Entity {
                     } else {
                         takeDamage(CarValues.ATTACK);
                     }
+
+                    if (xAccel == 0 && hitFront) {
+
                 }
             }
 
@@ -381,12 +410,11 @@ public class Player extends Entity {
             xAccel = 0;
 //            image = image.getFlippedCopy(true, false);
         }
-        if(PlayerValues.doesPlayerHaveWeapon && key == Input.KEY_SPACE && canAttack)
+        if(PlayerValues.doesPlayerHaveWeapon && key == Input.KEY_SPACE && canAttack && inBox)
         {
             attack = true;
             weaponCooldown = 90;
             canAttack = false;
         }
     }
-
 }

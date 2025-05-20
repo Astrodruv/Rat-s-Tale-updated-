@@ -28,20 +28,24 @@ public class Cockroach extends Entity{
     }
 
     public void render(Graphics g){
-        super.render(g);
+        if(!isDead) {
+            super.render(g);
+        }
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
-        if (World.level.equals(CockroachValues.LEVEL_SPAWN_LOCATION) && PlayerValues.isPlayerHurtingEnemy){
+        if (PlayerValues.isPlayerHurtingEnemy)
+        {
             isHit = true;
             PlayerValues.isPlayerHurtingEnemy = false;
+            takeDamage(PlayerValues.ATTACK);
         }
 
-        if (isHit && !hasTakenDamage){
-            takeDamage(PlayerValues.ATTACK);
-            hasTakenDamage = true;
-            jump();
-        }
+//        if (isHit && !hasTakenDamage){
+//            takeDamage(PlayerValues.ATTACK);
+//            hasTakenDamage = true;
+//            jump();
+//        }
 
         if (x > Cell.getWidth() * 3 && moveLeft) {
             moveLeft();
