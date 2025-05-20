@@ -1,6 +1,7 @@
 package engine.states;
 
 import engine.Main;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -38,6 +39,14 @@ public class TitleScreen extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
     {
         g.drawImage(Images.titleScreen, 0, 0);
+        g.setColor(Color.black);
+        g.drawString("WASD TO MOVE", (float) Main.getScreenWidth() / 2 + 200, (float) Main.getScreenHeight() / 2);
+        g.drawString("JUMP ON ENEMIES TO KILL THEM", (float) Main.getScreenWidth() / 2 + 200, (float) Main.getScreenHeight() / 2 + 20);
+        g.drawString("WHEN YOU GET YOUR WEAPON PRESS SPACE TO USE IT", (float) Main.getScreenWidth() / 2 + 200, (float) Main.getScreenHeight() / 2 + 40);
+        g.drawString("COLLECT THE KEY TO OPEN THE DOOR", (float) Main.getScreenWidth() / 2 + 200, (float) Main.getScreenHeight() / 2 + 60);
+        g.drawString("KILLING ENEMIES CAN ALSO OPEN THE DOOR", (float) Main.getScreenWidth() / 2 + 200, (float) Main.getScreenHeight() / 2 + 80);
+        g.drawString("WALK INTO THE DOOR WITH THE KEY TO OPEN IT", (float) Main.getScreenWidth() / 2 + 200, (float) Main.getScreenHeight() / 2 + 100);
+        g.drawString("CLICK TO START GAME", (float) Main.getScreenWidth() / 2 + 200, (float) Main.getScreenHeight() / 2 + 120);
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException

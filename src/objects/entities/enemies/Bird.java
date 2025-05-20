@@ -29,7 +29,8 @@ public class Bird extends Entity{
         if(!isDead) {
             super.render(g);
         }
-        g.draw(getBounds());
+
+//        g.draw(getBounds());
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -45,6 +46,7 @@ public class Bird extends Entity{
 //        }
 
         y = (((float) -1 / (900)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
+
 
         if(y < -200)
         {

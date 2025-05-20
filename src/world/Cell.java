@@ -1,9 +1,8 @@
 package world;
 
+
 import engine.Main;
 import objects.GameObject;
-import objects.entities.Entity;
-import objects.platforms.Platform;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -32,9 +31,6 @@ public class Cell {
 
 //        x = getXPixel();
 //        y = getYPixel();
-
-//        w = getWidth();
-//        h = getHeight() * 1.5f;
     }
 
     public void render(Graphics g){
@@ -66,6 +62,7 @@ public class Cell {
     {
         if(object != null)
         {
+            World.objects.remove(object);
             object.setCell(null);
             object = null;
         }

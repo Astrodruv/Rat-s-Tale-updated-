@@ -17,7 +17,7 @@ public class BirdHealthBar extends HealthBar{
     public void render(Graphics g) {
         super.render(g);
         g.setColor(Color.red);
-        g.drawString("Harry: Boss of the Streets", x, y + 50);
+        g.drawString("Harry: Boss of the Streets", x, y + 35);
         if (e != null) {
             if (e.isDead()) {
                 g.drawString("You have defeated Harry!", x, y + 80);
