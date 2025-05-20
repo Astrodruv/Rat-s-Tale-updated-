@@ -1,11 +1,11 @@
 package objects.entities;
 
-import engine.Main;
 import engine.states.Game;
 import objects.GameObject;
 import objects.entities.enemies.Bird;
-import objects.entities.enemies.Car;
+import objects.entities.enemies.EvilCar;
 import objects.entities.enemies.Cockroach;
+import objects.entities.enemies.PassiveCar;
 import objects.interactables.Door;
 import objects.interactables.Key;
 import objects.interactables.Weapon;
@@ -29,7 +29,6 @@ public class Player extends Entity {
     private boolean canAttack;
     private boolean attack;
 
-    public static boolean hasWeapon = false;
     public static boolean gameOver;
     public static int section = 0;
     private boolean hitFront = false;
@@ -48,6 +47,10 @@ public class Player extends Entity {
 
     public void render(Graphics g){
         super.render(g);
+//        if (PlayerValues.doesPlayerHaveWeapon){
+//            g.setColor(Color.white);
+//            g.draw(getWeaponBounds(facingRight));
+//        }
         if(streetTimer > 1200){
 //            g.setFont(Fonts.big);
 //            g.setColor(Color.red);
@@ -63,11 +66,15 @@ public class Player extends Entity {
             canAttack = true;
         }
 
-        if (input.isKeyDown(Input.KEY_D) && !contactingPlatformSide){
+        if (isDead){
+            gameOver = true;
+        }
+
+        if (input.isKeyDown(Input.KEY_D)){ // && !contactingPlatformSide
             moveRight();
             facingRight = true;
         }
-        else if (input.isKeyDown(Input.KEY_A) && !contactingPlatformSide){
+        else if (input.isKeyDown(Input.KEY_A)){ // && !contactingPlatformSide
             moveLeft();
             facingRight = false;
         }
@@ -109,8 +116,8 @@ public class Player extends Entity {
                 float playerRight = futureX.getX() + futureX.getWidth();
                 float playerLeft = futureX.getX();
 
-                float prevPlayerRight = x + w;
-                float prevPlayerLeft = x;
+                float prevPlayerRight = getX() + getW();
+                float prevPlayerLeft = getX();
 
                 float platformRight = o.getX() + o.getW();
                 float platformLeft = o.getX();
@@ -216,6 +223,41 @@ public class Player extends Entity {
                             }
                             continue;
                         }
+                        if (World.level.equals("levels/street1.txt")) {
+                            Game.setLevel("levels/street2.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/street2.txt")) {
+                            Game.setLevel("levels/street3.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/street3.txt")) {
+                            Game.setLevel("levels/street4.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/street4.txt")) {
+                            Game.setLevel("levels/street5.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/street5.txt")) {
+                            Game.setLevel("levels/school.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
                     }
                 }
             }
@@ -245,7 +287,6 @@ public class Player extends Entity {
                         jumpingOffOfEnemy = false;
                     } else {
                         takeDamage(CockroachValues.ATTACK);
-                        System.out.println("Damage");
                     }
                 }
                 if(((Cockroach) o).isDead()){
@@ -257,7 +298,7 @@ public class Player extends Entity {
 
             if (o instanceof Bird){
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
-                if (futureY.intersects(o.getBounds())) {
+                if (futureY.intersects(o.getBounds()) && !(((Bird) o).isDead)) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
                         PlayerValues.isPlayerHurtingEnemy = true;
                         onGround = true;
@@ -267,7 +308,6 @@ public class Player extends Entity {
                     }
                     else{
                         takeDamage(BirdValues.ATTACK);
-                        System.out.println("Damage");
                     }
                 }
                 if(weaponBounds.intersects(o.getBounds())) {
@@ -276,55 +316,73 @@ public class Player extends Entity {
                         attack = false;
                     }
                 }
+                if(((Bird) o).isDead()){
+                    if (World.level.equals(BirdValues.LEVEL_SPAWN_LOCATION)){
+                        PlayerValues.isPlayerTouchingKey = true;
+                    }
+                }
             }
 
-            if (o instanceof Car) {
-                Car car = (Car) o;
-                Rectangle carBounds = car.getBounds();
-                if (futureX.intersects(o.getBounds())) {
-                    boolean hitFront = false;
-                    if (newX <= car.getX() + 5) {
-                        hitFront = true;
-                    }
 
-                    if (hitFront) {
-                        takeDamage(CarValues.ATTACK);
-                        jump();
-                    }
-                    if(xAccel == 0 && hitFront){
-                        jump();
-                    }
-
-                    if (xVelocity > 0) {
-                        newX = car.getX() - w;
-                    } else if (xVelocity < 0) {
-                        newX = car.getX() + car.getW();
-                    }
-
-                }
+            if (o instanceof EvilCar){
                 if (futureY.intersects(o.getBounds())) {
-                    if ((y <= car.getY() + 10)) {
-                        newY = car.getY() - h;
-                        onGround = true;
-
+                    if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
+                        jumpingOffOfEnemy = true;
+                        jump();
+                        jumpingOffOfEnemy = false;
+                    } else {
+                        takeDamage(CarValues.ATTACK);
                     }
                 }
             }
+
+            if (o instanceof PassiveCar){
+                if (futureY.intersects(o.getBounds())) {
+                    if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
+                        jumpingOffOfEnemy = true;
+                        jump();
+                        jumpingOffOfEnemy = false;
+                    }
+                }
+
+                float playerRight = futureX.getX() + futureX.getWidth();
+                float playerLeft = futureX.getX();
+
+                float prevPlayerRight = x + w;
+                float prevPlayerLeft = x;
+
+                float platformRight = o.getX() + o.getW();
+                float platformLeft = o.getX();
+
+                boolean verticalOverlap = futureX.getY() + futureX.getHeight() > o.getY() && futureX.getY() < o.getY() + o.getH();
+
+                if (futureX.intersects(o.getBounds())) {
+                    if (xVelocity > 0 && playerRight > platformLeft && prevPlayerRight <= platformLeft && verticalOverlap) {
+                        newX = o.getX() - getW();
+                    }
+                    if (xVelocity < 0 && playerLeft < platformRight && prevPlayerLeft >= platformRight && verticalOverlap) {
+                        newX = o.getX() + o.getW();
+                    }
+                    xVelocity = 0;
+                }
+            }
+
 
 
         }
     }
 
-    public void keyPressed(int key, char c) {
-        if (key == Input.KEY_D && !facingRight) {
+    public void keyPressed(int key, char c){
+        if (key == Input.KEY_D && !facingRight){
 //            image = rightFacingImage;
             xAccel = 0;
         }
-        if (key == Input.KEY_A && facingRight) {
+        if (key == Input.KEY_A && facingRight){
             xAccel = 0;
 //            image = image.getFlippedCopy(true, false);
         }
-        if (key == Input.KEY_SPACE && canAttack) {
+        if(PlayerValues.doesPlayerHaveWeapon && key == Input.KEY_SPACE && canAttack)
+        {
             attack = true;
             weaponCooldown = 90;
             canAttack = false;

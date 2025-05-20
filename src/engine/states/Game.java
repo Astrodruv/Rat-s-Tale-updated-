@@ -9,11 +9,14 @@ import objects.entities.Entity;
 import objects.entities.Player;
 import objects.entities.enemies.Bird;
 import objects.entities.enemies.Cockroach;
+import objects.interactables.Weapon;
+import objects.weapons.Knife;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import values.BirdValues;
 import values.CockroachValues;
+import values.PlayerValues;
 import world.World;
 import ui.Images;
 
@@ -29,6 +32,8 @@ public class Game extends BasicGameState
 	private static Player player;
 	private static Cockroach cockroach;
 	private static Bird bird;
+
+	private static Knife knife;
 
 	private static PlayerHealthBar playerHealthBar;
 	private static CockroachHealthBar cockroachHealthBar;
@@ -57,7 +62,9 @@ public class Game extends BasicGameState
 
 		world = new World();
 
-		setLevel("levels/sewer1.txt");
+		setLevel("levels/sewer1.txt"); // debug
+//		Player.section = 1; // debug
+//		PlayerValues.doesPlayerHaveWeapon = true; // debug
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -66,9 +73,18 @@ public class Game extends BasicGameState
 			world.update(gc, sbg, delta);
 		}
 
+		if (PlayerValues.doesPlayerHaveWeapon){
+			// Maybe a null check is needed in case it lags the game? Idk how it works exactly but it works so I guess its fine lol
+			if (player != null) {
+				knife = new Knife(player.getX(), player.getY(), player);
+			}
+		}
+
 		updateHealthBars();
 
-//		this.sbg.enterState(Main.END_ID); When the level is after the last one (if statement)
+		if (World.level.equals(("levels/school.txt"))) {
+			this.sbg.enterState(Main.END_ID);
+		}
 	}
 
 	public void updateHealthBars() {
@@ -94,6 +110,10 @@ public class Game extends BasicGameState
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
+		g.setColor(Color.white);
+		g.drawString("x: " + player.getX(), 400, 500);
+        g.drawString("y: " + player.getY(), 400, 550);
+
 		if (!Player.gameOver) {
 			if(Player.section == 1){
 				g.drawImage(Images.streetBackground,0,0);
@@ -102,6 +122,9 @@ public class Game extends BasicGameState
 			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
 			world.render(g);
+			if (knife != null){
+				knife.render(g);
+			}
 			if (playerHealthBar != null) {
 				playerHealthBar.render(g);
 			}
@@ -160,8 +183,12 @@ public class Game extends BasicGameState
 
 	}
 
-	public static PlayerHealthBar myPlayerHealthBar(){
+	public static PlayerHealthBar getPlayerHealthBar(){
 		return playerHealthBar;
+	}
+
+	public static Player getPlayer(){
+		return player;
 	}
 
 	public static void setLevel(String s){
