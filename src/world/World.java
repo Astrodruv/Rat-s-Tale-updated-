@@ -119,7 +119,7 @@ public class World {
     public void setCell(Cell cell, char code) throws SlickException {
         GameObject obj = null;
 
-        // Characters Used: c, l, e, f, k, m, p, s, C, E, W
+        // Characters Used: c, d, e, f, k, m, p, s, C, E, W
 
         if (code == 'p'){
             obj = new SewerPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -150,7 +150,7 @@ public class World {
         if (code == 'k'){
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if(code == 'l') {
+        if(code == 'd') {
             obj = new Door(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 'W'){
