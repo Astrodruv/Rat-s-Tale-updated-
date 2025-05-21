@@ -9,20 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="imports">
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="should be good for beta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/sewer3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/sewer4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/levels/street1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/GameObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Entity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/healthbars/BirdHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/healthbars/BirdHealthBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/healthbars/CockroachHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/healthbars/CockroachHealthBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Key.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/Platform.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/Platform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/text/Fonts.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Cockroach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Cockroach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/values/BirdValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/BirdValues.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/values/PlayerValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/PlayerValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,22 +80,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Dhruv",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Dhruv&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\AP Java Projects\Rats Tale\levels" />
@@ -104,6 +104,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\AP Java Projects\Rats Tale\out\artifacts" />
       <recent name="D:\AP Java Projects\Rats Tale\src\objects\platforms" />
+    </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="objects.entities.enemies" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="objects.healthbars" />
@@ -282,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747694779709</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="should be good for beta">
+      <option name="closed" value="true" />
+      <created>1747706736647</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1747706736647</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -309,6 +320,7 @@
     <MESSAGE value="3 cockroaches" />
     <MESSAGE value="im done" />
     <MESSAGE value="imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="imports" />
+    <MESSAGE value="should be good for beta" />
+    <option name="LAST_COMMIT_MESSAGE" value="should be good for beta" />
   </component>
 </project>
