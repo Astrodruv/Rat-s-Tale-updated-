@@ -14,4 +14,5 @@ public class PlayerValues {
     public static boolean isPlayerTouchingKey = keyOnPermanentlySetting;
     public static boolean doesPlayerHaveWeapon = false;
 
+
 }

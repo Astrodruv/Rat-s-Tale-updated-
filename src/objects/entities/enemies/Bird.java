@@ -7,11 +7,11 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.ImageBuffer;
 import org.newdawn.slick.state.StateBasedGame;
-import ui.Images;
 import values.BirdValues;
 import values.PlayerValues;
 import world.Cell;
 import world.World;
+import ui.Images;
 
 public class Bird extends Entity{
 

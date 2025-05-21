@@ -9,19 +9,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="imports">
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="im done">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/sewer1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/sewer2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/sewer3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/sewer4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/levels/street1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/GameObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Entity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/healthbars/BirdHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/healthbars/BirdHealthBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/healthbars/CockroachHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/healthbars/CockroachHealthBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/passive/Car.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemy/boss/passive/Janitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/healthbars/EagleHealthBar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Key.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Knife.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/gamePlatforms/StreetFloor.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Cockroach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Cockroach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/values/BirdValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/BirdValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/platforms/streetPlatforms/StreetPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/platforms/streetPlatforms/StreetPlatform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Images.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Images.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/values/PlayerValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/PlayerValues.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,22 +68,13 @@
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Astrodruv/Rat-s-Tale-updated-.git&quot;,
     &quot;accountId&quot;: &quot;5c406023-606a-45c8-bb93-69c7a93a59ae&quot;
-  },
-  &quot;recentNewPullRequestHead&quot;: {
-    &quot;server&quot;: {
-      &quot;useHttp&quot;: false,
-      &quot;host&quot;: &quot;github.com&quot;,
-      &quot;port&quot;: null,
-      &quot;suffix&quot;: null
-    },
-    &quot;owner&quot;: &quot;Astrodruv&quot;,
-    &quot;repository&quot;: &quot;Rat-s-Tale-updated-&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2e2hUUSkeaPwBccQscdbSAs0epI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -87,7 +86,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Dhruv",
+    "git-widget-placeholder": "Caiden",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale",
     "project.structure.last.edited": "Project",
@@ -250,39 +249,7 @@
       <option name="project" value="LOCAL" />
       <updated>1747628447287</updated>
     </task>
-    <task id="LOCAL-00016" summary="imports">
-      <option name="closed" value="true" />
-      <created>1747692605970</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1747692605970</updated>
-    </task>
-    <task id="LOCAL-00017" summary="imports">
-      <option name="closed" value="true" />
-      <created>1747693706318</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1747693706318</updated>
-    </task>
-    <task id="LOCAL-00018" summary="imports">
-      <option name="closed" value="true" />
-      <created>1747693746617</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1747693746617</updated>
-    </task>
-    <task id="LOCAL-00019" summary="imports">
-      <option name="closed" value="true" />
-      <created>1747694779709</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1747694779709</updated>
-    </task>
-    <option name="localTasksCounter" value="20" />
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -308,7 +275,6 @@
     <MESSAGE value="Add files via upload" />
     <MESSAGE value="3 cockroaches" />
     <MESSAGE value="im done" />
-    <MESSAGE value="imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="im done" />
   </component>
 </project>
