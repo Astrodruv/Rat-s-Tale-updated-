@@ -45,7 +45,6 @@ public class Cockroach extends Entity{
             takeDamage(PlayerValues.ATTACK);
             hasTakenDamage = true;
             jump();
-            System.out.println("hit here");
         }
 
         if (x > Cell.getWidth() * 3 && moveLeft) {

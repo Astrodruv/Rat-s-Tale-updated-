@@ -82,7 +82,7 @@ public class Game extends BasicGameState
 
 		updateHealthBars();
 
-		if (World.level.equals(("levels/school.txt"))) {
+		if (World.level.equals(("levels/closet.txt"))) {
 			this.sbg.enterState(Main.END_ID);
 		}
 	}
