@@ -16,6 +16,7 @@ public class Cockroach extends Entity{
     private int xTimer;
     private float jumpTimer;
     private boolean moveLeft;
+    private Image image;
 
     public Cockroach(float x, float y){
         super(x, y, CockroachValues.X_SPEED, CockroachValues.Y_SPEED, CockroachValues.HEALTH, CockroachValues.ATTACK, Images.cockroachIdle, CockroachValues.IFRAMES);
@@ -25,11 +26,19 @@ public class Cockroach extends Entity{
         jumpTimer = (float) (Math.random() * (float) (3.5 * 60)) + 4;
         xVelstore = xVelocity;
         moveLeft = true;
+        image = Images.cockroachIdle;
     }
 
     public void render(Graphics g){
         if(!isDead) {
             super.render(g);
+
+                if (!facingRight) {
+                    image.draw(x, y + h - image.getHeight());
+                } else {
+                    image.getFlippedCopy(true, false).draw(x, y + h - image.getHeight());
+                }
+
         }
     }
 

@@ -33,12 +33,14 @@ public class Player extends Entity {
     private int step = 0;
     private int frames = 0;
     private int framesPerStep = 6;
-public static Image image;
+    public static Image image;
     public static boolean hasWeapon = false;
     public static boolean gameOver;
     public static int section = 0;
     private boolean hitFront = false;
     private int streetTimer = 1800;
+    public static boolean holdingKnife;
+    public static boolean knifeAttained;
 
     public Player(float x, float y) {
 
@@ -54,6 +56,8 @@ public static Image image;
         //mySheet2 = Images.knifeAttack;
         currentFrame = mySheet.getSprite(0,0);
         image  = Images.ratIdle;
+        knifeAttained = false;
+        holdingKnife = false;
     }
 
     public void render(Graphics g){
@@ -111,7 +115,7 @@ public static Image image;
                 xAccel = 0;
             }
         }
-
+        frames++;
         if(frames % framesPerStep == 0)
         {
             step++;
@@ -265,6 +269,7 @@ public static Image image;
                     if (getBounds().intersects(o.getBounds())) {
                         PlayerValues.doesPlayerHaveWeapon = true;
                         PlayerValues.isPlayerTouchingKey = true;
+                        knifeAttained = true;
                     }
                 }
             }
@@ -363,9 +368,15 @@ public static Image image;
         if(key == Input.KEY_SPACE && canAttack)
         {
             attack = true;
-            weaponCooldown = 90;
+            weaponCooldown = holdingKnife ? 30 : 90;
+
             canAttack = false;
         }
+        if(key == Input.KEY_1 && knifeAttained){
+            holdingKnife = !holdingKnife;
+            weaponCooldown = 30;
+        }
+
     }
 
 }

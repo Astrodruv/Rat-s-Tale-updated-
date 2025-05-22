@@ -14,6 +14,7 @@ import objects.platforms.sewerPlatforms.SewerFloor;
 import objects.platforms.sewerPlatforms.SewerPlatform;
 import objects.platforms.streetPlatforms.StreetFloor;
 import objects.platforms.streetPlatforms.StreetPlatform;
+import objects.weapons.Knife;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -158,6 +159,9 @@ public class World {
         }
         if (code == 'c'){
             obj = new PassiveCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if(code == 'n'){
+            obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (obj != null){

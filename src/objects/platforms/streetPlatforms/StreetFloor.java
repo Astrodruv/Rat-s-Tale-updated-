@@ -7,7 +7,7 @@ import ui.Images;
 public class StreetFloor extends Platform {
 
     public StreetFloor(float x, float y) {
-        super(x,y, Images.streetFloor);
+        super(x,y, Images.streetFloor2);
     }
 
     public void render(Graphics g) {

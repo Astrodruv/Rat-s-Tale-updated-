@@ -38,7 +38,7 @@ public class Game extends BasicGameState
 	private static PlayerHealthBar playerHealthBar;
 	private static CockroachHealthBar cockroachHealthBar;
 	private static BirdHealthBar birdHealthBar;
-
+	public static Image knifeDisplay;
 	public static GameContainer gc;
 	StateBasedGame sbg;
 	private int id;
@@ -65,6 +65,8 @@ public class Game extends BasicGameState
 		setLevel("levels/sewer1.txt"); // debug
 //		Player.section = 1; // debug
 //		PlayerValues.doesPlayerHaveWeapon = true; // debug
+		knifeDisplay = Images.knifeInv;
+
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -108,21 +110,20 @@ public class Game extends BasicGameState
 		}
 	}
 
-	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
-	{
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.setColor(Color.white);
 		g.drawString("x: " + player.getX(), 400, 500);
-        g.drawString("y: " + player.getY(), 400, 550);
+		g.drawString("y: " + player.getY(), 400, 550);
 
 		if (!Player.gameOver) {
-			if(Player.section == 1){
-				g.drawImage(Images.streetBackground,0,0);
-			} else{
+			if (Player.section == 1) {
+				g.drawImage(Images.streetBackground, 0, 0);
+			} else {
 				g.drawImage(Images.sewerBackground, 0, 0);
 			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
 			world.render(g);
-			if (knife != null){
+			if (knife != null) {
 				knife.render(g);
 			}
 			if (playerHealthBar != null) {
@@ -138,16 +139,28 @@ public class Game extends BasicGameState
 					birdHealthBar.render(g);
 				}
 			}
-		}
+			if (Player.knifeAttained) {
+				float knifeX;
+				if (Player.section > 0) {
+					knifeX = Main.getScreenWidth() / 26f;
+				} else {
+					knifeX = Main.getScreenWidth() / 23f;
+				}
 
-		if (Player.gameOver){
-			g.setColor(Color.black);
-			g.drawRect(0,0, Main.getScreenWidth(), Main.getScreenHeight());
-			g.setColor(Color.yellow);
-			g.drawString("YOU DIED", (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2);
-			g.drawString("Press any key to continue", (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2 + 25);
-		}
+				float knifeY = 50 + knifeDisplay.getHeight() + 10; // 20px padding from bottom
+				knifeDisplay.draw(knifeX, knifeY);
 
+			}
+
+			if (Player.gameOver) {
+				g.setColor(Color.black);
+				g.drawRect(0, 0, Main.getScreenWidth(), Main.getScreenHeight());
+				g.setColor(Color.yellow);
+				g.drawString("YOU DIED", (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2);
+				g.drawString("Press any key to continue", (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2 + 25);
+			}
+
+		}
 	}
 
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException

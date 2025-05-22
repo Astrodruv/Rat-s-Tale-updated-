@@ -35,9 +35,12 @@ public class Images
     public static Image key;
     public static Image door;
     public static Image knife;
+    public static Image knifeInvUnscaled;
+    public static Image knifeInv;
 
     public static SpriteSheet rat;
     public static SpriteSheet knifeAttack;
+
 
     public static void loadImages()
     {
@@ -63,6 +66,9 @@ public class Images
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
             knife = new Image("res/misc/Knife.png").getScaledCopy((int) Cell.getWidth() / 2, (int) (Cell.getHeight()));
+            knifeInvUnscaled = new Image("res/misc/Knife_Inventory.png");
+            knifeInv = knifeInvUnscaled.getScaledCopy(1.2f);
+
 
 //            rat = new SpriteSheet(ratWalking,174,48); Not for now (After Beta)
         }

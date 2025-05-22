@@ -68,13 +68,13 @@ public abstract class Entity extends GameObject {
             if (invincibilityFrames % 7 == 0){
 
             }
-            else{
-                image.draw(x,y);
-            }
+//            else{
+//                image.draw(x,y);
+//            }
         }
-        else{
-            image.draw(x,y);
-        }
+//        else{
+//            image.draw(x,y);
+//        }
 
 //        g.setColor(Color.white);
 //        g.draw(getBounds());
