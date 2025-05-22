@@ -22,6 +22,7 @@ import ui.Images;
 
 import java.util.ArrayList;
 
+
 public class Player extends Entity {
 
     private boolean jumpingOffOfEnemy;
@@ -48,27 +49,25 @@ public class Player extends Entity {
         inBox = false;
     }
 
-  
-    public void render(Graphics g){
+
+    public void render(Graphics g) {
         super.render(g);
 //        if (PlayerValues.doesPlayerHaveWeapon){
 //            g.setColor(Color.white);
 //            g.draw(getWeaponBounds(facingRight));
 //        }
-        if(streetTimer > 1200){
+        if (streetTimer > 1200) {
 //            g.setFont(Fonts.big);
 //            g.setColor(Color.red);
 //            g.drawString("Dont get hit!", (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2 - 400);
-          }
-          g.fillRect(x, y - 50, (w + 50), 10);
-          g.setColor(Color.yellow);
-          if (weaponCooldown > 0) {
-              g.fillRect(x, y - 50, (w + 50) * ((90 - weaponCooldown) / 90), 10);
-          } else {
-              g.fillRect(x, y - 50, w + 50, 10);
-
-          }
-      }
+        }
+        g.fillRect(x, y - 50, (w + 50), 10);
+        g.setColor(Color.yellow);
+        if (weaponCooldown > 0) {
+            g.fillRect(x, y - 50, (w + 50) * ((90 - weaponCooldown) / 90), 10);
+        } else {
+            g.fillRect(x, y - 50, w + 50, 10);
+        }
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -80,15 +79,14 @@ public class Player extends Entity {
         }
 
 
-        if (isDead){
+        if (isDead) {
             gameOver = true;
         }
 
-        if (input.isKeyDown(Input.KEY_D)){ // && !contactingPlatformSide
+        if (input.isKeyDown(Input.KEY_D)) { // && !contactingPlatformSide
             moveRight();
             facingRight = true;
-        }
-        else if (input.isKeyDown(Input.KEY_A)){ // && !contactingPlatformSide
+        } else if (input.isKeyDown(Input.KEY_A)) { // && !contactingPlatformSide
             moveLeft();
             facingRight = false;
         } else {
@@ -163,7 +161,7 @@ public class Player extends Entity {
             }
 
             if (o instanceof Door) {
-                if (!PlayerValues.isPlayerTouchingKey || !PlayerValues.enemyDeadInArea) {
+                if (!PlayerValues.isPlayerTouchingKey) {
                     float playerRight = futureX.getX() + futureX.getWidth();
                     float playerLeft = futureX.getX();
 
@@ -220,7 +218,6 @@ public class Player extends Entity {
                             Game.setLevel("levels/sewer4.txt");
                             if (!PlayerValues.keyOnPermanentlySetting) {
                                 PlayerValues.isPlayerTouchingKey = false;
-                                PlayerValues.enemyDeadInArea = true;
                             }
                             continue;
                         }
@@ -277,17 +274,16 @@ public class Player extends Entity {
                 }
             }
 
-//            if (o instanceof Weapon){
-            if (World.level.equals("levels/sewer4.txt")) {
-                if (getBounds().intersects(o.getBounds())) {
-                    PlayerValues.doesPlayerHaveWeapon = true;
-                    PlayerValues.isPlayerTouchingKey = true;
+            if (o instanceof Weapon) {
+                if (World.level.equals("levels/sewer4.txt")) {
+                    if (getBounds().intersects(o.getBounds())) {
+                        PlayerValues.doesPlayerHaveWeapon = true;
+                        PlayerValues.isPlayerTouchingKey = true;
+                    }
                 }
             }
-//            }
 
             if (o instanceof Cockroach) {
-                PlayerValues.enemyDeadInArea = false;
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
                 if (futureY.intersects(o.getBounds()) && !(((Cockroach) o).isDead)) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
@@ -302,17 +298,16 @@ public class Player extends Entity {
                 }
                 if (((Cockroach) o).isDead()) {
                     if (World.level.equals(CockroachValues.LEVEL_SPAWN_LOCATION)) {
-                        PlayerValues.enemyDeadInArea = true;
+                        PlayerValues.isPlayerTouchingKey = true;
                     }
                 }
                 if (weaponBounds.intersects(o.getBounds()) && !(((Cockroach) o).isDead)) {
-                   inBox = true;
+                    inBox = true;
                     if (attack) {
                         PlayerValues.isPlayerHurtingEnemy = true;
                         attack = false;
                     }
-                } else if(!(((Cockroach) o).isDead))
-                {
+                } else if (!(((Cockroach) o).isDead)) {
                     inBox = false;
                 }
             }
@@ -337,12 +332,10 @@ public class Player extends Entity {
                         PlayerValues.isPlayerHurtingEnemy = true;
                         attack = false;
                     }
-                }
-                else if(!(((Bird) o).isDead))
-                {
+                } else if (!(((Bird) o).isDead)) {
                     inBox = false;
                 }
-                if(((Bird) o).isDead()){
+                if (((Bird) o).isDead()) {
                     if (World.level.equals(BirdValues.LEVEL_SPAWN_LOCATION)) {
                         PlayerValues.isPlayerTouchingKey = true;
                     }
@@ -350,7 +343,7 @@ public class Player extends Entity {
             }
 
 
-            if (o instanceof EvilCar){
+            if (o instanceof EvilCar) {
                 if (futureY.intersects(o.getBounds())) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
                         jumpingOffOfEnemy = true;
@@ -362,10 +355,11 @@ public class Player extends Entity {
 
                     if (xAccel == 0 && hitFront) {
 
+                    }
                 }
             }
 
-            if (o instanceof PassiveCar){
+            if (o instanceof PassiveCar) {
                 if (futureY.intersects(o.getBounds())) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
                         jumpingOffOfEnemy = true;
@@ -395,23 +389,19 @@ public class Player extends Entity {
                     xVelocity = 0;
                 }
             }
-
-
-
         }
     }
 
-    public void keyPressed(int key, char c){
-        if (key == Input.KEY_D && !facingRight){
+    public void keyPressed(int key, char c) {
+        if (key == Input.KEY_D && !facingRight) {
 //            image = rightFacingImage;
             xAccel = 0;
         }
-        if (key == Input.KEY_A && facingRight){
+        if (key == Input.KEY_A && facingRight) {
             xAccel = 0;
 //            image = image.getFlippedCopy(true, false);
         }
-        if(PlayerValues.doesPlayerHaveWeapon && key == Input.KEY_SPACE && canAttack && inBox)
-        {
+        if (key == Input.KEY_SPACE && canAttack && inBox) {
             attack = true;
             weaponCooldown = 90;
             canAttack = false;

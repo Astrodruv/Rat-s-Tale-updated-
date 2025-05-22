@@ -17,7 +17,7 @@ public class Cockroach extends Entity{
     private float jumpTimer;
     private boolean moveLeft;
 
-    public Cockroach(float x, float y){
+    public Cockroach(float x, float y) {
         super(x, y, CockroachValues.X_SPEED, CockroachValues.Y_SPEED, CockroachValues.HEALTH, CockroachValues.ATTACK, Images.cockroachIdle, CockroachValues.IFRAMES);
         facingRight = false;
         timer = 7 * 60;
@@ -27,25 +27,25 @@ public class Cockroach extends Entity{
         moveLeft = true;
     }
 
-    public void render(Graphics g){
+    public void render(Graphics g) {
         if(!isDead) {
             super.render(g);
         }
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int delta){
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) {
         if (PlayerValues.isPlayerHurtingEnemy)
         {
             isHit = true;
             PlayerValues.isPlayerHurtingEnemy = false;
-            takeDamage(PlayerValues.ATTACK);
+//            takeDamage(PlayerValues.ATTACK);
         }
 
-//        if (isHit && !hasTakenDamage){
-//            takeDamage(PlayerValues.ATTACK);
-//            hasTakenDamage = true;
-//            jump();
-//        }
+        if (isHit && !hasTakenDamage){
+            takeDamage(PlayerValues.ATTACK);
+            hasTakenDamage = true;
+            jump();
+        }
 
         if (x > Cell.getWidth() * 3 && moveLeft) {
             moveLeft();
