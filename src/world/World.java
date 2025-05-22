@@ -3,9 +3,7 @@ package world;
 import engine.states.Game;
 import objects.GameObject;
 import objects.entities.Player;
-import objects.entities.enemies.Bird;
-import objects.entities.enemies.EvilCar;
-import objects.entities.enemies.Cockroach;
+import objects.entities.enemies.*;
 import objects.entities.enemies.PassiveCar;
 import objects.interactables.Door;
 import objects.interactables.Key;
@@ -119,7 +117,7 @@ public class World {
     public void setCell(Cell cell, char code) throws SlickException {
         GameObject obj = null;
 
-        // Characters Used: c, l, e, f, k, m, p, s, C, E, W
+        // Characters Used: c, d, e, f, k, m, p, s, C, E, W, t
 
         if (code == 'p'){
             obj = new SewerPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -133,7 +131,6 @@ public class World {
         if (code == 'm'){
             obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-
         if (code == 'P'){
             obj = new Player(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
@@ -146,11 +143,10 @@ public class World {
         if(code == 'e'){
             obj = new EvilCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-
         if (code == 'k'){
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if(code == 'l') {
+        if(code == 'd') {
             obj = new Door(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 'W'){
@@ -158,6 +154,10 @@ public class World {
         }
         if (code == 'c'){
             obj = new PassiveCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if(code == 't')
+        {
+            obj = new RatTrap(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (obj != null){

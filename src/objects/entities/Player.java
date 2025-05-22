@@ -2,9 +2,7 @@ package objects.entities;
 
 import engine.states.Game;
 import objects.GameObject;
-import objects.entities.enemies.Bird;
-import objects.entities.enemies.EvilCar;
-import objects.entities.enemies.Cockroach;
+import objects.entities.enemies.*;
 import objects.entities.enemies.PassiveCar;
 import objects.interactables.Door;
 import objects.interactables.Key;
@@ -387,6 +385,16 @@ public class Player extends Entity {
                         newX = o.getX() + o.getW();
                     }
                     xVelocity = 0;
+                }
+            }
+
+            if(o instanceof RatTrap)
+            {
+                if (futureY.intersects(o.getBounds())) {
+                    if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
+                        takeDamage(CarValues.ATTACK);
+                        ySpeed /= 2;
+                    }
                 }
             }
         }
