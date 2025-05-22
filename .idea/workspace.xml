@@ -9,27 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="editations">
-      <change afterPath="$PROJECT_DIR$/levels/street3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/levels/street4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/levels/street5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/values/StudentValues.java" afterDir="false" />
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="Bird movement difficulty bonus and student addition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/school.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/closet.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/levels/sewer1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/sewer2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/sewer3(temp).txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/sewer3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/sewer4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/street1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/street2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/states/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/states/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Cockroach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Cockroach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/values/BirdValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/BirdValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747833842130</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Bird movement difficulty bonus and student addition">
+      <option name="closed" value="true" />
+      <created>1747867404463</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1747867404463</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -337,6 +328,7 @@
     <MESSAGE value="imports" />
     <MESSAGE value="should be good for beta" />
     <MESSAGE value="editations" />
-    <option name="LAST_COMMIT_MESSAGE" value="editations" />
+    <MESSAGE value="Bird movement difficulty bonus and student addition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bird movement difficulty bonus and student addition" />
   </component>
 </project>

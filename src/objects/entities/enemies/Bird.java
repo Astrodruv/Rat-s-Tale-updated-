@@ -28,7 +28,7 @@ public class Bird extends Entity {
     public Bird(float x, float y) {
         super(x, y, BirdValues.X_SPEED, BirdValues.Y_SPEED, BirdValues.HEALTH, BirdValues.ATTACK, Images.birdIdle, BirdValues.IFRAMES);
         facingRight = true;
-        flightTime = 265 * 1;
+        flightTime = 265 * 4;
         flightHeight = (float) (Math.random() * 500) + 500;
         diveTime = 60;
     }
@@ -75,7 +75,7 @@ public class Bird extends Entity {
             y = (float) (300 * sin((PI / 1729.2) * 5 * (x-38.4))) + 450;
         }
         else {
-            flightTime = 308 * 5;
+            flightTime = 308 * 4;
         }
         if (isHit) {
             invincibilityFrames--;
