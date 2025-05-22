@@ -258,7 +258,7 @@ public class Player extends Entity {
                             continue;
                         }
                         if (World.level.equals("levels/street5.txt")) {
-                            Game.setLevel("levels/closet.txt");
+                            Game.setLevel("levels/school.txt");
                             if (!PlayerValues.keyOnPermanentlySetting) {
                                 PlayerValues.isPlayerTouchingKey = false;
                             }

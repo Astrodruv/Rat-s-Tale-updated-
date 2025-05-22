@@ -9,10 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="Bird movement difficulty bonus and student addition">
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="map adjust">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/sewer1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/closet.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/school.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/states/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/states/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +300,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747867404463</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="map adjust">
+      <option name="closed" value="true" />
+      <created>1747915450105</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1747915450105</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -329,6 +338,7 @@
     <MESSAGE value="should be good for beta" />
     <MESSAGE value="editations" />
     <MESSAGE value="Bird movement difficulty bonus and student addition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bird movement difficulty bonus and student addition" />
+    <MESSAGE value="map adjust" />
+    <option name="LAST_COMMIT_MESSAGE" value="map adjust" />
   </component>
 </project>
