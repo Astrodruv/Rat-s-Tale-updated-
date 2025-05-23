@@ -116,9 +116,12 @@ public class Game extends BasicGameState
 		g.drawString("y: " + player.getY(), 400, 550);
 
 		if (!Player.gameOver) {
-			if (Player.section == 1) {
+
+			if (Player.section == 1 && !World.level.equals("levels/street5.txt")) {
 				g.drawImage(Images.streetBackground, 0, 0);
-			} else {
+			} else if(World.level.equals("levels/street5.txt")){
+				g.drawImage(Images.schoolBackground,0,0);
+			}else {
 				g.drawImage(Images.sewerBackground, 0, 0);
 			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)

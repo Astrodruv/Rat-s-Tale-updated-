@@ -20,8 +20,8 @@ public class Knife extends GameObject {
             if (entity.isFacingRight() && Player.holdingKnife) {
                 image.draw(entity.getX() + entity.getW(), entity.getY());
             }
-            else if(Player.holdingKnife){
-                image.draw(entity.getX() - getW(), entity.getY());
+            else if(!entity.isFacingRight() && Player.holdingKnife ){
+                image.getFlippedCopy(true,false).draw(entity.getX() - getW(), entity.getY());
             }
         }
     }

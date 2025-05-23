@@ -19,6 +19,7 @@ public class Images
     public static Image sewerFloor;
     public static Image streetFloor;
     public static Image streetFloor2;
+    public static Image streetPlatform;
 
     // Objects
     public static Image ratIdle;
@@ -39,6 +40,8 @@ public class Images
     public static Image knifeInv;
 
     public static SpriteSheet rat;
+    public static SpriteSheet cockRoach;
+    public static SpriteSheet bird;
     public static SpriteSheet knifeAttack;
 
 
@@ -54,15 +57,19 @@ public class Images
             sewerPlatform = new Image("res/levels/sewer/Sewer_Platform.png").getScaledCopy((int) Cell.getWidth(), (int) (Cell.getHeight() / 8));
             streetFloor = new Image("res/levels/street/Street_Floor.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
             streetFloor2 = new Image("res/levels/street/Street_Floor2.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
-
+            streetPlatform = new Image("res/misc/Street_Platform.png").getScaledCopy((int) Cell.getWidth(), (int) (Cell.getHeight() / 8));
 
             ratIdle = new Image("res/misc/Rat_Idle1.png").getScaledCopy((int) (Cell.getWidth() * 2.5), (int) Cell.getHeight() + 10);
             cockroachIdle = new Image("res/levels/sewer/Cockroach_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight());
             birdIdle = new Image("res/levels/street/Eagle.png").getScaledCopy((int) Cell.getWidth() * 6, (int) Cell.getHeight() * 3);
+            birdFlying = new Image("res/levels/street/Bird_Flapping2.png");
+            bird = new SpriteSheet(birdFlying,470,300);
             car1 = new Image("res/levels/street/Car.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
             car2 = new Image("res/levels/street/Car2.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
             ratWalking = new Image("res/misc/Rat_Walking.png");
             rat = new SpriteSheet(ratWalking,174,48);
+            cockroachWalking = new Image("res/levels/sewer/CockRoach Walking.png");
+            cockRoach = new SpriteSheet(cockroachWalking,150,90);
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
             knife = new Image("res/misc/Knife.png").getScaledCopy((int) Cell.getWidth() / 2, (int) (Cell.getHeight()));

@@ -248,7 +248,42 @@ public class Player extends Entity {
                         }
                         if (World.level.equals("levels/sewer4.txt")) {
                             section++;
-                            Game.setLevel("levels/street1.txt");
+                            Game.setLevel("levels/street1.txt"); //street1
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/street1.txt")) {
+                            Game.setLevel("levels/street2.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/street2.txt")) {
+                            Game.setLevel("levels/street3.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/street3.txt")) {
+                            Game.setLevel("levels/street4.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/street4.txt")) {
+                            Game.setLevel("levels/street5.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/street5.txt")) {
+                            Game.setLevel("levels/school.txt");
                             if (!PlayerValues.keyOnPermanentlySetting) {
                                 PlayerValues.isPlayerTouchingKey = false;
                             }
@@ -272,6 +307,9 @@ public class Player extends Entity {
                         knifeAttained = true;
                     }
                 }
+            }
+            if(section > 0){
+                knifeAttained = true;
             }
 
             if (o instanceof Cockroach){

@@ -6,7 +6,7 @@ import objects.entities.Player;
 import objects.entities.enemies.Bird;
 import objects.entities.enemies.EvilCar;
 import objects.entities.enemies.Cockroach;
-import objects.entities.enemies.PassiveCar;
+import objects.entities.PassiveCar;
 import objects.interactables.Door;
 import objects.interactables.Key;
 import objects.interactables.Weapon;
@@ -163,7 +163,9 @@ public class World {
         if(code == 'n'){
             obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-
+        if (code == 'm'){
+            obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
         if (obj != null){
             addObject(obj, cell.getX(), cell.getY());
             Game.levelObjects.add(obj);
