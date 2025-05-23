@@ -62,8 +62,8 @@ public class Images
             ratIdle = new Image("res/misc/Rat_Idle1.png").getScaledCopy((int) (Cell.getWidth() * 2.5), (int) Cell.getHeight() + 10);
             cockroachIdle = new Image("res/levels/sewer/Cockroach_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight());
             birdIdle = new Image("res/levels/street/Eagle.png").getScaledCopy((int) Cell.getWidth() * 6, (int) Cell.getHeight() * 3);
-            birdFlying = new Image("res/levels/street/Bird_Flapping2.png");
-            bird = new SpriteSheet(birdFlying,470,300);
+            birdFlying = new Image("res/levels/street/Bird_Flapping3.png");
+            bird = new SpriteSheet(birdFlying,329,210);
             car1 = new Image("res/levels/street/Car.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
             car2 = new Image("res/levels/street/Car2.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
             ratWalking = new Image("res/misc/Rat_Walking.png");

@@ -10,10 +10,14 @@ import world.Cell;
 import world.World;
 import ui.Images;
 
+import static java.lang.Math.PI;
+import static java.lang.Math.sin;
+
 public class Bird extends Entity{
 
     private float flightTime;
     private float flightHeight;
+    private int flightCounter;
     private Image image;
     private SpriteSheet mySheet;
     private Image currentFrame;
@@ -25,6 +29,7 @@ public class Bird extends Entity{
         facingRight = true;
         flightTime = 3 * 60;
         flightHeight = (float) (Math.random() * 500) + 500;
+        flightCounter = 0;
         image = Images.birdIdle;
         mySheet = Images.bird;
         currentFrame = mySheet.getSprite(0,0);
@@ -41,7 +46,8 @@ public class Bird extends Entity{
             }
         }
 
-//        g.draw(getBounds());
+        g.draw(getBounds());
+        g.drawString(""+flightCounter, 700,700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -56,17 +62,26 @@ public class Bird extends Entity{
 //            hasTakenDamage = true;
 //        }
 
-        y = (((float) -1 / (900)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
 
 
-        if(y < -200)
+        if(x <= -Images.bird.getWidth() || x >= Main.getScreenWidth())
         {
             xSpeed *= -1;
             image = image.getFlippedCopy(true, false);
             facingRight = false;
+            flightCounter++;
         }
 
         x += xSpeed;
+
+        if(flightCounter != 1) //mod this
+        {
+            y = (((float) -1 / (950)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
+        }
+        else if (flightCounter == 1)
+        {
+            y = (float) (300 * sin((PI / 1729.2) * 5 * (x - 38.4)) + 400);
+        }
         if(xSpeed > 0){
             facingRight = true;
 
