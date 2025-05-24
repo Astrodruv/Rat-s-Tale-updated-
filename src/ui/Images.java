@@ -66,8 +66,8 @@ public class Images
             bird = new SpriteSheet(birdFlying,329,210);
             car1 = new Image("res/levels/street/Car.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
             car2 = new Image("res/levels/street/Car2.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
-            ratWalking = new Image("res/misc/Rat_Walking.png");
-            rat = new SpriteSheet(ratWalking,174,48);
+            ratWalking = new Image("res/misc/Rat Walking.png");
+            rat = new SpriteSheet(ratWalking,154,42);
             cockroachWalking = new Image("res/levels/sewer/CockRoach Walking.png");
             cockRoach = new SpriteSheet(cockroachWalking,150,90);
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
