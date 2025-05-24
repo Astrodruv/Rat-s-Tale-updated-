@@ -27,7 +27,7 @@ public class Bird extends Entity{
     public Bird(float x, float y) {
         super(x, y, BirdValues.X_SPEED, BirdValues.Y_SPEED, BirdValues.HEALTH, BirdValues.ATTACK, Images.birdIdle, BirdValues.IFRAMES);
         facingRight = true;
-        flightTime = (Cell.getWidth * 49) / BirdValues.X_SPEED;
+        flightTime = (Cell.getWidth() * 49) / BirdValues.X_SPEED;
         flightHeight = (float) (Math.random() * 500) + 500;
         flightCounter = 0;
         image = Images.birdIdle;
