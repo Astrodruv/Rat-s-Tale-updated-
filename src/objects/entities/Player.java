@@ -39,6 +39,7 @@ public class Player extends Entity {
     private int streetTimer = 1800;
     public static boolean holdingKnife;
     public static boolean knifeAttained;
+    private boolean inBox;
 
     public Player(float x, float y) {
 
@@ -56,6 +57,7 @@ public class Player extends Entity {
         image  = Images.ratIdle;
         knifeAttained = false;
         holdingKnife = false;
+        inBox = false;
     }
 
     public void render(Graphics g){
@@ -79,6 +81,15 @@ public class Player extends Entity {
             currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
         }
 
+        if(PlayerValues.doesPlayerHaveWeapon && holdingKnife) {
+            g.fillRect(x, y - 50, (w + 50), 10);
+            g.setColor(Color.yellow);
+            if (weaponCooldown > 0) {
+                g.fillRect(x, y - 50, (w + 50) * ((30 - weaponCooldown) / 30), 10);
+            } else {
+                g.fillRect(x, y - 50, w + 50, 10);
+            }
+        }
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
@@ -223,7 +234,7 @@ public class Player extends Entity {
                 }
                 else{
                     if (getBounds().intersects(o.getBounds()) && PlayerValues.isPlayerTouchingKey) {
-                        if (World.level.equals("levels/sewer1.txt")){
+                        if (World.level.equals("levels/sewer1.txt")){ //sewer1
                             Game.setLevel("levels/sewer2.txt");
                             if (!PlayerValues.keyOnPermanentlySetting) {
                                 PlayerValues.isPlayerTouchingKey = false;
@@ -346,9 +357,18 @@ public class Player extends Entity {
                     }
                 }
                 if(weaponBounds.intersects(o.getBounds())) {
+                    inBox = true;
                     if(attack) {
                         PlayerValues.isPlayerHurtingEnemy = true;
                         attack = false;
+                    }
+                }
+                else {
+                    inBox = false;
+                }
+                if(((Bird) o).isDead()){
+                    if (World.level.equals(CockroachValues.LEVEL_SPAWN_LOCATION)){
+                        PlayerValues.isPlayerTouchingKey = true;
                     }
                 }
             }
@@ -413,11 +433,10 @@ public class Player extends Entity {
             xAccel = 0;
 //            image = image.getFlippedCopy(true, false);
         }
-        if(key == Input.KEY_SPACE && canAttack)
+        if(key == Input.KEY_SPACE && canAttack && inBox && holdingKnife)
         {
             attack = true;
-            weaponCooldown = holdingKnife ? 30 : 90;
-
+            weaponCooldown = 30;
             canAttack = false;
         }
         if(key == Input.KEY_1 && knifeAttained){

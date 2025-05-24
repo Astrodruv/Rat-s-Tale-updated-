@@ -74,10 +74,10 @@ public class Bird extends Entity{
 
         x += xSpeed;
 
-        if(flightCounter % 5 == 0) //mod this
+        if(flightCounter < 1) { }
+        else if(flightCounter % 5 == 0) //mod this
         {
             y = (float) (300 * sin((PI / 1729.2) * 5 * (x - 38.4)) + 400);
-
         }
         else
         {
@@ -85,7 +85,6 @@ public class Bird extends Entity{
         }
         if(xSpeed > 0){
             facingRight = true;
-
         }
 
         if (isHit){

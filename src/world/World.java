@@ -7,6 +7,7 @@ import objects.entities.enemies.Bird;
 import objects.entities.enemies.EvilCar;
 import objects.entities.enemies.Cockroach;
 import objects.entities.PassiveCar;
+import objects.entities.enemies.RatTrap;
 import objects.interactables.Door;
 import objects.interactables.Key;
 import objects.interactables.Weapon;
@@ -68,7 +69,7 @@ public class World {
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar) {
+            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar || obj instanceof RatTrap) {
                 obj.render(g);
             }
         }
@@ -120,7 +121,7 @@ public class World {
     public void setCell(Cell cell, char code) throws SlickException {
         GameObject obj = null;
 
-        // Characters Used: c, d, e, f, k, m, p, s, C, E, W
+        // Characters Used: c, d, e, f, k, m, p, s, C, E, W, t
 
         if (code == 'p'){
             obj = new SewerPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -166,6 +167,12 @@ public class World {
         if (code == 'm'){
             obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
+
+        if(code == 't')
+        {
+            obj = new RatTrap(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+
         if (obj != null){
             addObject(obj, cell.getX(), cell.getY());
             Game.levelObjects.add(obj);
