@@ -82,9 +82,9 @@ public class Game extends BasicGameState
 
 		updateHealthBars();
 
-		if (World.level.equals(("levels/school.txt"))) {
-			this.sbg.enterState(Main.END_ID);
-		}
+//		if (World.level.equals(("levels/school.txt"))) {
+//			this.sbg.enterState(Main.END_ID);
+//		}
 	}
 
 	public void updateHealthBars() {
@@ -117,7 +117,7 @@ public class Game extends BasicGameState
 		if (!Player.gameOver) {
 			if(Player.section == 1){
 				g.drawImage(Images.streetBackground,0,0);
-			} else{
+			} else {
 				g.drawImage(Images.sewerBackground, 0, 0);
 			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)

@@ -262,6 +262,13 @@ public class Player extends Entity {
                             }
                             continue;
                         }
+                        if(World.level.equals("levels/school.txt")) {
+                            Game.setLevel("levels/closet1.txt");
+                            section++;
+                            if(!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                        }
                     }
                 }
             }
@@ -393,7 +400,12 @@ public class Player extends Entity {
                 if (futureY.intersects(o.getBounds())) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
                         takeDamage(CarValues.ATTACK);
-                        ySpeed /= 2;
+                        int temp = 60;
+                        temp--;
+                        if(temp < 0) {
+                            ySpeed *= 0.95;
+                            temp=0;
+                        }
                     }
                 }
             }

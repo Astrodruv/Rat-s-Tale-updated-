@@ -11,7 +11,7 @@ import values.RatTrapValues;
 public class RatTrap extends Entity {
 
     public RatTrap(float x, float y) {
-        super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.key, RatTrapValues.IFRAMES);
+        super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.car1, RatTrapValues.IFRAMES);
     }
 
     public void render(Graphics g)
@@ -21,6 +21,6 @@ public class RatTrap extends Entity {
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta)
     {
-
+        super.update(gc, sbg, delta);
     }
 }
