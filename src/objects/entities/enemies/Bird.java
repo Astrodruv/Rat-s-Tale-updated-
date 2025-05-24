@@ -27,7 +27,7 @@ public class Bird extends Entity{
     public Bird(float x, float y) {
         super(x, y, BirdValues.X_SPEED, BirdValues.Y_SPEED, BirdValues.HEALTH, BirdValues.ATTACK, Images.birdIdle, BirdValues.IFRAMES);
         facingRight = true;
-        flightTime = (Cell.getWidth() * 49) / BirdValues.X_SPEED;
+        flightTime = 3 * 60;
         flightHeight = (float) (Math.random() * 500) + 500;
         flightCounter = 0;
         image = Images.birdIdle;
@@ -39,7 +39,7 @@ public class Bird extends Entity{
         if(!isDead) {
             super.render(g);
             float renderOffsetY = h - currentFrame.getHeight();
-            if (facingRight) {
+          if (facingRight) {
                 currentFrame.draw(x, y + renderOffsetY);
             } else {
                 currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
@@ -47,7 +47,7 @@ public class Bird extends Entity{
         }
 
         g.draw(getBounds());
-        // g.drawString(""+flightCounter, 700,700);
+        g.drawString(""+flightCounter, 700,700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -74,14 +74,13 @@ public class Bird extends Entity{
 
         x += xSpeed;
 
-        if(flightCounter % 5 == 0) //mod this
-        {
-            y = (float) (300 * sin((PI / 1729.2) * 5 * (x - 38.4)) + 400);
-        }
-        else
+        if(flightCounter != 1) //mod this
         {
             y = (((float) -1 / (950)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
-
+        }
+        else if (flightCounter == 1)
+        {
+            y = (float) (300 * sin((PI / 1729.2) * 5 * (x - 38.4)) + 400);
         }
         if(xSpeed > 0){
             facingRight = true;
