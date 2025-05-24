@@ -3,8 +3,10 @@ package world;
 import engine.states.Game;
 import objects.GameObject;
 import objects.entities.Player;
-import objects.entities.enemies.*;
-import objects.entities.enemies.PassiveCar;
+import objects.entities.enemies.Bird;
+import objects.entities.enemies.EvilCar;
+import objects.entities.enemies.Cockroach;
+import objects.entities.PassiveCar;
 import objects.interactables.Door;
 import objects.interactables.Key;
 import objects.interactables.Weapon;
@@ -12,6 +14,7 @@ import objects.platforms.sewerPlatforms.SewerFloor;
 import objects.platforms.sewerPlatforms.SewerPlatform;
 import objects.platforms.streetPlatforms.StreetFloor;
 import objects.platforms.streetPlatforms.StreetPlatform;
+import objects.weapons.Knife;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -117,7 +120,7 @@ public class World {
     public void setCell(Cell cell, char code) throws SlickException {
         GameObject obj = null;
 
-        // Characters Used: c, d, e, f, k, m, p, s, C, E, W, t
+        // Characters Used: c, d, e, f, k, m, p, s, C, E, W
 
         if (code == 'p'){
             obj = new SewerPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -131,6 +134,7 @@ public class World {
         if (code == 'm'){
             obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
+
         if (code == 'P'){
             obj = new Player(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
@@ -143,6 +147,7 @@ public class World {
         if(code == 'e'){
             obj = new EvilCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
+
         if (code == 'k'){
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
@@ -155,11 +160,12 @@ public class World {
         if (code == 'c'){
             obj = new PassiveCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if(code == 't')
-        {
-            obj = new RatTrap(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        if(code == 'W'){
+            obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-
+        if (code == 'm'){
+            obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
         if (obj != null){
             addObject(obj, cell.getX(), cell.getY());
             Game.levelObjects.add(obj);
