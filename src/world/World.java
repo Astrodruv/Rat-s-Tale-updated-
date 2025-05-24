@@ -160,7 +160,7 @@ public class World {
         if (code == 'c'){
             obj = new PassiveCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if(code == 'n'){
+        if(code == 'W'){
             obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 'm'){
