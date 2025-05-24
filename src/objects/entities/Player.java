@@ -6,6 +6,7 @@ import objects.GameObject;
 import objects.entities.enemies.Bird;
 import objects.entities.enemies.EvilCar;
 import objects.entities.enemies.Cockroach;
+import objects.entities.enemies.RatTrap;
 import objects.interactables.Door;
 import objects.interactables.Key;
 import objects.interactables.Weapon;
@@ -13,10 +14,7 @@ import objects.platforms.Platform;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
-import values.BirdValues;
-import values.CarValues;
-import values.CockroachValues;
-import values.PlayerValues;
+import values.*;
 import world.World;
 import ui.Images;
 
@@ -388,7 +386,19 @@ public class Player extends Entity {
                 }
             }
 
-
+            if(o instanceof RatTrap)
+            {
+                if(futureY.intersects(o.getBounds()))
+                {
+                    takeDamage(RatTrapValues.ATTACK);
+                    int temp = 60;
+                    temp--;
+                    if(temp > 0)
+                    {
+                        xSpeed /= 2;
+                    }
+                }
+            }
         }
     }
 
