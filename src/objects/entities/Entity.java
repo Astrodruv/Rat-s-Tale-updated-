@@ -39,7 +39,7 @@ public abstract class Entity extends GameObject {
     protected float xAccel;
 
     public Entity(float x, float y, int xSpeed, int ySpeed, int health, int attack, Image image, int iFrames) {
-        super(x,y, image);
+        super(x,y,image);
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
         maxHealth = health;
@@ -68,13 +68,13 @@ public abstract class Entity extends GameObject {
             if (invincibilityFrames % 7 == 0){
 
             }
-            else{
-                image.draw(x,y);
-            }
+//            else{
+//                image.draw(x,y);
+//            }
         }
-        else{
-            image.draw(x,y);
-        }
+//        else{
+//            image.draw(x,y);
+//        }
 
 //        g.setColor(Color.white);
 //        g.draw(getBounds());

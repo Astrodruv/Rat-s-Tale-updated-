@@ -2,7 +2,7 @@
 package values;
 
 public class BirdValues {
-    public static final int X_SPEED = 7;
+    public static final int X_SPEED = 10;
     public static final int Y_SPEED = 10;
     public static final int HEALTH = 15;
     public static final int ATTACK = 3;
