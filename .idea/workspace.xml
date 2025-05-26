@@ -9,18 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="finally">
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="ratrap just needs images">
+      <change afterPath="$PROJECT_DIR$/levels/closet2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/closet3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/Bird.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/Bird.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/RatTrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/RatTrap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/world/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/world/World.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/states/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/states/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/RatTrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/RatTrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,7 +347,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748112756900</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="ratrap just needs images">
+      <option name="closed" value="true" />
+      <created>1748115987909</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1748115987909</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -389,6 +389,7 @@
     <MESSAGE value="rattrap" />
     <MESSAGE value="oops" />
     <MESSAGE value="finally" />
-    <option name="LAST_COMMIT_MESSAGE" value="finally" />
+    <MESSAGE value="ratrap just needs images" />
+    <option name="LAST_COMMIT_MESSAGE" value="ratrap just needs images" />
   </component>
 </project>
