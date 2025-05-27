@@ -36,6 +36,8 @@ public class Bird extends Entity{
     }
 
     public void render(Graphics g) {
+
+        System.out.println(isDead);
         if(!isDead) {
             super.render(g);
             float renderOffsetY = h - currentFrame.getHeight();
@@ -47,22 +49,15 @@ public class Bird extends Entity{
         }
 
         g.draw(getBounds());
-        g.drawString(""+flightCounter, 700,700);
+//        g.drawString(""+PlayerValues.isPlayerTouchingKey, 700,700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
-        if (PlayerValues.isPlayerHurtingEnemy){
+        if (PlayerValues.isPlayerHurtingEnemy) {
             isHit = true;
             takeDamage(PlayerValues.ATTACK);
             PlayerValues.isPlayerHurtingEnemy = false;
         }
-
-//        if (isHit && !hasTakenDamage){
-//            takeDamage(PlayerValues.ATTACK);
-//            hasTakenDamage = true;
-//        }
-
-
 
         if(x <= -Images.birdIdle.getWidth()|| x >= Main.getScreenWidth())
         {
@@ -98,8 +93,7 @@ public class Bird extends Entity{
 
         percentHealth = (float) curHealth / maxHealth;
 
-        if(curHealth <= 0)
-        {
+        if(percentHealth == 0) {
             isDead = true;
             cell.removeObject();
         }

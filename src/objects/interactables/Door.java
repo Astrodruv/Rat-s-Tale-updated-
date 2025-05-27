@@ -9,7 +9,7 @@ import values.PlayerValues;
 public class Door extends GameObject {
 
     public Door(float x, float y) {
-        super(x,y, Images.door);
+        super(x, y, Images.door);
     }
 
     public void render(Graphics g) {
