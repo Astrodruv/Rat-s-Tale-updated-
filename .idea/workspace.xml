@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="dhruv additions to bird flight movement">
-      <change afterPath="$PROJECT_DIR$/res/misc/Rat Walking.png" afterDir="false" />
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="ratrap just needs images">
+      <change afterPath="$PROJECT_DIR$/levels/closet2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/closet3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Images.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Images.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,9 +68,10 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Caiden&quot;,
+
+    &quot;git-widget-placeholder&quot;: &quot;Dhruv&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/luebe/IdeaProjects/Rats_Tale_updated/res/misc&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -88,6 +89,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\AP Java Projects\Rats Tale\out\artifacts" />
       <recent name="D:\AP Java Projects\Rats Tale\src\objects\platforms" />
+    </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="objects.entities.enemies" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="objects.healthbars" />
@@ -266,7 +270,87 @@
       <option name="project" value="LOCAL" />
       <updated>1748005276270</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="should be good for beta">
+      <option name="closed" value="true" />
+      <created>1747706736647</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1747706736647</updated>
+    </task>
+    <task id="LOCAL-00021" summary="editations">
+      <option name="closed" value="true" />
+      <created>1747833842130</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1747833842130</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Bird movement difficulty bonus and student addition">
+      <option name="closed" value="true" />
+      <created>1747867404463</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1747867404463</updated>
+    </task>
+    <task id="LOCAL-00023" summary="map adjust">
+      <option name="closed" value="true" />
+      <created>1747915450105</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1747915450105</updated>
+    </task>
+    <task id="LOCAL-00024" summary="map adjust">
+      <option name="closed" value="true" />
+      <created>1747915881676</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1747915881676</updated>
+    </task>
+    <task id="LOCAL-00025" summary="rattrap">
+      <option name="closed" value="true" />
+      <created>1747920225979</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1747920225979</updated>
+    </task>
+    <task id="LOCAL-00026" summary="rattrap">
+      <option name="closed" value="true" />
+      <created>1748109874237</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1748109874237</updated>
+    </task>
+    <task id="LOCAL-00027" summary="oops">
+      <option name="closed" value="true" />
+      <created>1748111522240</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1748111522240</updated>
+    </task>
+    <task id="LOCAL-00028" summary="finally">
+      <option name="closed" value="true" />
+      <created>1748112756900</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1748112756900</updated>
+    </task>
+    <task id="LOCAL-00029" summary="ratrap just needs images">
+      <option name="closed" value="true" />
+      <created>1748115987909</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1748115987909</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -292,7 +376,16 @@
     <MESSAGE value="Add files via upload" />
     <MESSAGE value="3 cockroaches" />
     <MESSAGE value="im done" />
-    <MESSAGE value="dhruv additions to bird flight movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="dhruv additions to bird flight movement" />
+
+    <MESSAGE value="imports" />
+    <MESSAGE value="should be good for beta" />
+    <MESSAGE value="editations" />
+    <MESSAGE value="Bird movement difficulty bonus and student addition" />
+    <MESSAGE value="map adjust" />
+    <MESSAGE value="rattrap" />
+    <MESSAGE value="oops" />
+    <MESSAGE value="finally" />
+    <MESSAGE value="ratrap just needs images" />
+    <option name="LAST_COMMIT_MESSAGE" value="ratrap just needs images" />
   </component>
 </project>

@@ -9,6 +9,7 @@ import objects.entities.Entity;
 import objects.entities.Player;
 import objects.entities.enemies.Bird;
 import objects.entities.enemies.Cockroach;
+import objects.entities.enemies.RatTrap;
 import objects.interactables.Weapon;
 import objects.weapons.Knife;
 import org.newdawn.slick.*;
@@ -34,6 +35,8 @@ public class Game extends BasicGameState
 	private static Bird bird;
 
 	private static Knife knife;
+
+	private static RatTrap ratTrap;
 
 	private static PlayerHealthBar playerHealthBar;
 	private static CockroachHealthBar cockroachHealthBar;
@@ -62,7 +65,7 @@ public class Game extends BasicGameState
 
 		world = new World();
 
-		setLevel("levels/sewer1.txt"); // debug
+		setLevel("levels/closet1.txt"); // debug //sewer1
 //		Player.section = 1; // debug
 //		PlayerValues.doesPlayerHaveWeapon = true; // debug
 		knifeDisplay = Images.knifeInv;
@@ -184,7 +187,7 @@ public class Game extends BasicGameState
 		else{
 			if (key >= 0){
 				if (Player.section == 0){
-					setLevel("levels/sewer1.txt");
+					setLevel("levels/sewer1.txt"); //sewer1
 					Player.gameOver = false;
 				}
 				if (Player.section == 1){
