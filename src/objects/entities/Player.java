@@ -234,6 +234,7 @@ public class Player extends Entity {
                 }
                 else{
                     if (getBounds().intersects(o.getBounds()) && PlayerValues.isPlayerTouchingKey) {
+
                         if (World.level.equals("levels/sewer1.txt")){ //sewer1
                             Game.setLevel("levels/sewer2.txt");
                             if (!PlayerValues.keyOnPermanentlySetting) {

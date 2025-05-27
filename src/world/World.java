@@ -167,12 +167,10 @@ public class World {
         if (code == 'm'){
             obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-
         if(code == 't')
         {
             obj = new RatTrap(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-
         if (obj != null){
             addObject(obj, cell.getX(), cell.getY());
             Game.levelObjects.add(obj);

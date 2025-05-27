@@ -64,14 +64,19 @@ public class Images
             birdIdle = new Image("res/levels/street/Eagle.png").getScaledCopy((int) Cell.getWidth() * 6, (int) Cell.getHeight() * 3);
             birdFlying = new Image("res/levels/street/Bird_Flapping3.png");
             bird = new SpriteSheet(birdFlying,329,210);
+          
             car1 = new Image("res/levels/street/Car.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
             car2 = new Image("res/levels/street/Car2.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
-            ratWalking = new Image("res/misc/Rat_Walking.png");
-            rat = new SpriteSheet(ratWalking,174,48);
+          
+            ratWalking = new Image("res/misc/Rat Walking.png");
+            rat = new SpriteSheet(ratWalking,154,42);
+          
             cockroachWalking = new Image("res/levels/sewer/CockRoach Walking.png");
             cockRoach = new SpriteSheet(cockroachWalking,150,90);
+          
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
+          
             knife = new Image("res/misc/Knife.png").getScaledCopy((int) Cell.getWidth() / 2, (int) (Cell.getHeight()));
             knifeInvUnscaled = new Image("res/misc/Knife_Inventory.png");
             knifeInv = knifeInvUnscaled.getScaledCopy(1.2f);
