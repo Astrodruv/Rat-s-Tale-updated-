@@ -64,7 +64,7 @@ public class Bird extends Entity{
 
 
 
-        if(x <= -Images.bird.getWidth() || x >= Main.getScreenWidth())
+        if(x <= -Images.birdIdle.getWidth()|| x >= Main.getScreenWidth())
         {
             xSpeed *= -1;
             image = image.getFlippedCopy(true, false);
@@ -74,17 +74,17 @@ public class Bird extends Entity{
 
         x += xSpeed;
 
-        if(flightCounter != 1) //mod this
-        {
-            y = (((float) -1 / (950)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
-        }
-        else if (flightCounter == 1)
+        if(flightCounter < 1) { }
+        else if(flightCounter % 5 == 0) //mod this
         {
             y = (float) (300 * sin((PI / 1729.2) * 5 * (x - 38.4)) + 400);
         }
+        else
+        {
+            y = (((float) -1 / (950)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
+        }
         if(xSpeed > 0){
             facingRight = true;
-
         }
 
         if (isHit){

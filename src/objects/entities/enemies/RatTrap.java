@@ -10,17 +10,19 @@ import values.RatTrapValues;
 
 public class RatTrap extends Entity {
 
+    private Image image;
+
     public RatTrap(float x, float y) {
-        super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.key, RatTrapValues.IFRAMES);
+        super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.cockroachIdle, RatTrapValues.IFRAMES);
+        image = Images.car1;
     }
 
-    public void render(Graphics g)
-    {
+    public void render(Graphics g) {
         super.render(g);
+        image.draw(x,y );
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int delta)
-    {
-
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+//        super.update(gc, sbg, delta);
     }
 }
