@@ -1,6 +1,8 @@
 package objects.platforms;
 
+import engine.Main;
 import objects.GameObject;
+import objects.interactables.Door;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -18,9 +20,9 @@ public class Platform extends GameObject {
     public void render(Graphics g){
         super.render(g);
 //        g.setColor(Color.white);
-//        if (isBottomPlatform()) g.drawString("Bottom", x + (w / 3), y - (h / 3));
+//        if (isBottomPlatform()) g.drawString("B", x + (w / 3), y + (h / 2));
 //        g.setColor(Color.yellow);
-//        if (isSidePlatform()) g.drawString("Side", x + (w / 2), y - (h / 2));
+//        if (isSidePlatform()) g.drawString("S", x + (w / 2), y - (h / 2));
     }
 
     public void collisions(StateBasedGame sbg) {
@@ -32,6 +34,7 @@ public class Platform extends GameObject {
 
         int belowY = cell.getY() + 1;
         int aboveY = cell.getY() - 1;
+        int above2Y = cell.getY() - 2;
         int x = cell.getX();
 
         if (belowY >= World.HEIGHT || aboveY < 0) return true;
@@ -39,8 +42,16 @@ public class Platform extends GameObject {
         Cell belowCell = World.getCell(x, belowY);
         Cell aboveCell = World.getCell(x, aboveY);
 
+        Cell aboveCellDoor = null;
+        if (above2Y >= 0) {
+            aboveCellDoor = World.getCell(x, above2Y);
+        }
+
         boolean spaceBelow = belowCell == null || belowCell.getObject() == null;
         boolean spaceAbove = aboveCell == null || aboveCell.getObject() == null;
+
+        if (belowCell != null && belowCell.getObject() instanceof Door) return false;
+        if (aboveCellDoor != null && aboveCellDoor.getObject() instanceof Door) return false;
 
         return spaceBelow || spaceAbove;
     }

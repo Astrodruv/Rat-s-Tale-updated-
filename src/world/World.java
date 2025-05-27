@@ -12,6 +12,7 @@ import objects.interactables.Key;
 import objects.interactables.Weapon;
 import objects.platforms.sewerPlatforms.SewerFloor;
 import objects.platforms.sewerPlatforms.SewerPlatform;
+import objects.platforms.streetPlatforms.StreetBoundary;
 import objects.platforms.streetPlatforms.StreetFloor;
 import objects.platforms.streetPlatforms.StreetPlatform;
 import org.newdawn.slick.GameContainer;
@@ -55,7 +56,7 @@ public class World {
     public void render(Graphics g){
 
         for (GameObject obj : objects) {
-            if (obj instanceof SewerPlatform || obj instanceof SewerFloor || obj instanceof StreetFloor || obj instanceof StreetPlatform) {
+            if (obj instanceof SewerPlatform || obj instanceof SewerFloor || obj instanceof StreetFloor || obj instanceof StreetPlatform || obj instanceof StreetBoundary) {
                 obj.render(g);
             }
         }
@@ -119,7 +120,7 @@ public class World {
     public void setCell(Cell cell, char code) throws SlickException {
         GameObject obj = null;
 
-        // Characters Used: c, d, e, f, k, m, p, s, C, E, W
+        // Characters Used: b, c, d, e, f, k, m, p, s, C, E, W
 
         if (code == 'p'){
             obj = new SewerPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -132,6 +133,9 @@ public class World {
         }
         if (code == 'm'){
             obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'b'){
+            obj = new StreetBoundary(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (code == 'P'){

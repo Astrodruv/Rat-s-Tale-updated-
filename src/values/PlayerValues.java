@@ -13,5 +13,10 @@ public class PlayerValues {
     public static boolean keyOnPermanentlySetting = false;
     public static boolean isPlayerTouchingKey = keyOnPermanentlySetting;
     public static boolean doesPlayerHaveWeapon = false;
+    public static boolean isPlayerHoldingKnife = false;
+    public static boolean isPlayerUsingKnife = false;
 
+    public static boolean doesPlayerNeedUpdatedWeapon = false;
+
+    public static int section = 0;
 }

@@ -17,6 +17,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import values.BirdValues;
 import values.CockroachValues;
 import values.PlayerValues;
+import world.Cell;
 import world.World;
 import ui.Images;
 
@@ -25,8 +26,8 @@ import java.util.ArrayList;
 public class Game extends BasicGameState
 {
 	public static ArrayList<GameObject> levelObjects;
-
 	public static boolean changeLevels;
+
 	private World world;
 
 	private static Player player;
@@ -38,6 +39,8 @@ public class Game extends BasicGameState
 	private static PlayerHealthBar playerHealthBar;
 	private static CockroachHealthBar cockroachHealthBar;
 	private static BirdHealthBar birdHealthBar;
+
+	public static Image knifeDisplay;
 
 	public static GameContainer gc;
 	StateBasedGame sbg;
@@ -62,9 +65,11 @@ public class Game extends BasicGameState
 
 		world = new World();
 
-		setLevel("levels/sewer1.txt"); // debug
-//		Player.section = 1; // debug
+		setLevel("levels/sewer4.txt"); // debug
+//		PlayerValues.section = 1; // debug
 //		PlayerValues.doesPlayerHaveWeapon = true; // debug
+
+		knifeDisplay = Images.knifeInv;
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -73,12 +78,14 @@ public class Game extends BasicGameState
 			world.update(gc, sbg, delta);
 		}
 
-		if (PlayerValues.doesPlayerHaveWeapon){
-			// Maybe a null check is needed in case it lags the game? Idk how it works exactly but it works so I guess its fine lol
+		if (PlayerValues.doesPlayerHaveWeapon && knife == null) {
 			if (player != null) {
-				knife = new Knife(player.getX(), player.getY(), player);
+				System.out.println("the");
+				knife = new Knife(player);
 			}
 		}
+
+		if (knife != null) knife.update(gc, sbg, delta);
 
 		updateHealthBars();
 
@@ -115,7 +122,7 @@ public class Game extends BasicGameState
         g.drawString("y: " + player.getY(), 400, 550);
 
 		if (!Player.gameOver) {
-			if(Player.section == 1){
+			if(PlayerValues.section == 1){
 				g.drawImage(Images.streetBackground,0,0);
 			} else{
 				g.drawImage(Images.sewerBackground, 0, 0);
@@ -138,6 +145,10 @@ public class Game extends BasicGameState
 					birdHealthBar.render(g);
 				}
 			}
+		}
+
+		if (PlayerValues.doesPlayerHaveWeapon) {
+			knifeDisplay.draw(Cell.getHeight(), Cell.getHeight() * 1.5f);
 		}
 
 		if (Player.gameOver){
@@ -167,11 +178,11 @@ public class Game extends BasicGameState
 		}
 		else{
 			if (key >= 0){
-				if (Player.section == 0){
+				if (PlayerValues.section == 0){
 					setLevel("levels/sewer1.txt");
 					Player.gameOver = false;
 				}
-				if (Player.section == 1){
+				if (PlayerValues.section == 1){
 					setLevel("levels/street1.txt");
 					Player.gameOver = false;
 				}
@@ -194,6 +205,8 @@ public class Game extends BasicGameState
 	public static void setLevel(String s){
 		levelObjects.clear();
 		World.level = s;
+		player = null;
+		knife = null;
 		changeLevels = true;
 	}
 

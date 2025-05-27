@@ -11,16 +11,16 @@ import world.Cell;
 public class BirdHealthBar extends HealthBar{
 
     public BirdHealthBar(Entity e) {
-        super(((float) Main.getScreenWidth() * ((float) 2/3)) - (Cell.getWidth() * 11), Cell.getHeight() * ((float)2/3), Cell.getWidth() * 26, Cell.getHeight(), new Color(128, 180, 37), new Color(100, 125, 100), e);
+        super(((float) Main.getScreenWidth() / 2) - (Cell.getWidth() * 13), Cell.getHeight(), Cell.getWidth() * 26, Cell.getHeight(), Color.gray, Color.darkGray, e);
     }
 
     public void render(Graphics g) {
         super.render(g);
         g.setColor(Color.red);
-        g.drawString("Harry: Boss of the Streets", x, y + 35);
+        g.drawString("Barry: Boss of the Streets", x, y + 35);
         if (e != null) {
             if (e.isDead()) {
-                g.drawString("You have defeated Harry!", x, y + 80);
+                g.drawString("You have defeated Barry!", x, y + 80);
             }
         }
     }

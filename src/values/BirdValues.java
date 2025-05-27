@@ -1,4 +1,3 @@
-
 package values;
 
 public class BirdValues {

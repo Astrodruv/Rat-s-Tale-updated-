@@ -193,22 +193,6 @@ public abstract class Entity extends GameObject {
                     }
                     xVelocity = 0;
                 }
-
-                if (futureY.intersects(o.getBounds())) {
-                    float platformTop = o.getY();
-                    float platformBottom = o.getY() + o.getH();
-                    float playerTop = futureY.getY();
-                    float playerBottom = futureY.getY() + futureY.getHeight();
-
-                    if (yVelocity > 0 && y + h <= platformTop) {
-                        newY = platformTop - h;
-                        yVelocity = 0;
-                        onGround = true;
-                    } else if (yVelocity < 0 && y >= platformBottom) {
-                        newY = platformBottom;
-                        yVelocity = 0;
-                    }
-                }
             }
         }
     }

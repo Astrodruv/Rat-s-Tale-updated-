@@ -1,13 +1,19 @@
 package objects.entities.enemies;
 
 import engine.Main;
+import engine.states.Game;
+import objects.GameObject;
 import objects.entities.Entity;
+import objects.platforms.Platform;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import ui.Images;
 import values.CarValues;
 import world.Cell;
+
+import java.util.ArrayList;
 
 public class EvilCar extends Entity {
 
@@ -20,14 +26,17 @@ public class EvilCar extends Entity {
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+        xVelocity = -xSpeed;
 
-        xVelocity -= (float) xSpeed / 5;
-
-        if (x <= Cell.getWidth() * 2) {
-            x = Main.getScreenWidth() - (Cell.getWidth() * 2) - w;
-            xVelocity = 0;
+        if (x <= -w) {
+            x = Main.getScreenWidth() + w;
         }
 
-        super.update(gc, sbg, delta);
+        newX = x + xVelocity;
+        newY = y + yVelocity;
+
+        x = newX;
+        y = newY;
     }
+
 }
