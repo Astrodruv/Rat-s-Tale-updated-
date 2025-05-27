@@ -10,9 +10,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="ratrap just needs images">
-      <change afterPath="$PROJECT_DIR$/levels/closet2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/levels/closet3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objects/interactables/Coin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objects/interactables/StreetDoor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objects/platforms/closetPlatforms/ClosetFloor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objects/platforms/closetPlatforms/ClosetPlatforms.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/closet1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/closet1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/closet2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/closet2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/closet3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/closet3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/school.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/school.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/sewer1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/sewer1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/street1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/street2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/street3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/street4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/street5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/street5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/Bird.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/Bird.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/RatTrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/RatTrap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/Images.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/Images.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/values/BirdValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/values/BirdValues.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/values/RatTrapValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/values/RatTrapValues.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/world/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/world/Cell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/world/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/world/World.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/misc/Street_Platform.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/levels/street/Street_Platform.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/states/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/states/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/RatTrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/RatTrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/interactables/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/interactables/Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/interactables/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/interactables/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Images.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Images.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/values/BirdValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/BirdValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/values/RatTrapValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/RatTrapValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/world/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,41 +83,46 @@
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Astrodruv/Rat-s-Tale-updated-.git&quot;,
     &quot;accountId&quot;: &quot;5c406023-606a-45c8-bb93-69c7a93a59ae&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;Astrodruv&quot;,
+    &quot;repository&quot;: &quot;Rat-s-Tale-updated-&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2e2hUUSkeaPwBccQscdbSAs0epI" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-
-    &quot;git-widget-placeholder&quot;: &quot;Dhruv&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "#44 on Dhruv",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\luebe\IdeaProjects\Rats_Tale_updated\res\misc" />
-      <recent name="C:\Users\luebe\IdeaProjects\Rats_Tale_updated\res\levels\street" />
-      <recent name="C:\Users\luebe\IdeaProjects\Rats_Tale_updated\res\levels\sewer" />
-      <recent name="C:\Users\luebe\IdeaProjects\Rats_Tale_updated\res\levels\school" />
-      <recent name="C:\Users\luebe\IdeaProjects\Rats_Tale_updated\res\levels\closet" />
+      <recent name="D:\AP Java Projects\Rats Tale\levels" />
+      <recent name="D:\AP Java Projects\Rats Tale\src\objects\platforms" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\AP Java Projects\Rats Tale\out\artifacts" />
@@ -238,37 +276,37 @@
       <option name="project" value="LOCAL" />
       <updated>1747628447287</updated>
     </task>
-    <task id="LOCAL-00016" summary="im done">
+    <task id="LOCAL-00016" summary="imports">
       <option name="closed" value="true" />
-      <created>1747864752590</created>
+      <created>1747692605970</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1747864752590</updated>
+      <updated>1747692605970</updated>
     </task>
-    <task id="LOCAL-00017" summary="im done">
+    <task id="LOCAL-00017" summary="imports">
       <option name="closed" value="true" />
-      <created>1747917701055</created>
+      <created>1747693706318</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1747917701055</updated>
+      <updated>1747693706318</updated>
     </task>
-    <task id="LOCAL-00018" summary="im done">
+    <task id="LOCAL-00018" summary="imports">
       <option name="closed" value="true" />
-      <created>1748003387598</created>
+      <created>1747693746617</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1748003387598</updated>
+      <updated>1747693746617</updated>
     </task>
-    <task id="LOCAL-00019" summary="dhruv additions to bird flight movement">
+    <task id="LOCAL-00019" summary="imports">
       <option name="closed" value="true" />
-      <created>1748005276270</created>
+      <created>1747694779709</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1748005276270</updated>
+      <updated>1747694779709</updated>
     </task>
     <task id="LOCAL-00020" summary="should be good for beta">
       <option name="closed" value="true" />
@@ -376,7 +414,6 @@
     <MESSAGE value="Add files via upload" />
     <MESSAGE value="3 cockroaches" />
     <MESSAGE value="im done" />
-
     <MESSAGE value="imports" />
     <MESSAGE value="should be good for beta" />
     <MESSAGE value="editations" />

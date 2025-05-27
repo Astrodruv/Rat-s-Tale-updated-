@@ -13,19 +13,21 @@ public class Cell {
     private int y;
     private GameObject object;
 
-    public Cell(int x, int y){
+    public Cell(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getXPixel(){return (int) (x * getWidth());}
+    public int getXPixel() {
+        return (int) (x * getWidth());
+    }
 
-    public int getYPixel(){
+    public int getYPixel() {
         return (int) (y * getHeight());
     }
 
 
-    public void setObject(GameObject o){
+    public void setObject(GameObject o) {
         object = o;
         if (o != null) object.setCell(this);
 
@@ -33,50 +35,56 @@ public class Cell {
 //        y = getYPixel();
     }
 
-    public void render(Graphics g){
-        if (object != null){
+    public void render(Graphics g) {
+        if (object != null) {
             object.render(g);
         }
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int delta){
-        if (object != null){
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+        if (object != null) {
             object.update(gc, sbg, delta);
         }
     }
 
-    public void keyPressed(int key, char c){
-        if (object != null){
+    public void keyPressed(int key, char c) {
+        if (object != null) {
             object.keyPressed(key, c);
         }
     }
 
-    public ArrayList<Cell> addCellToList(ArrayList<Cell> list, int x, int y){
-        if (World.getCell(x,y) != null){
-            list.add(World.getCell(x,y));
+    public ArrayList<Cell> addCellToList(ArrayList<Cell> list, int x, int y) {
+        if (World.getCell(x, y) != null) {
+            list.add(World.getCell(x, y));
         }
         return list;
     }
 
-    public void removeObject()
-    {
-        if(object != null)
-        {
+    public void removeObject() {
+        if (object != null) {
             World.objects.remove(object);
             object.setCell(null);
             object = null;
         }
     }
 
-    public int getX(){
+    public int getX() {
         return x;
     }
+
     public int getY() {
         return y;
     }
-    public GameObject getObject(){return object;}
-    public static float getWidth(){return (float) (Main.getScreenWidth()) / World.WIDTH;}
-    public static float getHeight(){
+
+    public GameObject getObject() {
+        return object;
+    }
+
+    public static float getWidth() {
+        return (float) (Main.getScreenWidth()) / World.WIDTH;
+    }
+
+    public static float getHeight() {
         return (float) (Main.getScreenHeight()) / World.HEIGHT;
     }
 }

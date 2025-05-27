@@ -8,9 +8,9 @@ import objects.entities.enemies.EvilCar;
 import objects.entities.enemies.Cockroach;
 import objects.entities.PassiveCar;
 import objects.entities.enemies.RatTrap;
-import objects.interactables.Door;
-import objects.interactables.Key;
-import objects.interactables.Weapon;
+import objects.interactables.*;
+import objects.platforms.closetPlatforms.ClosetFloor;
+import objects.platforms.closetPlatforms.ClosetPlatforms;
 import objects.platforms.sewerPlatforms.SewerFloor;
 import objects.platforms.sewerPlatforms.SewerPlatform;
 import objects.platforms.streetPlatforms.StreetFloor;
@@ -35,35 +35,31 @@ public class World {
     public static Cell[][] cells;
     public static ArrayList<GameObject> objects;
 
-    private boolean enemy;
-
     public World() {
         cells = new Cell[WIDTH][HEIGHT];
         objects = new ArrayList<>();
 
-        enemy = false;
-
-        for (int i = 0; i < WIDTH; i++){
-            for (int j = 0; j < HEIGHT; j++){
-                cells[i][j] = new Cell(i,j);
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                cells[i][j] = new Cell(i, j);
             }
         }
     }
 
-    public static Cell getCell(int x, int y){
+    public static Cell getCell(int x, int y) {
         return cells[x][y];
     }
 
-    public void render(Graphics g){
+    public void render(Graphics g) {
 
         for (GameObject obj : objects) {
-            if (obj instanceof SewerPlatform || obj instanceof SewerFloor || obj instanceof StreetFloor || obj instanceof StreetPlatform) {
+            if (obj instanceof SewerPlatform || obj instanceof SewerFloor || obj instanceof StreetFloor || obj instanceof StreetPlatform || obj instanceof ClosetPlatforms || obj instanceof ClosetFloor) {
                 obj.render(g);
             }
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Key || obj instanceof Door || obj instanceof Weapon || obj instanceof PassiveCar) {
+            if (obj instanceof Key || obj instanceof Coin || obj instanceof Door || obj instanceof StreetDoor || obj instanceof Weapon || obj instanceof PassiveCar) {
                 obj.render(g);
             }
         }
@@ -88,14 +84,14 @@ public class World {
             }
         }
 
-        if (Game.changeLevels){
+        if (Game.changeLevels) {
             clearFile();
             readFile(level);
             Game.changeLevels = false;
         }
     }
 
-    public void keyPressed(int key, char c){
+    public void keyPressed(int key, char c) {
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
                 cells[i][j].keyPressed(key, c);
@@ -103,7 +99,7 @@ public class World {
         }
     }
 
-    public static void addObject(GameObject o, int x, int y){
+    public static void addObject(GameObject o, int x, int y) {
         objects.add(o);
         cells[x][y].setObject(o);
     }
@@ -111,8 +107,8 @@ public class World {
     public void clearFile() {
         Game.levelObjects.clear();
         objects.clear();
-        for(int j = 0; j < HEIGHT; j++){
-            for(int i = 0; i < WIDTH; i++){
+        for (int j = 0; j < HEIGHT; j++) {
+            for (int i = 0; i < WIDTH; i++) {
                 cells[i][j].setObject(null);
             }
         }
@@ -121,80 +117,85 @@ public class World {
     public void setCell(Cell cell, char code) throws SlickException {
         GameObject obj = null;
 
-        // Characters Used: c, d, e, f, k, m, p, s, C, E, W, t
+        // Characters Used: c, d, e, f, k, m, p, s, C, E, W, t, o, g
 
-        if (code == 'p'){
+        if (code == 'p') {
             obj = new SewerPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (code == 'f'){
+        if (code == 'f') {
             obj = new SewerFloor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (code == 's'){
+        if (code == 's') {
             obj = new StreetFloor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (code == 'm'){
+        if (code == 'm') {
             obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
-        if (code == 'P'){
+        if (code == 'P') {
             obj = new Player(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (code == 'C'){
+        if (code == 'C') {
             obj = new Cockroach(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (code == 'E'){
+        if (code == 'E') {
             obj = new Bird(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if(code == 'e'){
+        if (code == 'e') {
             obj = new EvilCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-
-        if (code == 'k'){
-            obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
-        if(code == 'd') {
-            obj = new Door(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
-        if (code == 'W'){
-            obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
-        if (code == 'c'){
-            obj = new PassiveCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
-        if(code == 'W'){
-            obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
-        if (code == 'm'){
-            obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
-        if(code == 't')
-        {
+        if (code == 't') {
             obj = new RatTrap(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (obj != null){
+
+        if (code == 'k') {
+            obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'o') {
+            obj = new Coin(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'd') {
+            obj = new Door(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'g') {
+            obj = new StreetDoor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'W') {
+            obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'c') {
+            obj = new PassiveCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'W') {
+            obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'm') {
+            obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+
+        if (obj != null) {
             addObject(obj, cell.getX(), cell.getY());
             Game.levelObjects.add(obj);
-        } else{
+        } else {
             cell.setObject(null);
         }
     }
 
-    public void readFile(String s){
-        try{
+    public void readFile(String s) {
+        try {
             File mapFile = new File(s);
             Scanner scan = new Scanner(mapFile);
 
-            for(int j = 0; j < HEIGHT; j++){
+            for (int j = 0; j < HEIGHT; j++) {
                 String row = scan.nextLine();
 
-                for(int i = 0; i < WIDTH; i++){
+                for (int i = 0; i < WIDTH; i++) {
                     char input = row.charAt(i);
                     setCell(cells[i][j], input);
                 }
             }
             scan.close();
-        }
-        catch (FileNotFoundException | SlickException e){
+        } catch (FileNotFoundException | SlickException e) {
             System.out.println("File not found");
         }
     }

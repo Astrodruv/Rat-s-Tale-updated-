@@ -9,14 +9,13 @@ import world.Cell;
 public class Key extends GameObject {
 
     public Key(float x, float y) {
-        super(x,y, Images.key);
+        super(x, y, Images.key);
     }
 
     public void render(Graphics g) {
         if (!PlayerValues.isPlayerTouchingKey) {
             super.render(g);
-        }
-        else{
+        } else {
             image.draw(Cell.getWidth() * 46.5f, Cell.getHeight() / 3);
         }
     }
