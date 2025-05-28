@@ -48,7 +48,6 @@ public class Bird extends Entity{
             }
         }
 
-        g.draw(getBounds());
 //        g.drawString(""+PlayerValues.isPlayerTouchingKey, 700,700);
     }
 
