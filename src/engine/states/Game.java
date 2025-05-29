@@ -9,6 +9,7 @@ import objects.entities.Entity;
 import objects.entities.Player;
 import objects.entities.enemies.Bird;
 import objects.entities.enemies.Cockroach;
+import objects.entities.enemies.RatTrap;
 import objects.interactables.Weapon;
 import objects.weapons.Knife;
 import org.newdawn.slick.*;
@@ -22,8 +23,7 @@ import ui.Images;
 
 import java.util.ArrayList;
 
-public class Game extends BasicGameState
-{
+public class Game extends BasicGameState {
 	public static ArrayList<GameObject> levelObjects;
 
 	public static boolean changeLevels;
@@ -34,6 +34,8 @@ public class Game extends BasicGameState
 	private static Bird bird;
 
 	private static Knife knife;
+
+	private static RatTrap ratTrap;
 
 	private static PlayerHealthBar playerHealthBar;
 	private static CockroachHealthBar cockroachHealthBar;
@@ -49,33 +51,30 @@ public class Game extends BasicGameState
 		changeLevels = true;
 	}
 
-	public int getID()
-	{
+	public int getID() {
 		return id;
 	}
 
-	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
-	{
+	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		this.gc = gc;
 		this.sbg = sbg;
 		gc.setShowFPS(false);
 
 		world = new World();
 
-		setLevel("levels/sewer1.txt"); // debug
+		setLevel("levels/sewer1.txt"); // debug //sewer1
 //		Player.section = 1; // debug
 //		PlayerValues.doesPlayerHaveWeapon = true; // debug
 		knifeDisplay = Images.knifeInv;
 
 	}
 
-	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
-	{
+	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		if (!Player.gameOver) {
 			world.update(gc, sbg, delta);
 		}
 
-		if (PlayerValues.doesPlayerHaveWeapon){
+		if (PlayerValues.doesPlayerHaveWeapon) {
 			// Maybe a null check is needed in case it lags the game? Idk how it works exactly but it works so I guess its fine lol
 			if (player != null) {
 				knife = new Knife(player.getX(), player.getY(), player);
@@ -84,9 +83,9 @@ public class Game extends BasicGameState
 
 		updateHealthBars();
 
-		if (World.level.equals(("levels/school.txt"))) {
-			this.sbg.enterState(Main.END_ID);
-		}
+//		if (World.level.equals(("levels/school.txt"))) {
+//			this.sbg.enterState(Main.END_ID);
+//		}
 	}
 
 	public void updateHealthBars() {
@@ -117,12 +116,14 @@ public class Game extends BasicGameState
 
 		if (!Player.gameOver) {
 
-			if (Player.section == 1 && !World.level.equals("levels/street5.txt")) {
-				g.drawImage(Images.streetBackground, 0, 0);
-			} else if(World.level.equals("levels/street5.txt")){
-				g.drawImage(Images.schoolBackground,0,0);
-			}else {
+			if (Player.section == 0) {
 				g.drawImage(Images.sewerBackground, 0, 0);
+			} else if (Player.section == 1) {
+				g.drawImage(Images.streetBackground, 0, 0);
+			} else if (World.level.equals("levels/school.txt")) {
+				g.drawImage(Images.schoolBackground, 0, 0);
+			} else if (Player.section == 2) {
+				g.drawImage(Images.closetBackground, 0, 0);
 			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
 			world.render(g);
@@ -166,30 +167,29 @@ public class Game extends BasicGameState
 		}
 	}
 
-	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
-	{
+	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
 
 	}
 
-	public void leave(GameContainer gc, StateBasedGame sbg)
-	{
+	public void leave(GameContainer gc, StateBasedGame sbg) {
 
 	}
 
-	public void keyPressed(int key, char c)
-	{
+	public void keyPressed(int key, char c) {
 		if (!Player.gameOver) {
 			world.keyPressed(key, c);
-		}
-		else{
-			if (key >= 0){
-				if (Player.section == 0){
-					setLevel("levels/sewer1.txt");
+		} else {
+			if (key >= 0) {
+				if (Player.section == 0) {
+					setLevel("levels/sewer1.txt"); //sewer1
 					Player.gameOver = false;
 				}
-				if (Player.section == 1){
+				if (Player.section == 1) {
 					setLevel("levels/street1.txt");
 					Player.gameOver = false;
+				}
+				if (Player.section == 2) {
+					setLevel("levels/closet1.txt");
 				}
 			}
 		}
@@ -199,15 +199,15 @@ public class Game extends BasicGameState
 
 	}
 
-	public static PlayerHealthBar getPlayerHealthBar(){
+	public static PlayerHealthBar getPlayerHealthBar() {
 		return playerHealthBar;
 	}
 
-	public static Player getPlayer(){
+	public static Player getPlayer() {
 		return player;
 	}
 
-	public static void setLevel(String s){
+	public static void setLevel(String s) {
 		levelObjects.clear();
 		World.level = s;
 		changeLevels = true;

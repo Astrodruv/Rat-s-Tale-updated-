@@ -8,10 +8,12 @@ import world.Cell;
 
 public class Images
 {
+    // Level Visuals
     public static Image titleScreen;
     public static Image sewerBackground;
     public static Image streetBackground;
     public static Image schoolBackground;
+    public static Image closetBackground;
 
 
     // Level Platforms
@@ -20,6 +22,7 @@ public class Images
     public static Image streetFloor;
     public static Image streetFloor2;
     public static Image streetPlatform;
+    public static Image closetPlatform;
 
     // Objects
     public static Image ratIdle;
@@ -31,14 +34,18 @@ public class Images
     public static Image birdFlying;
     public static Image car1;
     public static Image car2;
+    public static Image ratTrap;
 
     // Interactables
     public static Image key;
+    public static Image coin;
     public static Image door;
+    public static Image streetDoor;
     public static Image knife;
     public static Image knifeInvUnscaled;
     public static Image knifeInv;
 
+    // Game Entities Animations
     public static SpriteSheet rat;
     public static SpriteSheet cockRoach;
     public static SpriteSheet bird;
@@ -52,26 +59,37 @@ public class Images
             sewerBackground = new Image("res/levels/sewer/Sewer_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             streetBackground = new Image("res/levels/street/Street_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             schoolBackground = new Image("res/levels/school/School_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            closetBackground = new Image("res/levels/closet/Closet_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
             sewerFloor = new Image("res/levels/sewer/Sewer_Floor.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
             sewerPlatform = new Image("res/levels/sewer/Sewer_Platform.png").getScaledCopy((int) Cell.getWidth(), (int) (Cell.getHeight() / 8));
             streetFloor = new Image("res/levels/street/Street_Floor.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
             streetFloor2 = new Image("res/levels/street/Street_Floor2.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
-            streetPlatform = new Image("res/misc/Street_Platform.png").getScaledCopy((int) Cell.getWidth(), (int) (Cell.getHeight() / 8));
+            streetPlatform = new Image("res/levels/street/Street_Platform.png").getScaledCopy((int) Cell.getWidth(), (int) (Cell.getHeight() / 8));
+            closetPlatform = new Image("res/levels/closet/Closet_Platform.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
 
             ratIdle = new Image("res/misc/Rat_Idle1.png").getScaledCopy((int) (Cell.getWidth() * 2.5), (int) Cell.getHeight() + 10);
             cockroachIdle = new Image("res/levels/sewer/Cockroach_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight());
             birdIdle = new Image("res/levels/street/Eagle.png").getScaledCopy((int) Cell.getWidth() * 6, (int) Cell.getHeight() * 3);
             birdFlying = new Image("res/levels/street/Bird_Flapping3.png");
             bird = new SpriteSheet(birdFlying,329,210);
+
             car1 = new Image("res/levels/street/Car.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
             car2 = new Image("res/levels/street/Car2.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
+
+            ratTrap = new Image("res/levels/closet/Rat_Trap.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+
             ratWalking = new Image("res/misc/Rat Walking.png");
             rat = new SpriteSheet(ratWalking,154,42);
+          
             cockroachWalking = new Image("res/levels/sewer/CockRoach Walking.png");
             cockRoach = new SpriteSheet(cockroachWalking,150,90);
+          
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
+            coin = new Image("res/misc/Coin.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
+            streetDoor = new Image("res/misc/Street_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
+
             knife = new Image("res/misc/Knife.png").getScaledCopy((int) Cell.getWidth() / 2, (int) (Cell.getHeight()));
             knifeInvUnscaled = new Image("res/misc/Knife_Inventory.png");
             knifeInv = knifeInvUnscaled.getScaledCopy(1.2f);

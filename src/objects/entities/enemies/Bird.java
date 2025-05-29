@@ -36,6 +36,8 @@ public class Bird extends Entity{
     }
 
     public void render(Graphics g) {
+
+        System.out.println(isDead);
         if(!isDead) {
             super.render(g);
             float renderOffsetY = h - currentFrame.getHeight();
@@ -46,25 +48,17 @@ public class Bird extends Entity{
             }
         }
 
-        g.draw(getBounds());
-        g.drawString(""+flightCounter, 700,700);
+//        g.drawString(""+PlayerValues.isPlayerTouchingKey, 700,700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
-        if (PlayerValues.isPlayerHurtingEnemy){
+        if (PlayerValues.isPlayerHurtingEnemy) {
             isHit = true;
             takeDamage(PlayerValues.ATTACK);
             PlayerValues.isPlayerHurtingEnemy = false;
         }
 
-//        if (isHit && !hasTakenDamage){
-//            takeDamage(PlayerValues.ATTACK);
-//            hasTakenDamage = true;
-//        }
-
-
-
-        if(x <= -Images.bird.getWidth() || x >= Main.getScreenWidth())
+        if(x <= -Images.birdIdle.getWidth()|| x >= Main.getScreenWidth())
         {
             xSpeed *= -1;
             image = image.getFlippedCopy(true, false);
@@ -74,17 +68,17 @@ public class Bird extends Entity{
 
         x += xSpeed;
 
-        if(flightCounter != 1) //mod this
-        {
-            y = (((float) -1 / (950)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
-        }
-        else if (flightCounter == 1)
+        if(flightCounter < 1) { }
+        else if(flightCounter % 5 == 0) //mod this
         {
             y = (float) (300 * sin((PI / 1729.2) * 5 * (x - 38.4)) + 400);
         }
+        else
+        {
+            y = (((float) -1 / (950)) * (x) * (x - (Main.getScreenWidth() - image.getWidth())));
+        }
         if(xSpeed > 0){
             facingRight = true;
-
         }
 
         if (isHit){
@@ -98,8 +92,7 @@ public class Bird extends Entity{
 
         percentHealth = (float) curHealth / maxHealth;
 
-        if(curHealth <= 0)
-        {
+        if(percentHealth == 0) {
             isDead = true;
             cell.removeObject();
         }
