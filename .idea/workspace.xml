@@ -11,18 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="rattrap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/closet1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/closet1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/closet2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/closet2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/closet3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/closet3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/RatTrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/RatTrap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/interactables/Key.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/values/RatTrapValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/values/RatTrapValues.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/values/PlayerValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/values/PlayerValues.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/platforms/closetPlatforms/ClosetPlatforms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/platforms/closetPlatforms/ClosetPlatforms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/values/RatTrapValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/RatTrapValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +67,7 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2e2hUUSkeaPwBccQscdbSAs0epI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -87,7 +79,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Dhruv",
+    "git-widget-placeholder": "Caiden",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kkhan/A_Rat's_Tale_Runnable/A Rat's Tale Runnable/Rats Tale",
     "project.structure.last.edited": "Project",

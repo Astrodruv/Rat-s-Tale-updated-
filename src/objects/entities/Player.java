@@ -13,6 +13,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import values.*;
+import world.Cell;
 import world.World;
 import ui.Images;
 
@@ -87,7 +88,7 @@ public class Player extends Entity {
                 image.getFlippedCopy(true, false).draw(x, y + h - image.getHeight());
             }
         } else if (facingRight) {
-            currentFrame.draw(x, y + renderOffsetY);
+            currentFrame.draw(x - Cell.getWidth() - 20, y + renderOffsetY);
         } else {
             currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
         }
@@ -101,6 +102,7 @@ public class Player extends Entity {
                 g.fillRect(x, y - 50, w + 50, 10);
             }
         }
+        g.draw(getBounds());
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -128,6 +130,7 @@ public class Player extends Entity {
             moveLeft();
             facingRight = false;
         } else {
+
             if (xAccel > 0) {
                 xVelocity = xAccel;
                 xAccel--;
@@ -139,6 +142,7 @@ public class Player extends Entity {
             } else {
                 xVelocity = 0;
                 xAccel = 0;
+                w = image.getWidth() ;
             }
         }
         frames++;
