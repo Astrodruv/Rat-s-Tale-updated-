@@ -13,8 +13,8 @@ public class RatTrap extends Entity {
     private Image image;
 
     public RatTrap(float x, float y) {
-        super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.cockroachIdle, RatTrapValues.IFRAMES);
-        image = Images.car1;
+        super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.ratTrap, RatTrapValues.IFRAMES);
+        image = Images.ratTrap;
     }
 
     public void render(Graphics g) {
