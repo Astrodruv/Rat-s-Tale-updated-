@@ -46,7 +46,8 @@ public class Player extends Entity {
 
     private boolean inBox;
     private float trapTime;
-    private boolean trapped;
+    private boolean trapped; // use in reference to other slow effects
+    private float temp;
 
     public Player(float x, float y) {
 
@@ -65,8 +66,9 @@ public class Player extends Entity {
         knifeAttained = false;
         holdingKnife = false;
         inBox = false;
-        trapTime = 60;
-        trapped = false;
+        trapTime = 0;
+        temp = xSpeed;
+
     }
 
     public void render(Graphics g) {
@@ -99,8 +101,6 @@ public class Player extends Entity {
                 g.fillRect(x, y - 50, w + 50, 10);
             }
         }
-
-        g.drawString(""+PlayerValues.isPlayerTouchingKey, 700,700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -111,13 +111,14 @@ public class Player extends Entity {
             canAttack = true;
         }
 
-        if(trapped)
+        trapTime--;
+        if(trapTime > 0)
         {
+            xSpeed /= 2;
             trapTime--;
-            if(trapTime < 0)
-            {
-                trapped = false;
-            }
+        }
+        else {
+            xSpeed = (int) temp;
         }
 
         if (input.isKeyDown(Input.KEY_D) && !contactingPlatformSide) {
@@ -155,6 +156,11 @@ public class Player extends Entity {
 
         if (input.isKeyDown(Input.KEY_W) && onGround && !jumpingOffOfEnemy) {
             jump();
+        }
+
+        if(xSpeed > 10)
+        {
+            xSpeed = 10;
         }
 
         super.update(gc, sbg, delta);
@@ -497,7 +503,7 @@ public class Player extends Entity {
                         jump();
                     }
                     takeDamage(RatTrapValues.ATTACK);
-                    trapped = true;
+                    trapTime = 120;
                 }
             }
         }
