@@ -19,7 +19,8 @@ public class RatTrap extends Entity {
 
     public void render(Graphics g) {
         super.render(g);
-        image.draw(x,y );
+        image.draw(x,y);
+        g.drawRect(x,y,w,h);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
