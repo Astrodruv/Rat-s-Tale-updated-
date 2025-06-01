@@ -3,11 +3,8 @@ package world;
 import engine.states.Game;
 import objects.GameObject;
 import objects.entities.Player;
-import objects.entities.enemies.Bird;
-import objects.entities.enemies.EvilCar;
-import objects.entities.enemies.Cockroach;
+import objects.entities.enemies.*;
 import objects.entities.PassiveCar;
-import objects.entities.enemies.RatTrap;
 import objects.interactables.*;
 import objects.platforms.closetPlatforms.ClosetFloor;
 import objects.platforms.closetPlatforms.ClosetPlatforms;
@@ -20,6 +17,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import values.JanitorValues;
+import values.PlayerValues;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -59,13 +58,13 @@ public class World {
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Key || obj instanceof Coin || obj instanceof Door || obj instanceof StreetDoor || obj instanceof Weapon || obj instanceof PassiveCar) {
+            if (obj instanceof Key || obj instanceof Door || obj instanceof Weapon || obj instanceof PassiveCar) {
                 obj.render(g);
             }
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar || obj instanceof RatTrap) {
+            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar || obj instanceof RatTrap || obj instanceof Janitor) {
                 obj.render(g);
             }
         }
@@ -117,7 +116,7 @@ public class World {
     public void setCell(Cell cell, char code) throws SlickException {
         GameObject obj = null;
 
-        // Characters Used: c, d, e, f, k, m, p, s, C, E, W, t, o, g, n
+        // Characters Used: c, d, e, f, k, m, p, s, C, E, W, t, o, g, n, J
 
         if (code == 'p') {
             obj = new SewerPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -131,8 +130,7 @@ public class World {
         if (code == 'm') {
             obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (code == 'n')
-        {
+        if (code == 'n') {
             obj = new ClosetPlatforms(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
@@ -151,18 +149,15 @@ public class World {
         if (code == 't') {
             obj = new RatTrap(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
+        if (code == 'J') {
+            obj = new Janitor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
 
         if (code == 'k') {
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (code == 'o') {
-            obj = new Coin(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
         if (code == 'd') {
             obj = new Door(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
-        if (code == 'g') {
-            obj = new StreetDoor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 'W') {
             obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
