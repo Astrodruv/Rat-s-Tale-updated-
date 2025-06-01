@@ -1,13 +1,15 @@
-package objects.platforms.sewerPlatforms;
+package objects.platforms;
 
-import objects.platforms.Platform;
 import org.newdawn.slick.Graphics;
 import ui.Images;
+import values.PlayerValues;
 
-public class SewerPlatform extends Platform
+public class Tile extends Platform
 {
-    public SewerPlatform(float x, float y) {
+    public Tile(float x, float y) {
         super(x,y, Images.sewerPlatform);
+        if (PlayerValues.section == 1) image = Images.sewerPlatform;
+        if (PlayerValues.section == 2) image = Images.closetPlatform;
     }
 
     public void render(Graphics g) {

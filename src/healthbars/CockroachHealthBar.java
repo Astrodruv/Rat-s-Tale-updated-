@@ -9,7 +9,7 @@ import world.Cell;
 public class CockroachHealthBar extends HealthBar {
 
     public CockroachHealthBar(Entity e) {
-        super(((float) Main.getScreenWidth() / 2) - (Cell.getWidth() * 13), Cell.getHeight(), Cell.getWidth() * 26, Cell.getHeight(), new Color(128, 180, 37), new Color(100, 125, 100), e);
+        super(((float) Main.getScreenWidth() / 2) - (Cell.getWidth() * 13), 0, Cell.getWidth() * 26, Cell.getHeight(), new Color(128, 180, 37), new Color(100, 125, 100), e);
     }
 
     public void render(Graphics g){

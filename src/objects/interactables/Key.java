@@ -10,6 +10,7 @@ public class Key extends GameObject {
 
     public Key(float x, float y) {
         super(x,y, Images.key);
+        if (PlayerValues.section == 1) image = Images.coin;
     }
 
     public void render(Graphics g) {

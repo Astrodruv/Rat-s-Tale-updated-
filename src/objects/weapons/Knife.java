@@ -29,7 +29,7 @@ public class Knife extends GameObject {
     }
 
     public void render(Graphics g) {
-        if (PlayerValues.doesPlayerHaveWeapon) {
+        if (PlayerValues.doesPlayerHaveKnife) {
             if (!PlayerValues.isPlayerUsingKnife) {
                 if (entity.isFacingRight() && PlayerValues.isPlayerHoldingKnife) {
                     image.draw(entity.getX() + entity.getW(), entity.getY());
@@ -47,7 +47,7 @@ public class Knife extends GameObject {
             }
         }
 
-        g.drawString("Step: " + step, 500, 550);
+//        g.drawString("Step: " + step, 500, 600);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {

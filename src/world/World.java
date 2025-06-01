@@ -3,18 +3,14 @@ package world;
 import engine.states.Game;
 import objects.GameObject;
 import objects.entities.Player;
-import objects.entities.enemies.Bird;
-import objects.entities.enemies.EvilCar;
-import objects.entities.enemies.Cockroach;
+import objects.entities.enemies.*;
 import objects.entities.enemies.PassiveCar;
 import objects.interactables.Door;
 import objects.interactables.Key;
 import objects.interactables.Weapon;
-import objects.platforms.sewerPlatforms.SewerFloor;
-import objects.platforms.sewerPlatforms.SewerPlatform;
-import objects.platforms.streetPlatforms.StreetBoundary;
-import objects.platforms.streetPlatforms.StreetFloor;
-import objects.platforms.streetPlatforms.StreetPlatform;
+import objects.platforms.Floor;
+import objects.platforms.Tile;
+import objects.platforms.Boundary;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -56,7 +52,7 @@ public class World {
     public void render(Graphics g){
 
         for (GameObject obj : objects) {
-            if (obj instanceof SewerPlatform || obj instanceof SewerFloor || obj instanceof StreetFloor || obj instanceof StreetPlatform || obj instanceof StreetBoundary) {
+            if (obj instanceof Tile || obj instanceof Floor || obj instanceof Boundary) {
                 obj.render(g);
             }
         }
@@ -68,7 +64,7 @@ public class World {
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar) {
+            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar || obj instanceof RatTrap) {
                 obj.render(g);
             }
         }
@@ -120,22 +116,16 @@ public class World {
     public void setCell(Cell cell, char code) throws SlickException {
         GameObject obj = null;
 
-        // Characters Used: b, c, d, e, f, k, m, p, s, C, E, W
+        // Characters Used: b, c, d, e, f, k, m, p, s, C, E, W, n, t
 
         if (code == 'p'){
-            obj = new SewerPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+            obj = new Tile(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 'f'){
-            obj = new SewerFloor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
-        if (code == 's'){
-            obj = new StreetFloor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
-        if (code == 'm'){
-            obj = new StreetPlatform(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+            obj = new Floor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 'b'){
-            obj = new StreetBoundary(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+            obj = new Boundary(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (code == 'P'){
@@ -149,6 +139,9 @@ public class World {
         }
         if(code == 'e'){
             obj = new EvilCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 't') {
+            obj = new RatTrap(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (code == 'k'){

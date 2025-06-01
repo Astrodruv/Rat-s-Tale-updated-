@@ -6,11 +6,10 @@ import objects.interactables.Door;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import world.Cell;
 import world.World;
-
-import java.awt.desktop.PreferencesEvent;
 
 public class Platform extends GameObject {
     public Platform(float x, float y, Image image) {
@@ -72,4 +71,9 @@ public class Platform extends GameObject {
 
         return spaceLeft || spaceRight;
     }
+
+    public Rectangle getBounds() { // Change if need be for rendering problem fixes
+        return super.getBounds();
+    }
+
 }

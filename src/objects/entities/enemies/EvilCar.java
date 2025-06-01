@@ -5,6 +5,7 @@ import engine.states.Game;
 import objects.GameObject;
 import objects.entities.Entity;
 import objects.platforms.Platform;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
@@ -23,6 +24,8 @@ public class EvilCar extends Entity {
 
     public void render(Graphics g) {
         super.render(g);
+        g.setColor(Color.white);
+        g.draw(getBounds());
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -37,6 +40,10 @@ public class EvilCar extends Entity {
 
         x = newX;
         y = newY;
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(x,y + (Cell.getHeight() / 8),w,h - (Cell.getHeight() / 8));
     }
 
 }

@@ -1,12 +1,11 @@
-package objects.platforms.streetPlatforms;
+package objects.platforms;
 
-import objects.platforms.Platform;
 import org.newdawn.slick.Graphics;
 import ui.Images;
 
-public class StreetBoundary extends Platform {
+public class Boundary extends Platform {
 
-    public StreetBoundary(float x, float y) {
+    public Boundary(float x, float y) {
         super(x,y, Images.streetBoundary);
     }
 

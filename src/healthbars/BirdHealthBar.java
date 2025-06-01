@@ -11,7 +11,7 @@ import world.Cell;
 public class BirdHealthBar extends HealthBar{
 
     public BirdHealthBar(Entity e) {
-        super(((float) Main.getScreenWidth() / 2) - (Cell.getWidth() * 13), Cell.getHeight(), Cell.getWidth() * 26, Cell.getHeight(), Color.gray, Color.darkGray, e);
+        super(((float) Main.getScreenWidth() / 2) - (Cell.getWidth() * 13),0, Cell.getWidth() * 26, Cell.getHeight(), Color.gray, Color.darkGray, e);
     }
 
     public void render(Graphics g) {

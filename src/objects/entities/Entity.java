@@ -11,6 +11,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
+import values.PlayerValues;
+import world.Cell;
 
 import java.util.ArrayList;
 
@@ -37,6 +39,8 @@ public abstract class Entity extends GameObject {
     protected boolean contactingPlatformSide;
     protected boolean onGround;
     protected float xAccel;
+    protected int dashTimer;
+    protected int dashCooldown;
 
     public Entity(float x, float y, int xSpeed, int ySpeed, int health, int attack, Image image, int iFrames) {
         super(x,y, image);
@@ -61,6 +65,8 @@ public abstract class Entity extends GameObject {
         gravity = (float) Main.getScreenHeight() / 1504;
         contactingPlatformSide = false;
         onGround = true;
+        dashTimer = 0;
+        dashCooldown = 0;
     }
 
     public void render(Graphics g){
@@ -99,7 +105,12 @@ public abstract class Entity extends GameObject {
 
         if (!isHit) hasTakenDamage = false;
 
-        yVelocity += gravity;
+        if (dashTimer <= 0){
+            yVelocity += gravity;
+        }
+        else{
+            yVelocity = 0;
+        }
 
         newX = x + xVelocity;
         newY = y + yVelocity;
@@ -113,13 +124,27 @@ public abstract class Entity extends GameObject {
     public void moveLeft(){
         image = rightFacingImage.getFlippedCopy(true, false);
         xVelocity = -xSpeed + xAccel;
-        xAccel -= (float) Main.getScreenWidth() / 22560;
+        if (xAccel > -(Cell.getWidth() - (PlayerValues.X_SPEED * 2))) {
+            xAccel -= (float) Main.getScreenWidth() / 22560;
+        }
     }
 
     public void moveRight(){
         image = rightFacingImage;
         xVelocity = xSpeed + xAccel;
-        xAccel += (float) Main.getScreenWidth() / 22560;
+        if (xAccel < (Cell.getWidth() - (PlayerValues.X_SPEED * 2))) {
+            xAccel += (float) Main.getScreenWidth() / 22560;
+        }
+    }
+
+    public void dash(boolean facingRightSide){
+        if (dashTimer > 0) {
+            if (facingRightSide) {
+                xVelocity = (4f * xSpeed);
+            } else {
+                xVelocity = -(4f * xSpeed);
+            }
+        }
     }
 
     public void jump(){

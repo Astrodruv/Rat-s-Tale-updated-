@@ -2,9 +2,7 @@ package objects.entities;
 
 import engine.states.Game;
 import objects.GameObject;
-import objects.entities.enemies.Bird;
-import objects.entities.enemies.EvilCar;
-import objects.entities.enemies.Cockroach;
+import objects.entities.enemies.*;
 import objects.entities.enemies.PassiveCar;
 import objects.interactables.Door;
 import objects.interactables.Key;
@@ -13,10 +11,7 @@ import objects.platforms.Platform;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
-import values.BirdValues;
-import values.CarValues;
-import values.CockroachValues;
-import values.PlayerValues;
+import values.*;
 import world.Cell;
 import world.World;
 import ui.Images;
@@ -36,6 +31,11 @@ public class Player extends Entity {
     private int frames = 0;
     private int framesPerStep = 6;
 
+    private boolean inBox;
+    private float trapTime;
+    private boolean trapped;
+    private float temp;
+
     public static boolean gameOver;
 
     public Player(float x, float y) {
@@ -47,6 +47,10 @@ public class Player extends Entity {
         weaponCooldown = 30;
         canAttack = false;
         attack = false;
+
+        inBox = false;
+        trapTime = 0;
+        temp = xSpeed;
 
         mySheet = Images.rat;
         currentFrame = mySheet.getSprite(0,0);
@@ -86,11 +90,14 @@ public class Player extends Entity {
             }
         }
 
-        g.setColor(Color.white);
-        g.draw(getBounds());
-        g.draw(getWeaponBounds(facingRight));
-
-        g.drawString("Does player need weapon? " + PlayerValues.doesPlayerNeedUpdatedWeapon, 500, 500);
+//        g.setColor(Color.white);
+//        g.draw(getBounds());
+//        g.draw(getWeaponBounds(facingRight));
+//
+//        g.drawString("DashTime: " + dashTimer, 500, 500);
+//        g.drawString("DashCool: " + dashCooldown, 500, 525);
+//        g.drawString("xAccel: " + xAccel, 500, 550);
+//        g.drawString("CellWidth: " + Cell.getWidth(), 500, 575);
 
 //        g.drawString("canAttack: " + canAttack, 500, 500);
 //        g.drawString("attack: " + attack, 500, 550);
@@ -111,34 +118,47 @@ public class Player extends Entity {
 //            PlayerValues.isPlayerUsingKnife = false;
         }
 
+        trapTime--;
+        if(trapTime > 0)
+        {
+            xSpeed /= 2;
+            trapTime--;
+        }
+        else {
+            xSpeed = (int) temp;
+        }
+
         if (isDead){
             gameOver = true;
         }
+        if (input.isKeyDown(Input.KEY_S) && dashTimer > 0){
+            dash(facingRight);
+        }
+        else {
+            if (input.isKeyDown(Input.KEY_D)) { // && !contactingPlatformSide
+                moveRight();
+                facingRight = true;
+            } else if (input.isKeyDown(Input.KEY_A)) { // && !contactingPlatformSide
+                moveLeft();
+                facingRight = false;
+            } else {
+                if (xAccel > 0) {
+                    xVelocity = xAccel;
+                    xAccel--;
+                    if (xAccel < 0) xAccel = 0;
+                } else if (xAccel < 0) {
+                    xVelocity = xAccel;
+                    xAccel++;
+                    if (xAccel > 0) xAccel = 0;
+                } else {
+                    xVelocity = 0;
+                    xAccel = 0;
+                }
+            }
+        }
 
-        if (input.isKeyDown(Input.KEY_D)){ // && !contactingPlatformSide
-            moveRight();
-            facingRight = true;
-        }
-        else if (input.isKeyDown(Input.KEY_A)){ // && !contactingPlatformSide
-            moveLeft();
-            facingRight = false;
-        }
-        else{
-            if (xAccel > 0){
-                xVelocity = xAccel;
-                xAccel--;
-                if (xAccel < 0) xAccel = 0;
-            }
-            else if (xAccel < 0){
-                xVelocity = xAccel;
-                xAccel++;
-                if (xAccel > 0) xAccel = 0;
-            }
-            else{
-                xVelocity = 0;
-                xAccel = 0;
-            }
-        }
+        dashTimer--;
+        dashCooldown--;
 
         frames++;
         if(frames % framesPerStep == 0)
@@ -255,8 +275,8 @@ public class Player extends Entity {
                                 continue;
                             }
                             case "levels/sewer4.txt" -> {
-                                PlayerValues.section++;
                                 Game.setLevel("levels/street1.txt");
+                                PlayerValues.section++;
                                 if (!PlayerValues.keyOnPermanentlySetting) {
                                     PlayerValues.isPlayerTouchingKey = false;
                                 }
@@ -291,7 +311,8 @@ public class Player extends Entity {
                                 continue;
                             }
                             case "levels/street5.txt" -> {
-                                Game.setLevel("levels/school.txt");
+                                Game.setLevel("levels/closet1.txt");
+                                PlayerValues.section++;
                                 if (!PlayerValues.keyOnPermanentlySetting) {
                                     PlayerValues.isPlayerTouchingKey = false;
                                 }
@@ -311,7 +332,7 @@ public class Player extends Entity {
             if (o instanceof Weapon){
                 if (World.level.equals("levels/sewer4.txt")) {
                     if (getBounds().intersects(o.getBounds())) {
-                        PlayerValues.doesPlayerHaveWeapon = true;
+                        PlayerValues.doesPlayerHaveKnife = true;
                         PlayerValues.isPlayerTouchingKey = true;
                     }
                 }
@@ -367,8 +388,8 @@ public class Player extends Entity {
             if (o instanceof EvilCar){
                 if (futureY.intersects(o.getBounds())) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
-                        jumpingOffOfEnemy = true;
-                        jump();
+                        yVelocity = -((float) (ySpeed * 11) / 10);
+                        onGround = false;
                         jumpingOffOfEnemy = false;
                     } else {
                         takeDamage(CarValues.ATTACK);
@@ -379,8 +400,8 @@ public class Player extends Entity {
             if (o instanceof PassiveCar){
                 if (futureY.intersects(o.getBounds())) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
-                        jumpingOffOfEnemy = true;
-                        jump();
+                        yVelocity = -((float) (ySpeed * 11) / 10);
+                        onGround = false;
                         jumpingOffOfEnemy = false;
                     }
                 }
@@ -407,6 +428,13 @@ public class Player extends Entity {
                 }
             }
 
+            if (o instanceof RatTrap) {
+                if (futureY.intersects(o.getBounds())) {
+                    takeDamage(RatTrapValues.ATTACK);
+                    trapTime = 120;
+                }
+            }
+
         }
     }
 
@@ -429,9 +457,14 @@ public class Player extends Entity {
             }
             canAttack = false;
         }
-        if(key == Input.KEY_1 && PlayerValues.doesPlayerHaveWeapon){
+        if(key == Input.KEY_1 && PlayerValues.doesPlayerHaveKnife){
             PlayerValues.isPlayerHoldingKnife = !PlayerValues.isPlayerHoldingKnife;
             weaponCooldown = 30;
+        }
+
+        if (key == (Input.KEY_S) && dashTimer <= 0 && dashCooldown <= 0) {
+            dashTimer = PlayerValues.DASH_TIME;
+            dashCooldown = PlayerValues.DASH_COOLDOWN;
         }
     }
 
