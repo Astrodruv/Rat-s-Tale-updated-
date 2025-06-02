@@ -7,21 +7,19 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 import ui.Images;
 import values.RatTrapValues;
-import world.Cell;
 
 public class RatTrap extends Entity {
 
     private Image image;
 
     public RatTrap(float x, float y) {
-        super(x, y + (Cell.getHeight() / 3), 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.ratTrap, RatTrapValues.IFRAMES);
+        super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.ratTrap, RatTrapValues.IFRAMES);
         image = Images.ratTrap;
     }
 
     public void render(Graphics g) {
         super.render(g);
         image.draw(x,y);
-        g.drawRect(x,y,w,h);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {

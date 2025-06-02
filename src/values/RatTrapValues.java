@@ -1,7 +1,5 @@
 package values;
 
-import world.Cell;
-
 public class RatTrapValues {
 
     public static final int X_SPEED = 0;

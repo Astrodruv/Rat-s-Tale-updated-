@@ -9,18 +9,12 @@ import values.PlayerValues;
 
 public class Door extends GameObject {
 
-    public Door(float x, float y) {
+    public Door(float x, float y){
         super(x, y, Images.door);
+        if (PlayerValues.section == 1) image = Images.streetDoor;
     }
 
     public void render(Graphics g) {
-
-        if(Player.section == 1)
-        {
-            image = Images.streetDoor;
-        } else if (Player.section == 2) {
-            image = Images.vent;
-        }
         super.render(g);
     }
 
