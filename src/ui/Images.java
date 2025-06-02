@@ -42,8 +42,10 @@ public class Images
     // Interactables
     public static Image key;
     public static Image coin;
+    public static Image screwDriver;
     public static Image door;
     public static Image streetDoor;
+    public static Image vent;
     public static Image knife;
     public static Image knifeInvUnscaled;
     public static Image knifeInv;
@@ -95,9 +97,11 @@ public class Images
             janitor = new SpriteSheet(janitorWalking,418,616);
           
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
-            coin = new Image("res/misc/Coin.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());
+            coin = new Image("res/levels/street/Coin.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());
+            screwDriver = new Image("res/levels/closet/ScrewDriver").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
-            streetDoor = new Image("res/misc/Street_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
+            streetDoor = new Image("res/levels/street/Street_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
+            vent = new Image("res/levels/closet/Closet_Door").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
 
             knife = new Image("res/misc/Knife.png").getScaledCopy((int) Cell.getWidth() / 2, (int) (Cell.getHeight()));
             knifeInvUnscaled = new Image("res/misc/Knife_Inventory.png");
