@@ -62,7 +62,7 @@ public class Game extends BasicGameState {
 
 		world = new World();
 
-		setLevel("levels/closet5.txt"); // debug //sewer1
+		setLevel("levels/sewer1.txt"); // debug //sewer1
 //		Player.section = 1; // debug
 //		PlayerValues.doesPlayerHaveWeapon = true; // debug
 		knifeDisplay = Images.knifeInv;

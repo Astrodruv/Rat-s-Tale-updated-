@@ -77,7 +77,7 @@ public class Images
             ratIdle = new Image("res/misc/Rat_Idle1.png").getScaledCopy((int) (Cell.getWidth() * 2.5), (int) Cell.getHeight() + 10);
             cockroachIdle = new Image("res/levels/sewer/Cockroach_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight());
             birdIdle = new Image("res/levels/street/Eagle.png").getScaledCopy((int) Cell.getWidth() * 6, (int) Cell.getHeight() * 3);
-            janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) Cell.getWidth() * 3, (int) Cell.getHeight() * 7);
+            janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) Cell.getWidth() * 3, (int) Cell.getHeight() * 4);
 
             birdFlying = new Image("res/levels/street/Bird_Flapping3.png");
             bird = new SpriteSheet(birdFlying,329,210);
@@ -94,7 +94,7 @@ public class Images
             cockRoach = new SpriteSheet(cockroachWalking,150,90);
 
             janitorWalking = new Image("res/levels/closet/Janitor_Walking.png");
-            janitor = new SpriteSheet(janitorWalking,418,616);
+            janitor = new SpriteSheet(janitorWalking,247,364);
           
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             coin = new Image("res/levels/street/Coin.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());

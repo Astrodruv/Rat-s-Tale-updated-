@@ -79,7 +79,7 @@ public class GameObject {
             return new Rectangle(x,y,w,h);
         }
         else {
-            return new Rectangle(x + (Cell.getWidth() * 8), y, w, h);
+            return new Rectangle(x + (Cell.getWidth() * 3), y, w, h);
         }
     }
 

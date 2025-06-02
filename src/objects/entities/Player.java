@@ -10,6 +10,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import values.*;
+import world.Cell;
 import world.World;
 import ui.Images;
 
@@ -95,6 +96,7 @@ public class Player extends Entity {
             if (weaponCooldown > 0) {
                 g.fillRect(x, y - 50, (w + 50) * ((30 - weaponCooldown) / 30), 10);
             } else {
+                g.setColor(Color.white);
                 g.fillRect(x, y - 50, w + 50, 10);
             }
         }
@@ -105,6 +107,7 @@ public class Player extends Entity {
             if (trapTime > 0) {
                 g.fillRect(x, y - 65, (w + 50) * ((240 - trapTime) / 240), 10);
             } else {
+                g.setColor(Color.white);
                 g.fillRect(x, y - 65, w + 50, 10);
             }
         }
