@@ -93,7 +93,7 @@ public class Game extends BasicGameState
 		pauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Pause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 		unpauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Unpause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 
-		setLevel("levels/sewer4.txt"); // debug
+		setLevel("levels/closet5.txt"); // debug
 		PlayerValues.section = 0; // debug
 		PlayerValues.doesPlayerHaveKnife = false; // debug
 
@@ -154,6 +154,9 @@ public class Game extends BasicGameState
 				g.drawImage(Images.streetBackground, 0, 0);
 			} else if (PlayerValues.section == 2) {
 				g.drawImage(Images.closetBackground, Cell.getWidth(), Cell.getHeight());
+			} else if (PlayerValues.section == 3) {
+				g.drawImage(Images.classroomBackground, Cell.getWidth(), Cell.getHeight());
+
 			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
 			world.render(g);
@@ -266,6 +269,11 @@ public class Game extends BasicGameState
 				}
 				if (PlayerValues.section == 2){
 					setLevel("levels/closet1.txt");
+					Player.gameOver = false;
+				}
+				if(PlayerValues.section == 3)
+				{
+					setLevel("levels/classroom1.txt");
 					Player.gameOver = false;
 				}
 			}

@@ -70,7 +70,6 @@ public class GameObject {
         else {
             float width = Cell.getWidth() * 5;
             return new Rectangle(x - (width) + (width / 4), y - Cell.getHeight() / 2, width, Cell.getHeight() + Cell.getHeight());
-            return new Rectangle(x - w - (Cell.getWidth() * 3), y - Cell.getHeight(), Cell.getWidth() * 6, Cell.getHeight() * 3);
         }
     }
 
