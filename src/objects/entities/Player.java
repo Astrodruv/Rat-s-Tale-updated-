@@ -3,17 +3,13 @@ package objects.entities;
 import engine.Main;
 import engine.states.Game;
 import objects.GameObject;
-import objects.entities.enemies.Bird;
-import objects.entities.enemies.EvilCar;
-import objects.entities.enemies.Cockroach;
-import objects.entities.enemies.RatTrap;
+import objects.entities.enemies.*;
 import objects.interactables.*;
 import objects.platforms.Platform;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import values.*;
-import world.Cell;
 import world.World;
 import ui.Images;
 
@@ -102,7 +98,17 @@ public class Player extends Entity {
                 g.fillRect(x, y - 50, w + 50, 10);
             }
         }
-        g.draw(getBounds());
+        if(trapped)
+        {
+            g.fillRect(x, y - 65, (w + 50), 10);
+            g.setColor(Color.red);
+            if (trapTime > 0) {
+                g.fillRect(x, y - 65, (w + 50) * ((240 - trapTime) / 240), 10);
+            } else {
+                g.fillRect(x, y - 65, w + 50, 10);
+            }
+        }
+        g.drawString(""+ xVelocity,700,700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -116,6 +122,7 @@ public class Player extends Entity {
         trapTime--;
         if(trapTime > 0)
         {
+            trapped = true;
             xSpeed /= 2;
             trapTime--;
         }
@@ -130,7 +137,6 @@ public class Player extends Entity {
             moveLeft();
             facingRight = false;
         } else {
-
             if (xAccel > 0) {
                 xVelocity = xAccel;
                 xAccel--;
@@ -142,7 +148,6 @@ public class Player extends Entity {
             } else {
                 xVelocity = 0;
                 xAccel = 0;
-                w = image.getWidth() ;
             }
         }
         frames++;
@@ -162,9 +167,13 @@ public class Player extends Entity {
             jump();
         }
 
-        if(xSpeed > 10)
+        if(xVelocity > 10)
         {
-            xSpeed = 10;
+            xVelocity = 10;
+        }
+        if(xVelocity < -10)
+        {
+            xVelocity = -10;
         }
 
         super.update(gc, sbg, delta);
@@ -215,7 +224,7 @@ public class Player extends Entity {
                 }
             }
 
-            if (o instanceof Door || o instanceof StreetDoor) {
+            if (o instanceof Door) {
                 if (!PlayerValues.isPlayerTouchingKey) {
                     float playerRight = futureX.getX() + futureX.getWidth();
                     float playerLeft = futureX.getX();
@@ -342,11 +351,25 @@ public class Player extends Entity {
                             }
                             continue;
                         }
+                        if (World.level.equals("levels/closet3.txt")) {
+                            Game.setLevel("levels/closet4.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/closet4.txt")) {
+                            Game.setLevel("levels/closet5.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
                     }
                 }
             }
 
-            if (o instanceof Key || o instanceof Coin) {
+            if (o instanceof Key) {
                 if (getBounds().intersects(o.getBounds())) {
                     PlayerValues.isPlayerTouchingKey = true;
                 }
@@ -415,49 +438,6 @@ public class Player extends Entity {
                 }
             }
 
-//            if (o instanceof EvilCar) {
-//                EvilCar car = (EvilCar) o;
-//                Rectangle carBounds = car.getBounds();
-//                if (futureX.intersects(o.getBounds())) {
-//                    boolean hitFront = false;
-//                    if (newX + w <= car.getX() + 5) {
-//                        hitFront = true;
-//                    }
-//                    if (hitFront) {
-//                        takeDamage(CarValues.ATTACK);
-//                        jump();
-//                    }
-//                    if (xAccel == 0 && hitFront) {
-//                        jump();
-//                    }
-//                    if (xVelocity > 0) {
-//                        newX = car.getX() - w;
-//                    } else if (xVelocity < 0) {
-//                        newX = car.getX() + car.getW();
-//                    }
-//                }
-//                if (futureY.intersects(o.getBounds())) {
-//                    if ((y <= car.getY() + 10)) {
-//                        newY = car.getY() - h;
-//                        onGround = true;
-//                    }
-//                }
-//            }
-//            if (o instanceof PassiveCar) {
-//                PassiveCar car = (PassiveCar) o;
-//                Rectangle passiveBounds = car.getBounds();
-//                if (futureX.intersects(passiveBounds)) {
-//                    if (newX + w <= car.getX() + 5 || newX <= (car.getX() + car.getW())) {
-//                        xVelocity = 0;
-//                    }
-//                    if (xVelocity > 0) {
-//                        newX = car.getX() - w;
-//                    } else if (xVelocity < 0) {
-//                        newX = car.getX() + car.getW();
-//                    }
-//                }
-//            }
-
             if (o instanceof EvilCar){
                 if (futureY.intersects(o.getBounds())) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
@@ -507,7 +487,15 @@ public class Player extends Entity {
                         jump();
                     }
                     takeDamage(RatTrapValues.ATTACK);
-                    trapTime = 120;
+                    trapTime = 240;
+                }
+            }
+
+            if(o instanceof Janitor)
+            {
+                if(futureY.intersects(o.getBounds()))
+                {
+                    takeDamage(JanitorValues.ATTACK);
                 }
             }
         }
