@@ -127,6 +127,7 @@ public class Player extends Entity {
             trapTime--;
         }
         else {
+            trapped = false;
             xSpeed = (int) temp;
         }
 

@@ -1,6 +1,7 @@
 package ui;
 
 import engine.Main;
+import objects.entities.enemies.Janitor;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
@@ -74,7 +75,7 @@ public class Images
             ratIdle = new Image("res/misc/Rat_Idle1.png").getScaledCopy((int) (Cell.getWidth() * 2.5), (int) Cell.getHeight() + 10);
             cockroachIdle = new Image("res/levels/sewer/Cockroach_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight());
             birdIdle = new Image("res/levels/street/Eagle.png").getScaledCopy((int) Cell.getWidth() * 6, (int) Cell.getHeight() * 3);
-            janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+            janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) Cell.getWidth() * 11, (int) Cell.getHeight() * 7);
 
             birdFlying = new Image("res/levels/street/Bird_Flapping3.png");
             bird = new SpriteSheet(birdFlying,329,210);
@@ -82,7 +83,7 @@ public class Images
             car1 = new Image("res/levels/street/Car.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
             car2 = new Image("res/levels/street/Car2.png").getScaledCopy((int) (Cell.getWidth() * 4), (int) (Cell.getHeight()));
 
-            ratTrap = new Image("res/levels/closet/Rat_Trap.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+            ratTrap = new Image("res/levels/closet/Rat_Trap.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight() * 2 / 3);
 
             ratWalking = new Image("res/misc/Rat Walking.png");
             rat = new SpriteSheet(ratWalking,154,42);
@@ -91,7 +92,7 @@ public class Images
             cockRoach = new SpriteSheet(cockroachWalking,150,90);
 
             janitorWalking = new Image("res/levels/closet/Janitor_Walking.png");
-            janitor = new SpriteSheet(janitorWalking,418,90);
+            janitor = new SpriteSheet(janitorWalking,418,616);
           
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             coin = new Image("res/misc/Coin.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());

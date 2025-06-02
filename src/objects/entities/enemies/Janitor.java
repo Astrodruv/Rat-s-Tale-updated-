@@ -23,7 +23,7 @@ public class Janitor extends Entity {
     public Janitor(float x, float y)
     {
         super(x, y, JanitorValues.X_SPEED, JanitorValues.Y_SPEED, JanitorValues.HEALTH, JanitorValues.ATTACK, Images.janitorIdle, JanitorValues.IFRAMES);
-        facingRight = false;
+        facingRight = true;
         image = Images.janitorIdle;
         mySheet = Images.janitor;
         currentFrame = mySheet.getSprite(0,0);
@@ -38,11 +38,12 @@ public class Janitor extends Entity {
         } else {
             currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
         }
+        g.drawRect(x,y,w,h);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta)
     {
-        if(x <= 0|| x >= Main.getScreenWidth() - Images.janitorIdle.getWidth())
+        if(x <= -418 - 50|| x >= Main.getScreenWidth() + 50)
         {
             xSpeed *= -1;
             image = image.getFlippedCopy(true, false);
@@ -50,6 +51,10 @@ public class Janitor extends Entity {
         }
 
         x += xSpeed;
+
+        if(xSpeed > 0){
+            facingRight = true;
+        }
 
         frames++;
         if(frames % framesPerStep == 0)
