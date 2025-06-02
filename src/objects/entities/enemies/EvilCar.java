@@ -1,38 +1,49 @@
 package objects.entities.enemies;
 
 import engine.Main;
+import engine.states.Game;
+import objects.GameObject;
 import objects.entities.Entity;
+import objects.platforms.Platform;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import ui.Images;
 import values.CarValues;
 import world.Cell;
 
+import java.util.ArrayList;
+
 public class EvilCar extends Entity {
-private Image image;
+
     public EvilCar(float x, float y) {
         super(x, y, CarValues.X_SPEED, CarValues.Y_SPEED, CarValues.HEALTH, CarValues.ATTACK, Images.car1, CarValues.IFRAMES);
-        image = Images.car1;
-        w = image.getWidth();
-        h = image.getHeight();
     }
 
     public void render(Graphics g) {
         super.render(g);
-        image.draw(x,y);
+        g.setColor(Color.white);
+        g.draw(getBounds());
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+        xVelocity = -xSpeed;
 
-        xVelocity -= (float) xSpeed / 5;
-
-        if (x <= Cell.getWidth() * 2) {
-            x = Main.getScreenWidth() - (Cell.getWidth() * 2) - w;
-            xVelocity = 0;
+        if (x <= -w) {
+            x = Main.getScreenWidth() + w;
         }
 
-        super.update(gc, sbg, delta);
+        newX = x + xVelocity;
+        newY = y + yVelocity;
+
+        x = newX;
+        y = newY;
     }
+
+    public Rectangle getBounds() {
+        return new Rectangle(x,y + (Cell.getHeight() / 8),w,h - (Cell.getHeight() / 8));
+    }
+
 }
