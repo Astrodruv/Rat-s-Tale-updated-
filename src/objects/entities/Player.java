@@ -112,6 +112,7 @@ public class Player extends Entity {
             if (weaponCooldown > 0) {
                 g.fillRect(x, y - 50, (w + 50) * ((30 - weaponCooldown) / 30), 10);
             } else {
+                g.setColor(Color.white);
                 g.fillRect(x, y - 50, w + 50, 10);
             }
         }
@@ -123,6 +124,7 @@ public class Player extends Entity {
             if (trapTime > 0) {
                 g.fillRect(x, y - 65, (w + 50) * ((240 - trapTime) / 240), 10);
             } else {
+                g.setColor(Color.white);
                 g.fillRect(x, y - 65, w + 50, 10);
             }
         }

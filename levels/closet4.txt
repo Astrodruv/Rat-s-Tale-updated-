@@ -10,6 +10,6 @@ ss..........nnn..........nnn....................ss
 ss......nt...........nn.........................ss
 ss......nn......................................ss
 ss..k.................................t.........ss
-ss..n..............nt....nt....nt....nn..........d.
-ss.....ttt........t.n..t..n..t..n.................
-ffffffffffffffffffffffffffffffffffffffffffffffffff
+ss..n.............nnt....nnt....nnt...n.........d.
+ss.....ttt..........n..t...n..t...n...............
+ssssssssssssssssssssssssssssssssssssssssssssssssss
