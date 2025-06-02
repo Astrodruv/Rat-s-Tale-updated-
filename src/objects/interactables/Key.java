@@ -15,13 +15,11 @@ public class Key extends GameObject {
 
     public void render(Graphics g) {
 
-        if(Player.section == 0)
-        {
-            image = Images.key;
-        }
-        else if(Player.section == 1)
-        {
+
+        if (Player.section == 1) {
             image = Images.coin;
+        } else if (Player.section == 2) {
+            image = Images.screwDriver;
         }
 
         if (!PlayerValues.isPlayerTouchingKey) {
@@ -30,5 +28,4 @@ public class Key extends GameObject {
             image.draw(Cell.getWidth() * 46.5f, Cell.getHeight() / 3);
         }
     }
-
 }

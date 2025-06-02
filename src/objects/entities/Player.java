@@ -127,6 +127,7 @@ public class Player extends Entity {
             trapTime--;
         }
         else {
+            trapped = false;
             xSpeed = (int) temp;
         }
 
@@ -493,7 +494,7 @@ public class Player extends Entity {
 
             if(o instanceof Janitor)
             {
-                if(futureY.intersects(o.getBounds()))
+                if(futureY.intersects(o.getJanitorBounds(((Janitor) o).facingRight)))
                 {
                     takeDamage(JanitorValues.ATTACK);
                 }

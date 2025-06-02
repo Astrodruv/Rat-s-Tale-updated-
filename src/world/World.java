@@ -58,13 +58,13 @@ public class World {
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Key || obj instanceof Door || obj instanceof Weapon || obj instanceof PassiveCar) {
+            if (obj instanceof Key || obj instanceof Door || obj instanceof Weapon || obj instanceof PassiveCar || obj instanceof RatTrap) {
                 obj.render(g);
             }
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar || obj instanceof RatTrap || obj instanceof Janitor) {
+            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar || obj instanceof Janitor) {
                 obj.render(g);
             }
         }
@@ -143,14 +143,14 @@ public class World {
         if (code == 'E') {
             obj = new Bird(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (code == 'e') {
-            obj = new EvilCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        if (code == 'J') {
+            obj = new Janitor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 't') {
             obj = new RatTrap(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (code == 'J') {
-            obj = new Janitor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        if (code == 'e') {
+            obj = new EvilCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (code == 'k') {

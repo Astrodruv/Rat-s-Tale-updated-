@@ -14,13 +14,12 @@ public class Door extends GameObject {
     }
 
     public void render(Graphics g) {
-        if(Player.section == 0)
-        {
-            image = Images.door;
-        }
-        else if(Player.section == 1)
+
+        if(Player.section == 1)
         {
             image = Images.streetDoor;
+        } else if (Player.section == 2) {
+            image = Images.vent;
         }
         super.render(g);
     }
