@@ -67,4 +67,5 @@ public class Janitor extends Entity {
         }
         currentFrame = mySheet.getSprite(step, 0);
     }
+
 }

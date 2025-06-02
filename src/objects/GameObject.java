@@ -72,4 +72,15 @@ public class GameObject {
         }
     }
 
+    public Rectangle getJanitorBounds(boolean facingRight)
+    {
+        if(!facingRight)
+        {
+            return new Rectangle(x,y,w,h);
+        }
+        else {
+            return new Rectangle(x + (Cell.getWidth() * 8), y, w, h);
+        }
+    }
+
 }

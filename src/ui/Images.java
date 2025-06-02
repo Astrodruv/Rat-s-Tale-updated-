@@ -77,7 +77,7 @@ public class Images
             ratIdle = new Image("res/misc/Rat_Idle1.png").getScaledCopy((int) (Cell.getWidth() * 2.5), (int) Cell.getHeight() + 10);
             cockroachIdle = new Image("res/levels/sewer/Cockroach_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight());
             birdIdle = new Image("res/levels/street/Eagle.png").getScaledCopy((int) Cell.getWidth() * 6, (int) Cell.getHeight() * 3);
-            janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) Cell.getWidth() * 11, (int) Cell.getHeight() * 7);
+            janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) Cell.getWidth() * 3, (int) Cell.getHeight() * 7);
 
             birdFlying = new Image("res/levels/street/Bird_Flapping3.png");
             bird = new SpriteSheet(birdFlying,329,210);
@@ -98,10 +98,10 @@ public class Images
           
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             coin = new Image("res/levels/street/Coin.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());
-            screwDriver = new Image("res/levels/closet/ScrewDriver").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
+            screwDriver = new Image("res/levels/closet/ScrewDriver.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
             streetDoor = new Image("res/levels/street/Street_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
-            vent = new Image("res/levels/closet/Closet_Door").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
+            vent = new Image("res/levels/closet/Closet_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
 
             knife = new Image("res/misc/Knife.png").getScaledCopy((int) Cell.getWidth() / 2, (int) (Cell.getHeight()));
             knifeInvUnscaled = new Image("res/misc/Knife_Inventory.png");
