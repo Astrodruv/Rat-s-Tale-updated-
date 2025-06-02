@@ -84,7 +84,7 @@ public class Player extends Entity {
                 image.getFlippedCopy(true, false).draw(x, y + h - image.getHeight());
             }
         } else if (facingRight) {
-            currentFrame.draw(x, y + renderOffsetY);
+            currentFrame.draw(x - Cell.getWidth() - 20, y + renderOffsetY);
         } else {
             currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
         }
