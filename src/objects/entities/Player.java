@@ -71,7 +71,7 @@ public class Player extends Entity {
     }
 
     public void render(Graphics g) {
-        super.render(g);
+//        super.render(g);
         if (streetTimer > 1200) {
 //            g.setFont(Fonts.big);
 //            g.setColor(Color.red);
@@ -500,7 +500,7 @@ public class Player extends Entity {
             }
 
             if (o instanceof Janitor) {
-                if (futureY.intersects(o.getJanitorBounds(((Janitor) o).facingRight))) {
+                if (futureY.intersects(((Janitor) o).getBounds(((Janitor) o).facingRight))) {
                     takeDamage(JanitorValues.ATTACK);
                     ((Janitor) o).trap = true;
                 }

@@ -89,12 +89,12 @@ public class Images {
             bird = new SpriteSheet(birdFlying,329,210);
 
             ratTrap = new Image("res/levels/closet/Rat_Trap.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight() * 2 / 3);
-            ratTrapped = new Image("res/levels/closet/Trap_Closing.png").getScaledCopy((int) Cell.getWidth(), (int) (Cell.getHeight() * 2 / 3));
-            trapping = new SpriteSheet(ratTrapped, 308, 252);
+            ratTrapped = new Image("res/levels/closet/Trap_Closing.png");
+            trapping = new SpriteSheet(ratTrapped, (308), (252));
 
             janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) Cell.getWidth() * 3, (int) Cell.getHeight() * 4);
             janitorWalking = new Image("res/levels/closet/Janitor_Walking.png");
-            janitor = new SpriteSheet(janitorWalking,418,616);
+            janitor = new SpriteSheet(janitorWalking,247, 364);
 
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
