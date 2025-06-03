@@ -31,6 +31,8 @@ public class Images {
     public static Image car1;
     public static Image car2;
     public static Image ratTrap;
+    public static Image janitorIdle;
+    public static Image janitorWalking;
 
     // Interactables
     public static Image key;
@@ -40,10 +42,12 @@ public class Images {
     public static Image coin;
     public static Image streetDoor;
 
+    // Game Entities Animations
     public static SpriteSheet rat;
     public static SpriteSheet cockRoach;
     public static SpriteSheet bird;
     public static SpriteSheet knifeAttack;
+    public static SpriteSheet janitor;
 
     public static void loadImages()
     {
@@ -77,6 +81,9 @@ public class Images {
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
             knife = new Image("res/misc/Knife.png").getScaledCopy((int) Cell.getWidth() / 2, (int) (Cell.getHeight()));
             knifeAttack = new SpriteSheet("res/misc/Knife3.png", 512, 512);
+            janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+            janitorWalking = new Image("res/levels/closet/Janitor_Walking.png");
+            janitor = new SpriteSheet(janitorWalking,418,90);
 
             coin = new Image("res/levels/street/Coin.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());
             streetDoor = new Image("res/levels/street/Street_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);

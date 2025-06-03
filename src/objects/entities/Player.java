@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class Player extends Entity {
 
     private boolean jumpingOffOfEnemy;
-    private float weaponCooldown;
+    private float knifeCooldown;
     private boolean canAttack;
     private boolean attack;
 
@@ -31,10 +31,9 @@ public class Player extends Entity {
     private int frames = 0;
     private int framesPerStep = 6;
 
-    private boolean inBox;
     private float trapTime;
-    private boolean trapped;
     private float temp;
+    private boolean trapped;
 
     public static boolean gameOver;
 
@@ -44,11 +43,11 @@ public class Player extends Entity {
         onGround = true;
         gameOver = false;
         jumpingOffOfEnemy = false;
-        weaponCooldown = 30;
+        knifeCooldown = 30;
         canAttack = false;
         attack = false;
+        trapped = false;
 
-        inBox = false;
         trapTime = 0;
         temp = xSpeed;
 
@@ -57,6 +56,7 @@ public class Player extends Entity {
     }
 
     public void render(Graphics g){
+        float renderOffsetY = 0; // h - currentFrame.getHeight()
 
         if (isHit){
             if (invincibilityFrames % 7 == 0){
@@ -65,34 +65,56 @@ public class Player extends Entity {
             else{
                 if (xVelocity == 0 && xAccel == 0) {
                     if (facingRight) {
-                        rightFacingImage.draw(x, y,w,h);
+                        rightFacingImage.draw(x,y, w, h);
                     } else {
-                        rightFacingImage.getFlippedCopy(true, false).draw(x,y,w,h);
+                        rightFacingImage.getFlippedCopy(true, false).draw(x,y, w, h);
                     }
                 } else if (facingRight) {
-                    currentFrame.draw(x,y,w,h);
+                    currentFrame.draw(x,y, w, h);
                 } else {
-                    currentFrame.getFlippedCopy(true, false).draw(x,y,w,h);
+                    currentFrame.getFlippedCopy(true, false).draw(x,y, w, h);
                 }
             }
         }
         else{
             if (xVelocity == 0 && xAccel == 0) {
                 if (facingRight) {
-                    rightFacingImage.draw(x,y,w,h);
+                    rightFacingImage.draw(x,y, w, h);
                 } else {
-                    rightFacingImage.getFlippedCopy(true, false).draw(x,y,w,h);
+                    rightFacingImage.getFlippedCopy(true, false).draw(x,y, w, h);
                 }
             } else if (facingRight) {
-                currentFrame.draw(x,y,w,h);
+                currentFrame.draw(x,y, w, h);
             } else {
-                currentFrame.getFlippedCopy(true, false).draw(x,y,w,h);
+                currentFrame.getFlippedCopy(true, false).draw(x,y, w, h);
             }
         }
 
-//        g.setColor(Color.white);
-//        g.draw(getBounds());
-//        g.draw(getWeaponBounds(facingRight));
+        if (PlayerValues.doesPlayerHaveKnife && PlayerValues.isPlayerHoldingKnife) {
+            g.setColor(Color.gray);
+            g.fillRect(x, (float) (y - (Cell.getWidth() * 1.25)), w, 10);
+            g.setColor(Color.yellow);
+            if (knifeCooldown > 0) {
+                g.fillRect(x, (float) (y - (Cell.getWidth() * 1.25)), w * (knifeCooldown / 30), 10);
+            } else {
+                g.fillRect(x, (float) (y - (Cell.getWidth() * 1.25)), w, 10);
+            }
+        }
+
+        if(trapped) {
+            g.setColor(Color.gray);
+            g.fillRect(x, (float) (y - (Cell.getWidth() * 1.525)), w, 10);
+            g.setColor(Color.red);
+            if (trapTime > 0) {
+                g.fillRect(x, (float) (y - (Cell.getWidth() * 1.525)), w * (trapTime / 120), 10);
+            } else {
+                g.fillRect(x, (float) (y - (Cell.getWidth() * 1.525)), w, 10);
+            }
+        }
+
+        g.setColor(Color.white);
+        g.draw(getBounds());
+        g.draw(getWeaponBounds(facingRight));
 //
 //        g.drawString("DashTime: " + dashTimer, 500, 500);
 //        g.drawString("DashCool: " + dashCooldown, 500, 525);
@@ -108,23 +130,25 @@ public class Player extends Entity {
     public void update(GameContainer gc, StateBasedGame sbg, int delta){
         Input input = gc.getInput();
 
-        weaponCooldown--;
+        knifeCooldown--;
 
-        if(weaponCooldown < 0){
+        if(knifeCooldown < 0){
             canAttack = true;
         }
 
-        if(weaponCooldown < 25){
+        if(knifeCooldown < 25){
 //            PlayerValues.isPlayerUsingKnife = false;
         }
 
         trapTime--;
         if(trapTime > 0)
         {
+            trapped = true;
             xSpeed /= 2;
             trapTime--;
         }
         else {
+            trapped = false;
             xSpeed = (int) temp;
         }
 
@@ -451,15 +475,12 @@ public class Player extends Entity {
             attack = true;
             PlayerValues.isPlayerUsingKnife = true;
             if (PlayerValues.isPlayerHoldingKnife) {
-                weaponCooldown = 30;
-            } else {
-                weaponCooldown = 90;
+                knifeCooldown = 30;
             }
             canAttack = false;
         }
         if(key == Input.KEY_1 && PlayerValues.doesPlayerHaveKnife){
             PlayerValues.isPlayerHoldingKnife = !PlayerValues.isPlayerHoldingKnife;
-            weaponCooldown = 30;
         }
 
         if (key == (Input.KEY_S) && dashTimer <= 0 && dashCooldown <= 0) {
@@ -467,5 +488,4 @@ public class Player extends Entity {
             dashCooldown = PlayerValues.DASH_COOLDOWN;
         }
     }
-
 }
