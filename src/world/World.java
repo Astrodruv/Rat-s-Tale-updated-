@@ -64,7 +64,7 @@ public class World {
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar || obj instanceof Janitor) {
+            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar || obj instanceof Janitor || obj instanceof Student) {
                 obj.render(g);
             }
         }
@@ -137,7 +137,7 @@ public class World {
         if (code == 'E'){
             obj = new Bird(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if(code == 'e'){
+        if (code == 'e'){
             obj = new EvilCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 't'){
@@ -145,6 +145,9 @@ public class World {
         }
         if (code == 'J'){
            obj = new Janitor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 's'){
+            obj = new Student(cell.getX() * Cell.getWidth(), cell.getX() * Cell.getHeight());
         }
 
         if (code == 'k'){

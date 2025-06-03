@@ -19,7 +19,6 @@ public class RatTrap extends Entity {
     private int frames = 0;
     private int framesPerStep = 6;
 
-
     public RatTrap(float x, float y) {
         super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.ratTrap, RatTrapValues.IFRAMES);
         image = Images.ratTrap;

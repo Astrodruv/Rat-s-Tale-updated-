@@ -156,7 +156,6 @@ public class Game extends BasicGameState
 				g.drawImage(Images.closetBackground, Cell.getWidth(), Cell.getHeight());
 			} else if (PlayerValues.section == 3) {
 				g.drawImage(Images.classroomBackground, Cell.getWidth(), Cell.getHeight());
-
 			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
 			world.render(g);
