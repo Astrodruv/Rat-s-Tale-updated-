@@ -502,6 +502,7 @@ public class Player extends Entity {
             if (o instanceof Janitor) {
                 if (futureY.intersects(o.getJanitorBounds(((Janitor) o).facingRight))) {
                     takeDamage(JanitorValues.ATTACK);
+                    ((Janitor) o).trap = true;
                 }
             }
         }

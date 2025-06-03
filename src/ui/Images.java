@@ -32,6 +32,7 @@ public class Images {
     public static Image car1;
     public static Image car2;
     public static Image ratTrap;
+    public static Image ratTrapped;
     public static Image janitorIdle;
     public static Image janitorWalking;
 
@@ -49,6 +50,7 @@ public class Images {
     public static SpriteSheet bird;
     public static SpriteSheet knifeAttack;
     public static SpriteSheet janitor;
+    public static SpriteSheet trapping;
 
     public static void loadImages()
     {
@@ -87,6 +89,8 @@ public class Images {
             bird = new SpriteSheet(birdFlying,329,210);
 
             ratTrap = new Image("res/levels/closet/Rat_Trap.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight() * 2 / 3);
+            ratTrapped = new Image("res/levels/closet/Trap_Closing.png").getScaledCopy((int) Cell.getWidth(), (int) (Cell.getHeight() * 2 / 3));
+            trapping = new SpriteSheet(ratTrapped, 308, 252);
 
             janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) Cell.getWidth() * 3, (int) Cell.getHeight() * 4);
             janitorWalking = new Image("res/levels/closet/Janitor_Walking.png");
