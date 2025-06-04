@@ -58,13 +58,13 @@ public class World {
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Key || obj instanceof Door || obj instanceof Weapon || obj instanceof PassiveCar) {
+            if (obj instanceof Key || obj instanceof Door || obj instanceof Weapon || obj instanceof PassiveCar || obj instanceof RatTrap) {
                 obj.render(g);
             }
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar || obj instanceof RatTrap) {
+            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Janitor || obj instanceof Player || obj instanceof EvilCar) {
                 obj.render(g);
             }
         }
@@ -116,7 +116,7 @@ public class World {
     public void setCell(Cell cell, char code) throws SlickException {
         GameObject obj = null;
 
-        // Characters Used: b, c, d, e, f, k, m, p, s, C, E, W, n, t
+        // Characters Used: b, c, d, e, f, k, p, s, C, E, W, t, J
 
         if (code == 'p'){
             obj = new Tile(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -137,17 +137,20 @@ public class World {
         if (code == 'E'){
             obj = new Bird(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if(code == 'e'){
+        if (code == 'e'){
             obj = new EvilCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if (code == 't') {
+        if (code == 't'){
             obj = new RatTrap(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'J'){
+           obj = new Janitor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (code == 'k'){
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if(code == 'd') {
+        if (code == 'd') {
             obj = new Door(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 'W'){

@@ -6,9 +6,11 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import ui.Images;
 import values.JanitorValues;
+import world.Cell;
 
 
 public class Janitor extends Entity {
@@ -20,18 +22,16 @@ public class Janitor extends Entity {
     private int frames = 0;
     private int framesPerStep = 6;
 
-    public Janitor(float x, float y)
-    {
+    public Janitor(float x, float y) {
         super(x, y, JanitorValues.X_SPEED, JanitorValues.Y_SPEED, JanitorValues.HEALTH, JanitorValues.ATTACK, Images.janitorIdle, JanitorValues.IFRAMES);
-        facingRight = false;
+        facingRight = true;
         image = Images.janitorIdle;
         mySheet = Images.janitor;
-        currentFrame = mySheet.getSprite(0,0);
+        currentFrame = mySheet.getSprite(0, 0);
     }
 
-    public void render(Graphics g)
-    {
-        super.render(g);
+    public void render(Graphics g) {
+//        super.render(g);
         float renderOffsetY = h - currentFrame.getHeight();
         if (facingRight) {
             currentFrame.draw(x, y + renderOffsetY);
@@ -40,10 +40,8 @@ public class Janitor extends Entity {
         }
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int delta)
-    {
-        if(x <= 0|| x >= Main.getScreenWidth() - Images.janitorIdle.getWidth())
-        {
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+        if (x <= 0 || x >= Main.getScreenWidth() - Images.janitorIdle.getWidth()) {
             xSpeed *= -1;
             image = image.getFlippedCopy(true, false);
             facingRight = false;
@@ -51,16 +49,26 @@ public class Janitor extends Entity {
 
         x += xSpeed;
 
+        if (xSpeed > 0) {
+            facingRight = true;
+        }
+
         frames++;
-        if(frames % framesPerStep == 0)
-        {
+        if (frames % framesPerStep == 0) {
             step++;
         }
-        if(step >= mySheet.getHorizontalCount())
-        {
+        if (step >= mySheet.getHorizontalCount()) {
             step = 0;
         }
         currentFrame = mySheet.getSprite(step, 0);
+    }
+
+    public Rectangle getBounds(boolean facingRight) {
+        if (!facingRight) {
+            return new Rectangle(x, y, w, h);
+        } else {
+            return new Rectangle(x + (Cell.getWidth() * 3), y, w, h);
+        }
     }
 }
 
