@@ -35,6 +35,7 @@ public class Game extends BasicGameState
 	private Message pauseMessage;
 	private Button controlsButton;
 	private Button startOverButton;
+	private Button deathButton;
 	private Button settingsButton;
 	private Button goBackButton;
 	private Button pauseButton;
@@ -84,18 +85,21 @@ public class Game extends BasicGameState
 		instructions = new ArrayList<>();
 
 		pauseScreenType = 0;
+		Fonts.loadFonts();
 
 		pauseMessage = new Message(((float) Main.getScreenWidth() / 2) - ((float) Fonts.instructionAndLorePageFont.getWidth("GAME PAUSED") / 2), Cell.getHeight(), "GAME PAUSED", Color.yellow, Fonts.instructionAndLorePageFont);
 		controlsButton = new Button(((float) Main.getScreenWidth() / 2) - (Cell.getWidth() * 5), ((float) Main.getScreenHeight() / 2) - Cell.getHeight(), (int) Cell.getWidth() * 10, (int) Cell.getHeight() * 2, "Controls", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.titleScreenButtonFont);
+		deathButton = new Button(((float) Main.getScreenWidth() /1.2f) - (Cell.getWidth() * 20), ((float) Main.getScreenHeight() / 1.5f) - Cell.getHeight(), (int) Cell.getWidth() * 10, (int) Cell.getHeight() * 2, "Restart Section", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.titleScreenButtonFont);
+
 		startOverButton = new Button(((float) Main.getScreenWidth() / 2) - (Cell.getWidth() * 20), ((float) Main.getScreenHeight() / 2) - Cell.getHeight(), (int) Cell.getWidth() * 10, (int) Cell.getHeight() * 2, "Restart Game", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.titleScreenButtonFont);
 		settingsButton = new Button(((float) Main.getScreenWidth() / 2) + (Cell.getWidth() * 10), ((float) Main.getScreenHeight() / 2) - Cell.getHeight(), (int) Cell.getWidth() * 10, (int) Cell.getHeight() * 2, "Settings", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.titleScreenButtonFont);
 		goBackButton = new Button(Main.getScreenWidth() - (Cell.getWidth() * 13), Cell.getHeight(), (int) Cell.getWidth() * 10, (int) Cell.getHeight() * 2, "Back", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.titleScreenButtonFont);
 		pauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Pause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 		unpauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Unpause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 
-		setLevel("levels/classroom1.txt"); // debug
-		PlayerValues.section = 0; // debug
-		PlayerValues.doesPlayerHaveKnife = false; // debug
+		setLevel("levels/sewer1.txt"); // debug
+	//	PlayerValues.section = 1; // debug
+		PlayerValues.doesPlayerHaveKnife = true; // debug
 
 		knifeDisplay = Images.knifeInv;
 	}
@@ -110,7 +114,7 @@ public class Game extends BasicGameState
 			if (PlayerValues.doesPlayerHaveKnife && knife == null) {
 				if (player != null) {
 					System.out.println("the");
-					knife = new Knife(player);
+				//	knife = new Knife(player);
 				}
 			}
 
@@ -148,14 +152,12 @@ public class Game extends BasicGameState
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		if (!Player.gameOver) {
-			if(Player.section == 0){
+			if(PlayerValues.section == 0){
 				g.drawImage(Images.sewerBackground,0,0);
-			} else if (Player.section == 1){
+			} else if (PlayerValues.section == 1){
 				g.drawImage(Images.streetBackground, 0, 0);
-			} else if (Player.section == 2) {
+			} else if (PlayerValues.section == 2) {
 				g.drawImage(Images.closetBackground, Cell.getWidth(), Cell.getHeight());
-			} else if (Player.section == 3) {
-				g.drawImage(Images.classroomBackground, Cell.getWidth(), Cell.getHeight());
 			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
 			world.render(g);
@@ -228,11 +230,11 @@ public class Game extends BasicGameState
 		}
 
 		if (Player.gameOver){
-			g.setColor(Color.black);
-			g.drawRect(0,0, Main.getScreenWidth(), Main.getScreenHeight());
-			g.setColor(Color.yellow);
-			g.drawString("YOU DIED", (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2);
-			g.drawString("Press any key to continue", (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2 + 25);
+		g.drawImage(Images.deathScreen,0,0);
+		deathButton.render(g);
+
+//		g.setFont(Fonts.titleScreenButtonFont);
+//		g.drawString("Space to restart", Main.getScreenWidth()/3, Main.getScreenHeight()/2);
 		}
 	}
 
@@ -256,26 +258,6 @@ public class Game extends BasicGameState
 			pause = !pause;
 		}
 
-		if (Player.gameOver){
-			if (key >= 0){
-				if (PlayerValues.section == 0){
-					setLevel("levels/sewer1.txt");
-					Player.gameOver = false;
-				}
-				if (PlayerValues.section == 1){
-					setLevel("levels/street1.txt");
-					Player.gameOver = false;
-				}
-				if (PlayerValues.section == 2){
-					setLevel("levels/closet1.txt");
-					Player.gameOver = false;
-				}
-				if(PlayerValues.section == 3){
-					setLevel("levels/classroom1.txt");
-					Player.gameOver = false;
-				}
-			}
-		}
 	}
 
 	public void mousePressed(int button, int x, int y) {
@@ -302,6 +284,24 @@ public class Game extends BasicGameState
 			setLevel("levels/sewer1.txt");
 			PlayerValues.isPlayerHoldingKnife = false;
 			this.sbg.enterState(Main.TITLE_ID);
+		}
+		if(deathButton.isMouseOver(x,y) && Player.gameOver){
+			if (PlayerValues.section == 0){
+				setLevel("levels/sewer1.txt");
+				Player.gameOver = false;
+				PlayerValues.isPlayerTouchingKey = false;
+			}
+			if (PlayerValues.section == 1){
+				setLevel("levels/street1.txt");
+				Player.gameOver = false;
+				PlayerValues.isPlayerTouchingKey = false;
+
+			}
+			if (PlayerValues.section == 2){
+				setLevel("levels/closet1.txt");
+				Player.gameOver = false;
+				PlayerValues.isPlayerTouchingKey = false;
+			}
 		}
 	}
 
