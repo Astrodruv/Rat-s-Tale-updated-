@@ -33,7 +33,7 @@ public class Images {
     public static Image birdIdle;
     public static Image birdFlying;
     public static Image car1;
-    public static Image car2;
+    public static Image tire;
     public static Image ratTrap;
     public static Image ratTrapped;
     public static Image janitorIdle;
@@ -93,7 +93,7 @@ public class Images {
             knifeInv = new Image("res/misc/Knife_Inventory.png").getScaledCopy((int) (Cell.getWidth() * 2), (int) (Cell.getHeight()));
 
             car1 = new Image("res/levels/street/Car.png").getScaledCopy((int) (Cell.getWidth() * 8), (int) (Cell.getHeight() * 2));
-            car2 = new Image("res/levels/street/Car2.png").getScaledCopy((int) (Cell.getWidth() * 8), (int) (Cell.getHeight() * 2));
+            tire = new Image("res/levels/street/Tire.png").getScaledCopy((int) (Cell.getWidth() * 8), (int) (Cell.getHeight() * 2));
 
             birdIdle = new Image("res/levels/street/Eagle.png").getScaledCopy((int) Cell.getWidth() * 6, (int) Cell.getHeight() * 3);
             birdFlying = new Image("res/levels/street/Bird_Flapping3.png");
