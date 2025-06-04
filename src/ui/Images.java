@@ -101,9 +101,9 @@ public class Images {
             janitorWalking = new Image("res/levels/closet/Janitor_Walking.png");
             janitor = new SpriteSheet(janitorWalking,247, 364);
 
-            studentOneIdle = new Image("res/levels/classroom/Student_Idle.png").getScaledCopy((int) Cell.getWidth() * 3, (int) Cell.getHeight() * 3);
+            studentOneIdle = new Image("res/levels/classroom/Student_Idle.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
             studentOneWalking = new Image("res/levels/classroom/Student_Walking.png");
-            student1 = new SpriteSheet(studentOneWalking, 172, 275);
+            student1 = new SpriteSheet(studentOneWalking, 180, 288);
 
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
