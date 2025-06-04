@@ -8,6 +8,8 @@ import world.Cell;
 
 public class Images {
     public static Image titleScreen;
+    public static Image winScreen;
+    public static Image deathScreen;
     public static Image loreInstructionsBackground;
     public static Image sewerBackground;
     public static Image streetBackground;
@@ -17,6 +19,7 @@ public class Images {
 
     // Level Platforms
     public static Image sewerPlatform;
+    public static Image sewerWall;
     public static Image sewerFloor;
     public static Image streetFloor;
     public static Image streetBoundary;
@@ -61,6 +64,8 @@ public class Images {
     {
         try {
             titleScreen = new Image("res/misc/TitleScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            winScreen = new Image("res/misc/WinScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            deathScreen = new Image("res/misc/DeathScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             loreInstructionsBackground = new Image("res/misc/LoreAndInstructionsScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             sewerBackground = new Image("res/levels/sewer/Sewer_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             streetBackground = new Image("res/levels/street/Street_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
@@ -68,6 +73,7 @@ public class Images {
             closetBackground = new Image("res/levels/closet/Closet_Background.png").getScaledCopy((int) (Main.getScreenWidth() - (Cell.getWidth())), (int) (Main.getScreenHeight() - (Cell.getHeight())));
             classroomBackground = new Image("res/levels/classroom/Classroom_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
+            sewerWall = new Image("res/levels/sewer/Sewer_Wall.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
             sewerFloor = new Image("res/levels/sewer/Sewer_Floor.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
             sewerPlatform = new Image("res/levels/sewer/Sewer_Platform.png").getScaledCopy((int) Cell.getWidth(), (int) (Cell.getHeight() / 8));
             streetFloor = new Image("res/levels/street/Street_Floor.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
