@@ -33,6 +33,7 @@ public class Images {
     public static Image birdIdle;
     public static Image birdFlying;
     public static Image car1;
+    public static Image carDriving;
     public static Image tire;
     public static Image ratTrap;
     public static Image ratTrapped;
@@ -59,6 +60,7 @@ public class Images {
     public static SpriteSheet janitor;
     public static SpriteSheet trapping;
     public static SpriteSheet student1;
+    public static SpriteSheet movingCar;
 
     public static void loadImages()
     {
@@ -93,6 +95,7 @@ public class Images {
             knifeInv = new Image("res/misc/Knife_Inventory.png").getScaledCopy((int) (Cell.getWidth() * 2), (int) (Cell.getHeight()));
 
             car1 = new Image("res/levels/street/Car.png").getScaledCopy((int) (Cell.getWidth() * 8), (int) (Cell.getHeight() * 2));
+            carDriving = new Image("res/levels/street/Car_Driving2.png");
             tire = new Image("res/levels/street/Tire.png").getScaledCopy((int) (Cell.getWidth() * 8), (int) (Cell.getHeight() * 2));
 
             birdIdle = new Image("res/levels/street/Eagle.png").getScaledCopy((int) Cell.getWidth() * 6, (int) Cell.getHeight() * 3);
@@ -110,6 +113,7 @@ public class Images {
             studentOneIdle = new Image("res/levels/classroom/Student_Idle.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
             studentOneWalking = new Image("res/levels/classroom/Student_Walking.png");
             student1 = new SpriteSheet(studentOneWalking, 258, 275);
+            movingCar = new SpriteSheet(carDriving, 333, 144);
 
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
@@ -119,6 +123,7 @@ public class Images {
 
             screwDriver = new Image("res/levels/closet/Screwdriver.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight() * 2);
             vent = new Image ("res/levels/closet/Closet_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
+            
         }
         catch (SlickException e)
         {
