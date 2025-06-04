@@ -76,7 +76,7 @@ public class Images {
 
             ratIdle = new Image("res/misc/Rat_Idle1.png").getScaledCopy((int) (Cell.getWidth() * 2.5), (int) Cell.getHeight() + 10);
             ratWalking = new Image("res/misc/Rat_Walking.png");
-            rat = new SpriteSheet(ratWalking,174,48);
+            rat = new SpriteSheet(ratWalking,104, 74);
 
             cockroachIdle = new Image("res/levels/sewer/Cockroach_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight());
             cockroachWalking = new Image("res/levels/sewer/CockRoach Walking.png");
@@ -93,17 +93,17 @@ public class Images {
             birdFlying = new Image("res/levels/street/Bird_Flapping3.png");
             bird = new SpriteSheet(birdFlying,329,210);
 
-            ratTrap = new Image("res/levels/closet/Rat_Trap.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight() * 2 / 3);
-            ratTrapped = new Image("res/levels/closet/Trap_Closing.png");
-            trapping = new SpriteSheet(ratTrapped, (308), (252));
+            ratTrap = new Image("res/misc/Rat_Trap.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight() * 2 / 3);
+            ratTrapped = new Image("res/misc/Trap_Closing.png");
+            trapping = new SpriteSheet(ratTrapped, (110), (90));
 
             janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) Cell.getWidth() * 3, (int) Cell.getHeight() * 4);
             janitorWalking = new Image("res/levels/closet/Janitor_Walking.png");
             janitor = new SpriteSheet(janitorWalking,247, 364);
 
-            studentOneIdle = new Image("res/levels/classroom/Student_Idle.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+            studentOneIdle = new Image("res/levels/classroom/Student_Idle.png").getScaledCopy((int) Cell.getWidth() * 3, (int) Cell.getHeight() * 3);
             studentOneWalking = new Image("res/levels/classroom/Student_Walking.png");
-            student1 = new SpriteSheet(studentOneWalking, 258, 275);
+            student1 = new SpriteSheet(studentOneWalking, 172, 275);
 
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);

@@ -20,7 +20,7 @@ public class RatTrap extends Entity {
     private int framesPerStep = 6;
 
     public RatTrap(float x, float y) {
-        super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.ratTrap, RatTrapValues.IFRAMES);
+        super(x, y + (Cell.getHeight() / 3), 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.ratTrap, RatTrapValues.IFRAMES);
         image = Images.ratTrap;
         mySheet = Images.trapping;
         currentFrame = mySheet.getSprite(0,0);
@@ -30,6 +30,7 @@ public class RatTrap extends Entity {
 //        super.render(g);
         float renderOffsetY = h - currentFrame.getHeight();
         currentFrame.draw(x, y + renderOffsetY);
+        g.drawString("g"+trap, 900,900);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -41,9 +42,9 @@ public class RatTrap extends Entity {
             }
             if (step >= mySheet.getHorizontalCount()) {
                 step = 0;
+                trap = false;
             }
             currentFrame = mySheet.getSprite(step, 0);
-
         }
     }
 }

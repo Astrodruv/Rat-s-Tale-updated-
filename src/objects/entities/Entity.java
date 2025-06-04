@@ -43,6 +43,7 @@ public abstract class Entity extends GameObject {
     protected int dashCooldown;
     protected boolean trap;
 
+
     public Entity(float x, float y, int xSpeed, int ySpeed, int health, int attack, Image image, int iFrames) {
         super(x,y, image);
         this.xSpeed = xSpeed;
@@ -68,7 +69,7 @@ public abstract class Entity extends GameObject {
         onGround = true;
         dashTimer = 0;
         dashCooldown = 0;
-//        trap = false;
+        trap = false;
     }
 
     public void render(Graphics g){

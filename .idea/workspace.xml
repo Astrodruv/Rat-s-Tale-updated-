@@ -9,26 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="oh no">
-      <change afterPath="$PROJECT_DIR$/levels/classroom2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/levels/classroom3.txt" afterDir="false" />
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="ima tweak out">
+      <change afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/classroom1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/classroom1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/classroom2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/classroom2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Entity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/RatTrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/RatTrap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/Images.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/Images.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/values/PlayerValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/values/PlayerValues.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/world/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/world/World.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/states/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/states/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/levels/closet/Rat_Trap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/levels/closet/Trap_Closing.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/RatTrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/RatTrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Student.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Images.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Images.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/values/PlayerValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/PlayerValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/values/StudentValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/StudentValues.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -477,7 +472,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748919208326</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="ima tweak out">
+      <option name="closed" value="true" />
+      <created>1749001638154</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1749001638154</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,6 +519,7 @@
     <MESSAGE value="closet level (beta)" />
     <MESSAGE value="better janitor" />
     <MESSAGE value="oh no" />
-    <option name="LAST_COMMIT_MESSAGE" value="oh no" />
+    <MESSAGE value="ima tweak out" />
+    <option name="LAST_COMMIT_MESSAGE" value="ima tweak out" />
   </component>
 </project>

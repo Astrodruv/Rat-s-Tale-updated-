@@ -86,7 +86,7 @@ public class Player extends Entity {
                 image.getFlippedCopy(true, false).draw(x, y + h - image.getHeight());
             }
         } else if (facingRight) {
-            currentFrame.draw(x - Cell.getWidth() - 20, y + renderOffsetY);
+            currentFrame.draw(x, y + renderOffsetY);
         } else {
             currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
         }
@@ -111,7 +111,7 @@ public class Player extends Entity {
                 g.fillRect(x, y - 65, w + 50, 10);
             }
         }
-        g.drawString(""+weaponCooldown,700,700);
+        g.drawString(""+trap,700,700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -516,7 +516,7 @@ public class Player extends Entity {
                     }
                     takeDamage(RatTrapValues.ATTACK);
                     trapTime = 240;
-                    trap = true;
+                    ((RatTrap) o).trap = true;
                 }
             }
 

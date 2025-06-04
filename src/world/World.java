@@ -58,13 +58,13 @@ public class World {
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Key || obj instanceof Door || obj instanceof Weapon || obj instanceof PassiveCar || obj instanceof RatTrap) {
+            if (obj instanceof Key || obj instanceof Door || obj instanceof Weapon || obj instanceof PassiveCar) {
                 obj.render(g);
             }
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Janitor || obj instanceof Player || obj instanceof EvilCar) {
+            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Janitor || obj instanceof RatTrap || obj instanceof Student || obj instanceof Player || obj instanceof EvilCar) {
                 obj.render(g);
             }
         }
@@ -145,6 +145,9 @@ public class World {
         }
         if (code == 'J'){
            obj = new Janitor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 's'){
+            obj = new Student(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (code == 'k'){
