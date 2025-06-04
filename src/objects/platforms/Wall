@@ -1,0 +1,15 @@
+package objects.platforms;
+
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.state.StateBasedGame;
+import ui.Images;
+
+public class Wall extends Platform{
+    public Wall(float x, float y) {
+        super(x, y, Images.sewerWall);
+    }
+    public void render(Graphics g) {
+        super.render(g);
+    }
+}
