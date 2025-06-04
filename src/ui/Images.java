@@ -45,6 +45,8 @@ public class Images {
     public static Image knifeInv;
     public static Image coin;
     public static Image streetDoor;
+    public static Image screwDriver;
+    public static Image vent;
 
     // Game Entities Animations
     public static SpriteSheet rat;
@@ -108,6 +110,9 @@ public class Images {
 
             coin = new Image("res/levels/street/Coin.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());
             streetDoor = new Image("res/levels/street/Street_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
+
+            screwDriver = new Image("res/levels/closet/Screwdriver.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight() * 2);
+            vent = new Image ("res/levels/closet/Closet_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
         }
         catch (SlickException e)
         {

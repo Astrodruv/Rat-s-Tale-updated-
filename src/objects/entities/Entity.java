@@ -68,7 +68,7 @@ public abstract class Entity extends GameObject {
         onGround = true;
         dashTimer = 0;
         dashCooldown = 0;
-        trap = false;
+//        trap = false;
     }
 
     public void render(Graphics g){

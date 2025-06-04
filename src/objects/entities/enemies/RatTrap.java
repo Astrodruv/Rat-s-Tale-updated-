@@ -24,8 +24,6 @@ public class RatTrap extends Entity {
         image = Images.ratTrap;
         mySheet = Images.trapping;
         currentFrame = mySheet.getSprite(0,0);
-
-        trap = false;
     }
 
     public void render(Graphics g) {
@@ -36,7 +34,7 @@ public class RatTrap extends Entity {
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
 //        super.update(gc, sbg, delta);
-//        if(trap) {
+        if(trap) {
             frames++;
             if (frames % framesPerStep == 0) {
                 step++;
@@ -45,12 +43,7 @@ public class RatTrap extends Entity {
                 step = 0;
             }
             currentFrame = mySheet.getSprite(step, 0);
-            if(step == 0)
-            {
-//                trap = false;
-            }
-//        }
+
+        }
     }
-
-
 }

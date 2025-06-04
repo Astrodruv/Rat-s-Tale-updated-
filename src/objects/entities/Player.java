@@ -92,12 +92,12 @@ public class Player extends Entity {
         }
 
         if (PlayerValues.doesPlayerHaveKnife && holdingKnife) {
+            g.setColor(Color.white);
             g.fillRect(x, y - 50, (w + 50), 10);
             g.setColor(Color.yellow);
             if (weaponCooldown > 0) {
                 g.fillRect(x, y - 50, (w + 50) * ((30 - weaponCooldown) / 30), 10);
             } else {
-                g.setColor(Color.white);
                 g.fillRect(x, y - 50, w + 50, 10);
             }
         }
@@ -111,7 +111,7 @@ public class Player extends Entity {
                 g.fillRect(x, y - 65, w + 50, 10);
             }
         }
-        g.drawString("" + xVelocity, 700, 700);
+        g.drawString(""+weaponCooldown,700,700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -174,6 +174,11 @@ public class Player extends Entity {
         }
         if (xVelocity < -10) {
             xVelocity = -10;
+        }
+
+        if(isDead)
+        {
+            gameOver = true;
         }
 
         super.update(gc, sbg, delta);
@@ -323,7 +328,8 @@ public class Player extends Entity {
                             continue;
                         }
                         if (World.level.equals("levels/street5.txt")) {
-                            Game.setLevel("levels/school.txt");
+                            Game.setLevel("levels/closet1.txt");
+                            section++;  //what to do with school
                             if (!PlayerValues.keyOnPermanentlySetting) {
                                 PlayerValues.isPlayerTouchingKey = false;
                             }
@@ -368,6 +374,20 @@ public class Player extends Entity {
                         if (World.level.equals("levels/closet5.txt")) {
                             Game.setLevel("levels/classroom1.txt");
                             section++;
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/classroom1.txt")) {
+                            Game.setLevel("levels/classroom2.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
+                        if (World.level.equals("levels/classroom2.txt")) {
+                            Game.setLevel("levels/classroom3.txt");
                             if (!PlayerValues.keyOnPermanentlySetting) {
                                 PlayerValues.isPlayerTouchingKey = false;
                             }
@@ -496,13 +516,13 @@ public class Player extends Entity {
                     }
                     takeDamage(RatTrapValues.ATTACK);
                     trapTime = 240;
+                    trap = true;
                 }
             }
 
             if (o instanceof Janitor) {
                 if (futureY.intersects(((Janitor) o).getBounds(((Janitor) o).facingRight))) {
                     takeDamage(JanitorValues.ATTACK);
-                    ((Janitor) o).trap = true;
                 }
             }
         }
