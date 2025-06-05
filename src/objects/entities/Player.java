@@ -111,7 +111,6 @@ public class Player extends Entity {
                 g.fillRect(x, y - 65, w + 50, 10);
             }
         }
-        g.drawString(""+trap,700,700);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -393,6 +392,13 @@ public class Player extends Entity {
                             }
                             continue;
                         }
+                        if (World.level.equals("levels/classroom3.txt")) {
+                            Game.setLevel("levels/classroom4.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
                     }
                 }
             }
@@ -523,6 +529,17 @@ public class Player extends Entity {
             if (o instanceof Janitor) {
                 if (futureY.intersects(((Janitor) o).getBounds(((Janitor) o).facingRight))) {
                     takeDamage(JanitorValues.ATTACK);
+                }
+            }
+
+            if(o instanceof Student)
+            {
+                if(futureY.intersects(o.getBounds()))
+                {
+                    takeDamage(StudentValues.ATTACK);
+                    if(!((Student) o).effected) {
+                        ((Student) o).crazed = true;
+                    }
                 }
             }
         }

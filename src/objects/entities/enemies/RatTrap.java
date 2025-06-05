@@ -30,7 +30,6 @@ public class RatTrap extends Entity {
 //        super.render(g);
         float renderOffsetY = h - currentFrame.getHeight();
         currentFrame.draw(x, y + renderOffsetY);
-        g.drawString("g"+trap, 900,900);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {

@@ -101,7 +101,7 @@ public class Images {
             janitorWalking = new Image("res/levels/closet/Janitor_Walking.png");
             janitor = new SpriteSheet(janitorWalking,247, 364);
 
-            studentOneIdle = new Image("res/levels/classroom/Student_Idle.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+            studentOneIdle = new Image("res/levels/classroom/Student_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight() * 4);
             studentOneWalking = new Image("res/levels/classroom/Student_Walking.png");
             student1 = new SpriteSheet(studentOneWalking, 180, 288);
 
