@@ -12,6 +12,7 @@ public class Door extends GameObject {
     public Door(float x, float y){
         super(x, y, Images.door);
         if (PlayerValues.section == 1) image = Images.streetDoor;
+        if (PlayerValues.section == 2) image = Images.closetDoor;
     }
 
     public void render(Graphics g) {

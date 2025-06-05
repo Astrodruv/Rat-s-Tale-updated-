@@ -59,7 +59,7 @@ public class TitleScreen extends BasicGameState {
         instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 2, "W - Jump:", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
         instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 3, "A - Move Left", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
         instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 4, "D - Move Right", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
-        instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 5, "S - Dash - LOCKED", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
+        instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 5, "S - Dash", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
 
         instructions.add(new Message(Cell.getWidth(), Cell.getHeight() * 6, "Attacking Controls: ", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
         instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 7, "Jump on Enemies to Damage Them", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));

@@ -6,7 +6,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import ui.Images;
 import values.JanitorValues;
@@ -22,53 +21,54 @@ public class Janitor extends Entity {
     private int frames = 0;
     private int framesPerStep = 6;
 
-    public Janitor(float x, float y) {
+    private int movementTimer;
+
+    public Janitor(float x, float y)
+    {
         super(x, y, JanitorValues.X_SPEED, JanitorValues.Y_SPEED, JanitorValues.HEALTH, JanitorValues.ATTACK, Images.janitorIdle, JanitorValues.IFRAMES);
-        facingRight = true;
+        facingRight = false;
         image = Images.janitorIdle;
         mySheet = Images.janitor;
-        currentFrame = mySheet.getSprite(0, 0);
+        currentFrame = mySheet.getSprite(0,0);
+        movementTimer = JanitorValues.MOVEMENT_TIMER_VALUE;
     }
 
-    public void render(Graphics g) {
+    public void render(Graphics g)
+    {
 //        super.render(g);
-        float renderOffsetY = h - currentFrame.getHeight();
-        if (facingRight) {
-            currentFrame.draw(x, y + renderOffsetY);
-        } else {
-            currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
+        if (xVelocity != 0) {
+            float renderOffsetY = h - currentFrame.getHeight();
+            if (facingRight) {
+                currentFrame.draw(x, y + renderOffsetY);
+            } else {
+                currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
+            }
+        }
+        else{
+            image.draw(x,y,w,h);
         }
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int delta) {
-        if (x <= 0 || x >= Main.getScreenWidth() - Images.janitorIdle.getWidth()) {
-            xSpeed *= -1;
-            image = image.getFlippedCopy(true, false);
-            facingRight = false;
-        }
+    public void update(GameContainer gc, StateBasedGame sbg, int delta)
+    {
+        if (movementTimer >= 0) moveRight();
+        if (-JanitorValues.MOVEMENT_TIMER_VALUE < -movementTimer) moveLeft();
+        else movementTimer = JanitorValues.MOVEMENT_TIMER_VALUE;
 
-        x += xSpeed;
-
-        if (xSpeed > 0) {
-            facingRight = true;
-        }
+        movementTimer--;
 
         frames++;
-        if (frames % framesPerStep == 0) {
+        if(frames % framesPerStep == 0)
+        {
             step++;
         }
-        if (step >= mySheet.getHorizontalCount()) {
+        if(step >= mySheet.getHorizontalCount())
+        {
             step = 0;
         }
-        currentFrame = mySheet.getSprite(step, 0);
-    }
 
-    public Rectangle getBounds(boolean facingRight) {
-        if (!facingRight) {
-            return new Rectangle(x, y, w, h);
-        } else {
-            return new Rectangle(x + (Cell.getWidth() * 3), y, w, h);
-        }
+        currentFrame = mySheet.getSprite(step, 0).getScaledCopy((int) (Cell.getWidth() * 6), (int) (Cell.getHeight() * 5));
+
+        super.update(gc, sbg, delta);
     }
 }
-

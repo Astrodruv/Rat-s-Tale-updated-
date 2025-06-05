@@ -9,7 +9,7 @@ public class Floor extends Platform
     public Floor(float x, float y) {
         super(x,y, Images.sewerFloor);
         if (PlayerValues.section == 1) image = Images.streetFloor;
-        if (PlayerValues.section == 2) image = Images.sewerFloor;
+        if (PlayerValues.section == 2) image = Images.closetFloor;
     }
 
     public void render(Graphics g) {

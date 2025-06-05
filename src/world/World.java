@@ -4,14 +4,13 @@ import engine.states.Game;
 import objects.GameObject;
 import objects.entities.Player;
 import objects.entities.enemies.*;
-import objects.entities.Tire;
+import objects.entities.enemies.PassiveCar;
 import objects.interactables.Door;
 import objects.interactables.Key;
 import objects.interactables.Weapon;
 import objects.platforms.Floor;
 import objects.platforms.Tile;
 import objects.platforms.Boundary;
-import objects.platforms.Wall;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -53,19 +52,19 @@ public class World {
     public void render(Graphics g){
 
         for (GameObject obj : objects) {
-            if (obj instanceof Tile || obj instanceof Floor || obj instanceof Boundary || obj instanceof Wall) {
+            if (obj instanceof Tile || obj instanceof Floor || obj instanceof Boundary) {
                 obj.render(g);
             }
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Key || obj instanceof Door || obj instanceof Weapon || obj instanceof Tire) {
+            if (obj instanceof Key || obj instanceof Door || obj instanceof Weapon || obj instanceof PassiveCar) {
                 obj.render(g);
             }
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof EvilCar || obj instanceof RatTrap) {
+            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof Janitor || obj instanceof EvilCar || obj instanceof RatTrap) {
                 obj.render(g);
             }
         }
@@ -128,9 +127,6 @@ public class World {
         if (code == 'b'){
             obj = new Boundary(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
-        if(code == 's'){
-            obj = new Wall(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
-        }
 
         if (code == 'P'){
             obj = new Player(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -147,6 +143,9 @@ public class World {
         if (code == 't') {
             obj = new RatTrap(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
+        if (code == 'J'){
+            obj = new Janitor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
 
         if (code == 'k'){
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -158,7 +157,7 @@ public class World {
             obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 'c'){
-            obj = new Tire(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+            obj = new PassiveCar(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (obj != null){
@@ -190,3 +189,4 @@ public class World {
     }
 
 }
+

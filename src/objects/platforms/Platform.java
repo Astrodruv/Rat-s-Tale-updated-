@@ -1,6 +1,5 @@
 package objects.platforms;
 
-import engine.Main;
 import objects.GameObject;
 import objects.interactables.Door;
 import org.newdawn.slick.Color;
@@ -21,7 +20,7 @@ public class Platform extends GameObject {
 //        g.setColor(Color.white);
 //        if (isBottomPlatform()) g.drawString("B", x + (w / 3), y + (h / 2));
 //        g.setColor(Color.yellow);
-//        if (isSidePlatform()) g.drawString("S", x + (w / 2), y - (h / 2));
+//        if (isSidePlatform()) g.drawString("S", x + (w / 2), y + (h / 2));
     }
 
     public void collisions(StateBasedGame sbg) {
@@ -70,6 +69,23 @@ public class Platform extends GameObject {
         boolean spaceLeft = leftCell == null || leftCell.getObject() == null || getH() > leftCell.getObject().getH();
 
         return spaceLeft || spaceRight;
+    }
+
+    public boolean isSurroundedPlatform(){ // is not working as of 6/4/2025
+        if (cell == null) return true;
+
+        int x = cell.getX();
+        int y = cell.getY();
+
+        if (x <= 0 || x + 1 >= World.WIDTH) return true;
+        if (cell.getY() + 1 >= World.HEIGHT || cell.getY() - 1 < 0) return true;
+
+        Cell rightCell = World.getCell(x + 1, y);
+        Cell leftCell = World.getCell(x - 1, y);
+        Cell belowCell = World.getCell(x, cell.getY() + 1);
+        Cell aboveCell = World.getCell(x, cell.getY() - 1);
+
+        return rightCell != null && rightCell.getObject() != null && leftCell != null && leftCell.getObject() != null && belowCell != null && belowCell.getObject() != null && aboveCell != null && aboveCell.getObject() != null;
     }
 
     public Rectangle getBounds() { // Change if need be for rendering problem fixes

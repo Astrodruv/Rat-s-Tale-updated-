@@ -1,11 +1,12 @@
 package objects.entities;
 
-import engine.Main;
 import engine.states.Game;
 import objects.GameObject;
 import objects.entities.enemies.*;
 import objects.entities.enemies.PassiveCar;
-import objects.interactables.*;
+import objects.interactables.Door;
+import objects.interactables.Key;
+import objects.interactables.Weapon;
 import objects.platforms.Platform;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
@@ -20,165 +21,186 @@ import java.util.ArrayList;
 public class Player extends Entity {
 
     private boolean jumpingOffOfEnemy;
-    private float weaponCooldown;
+    private float knifeCooldown;
     private boolean canAttack;
     private boolean attack;
 
     private SpriteSheet mySheet;
     private Image currentFrame;
-
     private int step = 0;
     private int frames = 0;
     private int framesPerStep = 6;
 
-    public static Image image;
-
-    public static boolean hasWeapon = false;
-    public static boolean gameOver;
-    public static int section = 0;
-    private boolean hitFront = false;
-
-    private int streetTimer = 1800;
-
-    public static boolean holdingKnife;
-    public static boolean knifeAttained;
-
-    private boolean inBox;
     private float trapTime;
-    private boolean trapped; // use in reference to other slow effects
     private float temp;
+    private boolean trapped;
+
+    public static boolean gameOver;
 
     public Player(float x, float y) {
-
-        super(x, y, PlayerValues.X_SPEED, PlayerValues.Y_SPEED, PlayerValues.HEALTH, PlayerValues.ATTACK, Images.ratIdle, PlayerValues.IFRAMES);
+        super(x,y, PlayerValues.X_SPEED, PlayerValues.Y_SPEED, PlayerValues.HEALTH, PlayerValues.ATTACK, Images.ratIdle, PlayerValues.IFRAMES);
         facingRight = true;
         onGround = true;
         gameOver = false;
         jumpingOffOfEnemy = false;
-        weaponCooldown = 90;
+        knifeCooldown = 30;
         canAttack = false;
         attack = false;
-        mySheet = Images.rat;
-//mySheet2 = Images.knifeAttack;
-        currentFrame = mySheet.getSprite(0, 0);
-        image = Images.ratIdle;
-        knifeAttained = false;
-        holdingKnife = false;
-        inBox = false;
+        trapped = false;
+
         trapTime = 0;
         temp = xSpeed;
 
+        mySheet = Images.rat;
+        currentFrame = mySheet.getSprite(0,0);
     }
 
-    public void render(Graphics g) {
-//        super.render(g);
-        if (streetTimer > 1200) {
-//            g.setFont(Fonts.big);
-//            g.setColor(Color.red);
-//            g.drawString("Dont get hit!", (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2 - 400);
-        }
-        float renderOffsetY = h - currentFrame.getHeight();
+    public void render(Graphics g){
+        float renderOffsetY = 0; // h - currentFrame.getHeight()
 
-        if (xVelocity == 0 && xAccel == 0) {
-            if (facingRight) {
-                image.draw(x, y + h - image.getHeight());
-            } else {
-                image.getFlippedCopy(true, false).draw(x, y + h - image.getHeight());
+        if (isHit){
+            if (invincibilityFrames % 7 == 0){
+
             }
-        } else if (facingRight) {
-            currentFrame.draw(x - Cell.getWidth() - 20, y + renderOffsetY);
-        } else {
-            currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
+            else{
+                if (xVelocity == 0 && xAccel == 0) {
+                    if (facingRight) {
+                        rightFacingImage.draw(x,y, w, h);
+                    } else {
+                        rightFacingImage.getFlippedCopy(true, false).draw(x,y, w, h);
+                    }
+                } else if (facingRight) {
+                    currentFrame.draw(x,y, w, h);
+                } else {
+                    currentFrame.getFlippedCopy(true, false).draw(x,y, w, h);
+                }
+            }
+        }
+        else{
+            if (xVelocity == 0 && xAccel == 0) {
+                if (facingRight) {
+                    rightFacingImage.draw(x,y, w, h);
+                } else {
+                    rightFacingImage.getFlippedCopy(true, false).draw(x,y, w, h);
+                }
+            } else if (facingRight) {
+                currentFrame.draw(x,y, w, h);
+            } else {
+                currentFrame.getFlippedCopy(true, false).draw(x,y, w, h);
+            }
         }
 
-        if (PlayerValues.doesPlayerHaveKnife && holdingKnife) {
-            g.setColor(Color.white);
-            g.fillRect(x, y - 50, (w + 50), 10);
+        if (PlayerValues.doesPlayerHaveKnife && PlayerValues.isPlayerHoldingKnife) {
+            g.setColor(Color.gray);
+            g.fillRect(x, (float) (y - (Cell.getWidth() * 1.25)), w, 10);
             g.setColor(Color.yellow);
-            if (weaponCooldown > 0) {
-                g.fillRect(x, y - 50, (w + 50) * ((30 - weaponCooldown) / 30), 10);
+            if (knifeCooldown > 0) {
+                g.fillRect(x, (float) (y - (Cell.getWidth() * 1.25)), w * (knifeCooldown / 30), 10);
             } else {
-                g.fillRect(x, y - 50, w + 50, 10);
+                g.fillRect(x, (float) (y - (Cell.getWidth() * 1.25)), w, 10);
             }
         }
-        if (trapped) {
-            g.fillRect(x, y - 65, (w + 50), 10);
+
+        if(trapped) {
+            g.setColor(Color.gray);
+            g.fillRect(x, (float) (y - (Cell.getWidth() * 1.525)), w, 10);
             g.setColor(Color.red);
             if (trapTime > 0) {
-                g.fillRect(x, y - 65, (w + 50) * ((240 - trapTime) / 240), 10);
+                g.fillRect(x, (float) (y - (Cell.getWidth() * 1.525)), w * (trapTime / 120), 10);
             } else {
-                g.setColor(Color.white);
-                g.fillRect(x, y - 65, w + 50, 10);
+                g.fillRect(x, (float) (y - (Cell.getWidth() * 1.525)), w, 10);
             }
         }
-        g.drawString(""+weaponCooldown,700,700);
+
+        g.setColor(Color.white);
+        g.draw(getBounds());
+        g.draw(getWeaponBounds(facingRight));
+//
+//        g.drawString("DashTime: " + dashTimer, 500, 500);
+//        g.drawString("DashCool: " + dashCooldown, 500, 525);
+//        g.drawString("xAccel: " + xAccel, 500, 550);
+//        g.drawString("CellWidth: " + Cell.getWidth(), 500, 575);
+
+//        g.drawString("canAttack: " + canAttack, 500, 500);
+//        g.drawString("attack: " + attack, 500, 550);
+//        g.drawString("Is player using weapon: " + PlayerValues.isPlayerUsingKnife, 500, 600);
+//        g.drawString("Weapon cooldown: " + weaponCooldown, 500, 650);
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+    public void update(GameContainer gc, StateBasedGame sbg, int delta){
         Input input = gc.getInput();
 
-        weaponCooldown--;
-        if (weaponCooldown < 0) {
+        knifeCooldown--;
+
+        if(knifeCooldown < 0){
             canAttack = true;
         }
 
+        if(knifeCooldown < 25){
+//            PlayerValues.isPlayerUsingKnife = false;
+        }
+
         trapTime--;
-        if (trapTime > 0) {
+        if(trapTime > 0)
+        {
             trapped = true;
             xSpeed /= 2;
             trapTime--;
-        } else {
+        }
+        else {
             trapped = false;
             xSpeed = (int) temp;
         }
 
-        if (input.isKeyDown(Input.KEY_D) && !contactingPlatformSide) {
-            moveRight();
-            facingRight = true;
-        } else if (input.isKeyDown(Input.KEY_A) && !contactingPlatformSide) {
-            moveLeft();
-            facingRight = false;
-        } else {
-            if (xAccel > 0) {
-                xVelocity = xAccel;
-                xAccel--;
-                if (xAccel < 0) xAccel = 0;
-            } else if (xAccel < 0) {
-                xVelocity = xAccel;
-                xAccel++;
-                if (xAccel > 0) xAccel = 0;
+        if (isDead){
+            gameOver = true;
+        }
+        if (input.isKeyDown(Input.KEY_S) && dashTimer > 0){
+            dash(facingRight);
+        }
+        else {
+            if (input.isKeyDown(Input.KEY_D)) { // && !contactingPlatformSide
+                moveRight();
+                facingRight = true;
+            } else if (input.isKeyDown(Input.KEY_A)) { // && !contactingPlatformSide
+                moveLeft();
+                facingRight = false;
             } else {
-                xVelocity = 0;
-                xAccel = 0;
+                if (xAccel > 0) {
+                    xVelocity = xAccel;
+                    xAccel--;
+                    if (xAccel < 0) xAccel = 0;
+                } else if (xAccel < 0) {
+                    xVelocity = xAccel;
+                    xAccel++;
+                    if (xAccel > 0) xAccel = 0;
+                } else {
+                    xVelocity = 0;
+                    xAccel = 0;
+                }
             }
         }
+
+        dashTimer--;
+        dashCooldown--;
+
         frames++;
-        if (frames % framesPerStep == 0) {
+        if(frames % framesPerStep == 0)
+        {
             step++;
         }
-        if (step >= mySheet.getHorizontalCount()) {
+        if(step >= mySheet.getHorizontalCount())
+        {
             step = 0;
         }
-        currentFrame = mySheet.getSprite(step, 0);
+        currentFrame = mySheet.getSprite(step, 0).getScaledCopy(((int) (Cell.getWidth() * 2.5)), (int) Cell.getHeight() + 10);
 
-        if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_A)) {
+        if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_A)){
             contactingPlatformSide = false;
         }
 
-        if (input.isKeyDown(Input.KEY_W) && onGround && !jumpingOffOfEnemy) {
+        if (input.isKeyDown(Input.KEY_W) && onGround && !jumpingOffOfEnemy){
             jump();
-        }
-
-        if (xVelocity > 10) {
-            xVelocity = 10;
-        }
-        if (xVelocity < -10) {
-            xVelocity = -10;
-        }
-
-        if(isDead)
-        {
-            gameOver = true;
         }
 
         super.update(gc, sbg, delta);
@@ -189,13 +211,13 @@ public class Player extends Entity {
         Rectangle futureX = new Rectangle(newX, y, w, h);
         Rectangle futureY = new Rectangle(newX, newY, w, h);
 
-        for (GameObject o : new ArrayList<>(Game.levelObjects)) {
+        for (GameObject o : new ArrayList<>(Game.levelObjects)){
             if (o instanceof Platform) {
                 float playerRight = futureX.getX() + futureX.getWidth();
                 float playerLeft = futureX.getX();
 
-                float prevPlayerRight = x + w;
-                float prevPlayerLeft = x;
+                float prevPlayerRight = getX() + getW();
+                float prevPlayerLeft = getX();
 
                 float platformRight = o.getX() + o.getW();
                 float platformLeft = o.getX();
@@ -203,16 +225,16 @@ public class Player extends Entity {
                 boolean verticalOverlap = futureX.getY() + futureX.getHeight() > o.getY() && futureX.getY() < o.getY() + o.getH();
 
                 if (futureX.intersects(o.getBounds()) && ((Platform) o).isSidePlatform() && (!((Platform) o).isBottomPlatform() || (((Platform) o).isBottomPlatform() && ((Platform) o).isSidePlatform()))) {
-                    if (xVelocity > 0 && playerRight > platformLeft && prevPlayerRight <= platformLeft && verticalOverlap) {
+                    if (xVelocity > 0 && playerRight > platformLeft && prevPlayerRight <= platformLeft && verticalOverlap){
                         newX = o.getX() - getW();
                     }
-                    if (xVelocity < 0 && playerLeft < platformRight && prevPlayerLeft >= platformRight && verticalOverlap) {
+                    if (xVelocity < 0 && playerLeft < platformRight && prevPlayerLeft >= platformRight && verticalOverlap){
                         newX = o.getX() + o.getW();
                     }
                     xVelocity = 0;
                 }
 
-                if (futureY.intersects(o.getBounds()) && ((Platform) o).isBottomPlatform()) {
+                if (futureY.intersects(o.getBounds()) && ((Platform) o).isBottomPlatform()){
                     float platformTop = o.getY();
                     float platformBottom = o.getY() + o.getH();
                     float playerTop = futureY.getY();
@@ -229,8 +251,8 @@ public class Player extends Entity {
                 }
             }
 
-            if (o instanceof Door) {
-                if (!PlayerValues.isPlayerTouchingKey) {
+            if (o instanceof Door){
+                if (!PlayerValues.isPlayerTouchingKey){
                     float playerRight = futureX.getX() + futureX.getWidth();
                     float playerLeft = futureX.getX();
 
@@ -243,180 +265,153 @@ public class Player extends Entity {
                     boolean verticalOverlap = futureX.getY() + futureX.getHeight() > o.getY() && futureX.getY() < o.getY() + o.getH();
 
                     if (futureX.intersects(o.getBounds())) {
-                        if (xVelocity > 0 && playerRight > platformLeft && prevPlayerRight <= platformLeft && verticalOverlap) {
+                        if (xVelocity > 0 && playerRight > platformLeft && prevPlayerRight <= platformLeft && verticalOverlap){
                             newX = o.getX() - getW();
                         }
-                        if (xVelocity < 0 && playerLeft < platformRight && prevPlayerLeft >= platformRight && verticalOverlap) {
+                        if (xVelocity < 0 && playerLeft < platformRight && prevPlayerLeft >= platformRight && verticalOverlap){
                             newX = o.getX() + o.getW();
                         }
                         xVelocity = 0;
                     }
-
-                    if (futureY.intersects(o.getBounds())) {
-                        float platformTop = o.getY();
-                        float platformBottom = o.getY() + o.getH();
-                        float playerTop = futureY.getY();
-                        float playerBottom = futureY.getY() + futureY.getHeight();
-
-                        if (yVelocity > 0 && y + h <= platformTop) {
-                            newY = platformTop - h;
-                            yVelocity = 0;
-                            onGround = true;
-                        } else if (yVelocity < 0 && y >= platformBottom) {
-                            newY = platformBottom;
-                            yVelocity = 0;
-                        }
-                    }
-                } else {
+                }
+                else{
                     if (getBounds().intersects(o.getBounds()) && PlayerValues.isPlayerTouchingKey) {
-
-                        if (World.level.equals("levels/sewer1.txt")) { //sewer1
-                            Game.setLevel("levels/sewer2.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                        switch (World.level) {
+                            case "levels/sewer1.txt" -> {
+                                Game.setLevel("levels/sewer2.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/sewer2.txt")) {
-                            Game.setLevel("levels/sewer3.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/sewer2.txt" -> {
+                                Game.setLevel("levels/sewer3.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/sewer3.txt")) {
-                            Game.setLevel("levels/sewer4.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/sewer3.txt" -> {
+                                Game.setLevel("levels/sewer4.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/sewer4.txt")) {
-                            section++;
-                            Game.setLevel("levels/street1.txt"); //street1
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/sewer4.txt" -> {
+                                Game.setLevel("levels/street1.txt");
+                                PlayerValues.section++;
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/street1.txt")) {
-                            Game.setLevel("levels/street2.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/street1.txt" -> {
+                                Game.setLevel("levels/street2.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/street2.txt")) {
-                            Game.setLevel("levels/street3.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/street2.txt" -> {
+                                Game.setLevel("levels/street3.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/street3.txt")) {
-                            Game.setLevel("levels/street4.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/street3.txt" -> {
+                                Game.setLevel("levels/street4.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/street4.txt")) {
-                            Game.setLevel("levels/street5.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/street4.txt" -> {
+                                Game.setLevel("levels/street5.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/street5.txt")) {
-                            Game.setLevel("levels/closet1.txt");
-                            section++;  //what to do with school
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/street5.txt" -> {
+                                Game.setLevel("levels/closet1.txt");
+                                PlayerValues.section++;
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/school.txt")) {
-                            section++;
-                            Game.setLevel("levels/closet1.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/closet1.txt" -> {
+                                Game.setLevel("levels/closet2.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/closet1.txt")) {
-                            Game.setLevel("levels/closet2.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/closet2.txt" -> {
+                                Game.setLevel("levels/closet3.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/closet2.txt")) {
-                            Game.setLevel("levels/closet3.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/closet3.txt" -> {
+                                Game.setLevel("levels/closet4.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/closet3.txt")) {
-                            Game.setLevel("levels/closet4.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/closet4.txt" -> {
+                                Game.setLevel("levels/closet5.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/closet4.txt")) {
-                            Game.setLevel("levels/closet5.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/closet5.txt" -> {
+                                Game.setLevel("levels/classroom1.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/closet5.txt")) {
-                            Game.setLevel("levels/classroom1.txt");
-                            section++;
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/classroom1.txt" -> {
+                                Game.setLevel("levels/classroom2.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/classroom1.txt")) {
-                            Game.setLevel("levels/classroom2.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
+                            case "levels/classroom2.txt" -> {
+                                Game.setLevel("levels/classroom3.txt");
+                                if (!PlayerValues.keyOnPermanentlySetting) {
+                                    PlayerValues.isPlayerTouchingKey = false;
+                                }
+                                continue;
                             }
-                            continue;
-                        }
-                        if (World.level.equals("levels/classroom2.txt")) {
-                            Game.setLevel("levels/classroom3.txt");
-                            if (!PlayerValues.keyOnPermanentlySetting) {
-                                PlayerValues.isPlayerTouchingKey = false;
-                            }
-                            continue;
                         }
                     }
                 }
             }
 
-            if (o instanceof Key) {
+            if (o instanceof Key){
                 if (getBounds().intersects(o.getBounds())) {
                     PlayerValues.isPlayerTouchingKey = true;
                 }
             }
 
-            if (o instanceof Weapon) {
+            if (o instanceof Weapon){
                 if (World.level.equals("levels/sewer4.txt")) {
                     if (getBounds().intersects(o.getBounds())) {
                         PlayerValues.doesPlayerHaveKnife = true;
                         PlayerValues.isPlayerTouchingKey = true;
-                        knifeAttained = true;
                     }
                 }
             }
-            if (section > 0) {
-                knifeAttained = true;
-            }
 
-            if (o instanceof Cockroach) {
+            if (o instanceof Cockroach){
                 if (futureY.intersects(o.getBounds()) && !(((Cockroach) o).isDead)) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
                         PlayerValues.isPlayerHurtingEnemy = true;
@@ -426,51 +421,48 @@ public class Player extends Entity {
                         jumpingOffOfEnemy = false;
                     } else {
                         takeDamage(CockroachValues.ATTACK);
-                        System.out.println("Damage");
                     }
                 }
-                if (((Cockroach) o).isDead()) {
-                    if (World.level.equals(CockroachValues.LEVEL_SPAWN_LOCATION)) {
+                if(((Cockroach) o).isDead()){
+                    if (World.level.equals(CockroachValues.LEVEL_SPAWN_LOCATION)){
                         PlayerValues.isPlayerTouchingKey = true;
                     }
                 }
             }
 
-            if (o instanceof Bird) {
+            if (o instanceof Bird){
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
-                if (futureY.intersects(o.getBounds()) && !((Bird) o).isDead) {
+                if (futureY.intersects(o.getBounds()) && !(((Bird) o).isDead)) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
                         PlayerValues.isPlayerHurtingEnemy = true;
                         onGround = true;
                         jumpingOffOfEnemy = true;
                         jump();
                         jumpingOffOfEnemy = false;
-                    } else {
+                    }
+                    else{
                         takeDamage(BirdValues.ATTACK);
-                        System.out.println("Damage");
                     }
                 }
-                if (weaponBounds.intersects(o.getBounds()) && !((Bird) o).isDead) {
-                    inBox = true;
-                    if (attack) {
+                if(weaponBounds.intersects(o.getBounds()) && PlayerValues.isPlayerHoldingKnife) {
+                    if(PlayerValues.isPlayerUsingKnife) {
                         PlayerValues.isPlayerHurtingEnemy = true;
                         attack = false;
                     }
-                } else {
-                    inBox = false;
                 }
-                if (((Bird) o).isDead()) {
-                    if (World.level.equals(BirdValues.LEVEL_SPAWN_LOCATION)) {
+                if(((Bird) o).isDead()){
+                    if (World.level.equals(BirdValues.LEVEL_SPAWN_LOCATION)){
                         PlayerValues.isPlayerTouchingKey = true;
                     }
                 }
             }
 
-            if (o instanceof EvilCar) {
+
+            if (o instanceof EvilCar){
                 if (futureY.intersects(o.getBounds())) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
-                        jumpingOffOfEnemy = true;
-                        jump();
+                        yVelocity = -((float) (ySpeed * 11) / 10);
+                        onGround = false;
                         jumpingOffOfEnemy = false;
                     } else {
                         takeDamage(CarValues.ATTACK);
@@ -478,11 +470,11 @@ public class Player extends Entity {
                 }
             }
 
-            if (o instanceof PassiveCar) {
+            if (o instanceof PassiveCar){
                 if (futureY.intersects(o.getBounds())) {
                     if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
-                        jumpingOffOfEnemy = true;
-                        jump();
+                        yVelocity = -((float) (ySpeed * 11) / 10);
+                        onGround = false;
                         jumpingOffOfEnemy = false;
                     }
                 }
@@ -511,43 +503,44 @@ public class Player extends Entity {
 
             if (o instanceof RatTrap) {
                 if (futureY.intersects(o.getBounds())) {
-                    if (newY < o.getBounds().getMinY()) {
-                        jump();
-                    }
                     takeDamage(RatTrapValues.ATTACK);
-                    trapTime = 240;
-                    trap = true;
+                    trapTime = 120;
                 }
             }
 
             if (o instanceof Janitor) {
-                if (futureY.intersects(((Janitor) o).getBounds(((Janitor) o).facingRight))) {
+                if (futureY.intersects(o.getBounds())) {
                     takeDamage(JanitorValues.ATTACK);
                 }
             }
+
         }
     }
 
-    public void keyPressed(int key, char c) {
-        if (key == Input.KEY_D && !facingRight) {
-//            image = rightFacingImage;
-            facingRight = true;
+    public void keyPressed(int key, char c){
+        if (key == Input.KEY_D && !facingRight){
             xAccel = 0;
         }
-        if (key == Input.KEY_A && facingRight) {
-            facingRight = false;
+        if (key == Input.KEY_A && facingRight){
             xAccel = 0;
-//            image = image.getFlippedCopy(true, false);
-        }
-        if (key == Input.KEY_SPACE && canAttack && inBox && holdingKnife) {
-            attack = true;
-            weaponCooldown = 30;
-            canAttack = false;
-        }
-        if (key == Input.KEY_1 && knifeAttained) {
-            holdingKnife = !holdingKnife;
-            weaponCooldown = 30;
         }
 
+        if(key == Input.KEY_SPACE && canAttack)
+        {
+            attack = true;
+            PlayerValues.isPlayerUsingKnife = true;
+            if (PlayerValues.isPlayerHoldingKnife) {
+                knifeCooldown = 30;
+            }
+            canAttack = false;
+        }
+        if(key == Input.KEY_1 && PlayerValues.doesPlayerHaveKnife){
+            PlayerValues.isPlayerHoldingKnife = !PlayerValues.isPlayerHoldingKnife;
+        }
+
+        if (key == (Input.KEY_S) && dashTimer <= 0 && dashCooldown <= 0 && !trapped) {
+            dashTimer = PlayerValues.DASH_TIME;
+            dashCooldown = PlayerValues.DASH_COOLDOWN;
+        }
     }
 }
