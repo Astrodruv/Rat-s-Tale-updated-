@@ -14,10 +14,10 @@ public class ChefHealthBar extends HealthBar{
     public void render(Graphics g){
         super.render(g);
         g.setColor(Color.red);
-        g.drawString("Jerry: Boss of the Cafeteria", x, y + 50);
+        g.drawString("Carry: Boss of the Cafeteria", x, y + 50);
         if (e != null) {
             if (e.isDead()) {
-                g.drawString("You have defeated Jerry!", x, y + 80);
+                g.drawString("You have defeated Carry!", x, y + 80);
             }
         }
     }

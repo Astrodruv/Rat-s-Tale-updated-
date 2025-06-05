@@ -10,5 +10,7 @@ public class ChefValues {
     public static final int ATTACK = 3;
     public static final int IFRAMES = 60;
 
+    public static final boolean chefWithFood = false;
+
     public static final String LEVEL_SPAWN_LOCATION = "levels/cafeteria.txt";
 }

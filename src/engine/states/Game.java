@@ -184,6 +184,12 @@ public class Game extends BasicGameState {
 					birdHealthBar.render(g);
 				}
 			}
+			if (chefHealthBar != null) {
+				if (World.level.equals(ChefValues.LEVEL_SPAWN_LOCATION)) {
+
+					chefHealthBar.render(g);
+				}
+			}
 			if (PlayerValues.doesPlayerHaveKnife) {
 				knifeDisplay.draw(Cell.getHeight(), Cell.getHeight() * 1.5f);
 			}
@@ -335,5 +341,4 @@ public class Game extends BasicGameState {
 		knife = null;
 		changeLevels = true;
 	}
-
 }

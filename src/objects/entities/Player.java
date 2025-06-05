@@ -540,12 +540,10 @@ public class Player extends Entity {
                 }
             }
 
-            if(o instanceof Student)
-            {
-                if(futureY.intersects(o.getBounds()))
-                {
+            if (o instanceof Student) {
+                if (futureY.intersects(o.getBounds())) {
                     takeDamage(StudentValues.ATTACK);
-                    if(!((Student) o).effected) {
+                    if (!((Student) o).effected) {
                         ((Student) o).crazed = true;
                     }
                 }
@@ -574,5 +572,14 @@ public class Player extends Entity {
             weaponCooldown = 30;
         }
 
+    }
+
+    public float getX()
+    {
+        return x;
+    }
+    public float getY()
+    {
+        return y;
     }
 }

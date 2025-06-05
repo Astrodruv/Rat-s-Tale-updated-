@@ -119,16 +119,4 @@ public class Student extends Entity {
         return new Rectangle(x, y, w, h);
     }
 
-    public void jump() {
-        if(jumpTimer > -300) {
-            yVelocity = -ySpeed;
-            xVelstore = xVelocity;
-        }
-        else
-        {
-            yVelocity = 0;
-            xVelocity = xVelstore;
-        }
-        onGround = false;
-    }
 }

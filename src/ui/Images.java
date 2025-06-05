@@ -132,9 +132,9 @@ public class Images {
             screwDriver = new Image("res/levels/closet/Screwdriver.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight() * 2);
             vent = new Image ("res/levels/closet/Closet_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
 
-            apple = new Image("res/levels/cafeteria/Apple.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
-            broccoli = new Image("res/levels/cafeteria/Broccoli.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
-            chicken = new Image("res/levels/cafeteria/Chicken.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+            apple = new Image("res/levels/cafeteria/Apple.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());
+            broccoli = new Image("res/levels/cafeteria/Broccoli.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());
+            chicken = new Image("res/levels/cafeteria/Chicken.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());
 
         }
         catch (SlickException e)

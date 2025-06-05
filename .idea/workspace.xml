@@ -9,20 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="students getting crazed">
-      <change afterPath="$PROJECT_DIR$/levels/cafeteria.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/healthbars/ChefHealthBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Chef.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/values/ChefValues.java" afterDir="false" />
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="chef">
+      <change afterPath="$PROJECT_DIR$/src/objects/interactables/Food.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/Bird.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/enemies/Bird.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/Images.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/Images.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/world/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/world/World.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/misc/Knife copy.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/states/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/states/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/healthbars/ChefHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/healthbars/ChefHealthBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Bird.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Chef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Images.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Images.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/values/ChefValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/ChefValues.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +73,9 @@
     &quot;repository&quot;: &quot;Rat-s-Tale-updated-&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -502,7 +506,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749086099992</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="chef">
+      <option name="closed" value="true" />
+      <created>1749142778711</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1749142778711</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,7 +529,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="cockroach movement" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/A Rat's Tale/objects/healthbars/CockroachHealthBar.class&#10;#&#9;src/objects/healthbars/CockroachHealthBar.java" />
     <MESSAGE value="Bird additions and cockroach boss buffs" />
@@ -542,6 +553,7 @@
     <MESSAGE value="ima tweak out" />
     <MESSAGE value="yay" />
     <MESSAGE value="students getting crazed" />
-    <option name="LAST_COMMIT_MESSAGE" value="students getting crazed" />
+    <MESSAGE value="chef" />
+    <option name="LAST_COMMIT_MESSAGE" value="chef" />
   </component>
 </project>
