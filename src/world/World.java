@@ -64,7 +64,7 @@ public class World {
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Janitor || obj instanceof RatTrap || obj instanceof Student || obj instanceof Player || obj instanceof EvilCar) {
+            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Janitor || obj instanceof RatTrap || obj instanceof Student || obj instanceof Player || obj instanceof EvilCar || obj instanceof Chef) {
                 obj.render(g);
             }
         }
@@ -116,7 +116,7 @@ public class World {
     public void setCell(Cell cell, char code) throws SlickException {
         GameObject obj = null;
 
-        // Characters Used: b, c, d, e, f, k, p, s, C, E, W, t, J
+        // Characters Used: b, c, d, e, f, k, p, s, C, E, W, t, J, B
 
         if (code == 'p'){
             obj = new Tile(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
@@ -148,6 +148,9 @@ public class World {
         }
         if (code == 's'){
             obj = new Student(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'B'){
+            obj = new Chef(cell.getX() *  Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
 
         if (code == 'k'){

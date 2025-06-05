@@ -399,6 +399,14 @@ public class Player extends Entity {
                             }
                             continue;
                         }
+                        if (World.level.equals("levels/classroom4.txt")) {
+                            section++;
+                            Game.setLevel("levels/cafeteria.txt");
+                            if (!PlayerValues.keyOnPermanentlySetting) {
+                                PlayerValues.isPlayerTouchingKey = false;
+                            }
+                            continue;
+                        }
                     }
                 }
             }

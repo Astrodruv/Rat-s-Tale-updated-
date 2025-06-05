@@ -32,7 +32,6 @@ public class Bird extends Entity {
         facingRight = true;
         diveTime = false;
         counter = 0;
-
         mySheet = Images.bird;
         currentFrame = mySheet.getSprite(0,0);
     }

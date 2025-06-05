@@ -14,6 +14,7 @@ public class Images {
     public static Image schoolBackground;
     public static Image closetBackground;
     public static Image classroomBackground;
+    public static Image cafeteriaBackground;
 
     // Level Platforms
     public static Image sewerPlatform;
@@ -21,6 +22,7 @@ public class Images {
     public static Image streetFloor;
     public static Image streetBoundary;
     public static Image closetPlatform;
+    public static Image classroomPlatform;
 
     // Objects
     public static Image ratIdle;
@@ -37,6 +39,9 @@ public class Images {
     public static Image janitorWalking;
     public static Image studentOneIdle;
     public static Image studentOneWalking;
+    public static Image chefIdle;
+    public static Image chefWalking;
+    public static Image chefAttacking;
 
     // Interactables
     public static Image key;
@@ -47,6 +52,9 @@ public class Images {
     public static Image streetDoor;
     public static Image screwDriver;
     public static Image vent;
+    public static Image apple;
+    public static Image broccoli;
+    public static Image chicken;
 
     // Game Entities Animations
     public static SpriteSheet rat;
@@ -56,6 +64,8 @@ public class Images {
     public static SpriteSheet janitor;
     public static SpriteSheet trapping;
     public static SpriteSheet student1;
+    public static SpriteSheet chefAtk;
+    public static SpriteSheet chef;
 
     public static void loadImages()
     {
@@ -67,12 +77,14 @@ public class Images {
             schoolBackground = new Image("res/levels/school/School_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             closetBackground = new Image("res/levels/closet/Closet_Background.png").getScaledCopy((int) (Main.getScreenWidth() - (Cell.getWidth())), (int) (Main.getScreenHeight() - (Cell.getHeight())));
             classroomBackground = new Image("res/levels/classroom/Classroom_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            cafeteriaBackground = new Image("res/levels/cafeteria/Cafeteria_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
             sewerFloor = new Image("res/levels/sewer/Sewer_Floor.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
             sewerPlatform = new Image("res/levels/sewer/Sewer_Platform.png").getScaledCopy((int) Cell.getWidth(), (int) (Cell.getHeight() / 8));
             streetFloor = new Image("res/levels/street/Street_Floor.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
             streetBoundary = new Image("res/levels/street/Street_Floor2.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
             closetPlatform = new Image("res/levels/closet/Closet_Platform.png").getScaledCopy((int) Cell.getWidth(), (int) (Cell.getHeight() / 8));
+            classroomPlatform = new Image("res/levels/classroom/Classroom_Platform.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
 
             ratIdle = new Image("res/misc/Rat_Idle1.png").getScaledCopy((int) (Cell.getWidth() * 2.5), (int) Cell.getHeight() + 10);
             ratWalking = new Image("res/misc/Rat_Walking.png");
@@ -105,6 +117,12 @@ public class Images {
             studentOneWalking = new Image("res/levels/classroom/Student_Walking.png");
             student1 = new SpriteSheet(studentOneWalking, 180, 288);
 
+            chefIdle = new Image("res/levels/cafeteria/Chef_Idle.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+            chefWalking = new Image("res/levels/cafeteria/Chef_Walking.png");
+            chefAttacking = new Image("res/levels/cafeteria/Chef_Attack.png");
+            chefAtk = new SpriteSheet(chefAttacking, 143, 364);
+            chef = new SpriteSheet(chefWalking, 143, 364);
+
             key = new Image("res/misc/Key.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() / 3);
             door = new Image("res/misc/Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
 
@@ -113,6 +131,11 @@ public class Images {
 
             screwDriver = new Image("res/levels/closet/Screwdriver.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight() * 2);
             vent = new Image ("res/levels/closet/Closet_Door.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight() * 2);
+
+            apple = new Image("res/levels/cafeteria/Apple.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+            broccoli = new Image("res/levels/cafeteria/Broccoli.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+            chicken = new Image("res/levels/cafeteria/Chicken.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+
         }
         catch (SlickException e)
         {
