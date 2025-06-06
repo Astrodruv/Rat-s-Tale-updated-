@@ -12,6 +12,7 @@ public class GameObject {
     protected float y;
     protected float w;
     protected float h;
+    protected boolean removed;
 
     public GameObject(float x, float y, Image image){
         this.x = x;
@@ -19,6 +20,7 @@ public class GameObject {
         this.w = image.getWidth();
         this.h = image.getHeight();
         this.image = image;
+        this.removed = false;
     }
 
     public void setCell(Cell c){
@@ -57,6 +59,8 @@ public class GameObject {
         return h;
     }
 
+    public boolean isRemoved() { return removed; }
+
     public Rectangle getBounds(){
         return new Rectangle(x,y,w,h);
     }
@@ -72,5 +76,6 @@ public class GameObject {
             return new Rectangle(x - (width) + (width / 4), y - Cell.getHeight() / 2, width, Cell.getHeight() + Cell.getHeight());
         }
     }
+
 
 }

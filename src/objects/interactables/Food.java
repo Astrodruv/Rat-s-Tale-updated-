@@ -17,7 +17,6 @@ public class Food extends GameObject {
     private static final Random random = new Random();
     private static float foodChoice;
     private boolean generated = false;
-    private boolean removed;
 
     private float xSpeed = 4;
 
@@ -55,7 +54,7 @@ public class Food extends GameObject {
         else {
             x -= xSpeed;
         }
-        if(y > Main.getScreenHeight() - Cell.getHeight())
+        if(y > Main.getScreenHeight() + Cell.getHeight())
         {
             removed = true;
         }

@@ -133,6 +133,8 @@ public class Game extends BasicGameState
 			}
 
 			updateHealthBars();
+			levelObjects.removeIf(GameObject::isRemoved);
+
 
 //		if (World.level.equals(("levels/school.txt"))) {
 //			this.sbg.enterState(Main.END_ID);
@@ -212,6 +214,15 @@ public class Game extends BasicGameState
 			if (PlayerValues.doesPlayerHaveKnife) {
 				knifeDisplay.draw(Cell.getHeight(), Cell.getHeight() * 1.5f);
 			}
+
+			for(GameObject o: levelObjects)
+			{
+				if(o instanceof Food)
+				{
+					o.render(g);
+				}
+			}
+
 			pauseButton.render(g);
 
 			g.setColor(Color.yellow);
