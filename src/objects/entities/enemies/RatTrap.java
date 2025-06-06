@@ -1,12 +1,10 @@
 package objects.entities.enemies;
 
 import objects.entities.Entity;
-import objects.entities.Player;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import ui.Images;
 import values.RatTrapValues;
@@ -22,7 +20,7 @@ public class RatTrap extends Entity {
     private int framesPerStep = 6;
 
     public RatTrap(float x, float y) {
-        super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.ratTrap, RatTrapValues.IFRAMES);
+        super(x, y + (Cell.getHeight() / 3), 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.ratTrap, RatTrapValues.IFRAMES);
         image = Images.ratTrap;
         mySheet = Images.trapping;
         currentFrame = mySheet.getSprite(0,0);
@@ -36,17 +34,17 @@ public class RatTrap extends Entity {
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
 //        super.update(gc, sbg, delta);
-        if(Player.trapped) {
+        if(trap) {
             frames++;
             if (frames % framesPerStep == 0) {
                 step++;
             }
             if (step >= mySheet.getHorizontalCount()) {
                 step = 0;
+                trap = false;
             }
             currentFrame = mySheet.getSprite(step, 0);
         }
-        else currentFrame = mySheet.getSprite(0,0);
     }
 
     public Rectangle getBounds() {
