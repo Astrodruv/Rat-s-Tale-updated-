@@ -9,25 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="chef">
-      <change afterPath="$PROJECT_DIR$/res/misc/WinScreen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/closet1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/closet1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/closet2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/closet2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/closet4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/closet4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/Floor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/Floor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/platforms/Tile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/Images.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/Images.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/values/PlayerValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/values/PlayerValues.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/states/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/states/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/platforms/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/platforms/Floor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/platforms/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/platforms/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Images.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Images.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/values/PlayerValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/PlayerValues.java" afterDir="false" />
-    </list>
+    <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="chef" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +79,7 @@
     "git-widget-placeholder": "Humza-Updated",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Neal/IdeaProjects/Rat-s-Tale-updated-/res/misc",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel"
@@ -141,22 +123,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711108596010</updated>
-    </task>
-    <task id="LOCAL-00004" summary="cockroach movement">
-      <option name="closed" value="true" />
-      <created>1745709029456</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1745709029456</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Bird additions and cockroach boss buffs">
-      <option name="closed" value="true" />
-      <created>1746933101760</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1746933101760</updated>
     </task>
     <task id="LOCAL-00006" summary="Add files via upload">
       <option name="closed" value="true" />
@@ -534,7 +500,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749210333591</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="chef">
+      <option name="closed" value="true" />
+      <created>1749212516539</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1749212516540</updated>
+    </task>
+    <task id="LOCAL-00054" summary="chef">
+      <option name="closed" value="true" />
+      <created>1749212536866</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1749212536866</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
