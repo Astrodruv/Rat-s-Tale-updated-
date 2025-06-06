@@ -23,8 +23,7 @@ import ui.Images;
 
 import java.util.ArrayList;
 
-public class Game extends BasicGameState
-{
+public class Game extends BasicGameState {
 	public boolean pause;
 
 	public static GameContainer gc;
@@ -74,13 +73,11 @@ public class Game extends BasicGameState
 		pause = false;
 	}
 
-	public int getID()
-	{
+	public int getID() {
 		return id;
 	}
 
-	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
-	{
+	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		this.gc = gc;
 		this.sbg = sbg;
 		gc.setShowFPS(false);
@@ -92,7 +89,7 @@ public class Game extends BasicGameState
 		pauseScreenType = 0;
 
 		pauseMessage = new Message(((float) Main.getScreenWidth() / 2) - ((float) Fonts.instructionAndLorePageFont.getWidth("GAME PAUSED") / 2), Cell.getHeight(), "GAME PAUSED", Color.yellow, Fonts.instructionAndLorePageFont);
-		deathButton = new Button(((float) Main.getScreenWidth() /1.2f) - (Cell.getWidth() * 20), ((float) Main.getScreenHeight() / 1.5f) - Cell.getHeight(), (int) Cell.getWidth() * 10, (int) Cell.getHeight() * 2, "Restart Section", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.titleScreenButtonFont);
+		deathButton = new Button(((float) Main.getScreenWidth() / 1.2f) - (Cell.getWidth() * 20), ((float) Main.getScreenHeight() / 1.5f) - Cell.getHeight(), (int) Cell.getWidth() * 10, (int) Cell.getHeight() * 2, "Restart Section", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.titleScreenButtonFont);
 		controlsButton = new Button(((float) Main.getScreenWidth() / 2) - (Cell.getWidth() * 5), ((float) Main.getScreenHeight() / 2) - Cell.getHeight(), (int) Cell.getWidth() * 10, (int) Cell.getHeight() * 2, "Controls", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.titleScreenButtonFont);
 		startOverButton = new Button(((float) Main.getScreenWidth() / 2) - (Cell.getWidth() * 20), ((float) Main.getScreenHeight() / 2) - Cell.getHeight(), (int) Cell.getWidth() * 10, (int) Cell.getHeight() * 2, "Restart Game", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.titleScreenButtonFont);
 		settingsButton = new Button(((float) Main.getScreenWidth() / 2) + (Cell.getWidth() * 10), ((float) Main.getScreenHeight() / 2) - Cell.getHeight(), (int) Cell.getWidth() * 10, (int) Cell.getHeight() * 2, "Settings", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.titleScreenButtonFont);
@@ -100,17 +97,16 @@ public class Game extends BasicGameState
 		pauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Pause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 		unpauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Unpause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 
-		setLevel("levels/classroom1.txt"); // debug
-		PlayerValues.section = 2; // debug
-		PlayerValues.doesPlayerHaveKnife = true; // debug
+		setLevel("levels/closet1.txt"); // debug
+		PlayerValues.section = 0; // debug
+		PlayerValues.doesPlayerHaveKnife = false; // debug
 
 		knifeDisplay = Images.knifeInv;
 	}
 
-	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
-	{
+	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		if (!pause) {
-			if (!Player.gameOver) {
+			if (!Player.gameOver && PlayerValues.section != 6) {
 				world.update(gc, sbg, delta);
 				speedrunTimer++;
 			}
@@ -124,10 +120,8 @@ public class Game extends BasicGameState
 
 			if (knife != null) knife.update(gc, sbg, delta);
 
-			for(GameObject o: levelObjects)
-			{
-				if(o instanceof Food)
-				{
+			for (GameObject o : levelObjects) {
+				if (o instanceof Food) {
 					o.update(gc, sbg, delta);
 				}
 			}
@@ -164,8 +158,7 @@ public class Game extends BasicGameState
 				if (janitorHealthBar == null || janitorHealthBar.getEntity() != o) {
 					janitorHealthBar = new JanitorHealthBar(janitor);
 				}
-			}
-			else if (o instanceof Chef && World.level.equals(ChefValues.LEVEL_SPAWN_LOCATION)) {
+			} else if (o instanceof Chef && World.level.equals(ChefValues.LEVEL_SPAWN_LOCATION)) {
 				chef = (Chef) o;
 				if (chefHealthBar == null || chefHealthBar.getEntity() != o) {
 					chefHealthBar = new ChefHealthBar(chef);
@@ -174,23 +167,26 @@ public class Game extends BasicGameState
 		}
 	}
 
-	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
-	{
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		if (!Player.gameOver) {
-			if(PlayerValues.section == 0){
-				g.drawImage(Images.sewerBackground,0,0);
-			} else if (PlayerValues.section == 1){
+			if (PlayerValues.section == 0) {
+				g.drawImage(Images.sewerBackground, 0, 0);
+			} else if (PlayerValues.section == 1) {
 				g.drawImage(Images.streetBackground, 0, 0);
 			} else if (PlayerValues.section == 2) {
-				g.drawImage(Images.closetBackground, 0,0);
+				g.drawImage(Images.closetBackground, 0, 0);
 			} else if (PlayerValues.section == 3) {
-				g.drawImage(Images.classroomBackground,0,0);
-			} else if (PlayerValues.section == 4){
+				g.drawImage(Images.classroomBackground, 0, 0);
+			} else if (PlayerValues.section == 4) {
 				g.drawImage(Images.cafeteriaBackground, 0, 0);
+			} else if (PlayerValues.section == 5) {
+				g.drawImage(Images.schoolBackground, 0, 0);
+			} else if (PlayerValues.section == 6) {
+				g.drawImage(Images.winScreen, 0, 0);
 			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
 			world.render(g);
-			if (knife != null){
+			if (knife != null) {
 				knife.render(g);
 			}
 			if (playerHealthBar != null) {
@@ -206,19 +202,22 @@ public class Game extends BasicGameState
 					birdHealthBar.render(g);
 				}
 			}
-			if (janitorHealthBar != null){
+			if (janitorHealthBar != null) {
 				if (World.level.equals(JanitorValues.LEVEL_SPAWN_LOCATION)) {
 					janitorHealthBar.render(g);
 				}
 			}
-			if (PlayerValues.doesPlayerHaveKnife) {
+			if (chefHealthBar != null) {
+				if (World.level.equals(ChefValues.LEVEL_SPAWN_LOCATION)) {
+					chefHealthBar.render(g);
+				}
+			}
+			if (PlayerValues.doesPlayerHaveKnife && PlayerValues.section != 6) {
 				knifeDisplay.draw(Cell.getHeight(), Cell.getHeight() * 1.5f);
 			}
 
-			for(GameObject o: levelObjects)
-			{
-				if(o instanceof Food)
-				{
+			for (GameObject o : levelObjects) {
+				if (o instanceof Food) {
 					o.render(g);
 				}
 			}
@@ -230,7 +229,7 @@ public class Game extends BasicGameState
 			g.drawString(String.format("%.3f", speedrunTimer / 60), Main.getScreenWidth() - Cell.getWidth() * 2, Cell.getHeight());
 		}
 
-		if (pause){
+		if (pause) {
 			instructions.clear();
 			instructions.add(new Message(Cell.getWidth(), Cell.getHeight(), "Movement Controls:", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
 			instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 2, "W - Jump:", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
@@ -240,16 +239,24 @@ public class Game extends BasicGameState
 
 			instructions.add(new Message(Cell.getWidth(), Cell.getHeight() * 6, "Attacking Controls: ", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
 			instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 7, "Jump on Enemies to Damage Them", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
-			if (!PlayerValues.doesPlayerHaveKnife) instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 8, "Space - Use Knife - LOCKED", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
-			else instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 8, "Space - Use Knife", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
-			if (!PlayerValues.doesPlayerHaveGlock) instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 9, "Space - Use Glock - LOCKED", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
-			else instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 9, "Space - Use Glock", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
+			if (!PlayerValues.doesPlayerHaveKnife)
+				instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 8, "Space - Use Knife - LOCKED", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
+			else
+				instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 8, "Space - Use Knife", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
+			if (!PlayerValues.doesPlayerHaveGlock)
+				instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 9, "Space - Use Glock - LOCKED", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
+			else
+				instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 9, "Space - Use Glock", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
 
 			instructions.add(new Message(Cell.getWidth(), Cell.getHeight() * 10, "Hotkeys:", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
-			if (!PlayerValues.doesPlayerHaveKnife) instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 11, "1 - Equip Knife - LOCKED", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
-			else instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 11, "1 - Equip Knife", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
-			if (!PlayerValues.doesPlayerHaveGlock) instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 12, "2 - Equip Glock - LOCKED", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
-			else instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 12, "2 - Equip Glock", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
+			if (!PlayerValues.doesPlayerHaveKnife)
+				instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 11, "1 - Equip Knife - LOCKED", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
+			else
+				instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 11, "1 - Equip Knife", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
+			if (!PlayerValues.doesPlayerHaveGlock)
+				instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 12, "2 - Equip Glock - LOCKED", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
+			else
+				instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 12, "2 - Equip Glock", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
 			instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 13, "P - Pause & Settings", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
 
 			instructions.add(new Message(Cell.getWidth(), Cell.getHeight() * 14, "Collect the key or beat the boss to unlock the door and progress to the next level!", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
@@ -263,32 +270,30 @@ public class Game extends BasicGameState
 				settingsButton.render(g);
 				unpauseButton.render(g);
 			}
-			if (pauseScreenType == 1){
+			if (pauseScreenType == 1) {
 				goBackButton.render(g);
-				for (Message m : instructions){
+				for (Message m : instructions) {
 					m.render(g);
 				}
 			}
-			if (pauseScreenType == 2){
+			if (pauseScreenType == 2) {
 				goBackButton.render(g);
 			}
 		}
 
-		if (Player.gameOver){
-			g.drawImage(Images.deathScreen,0,0);
+		if (Player.gameOver) {
+			g.drawImage(Images.deathScreen, 0, 0);
 			deathButton.render(g);
 			g.setFont(Fonts.titleScreenButtonFont);
 //		g.drawString("Space to restart", Main.getScreenWidth()/3, Main.getScreenHeight()/2);
 		}
 	}
 
-	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
-	{
+	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		speedrunTimer = 0;
 	}
 
-	public void leave(GameContainer gc, StateBasedGame sbg)
-	{
+	public void leave(GameContainer gc, StateBasedGame sbg) {
 
 	}
 
@@ -303,17 +308,16 @@ public class Game extends BasicGameState
 	}
 
 	public void mousePressed(int button, int x, int y) {
-		if (goBackButton.isMouseOver(x,y)) pauseScreenType = 0;
-		if (unpauseButton.isMouseOver(x,y) && pause){
+		if (goBackButton.isMouseOver(x, y)) pauseScreenType = 0;
+		if (unpauseButton.isMouseOver(x, y) && pause) {
 			pause = false;
-		}
-		else if (pauseButton.isMouseOver(x,y) && !pause){
+		} else if (pauseButton.isMouseOver(x, y) && !pause) {
 			pauseScreenType = 0;
 			pause = true;
 		}
-		if (controlsButton.isMouseOver(x,y)) pauseScreenType = 1;
-		if (settingsButton.isMouseOver(x,y)) pauseScreenType = 2;
-		if (startOverButton.isMouseOver(x,y)){
+		if (controlsButton.isMouseOver(x, y)) pauseScreenType = 1;
+		if (settingsButton.isMouseOver(x, y)) pauseScreenType = 2;
+		if (startOverButton.isMouseOver(x, y)) {
 			PlayerValues.section = 0;
 			PlayerValues.isPlayerTouchingKey = false;
 			PlayerValues.isPlayerHurtingEnemy = false;
@@ -327,29 +331,29 @@ public class Game extends BasicGameState
 			PlayerValues.isPlayerHoldingKnife = false;
 			this.sbg.enterState(Main.TITLE_ID);
 		}
-		if(deathButton.isMouseOver(x,y) && Player.gameOver){
-			if (PlayerValues.section == 0){
+		if (deathButton.isMouseOver(x, y) && Player.gameOver) {
+			if (PlayerValues.section == 0) {
 				setLevel("levels/sewer1.txt");
 				Player.gameOver = false;
 				PlayerValues.isPlayerTouchingKey = false;
 			}
-			if (PlayerValues.section == 1){
+			if (PlayerValues.section == 1) {
 				setLevel("levels/street1.txt");
 				Player.gameOver = false;
 				PlayerValues.isPlayerTouchingKey = false;
 
 			}
-			if (PlayerValues.section == 2){
+			if (PlayerValues.section == 2) {
 				setLevel("levels/closet1.txt");
 				Player.gameOver = false;
 				PlayerValues.isPlayerTouchingKey = false;
 			}
-			if (PlayerValues.section == 3){
+			if (PlayerValues.section == 3) {
 				setLevel("levels/classroom1.txt");
 				Player.gameOver = false;
 				PlayerValues.isPlayerTouchingKey = false;
 			}
-			if (PlayerValues.section == 4){
+			if (PlayerValues.section == 4) {
 				setLevel("levels/cafeteria.txt");
 				Player.gameOver = false;
 				PlayerValues.isPlayerTouchingKey = false;
@@ -357,24 +361,23 @@ public class Game extends BasicGameState
 		}
 	}
 
-	public static PlayerHealthBar getPlayerHealthBar(){
+	public static PlayerHealthBar getPlayerHealthBar() {
 		return playerHealthBar;
 	}
 
-	public static Player getPlayer(){
+	public static Player getPlayer() {
 		return player;
 	}
 
-	public static float getSpeedrunTimer(){
+	public static float getSpeedrunTimer() {
 		return speedrunTimer;
 	}
 
-	public static void setLevel(String s){
+	public static void setLevel(String s) {
 		levelObjects.clear();
 		World.level = s;
 		player = null;
 		knife = null;
 		changeLevels = true;
 	}
-
 }

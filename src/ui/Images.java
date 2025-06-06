@@ -15,6 +15,7 @@ public class Images {
     public static Image closetBackground;
     public static Image classroomBackground;
     public static Image deathScreen;
+    public static Image winScreen;
 
     // Level Platforms
     public static Image sewerPlatform;
@@ -89,6 +90,7 @@ public class Images {
             closetBackground = new Image("res/levels/closet/Closet_Background.png").getScaledCopy((int) (Main.getScreenWidth()), (int) (Main.getScreenHeight() - Cell.getHeight()));
             classroomBackground = new Image("res/levels/classroom/Classroom_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             deathScreen = new Image("res/misc/DeathScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            winScreen = new Image("res/misc/GameOver.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
             classroomBackground = new Image("res/levels/classroom/Classroom_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             cafeteriaBackground = new Image("res/levels/cafeteria/Cafeteria_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
@@ -127,7 +129,7 @@ public class Images {
             knifeAttack = new SpriteSheet("res/misc/Knife3.png", 512, 512);
             janitorIdle = new Image("res/levels/closet/Janitor_Idle.png").getScaledCopy((int) (Cell.getWidth() * 6), (int) (Cell.getHeight() * 5));
             janitorWalking = new Image("res/levels/closet/Janitor_Walking.png");
-            janitor = new SpriteSheet(janitorWalking,418,616);
+            janitor = new SpriteSheet(janitorWalking,247,364);
 
 
             coin = new Image("res/levels/street/Coin.png").getScaledCopy((int) Cell.getWidth() * 2, (int) Cell.getHeight());

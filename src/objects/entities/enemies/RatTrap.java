@@ -9,6 +9,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import ui.Images;
 import values.RatTrapValues;
 import world.Cell;
+import org.newdawn.slick.geom.Rectangle;
 
 public class RatTrap extends Entity {
 
@@ -47,7 +48,9 @@ public class RatTrap extends Entity {
         }
     }
 
-    public Rectangle getBounds() {
-        return new Rectangle(x + Cell.getWidth() / 3, y + Cell.getHeight() / 3, w - Cell.getWidth() / 3 * 2, h - Cell.getHeight() / 3);
+    public Rectangle getBounds()
+    {
+        return new Rectangle((int) (x + Cell.getWidth() / 3), (int) (y + Cell.getHeight() / 3), (int) (w - Cell.getWidth() / 3 * 2), (int) (h - Cell.getHeight() / 3));
     }
+
 }

@@ -59,10 +59,6 @@ public class Bird extends Entity {
                 currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
             }
         }
-
-        g.drawString("corner", x,y);
-        g.drawString(""+counter, 700,700);
-        g.draw(getBounds());
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {

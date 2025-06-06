@@ -38,8 +38,6 @@ public class EvilCar extends Entity {
 //        super.render(g);
         float renderOffsetY = h - currentFrame.getHeight();
         currentFrame.draw(x, y + renderOffsetY);
-        g.setColor(Color.white);
-        g.draw(getBounds());
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {

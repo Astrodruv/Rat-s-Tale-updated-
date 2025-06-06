@@ -84,13 +84,6 @@ public class Janitor extends Entity {
             j.render(g);
         }
 
-        g.drawString("corner", x, y);
-        g.drawString("moveLeft: " + moveLeft, 500, 500);
-        g.drawString("moveRight: " + moveRight, 500, 550);
-        g.drawString("jumpCount: " + jumpCount, 500, 600);
-
-        g.drawString(""+janitorProjectile.size(), 500, 650);
-
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta)

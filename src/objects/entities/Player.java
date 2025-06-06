@@ -115,14 +115,14 @@ public class Player extends Entity {
             }
         }
 
-        g.setColor(Color.white);
-        g.draw(getBounds());
-        g.draw(getWeaponBounds(facingRight));
-
-        g.setColor(Color.orange);
-        g.drawString("Gravity: " + gravity, 400, 450);
-        g.drawString("Y Vel Max: " + Cell.getHeight(), 400, 500);
-        g.drawString("Y Vel: " + yVelocity, 400, 550);
+//        g.setColor(Color.white);
+//        g.draw(getBounds());
+//        g.draw(getWeaponBounds(facingRight));
+//
+//        g.setColor(Color.orange);
+//        g.drawString("Gravity: " + gravity, 400, 450);
+//        g.drawString("Y Vel Max: " + Cell.getHeight(), 400, 500);
+//        g.drawString("Y Vel: " + yVelocity, 400, 550);
 //
 //        g.drawString("DashTime: " + dashTimer, 500, 500);
 //        g.drawString("DashCool: " + dashCooldown, 500, 525);
@@ -414,6 +414,18 @@ public class Player extends Entity {
                                 if (!PlayerValues.keyOnPermanentlySetting) {
                                     PlayerValues.isPlayerTouchingKey = false;
                                 }
+                                continue;
+                            }
+                            case "levels/cafeteria.txt" -> {
+                                Game.setLevel("levels/run.txt");
+                                PlayerValues.section++;
+                                PlayerValues.isPlayerTouchingKey = true;
+                                continue;
+                            }
+                            case "levels/run.txt" -> {
+                                Game.setLevel("levels/win.txt");
+                                PlayerValues.section++;
+                                PlayerValues.isPlayerTouchingKey = true;
                                 continue;
                             }
                         }

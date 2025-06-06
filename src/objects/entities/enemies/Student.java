@@ -72,7 +72,6 @@ public class Student extends Entity {
             currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
         }
         randomizer();
-        g.drawString(""+jumpTimer,900,900);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
