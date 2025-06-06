@@ -29,7 +29,7 @@ public class Cell {
         object = o;
         if (o != null) object.setCell(this);
 
-//        x = getXPixel();
+//        getX = getXPixel();
 //        y = getYPixel();
     }
 

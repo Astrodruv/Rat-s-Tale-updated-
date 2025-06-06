@@ -548,6 +548,43 @@ public class Player extends Entity {
                     }
                 }
             }
+
+            if(o instanceof Food)
+            {
+                if(futureY.intersects(o.getBounds()))
+                {
+                    takeDamage(1);
+                }
+            }
+            if (o instanceof Chef) {
+                Rectangle weaponBounds = getWeaponBounds(facingRight);
+                if (futureY.intersects(o.getBounds()) && !((Chef) o).isDead) {
+                    if (futureY.getMaxY() <= o.getBounds().getMinY() + 30 && futureY.getMinY() < o.getBounds().getMinY()) {
+                        PlayerValues.isPlayerHurtingEnemy = true;
+                        onGround = true;
+                        jumpingOffOfEnemy = true;
+                        jump();
+                        jumpingOffOfEnemy = false;
+                    } else {
+                        takeDamage(ChefValues.ATTACK);
+                        System.out.println("Damage");
+                    }
+                }
+                if (weaponBounds.intersects(o.getBounds()) && !((Chef) o).isDead) {
+                    inBox = true;
+                    if (attack) {
+                        PlayerValues.isPlayerHurtingEnemy = true;
+                        attack = false;
+                    }
+                } else {
+                    inBox = false;
+                }
+                if (((Chef) o).isDead()) {
+                    if (World.level.equals(ChefValues.LEVEL_SPAWN_LOCATION)) {
+                        PlayerValues.isPlayerTouchingKey = true;
+                    }
+                }
+            }
         }
     }
 
@@ -572,14 +609,5 @@ public class Player extends Entity {
             weaponCooldown = 30;
         }
 
-    }
-
-    public float getX()
-    {
-        return x;
-    }
-    public float getY()
-    {
-        return y;
     }
 }

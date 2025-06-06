@@ -19,9 +19,9 @@ public class Platform extends GameObject {
     public void render(Graphics g){
         super.render(g);
 //        g.setColor(Color.white);
-//        if (isBottomPlatform()) g.drawString("B", x + (w / 3), y + (h / 2));
+//        if (isBottomPlatform()) g.drawString("B", getX + (w / 3), y + (h / 2));
 //        g.setColor(Color.yellow);
-//        if (isSidePlatform()) g.drawString("S", x + (w / 2), y - (h / 2));
+//        if (isSidePlatform()) g.drawString("S", getX + (w / 2), y - (h / 2));
     }
 
     public void collisions(StateBasedGame sbg) {

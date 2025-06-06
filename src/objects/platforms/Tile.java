@@ -23,12 +23,12 @@ public class Tile extends Platform
 //        image.draw(cell.getX() * cellW, cell.getY() * cellH, cellW, h);
 //        if (isBottomPlatform()) {
 //        g.setColor(Color.yellow);
-////            g.drawString("Bottom",x + 5,y + 5);
+////            g.drawString("Bottom",getX + 5,y + 5);
 ////            g.draw(getBounds());
 //        }
 //                if (isSidePlatform()) {
 //        g.setColor(Color.yellow);
-////            g.drawString("Side",x,y - 5);
+////            g.drawString("Side",getX,y - 5);
 ////            g.draw(getBounds());
 //        }
 

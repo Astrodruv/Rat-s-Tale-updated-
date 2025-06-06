@@ -1,6 +1,5 @@
 package objects.entities.enemies;
 
-import engine.Main;
 import engine.states.Game;
 import objects.GameObject;
 import objects.entities.Entity;
@@ -12,11 +11,11 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.StateBasedGame;
 import ui.Images;
+import values.BirdValues;
 import values.ChefValues;
+import values.PlayerValues;
 import world.Cell;
-
-import javax.sql.XAConnection;
-import java.util.ArrayList;
+import world.World;
 
 public class Chef extends Entity {
 
@@ -35,6 +34,14 @@ public class Chef extends Entity {
     private float atkTimer;
     private float jumpTimer;
     private float playerX;
+    private float thrownCooldown;
+    private float throwTimer;
+
+
+    public static boolean facingRight;
+    public static float getX;
+
+    public boolean foodSent;
 
 
     public Chef(float x, float y) {
@@ -45,9 +52,15 @@ public class Chef extends Entity {
         currentFrame = mySheet.getSprite(0, 0);
         curAtkFrame = atkSheet.getSprite(0, 0);
 
+        this.getX = x;
+
         attack = false;
         atkTimer = 180;
         jumpTimer = 240;
+        foodSent = false;
+
+        throwTimer = 100;
+        thrownCooldown = 0;
     }
 
     public void render(Graphics g) {
@@ -58,15 +71,15 @@ public class Chef extends Entity {
                 float renderOffsetY = h - currentFrame.getHeight();
                 if (facingRight) {
                     if (!attack) {
-                        currentFrame.draw(x, y + renderOffsetY);
+                        currentFrame.draw(getX, y + renderOffsetY);
                     } else {
-                        curAtkFrame.draw(x, y + renderOffsetY);
+                        curAtkFrame.draw(getX, y + renderOffsetY);
                     }
                 } else {
                     if (!attack) {
-                        currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
+                        currentFrame.getFlippedCopy(true, false).draw(getX, y + renderOffsetY);
                     } else {
-                        curAtkFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
+                        curAtkFrame.getFlippedCopy(true, false).draw(getX, y + renderOffsetY);
                     }
                 }
             }
@@ -74,21 +87,20 @@ public class Chef extends Entity {
             float renderOffsetY = h - currentFrame.getHeight();
             if (facingRight) {
                 if (!attack) {
-                    currentFrame.draw(x, y + renderOffsetY);
+                    currentFrame.draw(getX, y + renderOffsetY);
                 } else {
-                    curAtkFrame.draw(x, y + renderOffsetY);
+                    curAtkFrame.draw(getX, y + renderOffsetY);
                 }
 
             } else {
                 if (!attack) {
-                    currentFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
+                    currentFrame.getFlippedCopy(true, false).draw(getX, y + renderOffsetY);
                 } else {
-                    curAtkFrame.getFlippedCopy(true, false).draw(x, y + renderOffsetY);
+                    curAtkFrame.getFlippedCopy(true, false).draw(getX, y + renderOffsetY);
                 }
             }
         }
-        g.drawString("" + atkTimer, 700, 700);
-        g.drawString("" + attack, 900, 700);
+        g.drawRect(x,y,w,h);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -97,9 +109,23 @@ public class Chef extends Entity {
 
         atkTimer--;
         jumpTimer--;
+        throwTimer--;
+
+        if (World.level.equals(ChefValues.LEVEL_SPAWN_LOCATION) && PlayerValues.isPlayerHurtingEnemy) {
+            isHit = true;
+            PlayerValues.isPlayerHurtingEnemy = false;
+        }
+
+        if (isHit && !hasTakenDamage){
+            if (PlayerValues.isPlayerUsingKnife){
+                takeDamage(PlayerValues.ATTACK * 3);
+            }
+            else takeDamage(PlayerValues.ATTACK);
+            hasTakenDamage = true;
+        }
 
         if (atkTimer > 0) {
-            if (playerX < x) {
+            if (playerX < getX) {
                 xVelocity -= xAccel;
                 xAccel = 0.025F;
                 facingRight = false;
@@ -109,18 +135,20 @@ public class Chef extends Entity {
                 facingRight = true;
             }
 
-            x += xVelocity;
+            getX += xVelocity;
 
-        } else {
+        } else if(throwTimer <= 0){
             attack = true;
+            throwFood();
+            throwTimer = 100;
+            xVelocity = 0;
         }
 
-        if(jumpTimer < 0)
-        {
+        if (jumpTimer < 0) {
             jump();
-
-            jumpTimer = 240;
-
+            if(jumpTimer < -5) {
+                jumpTimer = 240;
+            }
         }
 
         if (!attack) {
@@ -134,6 +162,7 @@ public class Chef extends Entity {
             currentFrame = mySheet.getSprite(step, 0);
         } else {
             atkFrames++;
+            foodSent = true;
             if (atkFrames % atkFramesPerStep == 0) {
                 atkStep++;
             }
@@ -149,7 +178,7 @@ public class Chef extends Entity {
     }
 
     public void throwFood() {
-        Food food = new Food(x, y);
+        Food food = new Food(getX, y - Cell.getHeight() / 2);
         Game.levelObjects.add(food);
     }
 

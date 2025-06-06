@@ -117,7 +117,7 @@ public class Images {
             studentOneWalking = new Image("res/levels/classroom/Student_Walking.png");
             student1 = new SpriteSheet(studentOneWalking, 180, 288);
 
-            chefIdle = new Image("res/levels/cafeteria/Chef_Idle.png").getScaledCopy((int) Cell.getWidth(), (int) Cell.getHeight());
+            chefIdle = new Image("res/levels/cafeteria/Chef_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight() * 4);
             chefWalking = new Image("res/levels/cafeteria/Chef_Walking.png");
             chefAttacking = new Image("res/levels/cafeteria/Chef_Attack.png");
             chefAtk = new SpriteSheet(chefAttacking, 143, 364);

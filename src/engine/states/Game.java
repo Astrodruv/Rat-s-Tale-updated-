@@ -10,6 +10,7 @@ import objects.entities.Player;
 import objects.entities.enemies.Bird;
 import objects.entities.enemies.Chef;
 import objects.entities.enemies.Cockroach;
+import objects.interactables.Food;
 import objects.weapons.Knife;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -58,6 +59,7 @@ public class Game extends BasicGameState {
 	private static Chef chef;
 
 	private static Knife knife;
+	private static Food food;
 
 	private static PlayerHealthBar playerHealthBar;
 	private static CockroachHealthBar cockroachHealthBar;
@@ -96,7 +98,7 @@ public class Game extends BasicGameState {
 		pauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Pause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 		unpauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Unpause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 
-		setLevel("levels/cafeteria.txt"); // debug
+		setLevel("levels/sewer4.txt"); // debug
 		PlayerValues.section = 0; // debug
 		PlayerValues.doesPlayerHaveKnife = false; // debug
 
@@ -118,7 +120,22 @@ public class Game extends BasicGameState {
 
 			if (knife != null) knife.update(gc, sbg, delta);
 
+			if (ChefValues.chefWithFood) {
+				if (chef != null && food != null)
+				{
+					food.update(gc,sbg,delta);
+				}
+			}
+
+			for(GameObject o: levelObjects)
+			{
+				if(o instanceof Food)
+				{
+					o.update(gc, sbg, delta);
+				}
+			}
 			updateHealthBars();
+			levelObjects.removeIf(GameObject::isRemoved);
 
 //		if (World.level.equals(("levels/school.txt"))) {
 //			this.sbg.enterState(Main.END_ID);
@@ -186,13 +203,21 @@ public class Game extends BasicGameState {
 			}
 			if (chefHealthBar != null) {
 				if (World.level.equals(ChefValues.LEVEL_SPAWN_LOCATION)) {
-
 					chefHealthBar.render(g);
 				}
 			}
 			if (PlayerValues.doesPlayerHaveKnife) {
 				knifeDisplay.draw(Cell.getHeight(), Cell.getHeight() * 1.5f);
 			}
+
+			for(GameObject o: levelObjects)
+			{
+				if(o instanceof Food)
+				{
+					o.render(g);
+				}
+			}
+
 			pauseButton.render(g);
 		}
 
@@ -294,6 +319,10 @@ public class Game extends BasicGameState {
 				}
 				if (PlayerValues.section == 3) {
 					setLevel("levels/classroom1.txt");
+					Player.gameOver = false;
+				}
+				if (PlayerValues.section == 4) {
+					setLevel("levels/cafeteria.txt");
 					Player.gameOver = false;
 				}
 			}
