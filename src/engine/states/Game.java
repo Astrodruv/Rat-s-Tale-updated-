@@ -120,12 +120,6 @@ public class Game extends BasicGameState {
 
 			if (knife != null) knife.update(gc, sbg, delta);
 
-			if (ChefValues.chefWithFood) {
-				if (chef != null && food != null)
-				{
-					food.update(gc,sbg,delta);
-				}
-			}
 
 			for(GameObject o: levelObjects)
 			{

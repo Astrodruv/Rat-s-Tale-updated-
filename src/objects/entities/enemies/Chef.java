@@ -55,7 +55,7 @@ public class Chef extends Entity {
         this.getX = x;
 
         attack = false;
-        atkTimer = 180;
+        atkTimer = 200;
         jumpTimer = 240;
         foodSent = false;
 
