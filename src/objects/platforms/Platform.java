@@ -21,6 +21,8 @@ public class Platform extends GameObject {
 //        if (isBottomPlatform()) g.drawString("B", x + (w / 3), y + (h / 2));
 //        g.setColor(Color.yellow);
 //        if (isSidePlatform()) g.drawString("S", x + (w / 2), y + (h / 2));
+//        g.setColor(Color.blue);
+//        if (isNextToFloor()) g.drawString("N", x + (w / 4), y + (h / 2));
     }
 
     public void collisions(StateBasedGame sbg) {
@@ -86,6 +88,21 @@ public class Platform extends GameObject {
         Cell aboveCell = World.getCell(x, cell.getY() - 1);
 
         return rightCell != null && rightCell.getObject() != null && leftCell != null && leftCell.getObject() != null && belowCell != null && belowCell.getObject() != null && aboveCell != null && aboveCell.getObject() != null;
+    }
+
+    public boolean isNextToFloor(){
+        if (cell == null) return true;
+
+        int x = cell.getX();
+        int y = cell.getY();
+
+        if (x <= 0 || x + 1 >= World.WIDTH) return true;
+        if (cell.getY() + 1 >= World.HEIGHT || cell.getY() - 1 < 0) return true;
+
+        Cell rightCell = World.getCell(x + 1, y);
+        Cell leftCell = World.getCell(x - 1, y);
+
+        return rightCell.getObject() instanceof Floor || leftCell.getObject() instanceof Floor;
     }
 
     public Rectangle getBounds() { // Change if need be for rendering problem fixes

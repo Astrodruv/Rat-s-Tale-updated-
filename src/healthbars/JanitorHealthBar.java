@@ -7,9 +7,9 @@ import org.newdawn.slick.Graphics;
 import ui.Fonts;
 import world.Cell;
 
-public class CockroachHealthBar extends HealthBar {
+public class JanitorHealthBar extends HealthBar {
 
-    public CockroachHealthBar(Entity e) {
+    public JanitorHealthBar(Entity e) {
         super(((float) Main.getScreenWidth() / 2) - (Cell.getWidth() * 13), 0, Cell.getWidth() * 26, Cell.getHeight(), new Color(128, 180, 37), new Color(100, 125, 100), e);
     }
 
@@ -20,10 +20,10 @@ public class CockroachHealthBar extends HealthBar {
         if (e != null) {
             if (e.isDead()) {
                 g.setColor(Color.yellow);
-                g.drawString("You Have Defeated Larry!", x + (float) Fonts.titleScreenButtonFont.getWidth("You Have Defeated Larry!") / 2, y + Cell.getHeight() / 2 - ((float) Fonts.titleScreenButtonFont.getHeight() / 2));
+                g.drawString("You Have Defeated Jerry!", x + (float) Fonts.titleScreenButtonFont.getWidth("You Have Defeated Jerry!") / 2, y + Cell.getHeight() / 2 - ((float) Fonts.titleScreenButtonFont.getHeight() / 2));
             }
             else{
-                g.drawString("Larry: Boss of the Sewers", x + (float) Fonts.titleScreenButtonFont.getWidth("Larry: Boss of the Sewers") / 2, y + Cell.getHeight() / 2 - ((float) Fonts.titleScreenButtonFont.getHeight() / 2));
+                g.drawString("Jerry: Boss of the Closet", x + (float) Fonts.titleScreenButtonFont.getWidth("Jerry: Boss of the Closet") / 2, y + Cell.getHeight() / 2 - ((float) Fonts.titleScreenButtonFont.getHeight() / 2));
             }
         }
     }

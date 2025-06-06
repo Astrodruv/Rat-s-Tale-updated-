@@ -9,7 +9,7 @@ ff.....ppp......................................ff
 ff...............pp.......pppppp................ff
 ff....................................pp........ff
 ff..............................................ff
-ffppppppppppppp.....ppp......ppp...........pppppff
+ffppppppppppp.......ppp......ppp...........pppppff
 ff.P.................................p..........d.
 ff................................................
 ffffffffffffffffffffffffffffffffffffffffffffffffff

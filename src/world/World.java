@@ -9,6 +9,7 @@ import objects.interactables.Door;
 import objects.interactables.Key;
 import objects.interactables.Weapon;
 import objects.platforms.Floor;
+import objects.platforms.FloorPlaceholder;
 import objects.platforms.Tile;
 import objects.platforms.Boundary;
 import org.newdawn.slick.GameContainer;
@@ -64,7 +65,7 @@ public class World {
         }
 
         for (GameObject obj : objects) {
-            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof Janitor || obj instanceof EvilCar || obj instanceof RatTrap) {
+            if (obj instanceof Cockroach || obj instanceof Bird || obj instanceof Player || obj instanceof Janitor || obj instanceof EvilCar || obj instanceof RatTrap || obj instanceof Chef) {
                 obj.render(g);
             }
         }
@@ -146,12 +147,18 @@ public class World {
         if (code == 'J'){
             obj = new Janitor(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
+        if (code == '/'){
+            obj = new FloorPlaceholder(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());;
+        }
 
         if (code == 'k'){
             obj = new Key(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if(code == 'd') {
             obj = new Door(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());
+        }
+        if (code == 'B'){
+            obj = new Chef(cell.getX() *  Cell.getWidth(), cell.getY() * Cell.getHeight());
         }
         if (code == 'W'){
             obj = new Weapon(cell.getX() * Cell.getWidth(), cell.getY() * Cell.getHeight());

@@ -72,6 +72,9 @@ public class TitleScreen extends BasicGameState {
         instructions.add(new Message(Cell.getWidth() * 2, Cell.getHeight() * 13, "P - Pause & Settings", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
 
         instructions.add(new Message(Cell.getWidth(), Cell.getHeight() * 14, "Collect the key or beat the boss to unlock the door and progress to the next level!", new Color(245, 245, 0), Fonts.instructionAndLorePageFont));
+
+        lore.add(new Message(Cell.getWidth(), Cell.getHeight() * 3, "The school chef deep fried your family, you must find your way to him and get your revenge", new Color(245,245,0), Fonts.instructionAndLorePageFont));
+        lore.add(new Message(Cell.getWidth(), Cell.getHeight() * 4, "Kill anything that gets in your way", new Color(245,245,0), Fonts.instructionAndLorePageFont));
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {

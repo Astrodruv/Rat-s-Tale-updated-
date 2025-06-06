@@ -92,7 +92,7 @@ public class Bird extends Entity {
 
         x += xSpeed;
 
-        if (counter < 4){
+        if (counter < 2){
             float screenWidth = Main.getScreenWidth() - w;
             float screenHeight = Main.getScreenHeight() - Cell.getHeight() - h;
             float scale = -4 * screenHeight / (screenWidth * screenWidth);

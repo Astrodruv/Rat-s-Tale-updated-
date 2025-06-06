@@ -82,8 +82,6 @@ public abstract class Entity extends GameObject {
             image.draw(x,y);
         }
 
-//        g.setColor(Color.white);
-//        g.draw(getBounds());
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
@@ -106,7 +104,9 @@ public abstract class Entity extends GameObject {
         if (!isHit) hasTakenDamage = false;
 
         if (dashTimer <= 0){
-            yVelocity += gravity;
+            if (yVelocity < Cell.getHeight() / 4) {
+                yVelocity += gravity;
+            }
         }
         else{
             yVelocity = 0;
@@ -124,16 +124,30 @@ public abstract class Entity extends GameObject {
     public void moveLeft(){
         image = rightFacingImage.getFlippedCopy(true, false);
         xVelocity = -xSpeed + xAccel;
-        if (xAccel > -(Cell.getWidth() - (PlayerValues.X_SPEED * 2))) {
-            xAccel -= (float) Main.getScreenWidth() / 22560;
+        if (onGround) {
+            if (xAccel > -(Cell.getWidth() - (PlayerValues.X_SPEED * 2))) {
+                xAccel -= (float) Main.getScreenWidth() / 22560;
+            }
+        }
+        else{
+            if (xAccel > -(Cell.getWidth() - ((float) PlayerValues.X_SPEED / 2))) {
+                xAccel -= (float) Main.getScreenWidth() / 22560;
+            }
         }
     }
 
     public void moveRight(){
         image = rightFacingImage;
         xVelocity = xSpeed + xAccel;
-        if (xAccel < (Cell.getWidth() - (PlayerValues.X_SPEED * 2))) {
-            xAccel += (float) Main.getScreenWidth() / 22560;
+        if (onGround) {
+            if (xAccel < (Cell.getWidth() - (PlayerValues.X_SPEED * 2))) {
+                xAccel += (float) Main.getScreenWidth() / 22560;
+            }
+        }
+        else{
+            if (xAccel < (Cell.getWidth() - ((float) PlayerValues.X_SPEED / 2))) {
+                xAccel += (float) Main.getScreenWidth() / 22560;
+            }
         }
     }
 

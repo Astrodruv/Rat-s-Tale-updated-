@@ -1,13 +1,14 @@
 package engine.states;
 
 import engine.Main;
-import healthbars.BirdHealthBar;
-import healthbars.CockroachHealthBar;
-import healthbars.PlayerHealthBar;
+import healthbars.*;
 import objects.GameObject;
 import objects.entities.Player;
 import objects.entities.enemies.Bird;
+import objects.entities.enemies.Chef;
 import objects.entities.enemies.Cockroach;
+import objects.entities.enemies.Janitor;
+import objects.interactables.Food;
 import objects.weapons.Knife;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -15,9 +16,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import ui.Button;
 import ui.Fonts;
 import ui.Message;
-import values.BirdValues;
-import values.CockroachValues;
-import values.PlayerValues;
+import values.*;
 import world.Cell;
 import world.World;
 import ui.Images;
@@ -53,12 +52,16 @@ public class Game extends BasicGameState
 	private static Player player;
 	private static Cockroach cockroach;
 	private static Bird bird;
+	private static Janitor janitor;
+	private static Chef chef;
 
 	private static Knife knife;
 
 	private static PlayerHealthBar playerHealthBar;
 	private static CockroachHealthBar cockroachHealthBar;
 	private static BirdHealthBar birdHealthBar;
+	private static JanitorHealthBar janitorHealthBar;
+	private static ChefHealthBar chefHealthBar;
 
 	private static float speedrunTimer;
 
@@ -97,7 +100,7 @@ public class Game extends BasicGameState
 		pauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Pause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 		unpauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Unpause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 
-		setLevel("levels/closet5.txt"); // debug
+		setLevel("levels/classroom1.txt"); // debug
 		PlayerValues.section = 2; // debug
 		PlayerValues.doesPlayerHaveKnife = true; // debug
 
@@ -120,6 +123,14 @@ public class Game extends BasicGameState
 			}
 
 			if (knife != null) knife.update(gc, sbg, delta);
+
+			for(GameObject o: levelObjects)
+			{
+				if(o instanceof Food)
+				{
+					o.update(gc, sbg, delta);
+				}
+			}
 
 			updateHealthBars();
 
@@ -146,6 +157,17 @@ public class Game extends BasicGameState
 				if (birdHealthBar == null || birdHealthBar.getEntity() != o) {
 					birdHealthBar = new BirdHealthBar(bird);
 				}
+			} else if (o instanceof Janitor && World.level.equals(JanitorValues.LEVEL_SPAWN_LOCATION)) {
+				janitor = (Janitor) o;
+				if (janitorHealthBar == null || janitorHealthBar.getEntity() != o) {
+					janitorHealthBar = new JanitorHealthBar(janitor);
+				}
+			}
+			else if (o instanceof Chef && World.level.equals(ChefValues.LEVEL_SPAWN_LOCATION)) {
+				chef = (Chef) o;
+				if (chefHealthBar == null || chefHealthBar.getEntity() != o) {
+					chefHealthBar = new ChefHealthBar(chef);
+				}
 			}
 		}
 	}
@@ -161,6 +183,8 @@ public class Game extends BasicGameState
 				g.drawImage(Images.closetBackground, 0,0);
 			} else if (PlayerValues.section == 3) {
 				g.drawImage(Images.classroomBackground,0,0);
+			} else if (PlayerValues.section == 4){
+				g.drawImage(Images.cafeteriaBackground, 0, 0);
 			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
 			world.render(g);
@@ -178,6 +202,11 @@ public class Game extends BasicGameState
 			if (birdHealthBar != null) {
 				if (World.level.equals(BirdValues.LEVEL_SPAWN_LOCATION)) {
 					birdHealthBar.render(g);
+				}
+			}
+			if (janitorHealthBar != null){
+				if (World.level.equals(JanitorValues.LEVEL_SPAWN_LOCATION)) {
+					janitorHealthBar.render(g);
 				}
 			}
 			if (PlayerValues.doesPlayerHaveKnife) {
@@ -306,6 +335,11 @@ public class Game extends BasicGameState
 			}
 			if (PlayerValues.section == 3){
 				setLevel("levels/classroom1.txt");
+				Player.gameOver = false;
+				PlayerValues.isPlayerTouchingKey = false;
+			}
+			if (PlayerValues.section == 4){
+				setLevel("levels/cafeteria.txt");
 				Player.gameOver = false;
 				PlayerValues.isPlayerTouchingKey = false;
 			}
