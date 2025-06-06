@@ -21,7 +21,7 @@ public class RatTrap extends Entity {
     private int framesPerStep = 6;
 
     public RatTrap(float x, float y) {
-        super(x, y + (Cell.getHeight() / 3), 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.ratTrap, RatTrapValues.IFRAMES);
+        super(x, y, 0, 0, RatTrapValues.HEALTH, RatTrapValues.ATTACK, Images.ratTrap, RatTrapValues.IFRAMES);
         image = Images.ratTrap;
         mySheet = Images.trapping;
         currentFrame = mySheet.getSprite(0,0);
