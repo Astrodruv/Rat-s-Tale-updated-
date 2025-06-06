@@ -97,7 +97,7 @@ public class Game extends BasicGameState {
 		pauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Pause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 		unpauseButton = new Button(Cell.getWidth() / 2, Main.getScreenHeight() - (Cell.getHeight() / 2) - (Cell.getHeight() / 4), (int) Cell.getWidth() * 6, (int) Cell.getHeight() / 2, "Unpause", new Color(217, 140, 0), Color.black, Color.yellow, Fonts.messageFont);
 
-		setLevel("levels/sewer1.txt"); // debug
+		setLevel("levels/classroom1.txt"); // debug
 		PlayerValues.section = 0; // debug
 		PlayerValues.doesPlayerHaveKnife = false; // debug
 
@@ -174,16 +174,21 @@ public class Game extends BasicGameState {
 			} else if (PlayerValues.section == 1) {
 				g.drawImage(Images.streetBackground, 0, 0);
 			} else if (PlayerValues.section == 2) {
-				g.drawImage(Images.closetBackground, 0, 0);
+				g.drawImage(Images.streetBackground, 0, 0);
 			} else if (PlayerValues.section == 3) {
-				g.drawImage(Images.classroomBackground, 0, 0);
+				g.drawImage(Images.cafeteriaBackground, 0, 0);
 			} else if (PlayerValues.section == 4) {
 				g.drawImage(Images.cafeteriaBackground, 0, 0);
-			} else if (PlayerValues.section == 5) {
+			}else if (PlayerValues.section == 5) {
 				g.drawImage(Images.schoolBackground, 0, 0);
-			} else if (PlayerValues.section == 6) {
+			}else if (PlayerValues.section == 6) {
 				g.drawImage(Images.winScreen, 0, 0);
 			}
+//			} else if (PlayerValues.section == 5) {
+//				g.drawImage(Images.schoolBackground, 0, 0);
+//			} else if (PlayerValues.section == 6) {
+//				g.drawImage(Images.winScreen, 0, 0);
+//			}
 			//each level has end of level screen to unlock new ability/weapon? (ex sewer 4)
 			world.render(g);
 			if (knife != null) {

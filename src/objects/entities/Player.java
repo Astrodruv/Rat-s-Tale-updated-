@@ -310,7 +310,7 @@ public class Player extends Entity {
                             }
                             case "levels/sewer4.txt" -> {
                                 Game.setLevel("levels/street1.txt");
-                                PlayerValues.section++;
+                                PlayerValues.section = 1;
                                 if (!PlayerValues.keyOnPermanentlySetting) {
                                     PlayerValues.isPlayerTouchingKey = false;
                                 }
@@ -346,7 +346,7 @@ public class Player extends Entity {
                             }
                             case "levels/street5.txt" -> {
                                 Game.setLevel("levels/closet1.txt");
-                                PlayerValues.section++;
+                                PlayerValues.section = 2;
                                 if (!PlayerValues.keyOnPermanentlySetting) {
                                     PlayerValues.isPlayerTouchingKey = false;
                                 }
@@ -381,6 +381,7 @@ public class Player extends Entity {
                                 continue;
                             }
                             case "levels/closet5.txt" -> {
+                                PlayerValues.section = 3;
                                 Game.setLevel("levels/classroom1.txt");
                                 if (!PlayerValues.keyOnPermanentlySetting) {
                                     PlayerValues.isPlayerTouchingKey = false;
@@ -410,7 +411,7 @@ public class Player extends Entity {
                             }
                             case "levels/classroom4.txt" -> {
                                 Game.setLevel("levels/cafeteria.txt");
-                                PlayerValues.section++;
+                                PlayerValues.section = 4;
                                 if (!PlayerValues.keyOnPermanentlySetting) {
                                     PlayerValues.isPlayerTouchingKey = false;
                                 }
@@ -418,13 +419,13 @@ public class Player extends Entity {
                             }
                             case "levels/cafeteria.txt" -> {
                                 Game.setLevel("levels/run.txt");
-                                PlayerValues.section++;
+                                PlayerValues.section = 5;
                                 PlayerValues.isPlayerTouchingKey = true;
                                 continue;
                             }
                             case "levels/run.txt" -> {
                                 Game.setLevel("levels/win.txt");
-                                PlayerValues.section++;
+                                PlayerValues.section = 6;
                                 PlayerValues.isPlayerTouchingKey = true;
                                 continue;
                             }

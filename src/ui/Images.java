@@ -87,10 +87,10 @@ public class Images {
             sewerBackground = new Image("res/levels/sewer/Sewer_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             streetBackground = new Image("res/levels/street/Street_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             schoolBackground = new Image("res/levels/school/School_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
-            closetBackground = new Image("res/levels/closet/Closet_Background.png").getScaledCopy((int) (Main.getScreenWidth()), (int) (Main.getScreenHeight() - Cell.getHeight()));
+            closetBackground = new Image("res/levels/closet/Closet_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             classroomBackground = new Image("res/levels/classroom/Classroom_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             deathScreen = new Image("res/misc/DeathScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
-            winScreen = new Image("res/misc/GameOver.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            winScreen = new Image("res/misc/WinScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
             classroomBackground = new Image("res/levels/classroom/Classroom_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             cafeteriaBackground = new Image("res/levels/cafeteria/Cafeteria_Background.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());

@@ -11,5 +11,5 @@ ff...........p............fff.....ppppppppp....fff
 ff........................fff.................pfff
 ffk......p...............ppppp....pp......pp...fff
 ffpp...........................................fff
-ff..t.......t.......t........t.......t.......t.fff
+ff..........t........................t.........fff
 ffffffffffffffffffffffffffffffffffffffffffffffffff
