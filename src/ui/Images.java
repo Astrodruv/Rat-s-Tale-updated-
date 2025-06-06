@@ -39,6 +39,7 @@ public class Images {
     public static Image janitorWalking;
     public static Image studentOneIdle;
     public static Image studentOneWalking;
+    public static Image studentTwoWalking;
     public static Image chefIdle;
     public static Image chefWalking;
     public static Image chefAttacking;
@@ -64,6 +65,7 @@ public class Images {
     public static SpriteSheet janitor;
     public static SpriteSheet trapping;
     public static SpriteSheet student1;
+    public static SpriteSheet student2;
     public static SpriteSheet chefAtk;
     public static SpriteSheet chef;
 
@@ -116,6 +118,8 @@ public class Images {
             studentOneIdle = new Image("res/levels/classroom/Student_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight() * 4);
             studentOneWalking = new Image("res/levels/classroom/Student_Walking.png");
             student1 = new SpriteSheet(studentOneWalking, 180, 288);
+            studentTwoWalking = new Image("res/levels/classroom/Student2_Walking.png");
+            student2 = new SpriteSheet(studentTwoWalking, 172, 275);
 
             chefIdle = new Image("res/levels/cafeteria/Chef_Idle.png").getScaledCopy((int) Cell.getWidth() * 4, (int) Cell.getHeight() * 4);
             chefWalking = new Image("res/levels/cafeteria/Chef_Walking.png");

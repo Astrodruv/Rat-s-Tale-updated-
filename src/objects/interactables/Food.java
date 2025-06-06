@@ -19,9 +19,7 @@ public class Food extends GameObject {
     private boolean generated = false;
 
     private float xSpeed = 4;
-    private boolean facingRight;
-    private boolean thrown;
-    private float chefX;
+
 
     public Food(float x, float y) {
         super(x, y, Images.apple);
@@ -48,13 +46,6 @@ public class Food extends GameObject {
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
 
-        for(GameObject o: Game.levelObjects)
-        {
-            if(o instanceof Chef)
-            {
-                chefX = o.getX();
-            }
-        }
         y = ((float) 1 /2000) * (x-Chef.getX) * (x-(Chef.getX + 50)) + 650;
         if(Chef.facingRight)
         {

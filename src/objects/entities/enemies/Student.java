@@ -32,6 +32,7 @@ public class Student extends Entity {
     private float xVelstore;
 
     private static final Random random = new Random();
+    private static int color;
     private boolean generated;
 
 
@@ -39,8 +40,6 @@ public class Student extends Entity {
         super(x, y, StudentValues.X_SPEED, StudentValues.Y_SPEED, StudentValues.HEALTH, StudentValues.ATTACK, Images.studentOneIdle, StudentValues.IFRAMES);
         facingRight = true;
         image = Images.studentOneIdle;
-        mySheet = Images.student1;
-        currentFrame = mySheet.getSprite(0, 0);
         crazed = false;
         effected = false;
         jumpTimer = 60;
@@ -49,6 +48,19 @@ public class Student extends Entity {
         generated = false;
         xMax = (float) (x + (200 + Math.random() * 200));
         xMin = (float) (x - (200 + Math.random() * 200));
+
+        randomizer();
+
+        if(color == 0)
+        {
+            mySheet = Images.student2;
+        }
+        else if(color == 1)
+        {
+             mySheet = Images.student1;
+        }
+        currentFrame = mySheet.getSprite(0, 0);
+
     }
 
     public void render(Graphics g) {
@@ -111,6 +123,7 @@ public class Student extends Entity {
 
     public void randomizer() {
         if (!generated) {
+            color = random.nextInt(2);
             generated = true;
         }
     }

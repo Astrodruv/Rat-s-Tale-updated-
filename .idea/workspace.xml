@@ -12,18 +12,12 @@
     <list default="true" id="b4d3fe16-d555-457c-9348-1b5e6eca5939" name="Changes" comment="chef">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/engine/states/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/entities/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/objects/GameObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/Images.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/A Rat's Tale/ui/Images.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/states/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/states/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Chef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/entities/enemies/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/entities/enemies/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/interactables/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/interactables/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/platforms/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/platforms/Platform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/platforms/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/platforms/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Images.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Images.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/values/ChefValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/values/ChefValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/world/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/world/Cell.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -522,7 +516,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749167644533</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="chef">
+      <option name="closed" value="true" />
+      <created>1749178764036</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1749178764036</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
