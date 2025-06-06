@@ -528,12 +528,15 @@ public class Player extends Entity {
 
             if (o instanceof RatTrap) {
                 if (futureY.intersects(o.getBounds())) {
+                    if (newY < o.getBounds().getMinY()) {
+                        jump();
+                    }
                     takeDamage(RatTrapValues.ATTACK);
-                    trapped = true;
-                    trapTime = 120;
+                    trapTime = 240;
+                    ((RatTrap) o).trap = true;
                 }
-                else trapped = false;
             }
+
 
             if (o instanceof Janitor) {
                 Rectangle weaponBounds = getWeaponBounds(facingRight);
